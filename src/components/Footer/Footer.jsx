@@ -1,28 +1,27 @@
-// import {
-//   HeaderContainer,
-//   Navigation,
-//   StyledLink,
-//   IconWrapper,
-// } from '../Header/Header.styled';
-// import sprite from '../../assets/sprite.svg';
+import {
+  FooterContainer,
+  Navigation,
+  StyledLink,
+} from './Footer.styled';
+
 
 export const Footer = () => {
-  // return (
-  // <HeaderContainer>
-  //   <Navigation>
-  //     <StyledLink to="/first">
-  //       <IconWrapper>
-  //         <use href={`${sprite}#icon-logo`} />
-  //       </IconWrapper>
-  //       First
-  //     </StyledLink>
-  //     <StyledLink to="/second">
-  //       <IconWrapper>
-  //         <use href={`${sprite}#icon-logo`} />
-  //       </IconWrapper>
-  //       Second
-  //     </StyledLink>
-  //   </Navigation>
-  // </HeaderContainer>
-  // );
+  return (
+    <FooterContainer>
+      <Navigation>
+        <StyledLink to="/drinks">
+          Drinks
+        </StyledLink>
+        <StyledLink to="/add">
+          Add Drink
+        </StyledLink>
+        <StyledLink to="/my">
+          My Drinks
+        </StyledLink>
+        <StyledLink to="/favorites">
+          Favorite
+        </StyledLink>
+      </Navigation>
+    </FooterContainer>
+  );
 };
