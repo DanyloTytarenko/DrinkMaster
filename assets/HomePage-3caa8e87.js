@@ -1,9 +1,11 @@
-import{n as f,j as t}from"./index-558dcb7d.js";const e=f.div`
+import{n as t,j as e}from"./index-790c6aaa.js";const f=t.div`
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 500px;
-`,n=f.h1`
+`,n=t.h1`
+  margin: 0;
+  margin-right: 10px;
   color: #ffffff;
   text-shadow:
     0 0 5px #00baff,
@@ -11,4 +13,4 @@ import{n as f,j as t}from"./index-558dcb7d.js";const e=f.div`
     0 0 20px #00baff,
     0 0 40px #00baff,
     0 0 80px #00baff;
-`,r=()=>t.jsx(e,{children:t.jsx(n,{children:"404"})});export{r as default};
+`,i=()=>e.jsx(f,{children:e.jsx(n,{children:"HomePage"})});export{i as default};
