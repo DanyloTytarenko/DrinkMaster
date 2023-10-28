@@ -172,6 +172,9 @@ const DrinkDescriptionFields = () => {
             borderBottom: '1px solid rgba(243, 243, 243, 0.5)',
             textTransform: 'capitalize',
           }}
+          onChange={(e) => {
+            console.log(e.target.value);
+          }}
         />
         <Field
           type="text"
@@ -187,6 +190,9 @@ const DrinkDescriptionFields = () => {
             border: 'none',
             borderBottom: '1px solid rgba(243, 243, 243, 0.5)',
             textTransform: 'capitalize',
+          }}
+          onChange={(e) => {
+            console.log(e.target.value);
           }}
         />
         <div
