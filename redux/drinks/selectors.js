@@ -1,6 +1,13 @@
 
-export const selectDrinks = state => state.drinks.items;
+export const selectOwnDrinks = state => state.ownDrinks.items;
 
-export const selectIsLoading = state => state.drinks.isLoading;
+export const selectFavoriteDrinks = state => state.favoriteDrinks.items;
 
-export const selectError = state => state.drinks.error;
+export const selectIsLoadingFavorite = state => state.favoriteDrinks.isLoading;
+
+export const selectIsLoadingOwn = state => state.ownDrinks.isLoading;
+
+export const selectErrorOwn = state => state.ownDrinks.error;
+
+export const selectErrorFavorite = state => state.favoriteDrinks.error;
+
