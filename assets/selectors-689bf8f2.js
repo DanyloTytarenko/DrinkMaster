@@ -1,0 +1,1 @@
+import{R as e,a as c,c as u}from"./index-7dd10edf.js";function r(t=e){const s=t===e?c:u(t);return function(){const{store:o}=s();return o}}const a=r();function i(t=e){const s=t===e?a:r(t);return function(){return s().dispatch}}const x=i(),p=t=>t.drinks.isLoading,R=t=>t.drinks.error;export{R as a,p as s,x as u};
