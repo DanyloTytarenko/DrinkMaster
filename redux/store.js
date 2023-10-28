@@ -8,10 +8,11 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { drinksReducer } from "./drinks/drinksSlice";
+import { ownDrinksReducer, favoriteDrinksReducer } from "./drinks/drinksSlice";
 export const store = configureStore({
   reducer: {
-    drinks: drinksReducer,
+    ownDrinks: ownDrinksReducer,
+    favoriteDrinks: favoriteDrinksReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

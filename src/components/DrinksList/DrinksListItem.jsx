@@ -10,11 +10,17 @@ import {
     DrinkAlc
 } from './DrinksList.styled';
 import { useDispatch } from "react-redux";
-import { deleteDrink } from "../../../redux/drinks/operations";
+import { deleteOwnDrink, deleteFavoriteDrink } from "../../../redux/drinks/operations";
 import sprite from './svg/sprite.svg';
-export const DrinksListItem = ({id, drink}, apiPath) => {
+export const DrinksListItem = ({id, drink}) => {
   const dispatch = useDispatch();
-const handleDelete = () => dispatch(deleteDrink(id));
+  const handleDelete = () => {
+    if (location.pathname === '/my') {
+    dispatch(deleteOwnDrink(id));
+  } else if (location.pathname === '/favorites') {
+    dispatch(deleteFavoriteDrink(id));
+  }
+} 
 return (
     <DrinksItem>
         <DrinkPhoto src={drink.photo} alt="Photo of cocktail" /> 
