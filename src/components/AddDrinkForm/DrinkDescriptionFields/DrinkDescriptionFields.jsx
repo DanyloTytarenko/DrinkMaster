@@ -34,7 +34,7 @@ const categories = [
   'Soft Drink',
 ];
 
-const glass = [
+const glassArray = [
   'Highball glass',
   'Cocktail glass',
   'Old-fashioned glass',
