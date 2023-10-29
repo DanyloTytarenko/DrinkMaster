@@ -1,4 +1,4 @@
-import{n,u as t,r as f,f as i,j as s}from"./index-790c6aaa.js";import{u as o,s as c,a as p,D as x}from"./DrinksList-af7950cb.js";const d=n.div`
+import{n,u as t,r as f,f as i,j as s}from"./index-a355d5d5.js";import{u as o,s as c,a as p,D as x}from"./DrinksList-4c160690.js";const d=n.div`
   display: flex;
   justify-content: center;
   align-items: center;
