@@ -10,7 +10,7 @@ import {
 } from './DrinkIngredientsFields.styled';
 
 import { useSelector } from 'react-redux';
-import { selectForm } from '../../../../redux/drinks/selectors';
+import { selectForm } from '../../../redux/drinks/selectors';
 import IngredientItem from './IngredientItem/IngredientItem';
 
 const ingredientsData = [

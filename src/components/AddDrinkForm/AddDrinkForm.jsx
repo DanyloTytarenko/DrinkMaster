@@ -7,8 +7,8 @@ import { Formik, Form } from 'formik';
 
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setForm } from '../../../redux/drinks/formSlice';
-import { selectForm } from '../../../redux/drinks/selectors';
+import { setForm } from '../../redux/drinks/formSlice';
+import { selectForm } from '../../redux/drinks/selectors';
 import { initialValues } from '../../utils/addDrinkFormInitials';
 
 const AddDrinkForm = () => {

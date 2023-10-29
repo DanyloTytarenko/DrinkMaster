@@ -1,7 +1,7 @@
 import { Div, Title, Textarea } from './RecipePreparation.styled';
 
 import { useSelector } from 'react-redux';
-import { selectForm } from '../../../../redux/drinks/selectors';
+import { selectForm } from '../../../redux/drinks/selectors';
 
 const RecipePreparation = ({ onChangeHandler, setFieldValue }) => {
   const form = useSelector(selectForm);
