@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
@@ -8,10 +9,24 @@ import {
 } from './Header.styled';
 
 const Header = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const handleWindowResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
+
   return (
     <HeaderContainer>
       <Logo />
-      <Navigation />
+      {windowWidth >= 1440 && <Navigation />}
       <ThemeToggler />
       <UserLogo />
     </HeaderContainer>
