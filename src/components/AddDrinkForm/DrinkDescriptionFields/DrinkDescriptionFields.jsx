@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import DummyDrinkThumb from '../../../images/dummyDrinkThumb.png';
 
-const DrinkDescriptionFields = () => {
+const DrinkDescriptionFields = ({ isAlcoholic, setIsAlcoholic }) => {
   const categories = [
     'Ordinary Drink',
     'Cocktail',
@@ -19,7 +19,6 @@ const DrinkDescriptionFields = () => {
     'Soft Drink',
   ];
 
-  const [isAcloholic, setIsAlcoholic] = useState('Alcoholic');
   const [uri, setUri] = useState();
 
   const glass = [
@@ -57,18 +56,21 @@ const DrinkDescriptionFields = () => {
     'Coupe Glass',
   ];
 
+  // функція для запису масив об'єктів інгрідієнтів, у формі необхідній для роботи селекту.
+  // пізніше її буде записано у src/utils для перевикористання всюди де э реакт-селекти
   const options = (array) =>
     array.map((item) => {
-      return { value: item.toLowerCase(), label: item };
+      return { value: item, label: item };
     });
 
   const radioHandler = (value) => {
-    console.log(value, 'setState alcoradio');
-
-    setIsAlcoholic(value);
+    if (value === 'Alcoholic') {
+      setIsAlcoholic(true);
+    } else setIsAlcoholic(false);
   };
 
-  const handler = (e) => {
+  // функція відправки обраного файлу на сервер
+  const addImagehandler = (e) => {
     console.log(e.target.files);
     const binaryData = [];
     binaryData.push(e.target.files);
@@ -79,6 +81,7 @@ const DrinkDescriptionFields = () => {
     const src = url.toString().split('blob:')[1];
     setUri(src);
   };
+
   return (
     <div
       style={{
@@ -131,7 +134,7 @@ const DrinkDescriptionFields = () => {
               id="input"
               accept="image/*"
               style={{ display: 'none' }}
-              onChange={(e) => handler(e)}
+              onChange={(e) => addImagehandler(e)}
             />
           </label>
 
@@ -172,6 +175,9 @@ const DrinkDescriptionFields = () => {
             borderBottom: '1px solid rgba(243, 243, 243, 0.5)',
             textTransform: 'capitalize',
           }}
+          onChange={(e) => {
+            console.log(e.target.value);
+          }}
         />
         <Field
           type="text"
@@ -187,6 +193,9 @@ const DrinkDescriptionFields = () => {
             border: 'none',
             borderBottom: '1px solid rgba(243, 243, 243, 0.5)',
             textTransform: 'capitalize',
+          }}
+          onChange={(e) => {
+            console.log(e.target.value);
           }}
         />
         <div
@@ -346,7 +355,7 @@ const DrinkDescriptionFields = () => {
             type="radio"
             value="Alcoholic"
             name="isAcloholic"
-            checked={isAcloholic === 'Alcoholic'}
+            checked={isAlcoholic === true}
             onChange={(e) => radioHandler(e.target.value)}
           />
           Alcoholic
@@ -356,7 +365,7 @@ const DrinkDescriptionFields = () => {
             type="radio"
             value="Non alcoholic"
             name="isAcloholic"
-            checked={isAcloholic === 'Non alcoholic'}
+            checked={isAlcoholic === false}
             onChange={(e) => radioHandler(e.target.value)}
           />
           Non-alcoholic

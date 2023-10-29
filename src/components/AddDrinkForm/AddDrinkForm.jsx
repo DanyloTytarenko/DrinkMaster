@@ -1,19 +1,24 @@
 import DrinkDescriptionFields from './DrinkDescriptionFields/DrinkDescriptionFields';
 import DrinkIngredientsFields from './DrinkIngredientsFields/DrinkIngredientsFields';
 import RecipePreparation from './RecipePreparation/RecipePreparation';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
+import { useState } from 'react';
 
 const AddDrinkForm = () => {
   const initialValues = { drinkTitle: '', aboutDrink: '' };
-  const submitHandler = () => {
-    console.log('send object to back-end');
+  const [isAlcoholic, setIsAlcoholic] = useState(true);
+  const submitHandler = (values) => {
+    console.log(values);
   };
   return (
     <div style={{ marginBottom: '80px' }}>
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
         <Form>
-          <DrinkDescriptionFields />
-          <DrinkIngredientsFields />
+          <DrinkDescriptionFields
+            isAlcoholic={isAlcoholic}
+            setIsAlcoholic={setIsAlcoholic}
+          />
+          <DrinkIngredientsFields isAlcoholic={isAlcoholic} />
           <RecipePreparation />
           <button
             style={{
