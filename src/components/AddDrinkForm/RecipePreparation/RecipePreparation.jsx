@@ -1,16 +1,26 @@
-import { Title, Textarea } from './RecipePreparation.styled';
+import { Div, Title, Textarea } from './RecipePreparation.styled';
 
-const RecipePreparation = () => {
+import { useSelector } from 'react-redux';
+import { selectForm } from '../../../../redux/drinks/selectors';
+
+const RecipePreparation = ({ onChangeHandler, setFieldValue }) => {
+  const form = useSelector(selectForm);
+
   return (
-    <div style={{ marginBottom: '20px' }}>
+    <Div>
       <Title>Recipe Preparation</Title>
       <Textarea
         name="instructions"
         placeholder="Enter the recipe"
         rows={7}
         required={true}
+        value={form.instructions}
+        onChange={(e) => {
+          setFieldValue('instructions', e.target.value);
+          onChangeHandler(e.target.value, e.target.name);
+        }}
       />
-    </div>
+    </Div>
   );
 };
 export default RecipePreparation;
