@@ -1,5 +1,5 @@
+import { Wrapper, Input, Button } from './IngredientItem.styled';
 import Select from 'react-select';
-import { Field } from 'formik';
 
 const IngredientItem = ({
   stateArray,
@@ -23,7 +23,7 @@ const IngredientItem = ({
   };
 
   return (
-    <div style={{ display: 'flex', gap: '8px' }}>
+    <Wrapper style={{ display: 'flex', gap: '8px' }}>
       <Select
         styles={{
           dropdownIndicator: (provided, state) => ({
@@ -75,22 +75,11 @@ const IngredientItem = ({
           onChangeHandler(e.value, 'title');
         }}
       />
-      <Field
+      <Input
         type="text"
         name="measure"
         placeholder="1 cl"
         title="measure"
-        style={{
-          padding: '16px 18px',
-          width: '100px',
-          backgroundColor: 'inherit',
-          fontWeight: '14px',
-          color: '#f3f3f3',
-          letterSpacing: '-0.02em',
-          outline: 'none',
-          border: '1px solid rgba(243, 243, 243, 0.5)',
-          borderRadius: '200px',
-        }}
         value={
           stateArray[index].measure === '' ? '' : stateArray[index].measure
         }
@@ -98,22 +87,14 @@ const IngredientItem = ({
           onChangeHandler(e.target.value, 'measure');
         }}
       />
-      <button
+      <Button
         type="button"
         title="Remove ungridient"
-        style={{
-          backgroundColor: 'inherit',
-          border: 'none',
-          color: '#f3f3f3',
-          fontSize: '28px',
-          transform: 'rotate(45deg)',
-          marginLeft: 'auto',
-        }}
         onClick={() => deleteIngredient(index)}
       >
         +
-      </button>
-    </div>
+      </Button>
+    </Wrapper>
   );
 };
 export default IngredientItem;

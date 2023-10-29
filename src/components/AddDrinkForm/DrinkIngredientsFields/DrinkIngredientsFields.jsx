@@ -1,3 +1,13 @@
+import {
+  Wrapper,
+  DivTop,
+  Title,
+  DivIncrement,
+  Button,
+  SpanIncrement,
+  ButtonIncr,
+  List,
+} from './DrinkIngredientsFields.styled';
 import { useState } from 'react';
 import IngredientItem from './IngredientItem/IngredientItem';
 
@@ -100,89 +110,37 @@ const DrinkIngredientsFields = ({ isAlcoholic }) => {
   };
 
   return (
-    <div style={{ marginBottom: '80px' }}>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          marginBottom: '40px',
-        }}
-      >
-        <h2
-          style={{
-            fontSize: '28px',
-            lineHeight: 'calc(32/28)',
-            letterSpacing: 0,
-            color: '#f3f3f3',
-          }}
-        >
-          Ingredients
-        </h2>
-        <div
-          style={{
-            padding: '10px 16px',
-            display: 'flex',
-            gap: '16px',
-            lineHeight: 'calc(18/14)',
-            alignItems: 'center',
-            border: '1px solid rgba(243, 243, 243, 0.5)',
-            borderRadius: '200px',
-          }}
-        >
-          <button
-            type="button"
-            onClick={() => decrement()}
-            style={{
-              letterSpacing: '-0.05em',
-              lineHeight: 'calc(18/14)',
-              border: 'none',
-              backgroundColor: 'inherit',
-              color: 'rgba(243, 243, 243, 0.3)',
-            }}
-          >
+    <Wrapper>
+      <DivTop>
+        <Title>Ingredients</Title>
+        <DivIncrement>
+          <Button type="button" onClick={() => decrement()}>
             --
-          </button>
-          <span
-            style={{
-              color: '#f3f3f3',
-              fontSize: '14px',
-              lineHeight: 'calc(18/14)',
-            }}
-          >
-            {stateArray.length}
-          </span>
-          <button
-            type="button"
-            onClick={() => increment()}
-            style={{
-              fontSize: '20px',
-              letterSpacing: '-0.05em',
-              lineHeight: 'calc(18/18)',
-              border: 'none',
-              backgroundColor: 'inherit',
-              color: '#f3f3f3',
-            }}
-          >
+          </Button>
+          <SpanIncrement>{stateArray.length}</SpanIncrement>
+          <ButtonIncr type="button" onClick={() => increment()}>
             +
-          </button>
-        </div>
-      </div>
-      {stateArray.map((el, index) => (
-        <li key={index}>
-          <IngredientItem
-            stateArray={stateArray}
-            setStateArray={setStateArray}
-            ingredients={ingredientsForSelect}
-            deleteIngredient={decrement}
-            index={index}
-            chosenIngredientSelect={{
-              value: stateArray[index].title,
-              label: stateArray[index].title,
-            }}
-          />
-        </li>
-      ))}
-    </div>
+          </ButtonIncr>
+        </DivIncrement>
+      </DivTop>
+      <List>
+        {stateArray.map((el, index) => (
+          <li key={index}>
+            <IngredientItem
+              stateArray={stateArray}
+              setStateArray={setStateArray}
+              ingredients={ingredientsForSelect}
+              deleteIngredient={decrement}
+              index={index}
+              chosenIngredientSelect={{
+                value: stateArray[index].title,
+                label: stateArray[index].title,
+              }}
+            />
+          </li>
+        ))}
+      </List>
+    </Wrapper>
   );
 };
 export default DrinkIngredientsFields;

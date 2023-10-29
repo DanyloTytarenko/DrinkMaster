@@ -1,3 +1,4 @@
+import { Wrapper, Button } from './AddDrinkForm.styled';
 import DrinkDescriptionFields from './DrinkDescriptionFields/DrinkDescriptionFields';
 import DrinkIngredientsFields from './DrinkIngredientsFields/DrinkIngredientsFields';
 import RecipePreparation from './RecipePreparation/RecipePreparation';
@@ -11,7 +12,7 @@ const AddDrinkForm = () => {
     console.log(values);
   };
   return (
-    <div style={{ marginBottom: '80px' }}>
+    <Wrapper>
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
         <Form>
           <DrinkDescriptionFields
@@ -20,18 +21,7 @@ const AddDrinkForm = () => {
           />
           <DrinkIngredientsFields isAlcoholic={isAlcoholic} />
           <RecipePreparation />
-          <button
-            style={{
-              padding: '14px 40px',
-              color: '#161f37',
-              fontSize: '14px',
-              fontWeight: 'bold',
-              lineHeight: 'calc(18/14)',
-              letterSpacing: 0,
-              border: '0 solid transparent',
-              borderRadius: '42px',
-              backgroundColor: '#f3f3f3',
-            }}
+          <Button
             type="submit"
             // disabled={
             //   isLoading || addLoading || delLoading || editLoading
@@ -41,10 +31,10 @@ const AddDrinkForm = () => {
             title="Add"
           >
             Add
-          </button>
+          </Button>
         </Form>
       </Formik>
-    </div>
+    </Wrapper>
   );
 };
 export default AddDrinkForm;

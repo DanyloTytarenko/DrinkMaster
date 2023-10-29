@@ -1,60 +1,74 @@
-import { Field } from 'formik';
+import {
+  Wrapper,
+  ImageThumb,
+  Img,
+  DivAddImage,
+  Label,
+  HiddenInput,
+  SpanAddImage,
+  DivDesription,
+  Input,
+  DivSelect,
+  SpanSelect,
+  DivAlcoholic,
+} from './DrinkDescriptionFields.styled';
+
 import Select from 'react-select';
 import { useState } from 'react';
 
 import DummyDrinkThumb from '../../../images/dummyDrinkThumb.png';
 
+const categories = [
+  'Ordinary Drink',
+  'Cocktail',
+  'Shake',
+  'Other/Unknown',
+  'Cocoa',
+  'Shot',
+  'Coffee/Tea',
+  'Homemade Liqueur',
+  'Punch/Party Drink',
+  'Beer',
+  'Soft Drink',
+];
+
+const glass = [
+  'Highball glass',
+  'Cocktail glass',
+  'Old-fashioned glass',
+  'Whiskey Glass',
+  'Collins glass',
+  'Pousse cafe glass',
+  'Champagne flute',
+  'Whiskey sour glass',
+  'Cordial glass',
+  'Brandy snifter',
+  'White wine glass',
+  'Nick and Nora Glass',
+  'Hurricane glass',
+  'Coffee mug',
+  'Shot glass',
+  'Jar',
+  'Irish coffee cup',
+  'Punch bowl',
+  'Pitcher',
+  'Pint glass',
+  'Copper Mug',
+  'Wine Glass',
+  'Beer mug',
+  'Margarita/Coupette glass',
+  'Beer pilsner',
+  'Beer Glass',
+  'Parfait glass',
+  'Mason jar',
+  'Margarita glass',
+  'Martini Glass',
+  'Balloon Glass',
+  'Coupe Glass',
+];
+
 const DrinkDescriptionFields = ({ isAlcoholic, setIsAlcoholic }) => {
-  const categories = [
-    'Ordinary Drink',
-    'Cocktail',
-    'Shake',
-    'Other/Unknown',
-    'Cocoa',
-    'Shot',
-    'Coffee/Tea',
-    'Homemade Liqueur',
-    'Punch/Party Drink',
-    'Beer',
-    'Soft Drink',
-  ];
-
   const [uri, setUri] = useState();
-
-  const glass = [
-    'Highball glass',
-    'Cocktail glass',
-    'Old-fashioned glass',
-    'Whiskey Glass',
-    'Collins glass',
-    'Pousse cafe glass',
-    'Champagne flute',
-    'Whiskey sour glass',
-    'Cordial glass',
-    'Brandy snifter',
-    'White wine glass',
-    'Nick and Nora Glass',
-    'Hurricane glass',
-    'Coffee mug',
-    'Shot glass',
-    'Jar',
-    'Irish coffee cup',
-    'Punch bowl',
-    'Pitcher',
-    'Pint glass',
-    'Copper Mug',
-    'Wine Glass',
-    'Beer mug',
-    'Margarita/Coupette glass',
-    'Beer pilsner',
-    'Beer Glass',
-    'Parfait glass',
-    'Mason jar',
-    'Margarita glass',
-    'Martini Glass',
-    'Balloon Glass',
-    'Coupe Glass',
-  ];
 
   // функція для запису масив об'єктів інгрідієнтів, у формі необхідній для роботи селекту.
   // пізніше її буде записано у src/utils для перевикористання всюди де э реакт-селекти
@@ -83,142 +97,44 @@ const DrinkDescriptionFields = ({ isAlcoholic, setIsAlcoholic }) => {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '40px',
-        marginBottom: '80px',
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
-          height: '320px',
-          borderRadius: '8px',
-          // backgroundImage: `url(${DummyDrinkThumb})`,
-
-          backgroundColor: 'rgba(22, 31, 55, 0.5)',
-        }}
-      >
-        {uri && <img src={uri} style={{ width: 60, height: 60 }}></img>}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            gap: '18px',
-            alignItems: 'center',
-          }}
-        >
-          <label
-            style={{
-              display: 'flex',
-              width: '50px',
-              height: '50px',
-              fontSize: '40px',
-              fontWeight: 'bold',
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: '#f3f3f3',
-              color: '#161f37',
-              borderRadius: '6px',
-            }}
-          >
+    <Wrapper>
+      <ImageThumb>
+        {uri && <Img src={uri} />}
+        <DivAddImage>
+          <Label>
             +
-            <input
+            <HiddenInput
               type="file"
               id="input"
               accept="image/*"
-              style={{ display: 'none' }}
               onChange={(e) => addImagehandler(e)}
             />
-          </label>
+          </Label>
 
-          <span
-            style={{
-              fontSize: '16px',
-              fontWeight: 'medium',
-              lineHeight: '1.25',
-
-              color: '#f3f3f3',
-            }}
-          >
-            Add image
-          </span>
-        </div>
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          letterSpacing: '-0.02em',
-          gap: '30px',
-          width: '100%',
-        }}
-      >
-        <Field
+          <SpanAddImage>Add image</SpanAddImage>
+        </DivAddImage>
+      </ImageThumb>
+      <DivDesription>
+        <Input
           type="text"
           name="title"
           placeholder="Enter item title"
           title="Enter item title"
-          style={{
-            paddingBottom: '14px',
-            backgroundColor: 'inherit',
-            color: '#f3f3f3',
-            letterSpacing: '-0.02em',
-            outline: 'none',
-            border: 'none',
-            borderBottom: '1px solid rgba(243, 243, 243, 0.5)',
-            textTransform: 'capitalize',
-          }}
           onChange={(e) => {
             console.log(e.target.value);
           }}
         />
-        <Field
+        <Input
           type="text"
           name="about"
           placeholder="Enter about recipe"
           title="Enter about recipe"
-          style={{
-            paddingBottom: '14px',
-            backgroundColor: 'inherit',
-            color: '#f3f3f3',
-            letterSpacing: '-0.02em',
-            outline: 'none',
-            border: 'none',
-            borderBottom: '1px solid rgba(243, 243, 243, 0.5)',
-            textTransform: 'capitalize',
-          }}
           onChange={(e) => {
             console.log(e.target.value);
           }}
         />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            paddingBottom: '14px',
-            backgroundColor: 'inherit',
-            color: '#f3f3f3',
-            borderBottom: '1px solid rgba(243, 243, 243, 0.5)',
-          }}
-        >
-          <span
-            style={{
-              fontSize: '14px',
-              fontWeight: 'regular',
-              lineHeight: 'auto',
-              letterSpacing: '-0.02em',
-              color: 'rgba(243, 243, 243, 0.5)',
-            }}
-          >
-            Category
-          </span>
+        <DivSelect>
+          <SpanSelect>Category</SpanSelect>
           <Select
             styles={{
               dropdownIndicator: (provided, state) => ({
@@ -269,28 +185,9 @@ const DrinkDescriptionFields = ({ isAlcoholic, setIsAlcoholic }) => {
               console.log(e.value);
             }}
           />
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            paddingBottom: '14px',
-            backgroundColor: 'inherit',
-            color: '#f3f3f3',
-            borderBottom: '1px solid rgba(243, 243, 243, 0.5)',
-          }}
-        >
-          <span
-            style={{
-              fontSize: '14px',
-              fontWeight: 'regular',
-              lineHeight: 'auto',
-              letterSpacing: '-0.02em',
-              color: 'rgba(243, 243, 243, 0.5)',
-            }}
-          >
-            Glass
-          </span>
+        </DivSelect>
+        <DivSelect>
+          <SpanSelect>Glass</SpanSelect>
           <Select
             styles={{
               dropdownIndicator: (provided, state) => ({
@@ -338,18 +235,10 @@ const DrinkDescriptionFields = ({ isAlcoholic, setIsAlcoholic }) => {
               console.log(e.value);
             }}
           />
-        </div>
-      </div>
+        </DivSelect>
+      </DivDesription>
 
-      <div
-        style={{
-          display: 'flex',
-          gap: '14px',
-          color: '#f3f3f3',
-          fontSize: '14px',
-          letterSpacing: '-0.02em',
-        }}
-      >
+      <DivAlcoholic>
         <label>
           <input
             type="radio"
@@ -370,8 +259,8 @@ const DrinkDescriptionFields = ({ isAlcoholic, setIsAlcoholic }) => {
           />
           Non-alcoholic
         </label>
-      </div>
-    </div>
+      </DivAlcoholic>
+    </Wrapper>
   );
 };
 export default DrinkDescriptionFields;
