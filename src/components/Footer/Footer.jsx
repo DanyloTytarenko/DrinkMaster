@@ -1,27 +1,32 @@
+import FooterNav from '../FooterNav/FooterNav';
+import FollowUs from '../FollowUs/FollowUs';
+import SubscribeForm from '../SubscribeForm/SubscribeForm';
+import Logo from '../Logo/Logo';
+
 import {
-  FooterContainer,
-  Navigation,
-  StyledLink,
+  FooterContainer, MainWrap, LogoFollowWrap, LogoFollowNavWrap, AllRightsWrap, AllRightsText
 } from './Footer.styled';
 
 
-export const Footer = () => {
+const Footer = () => {
   return (
+
     <FooterContainer>
-      <Navigation>
-        <StyledLink to="/drinks">
-          Drinks
-        </StyledLink>
-        <StyledLink to="/add">
-          Add Drink
-        </StyledLink>
-        <StyledLink to="/my">
-          My Drinks
-        </StyledLink>
-        <StyledLink to="/favorites">
-          Favorite
-        </StyledLink>
-      </Navigation>
+      <MainWrap>
+        <LogoFollowNavWrap>
+          <LogoFollowWrap>
+            <Logo />
+            <FollowUs />
+          </LogoFollowWrap>
+          <FooterNav />
+        </LogoFollowNavWrap>
+        <SubscribeForm />
+      </MainWrap>
+      <AllRightsWrap>
+        <AllRightsText>©2023 Drink Master. All rights reserved.</AllRightsText>
+      </AllRightsWrap>
     </FooterContainer>
   );
 };
+
+export default Footer;
