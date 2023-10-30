@@ -73,7 +73,7 @@ export const fetchCategories = createAsyncThunk(
   'drink/getCategory',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/api/filters/categories');
+      const response = await axios.get('/filters/categories');
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -85,7 +85,7 @@ export const fetchGlass = createAsyncThunk(
   'drink/getGlasses',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/api/filters/glasses');
+      const response = await axios.get('/filters/glasses');
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -97,7 +97,7 @@ export const fetchIngredient = createAsyncThunk(
   'drink/getIngredient',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/api/filters/ingredients');
+      const response = await axios.get('/filters/ingredients');
       console.log(response.data);
       return response.data;
     } catch (e) {

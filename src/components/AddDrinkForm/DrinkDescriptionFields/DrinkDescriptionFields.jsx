@@ -33,7 +33,7 @@ const DrinkDescriptionFields = ({
   const form = useSelector(selectForm);
 
   const [uri, setUri] = useState();
-
+  console.log(uri);
   // функція для запису масив об'єктів інгрідієнтів, у формі необхідній для роботи селекту.
   // пізніше її буде записано у src/utils для перевикористання всюди де э реакт-селекти
   const options = (array) =>
@@ -57,15 +57,16 @@ const DrinkDescriptionFields = ({
     );
     console.log(url.toString().split('blob:')[1]);
     const src = url.toString().split('blob:')[1];
-    setUri(src);
+    setUri(URL.createObjectURL(e.target.files[0]));
+    // setUri(src);
     setFieldValue('drinkThumb', src);
     onChangeHandler(src, 'drinkThumb');
   };
 
   return (
     <Wrapper>
-      <ImageThumb>
-        {uri && <Img src={uri} />}
+      <ImageThumb style={{ backgroundImage: `url(${uri})` }}>
+        {/* {uri && <Img src={uri} />} */}
         <DivAddImage>
           <Label>
             +
