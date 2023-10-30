@@ -21,14 +21,14 @@ const DrinksSearch = ({ categories, ingredients }) => {
   useEffect(() => {
     console.log('category, ingredient :>> ', category, ingredient);
     // navigate(
-    //   `/drinks/search?category=${category}&ingredient=${ingredient}&query=${searchQuery}`,
+    //   `/drinks/search?category=${category}&ingredient=${ingredient}&keyword=${searchQuery}`,
     // );
     // if (window.innerWidth >= 768) {
     //   console.log(' :>> ');
     // }
     console.log(
       'route',
-      `/drinks/search?category=${category}&ingredient=${ingredient}&query=${searchQuery}`,
+      `/drinks/search?category=${category}&ingredient=${ingredient}&keyword=${searchQuery}`,
     );
   }, [category, ingredient, searchQuery]);
 

@@ -53,7 +53,8 @@ export const StyledInput = styled.input`
   }
 
   @media (min-width: 768px) {
-    width: 264px;
+    /* width: 264px; по макету*/
+    width: 238px;
     height: 56px;
     padding: 14px 25px 15px 24px;
     font-size: 17px;
@@ -99,7 +100,8 @@ export const StyledSelect = styled(Select)`
     font-weight: 400;
     line-height: 1.29;
     @media (min-width: 768px) {
-      width: 199px;
+      /* width: 199px; по макету*/
+      width: 225px;
       height: 56px;
       padding: 14px 24px 15px 24px;
       font-size: 17px;
@@ -153,9 +155,13 @@ export const StyledSelect = styled(Select)`
     background: #161f37;
     padding: 14px 8px 14px 8px;
     margin-top: 4px;
-    width: 200px;
+    width: 335px;
     max-height: 360px;
     border-radius: 20px;
+    @media (min-width: 768px) {
+      /* width: 199px; по макету*/
+      width: 225px;
+    }
   }
 
   .react-select__single-value {

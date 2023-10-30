@@ -24,7 +24,7 @@ const DrinksList = () => {
           />
           <DescriptionWrapper>
             <DrinkTitle>{item.drink}</DrinkTitle>
-            {console.log('item._id', item._id)}
+            {/* {console.log('item._id', item._id)} */}
             <DescriptionLink to={`/drink/${item._id.$oid}`}>
               See more
             </DescriptionLink>
