@@ -17,57 +17,9 @@ import Select from 'react-select';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectForm } from 'src/redux/drinks/selectors';
+import { selectCategory, selectGlass } from 'src/redux/drinks/selectors';
 
 import DummyDrinkThumb from '../../../images/dummyDrinkThumb.png';
-
-const categories = [
-  'Ordinary Drink',
-  'Cocktail',
-  'Shake',
-  'Other/Unknown',
-  'Cocoa',
-  'Shot',
-  'Coffee/Tea',
-  'Homemade Liqueur',
-  'Punch/Party Drink',
-  'Beer',
-  'Soft Drink',
-];
-
-const glassArray = [
-  'Highball glass',
-  'Cocktail glass',
-  'Old-fashioned glass',
-  'Whiskey Glass',
-  'Collins glass',
-  'Pousse cafe glass',
-  'Champagne flute',
-  'Whiskey sour glass',
-  'Cordial glass',
-  'Brandy snifter',
-  'White wine glass',
-  'Nick and Nora Glass',
-  'Hurricane glass',
-  'Coffee mug',
-  'Shot glass',
-  'Jar',
-  'Irish coffee cup',
-  'Punch bowl',
-  'Pitcher',
-  'Pint glass',
-  'Copper Mug',
-  'Wine Glass',
-  'Beer mug',
-  'Margarita/Coupette glass',
-  'Beer pilsner',
-  'Beer Glass',
-  'Parfait glass',
-  'Mason jar',
-  'Margarita glass',
-  'Martini Glass',
-  'Balloon Glass',
-  'Coupe Glass',
-];
 
 const DrinkDescriptionFields = ({
   isAlcoholic,
@@ -75,6 +27,9 @@ const DrinkDescriptionFields = ({
   onChangeHandler,
   setFieldValue,
 }) => {
+  const categories = useSelector(selectCategory);
+  const glassArray = useSelector(selectGlass);
+
   const form = useSelector(selectForm);
 
   const [uri, setUri] = useState();

@@ -5,16 +5,27 @@ import RecipePreparation from './RecipePreparation/RecipePreparation';
 
 import { Formik, Form } from 'formik';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setForm } from '../../redux/drinks/formSlice';
 import { selectForm } from '../../redux/drinks/selectors';
 import { initialValues } from '../../utils/addDrinkFormInitials';
+import {
+  fetchCategories,
+  fetchGlass,
+  fetchIngredient,
+} from 'src/redux/drinks/operations';
 
 const AddDrinkForm = () => {
-  const formValues = useSelector(selectForm);
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCategories('categories'));
+    dispatch(fetchGlass('glasses'));
+    dispatch(fetchIngredient('ingredients'));
+  }, [dispatch]);
+
+  const formValues = useSelector(selectForm);
 
   const [isAlcoholic, setIsAlcoholic] = useState(true);
 

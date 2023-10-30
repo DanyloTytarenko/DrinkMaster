@@ -11,6 +11,7 @@ import {
 
 import { useSelector } from 'react-redux';
 import { selectForm } from '../../../redux/drinks/selectors';
+import { selectIngredient } from 'src/redux/drinks/selectors';
 import IngredientItem from './IngredientItem/IngredientItem';
 
 const ingredientsData = [
@@ -64,6 +65,8 @@ const DrinkIngredientsFields = ({
   setFieldValue,
 }) => {
   const form = useSelector(selectForm);
+
+  // const ingredientsData = useSelector(selectIngredient);
 
   // у зміну записується масив інгрідієнтів, в залежності від обмежень Alcoholic/Non alcoholic
   const ingredientOptions = ingredientsData.filter((el) =>
