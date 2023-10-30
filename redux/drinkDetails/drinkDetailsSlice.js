@@ -1,8 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  fetchOwnDrinks,
-  addOwnDrink,
-  deleteOwnDrink,
   fetchFavoriteDrinks,
   addFavoriteDrink,
   deleteFavoriteDrink,
@@ -15,6 +12,7 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 const initialState = {
+  item: {},
   items: [],
   isLoading: false,
   error: null,
