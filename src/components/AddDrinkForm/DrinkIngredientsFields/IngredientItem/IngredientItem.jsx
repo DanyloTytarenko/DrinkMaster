@@ -2,24 +2,24 @@ import { Wrapper, Input, Button } from './IngredientItem.styled';
 import Select from 'react-select';
 
 const IngredientItem = ({
-  stateArray,
+  chosenIngredients,
   ingredients,
   index,
-  setStateArray,
+  onChangeHandler,
   deleteIngredient,
   chosenIngredientSelect,
 }) => {
   // композитна функція контрольованої обробки двох інпутів (інгрідієнта і його кількості)
-  const onChangeHandler = (payload, field) => {
-    const tempArray = [...stateArray];
+  const onChangeIngredientHandler = (payload, field, id) => {
+    let tempArray = [...chosenIngredients];
 
-    const freshData = { [field]: payload };
+    const freshData = id ? { [field]: payload, _id: id } : { [field]: payload };
 
     tempArray[index] = tempArray[index]
-      ? Object.assign(tempArray[index], freshData)
+      ? Object.assign({}, tempArray[index], freshData)
       : freshData;
 
-    setStateArray(tempArray);
+    onChangeHandler(tempArray, 'ingredients');
   };
 
   return (
@@ -69,10 +69,13 @@ const IngredientItem = ({
               : 'rgba(243, 243, 243, 0.4)',
           }),
         }}
+        name="title"
         options={ingredients}
-        value={stateArray[index].title === '' ? null : chosenIngredientSelect}
+        value={
+          chosenIngredients[index].title === '' ? null : chosenIngredientSelect
+        }
         onChange={(e) => {
-          onChangeHandler(e.value, 'title');
+          onChangeIngredientHandler(e.value, 'title', e.id);
         }}
       />
       <Input
@@ -81,10 +84,12 @@ const IngredientItem = ({
         placeholder="1 cl"
         title="measure"
         value={
-          stateArray[index].measure === '' ? '' : stateArray[index].measure
+          chosenIngredients[index].measure === ''
+            ? ''
+            : chosenIngredients[index].measure
         }
         onChange={(e) => {
-          onChangeHandler(e.target.value, 'measure');
+          onChangeIngredientHandler(e.target.value, 'measure');
         }}
       />
       <Button

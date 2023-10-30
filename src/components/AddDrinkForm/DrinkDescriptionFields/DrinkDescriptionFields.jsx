@@ -15,6 +15,8 @@ import {
 
 import Select from 'react-select';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectForm } from '../../../redux/drinks/selectors';
 
 import DummyDrinkThumb from '../../../images/dummyDrinkThumb.png';
 
@@ -32,7 +34,7 @@ const categories = [
   'Soft Drink',
 ];
 
-const glass = [
+const glassArray = [
   'Highball glass',
   'Cocktail glass',
   'Old-fashioned glass',
@@ -67,7 +69,14 @@ const glass = [
   'Coupe Glass',
 ];
 
-const DrinkDescriptionFields = ({ isAlcoholic, setIsAlcoholic }) => {
+const DrinkDescriptionFields = ({
+  isAlcoholic,
+  setIsAlcoholic,
+  onChangeHandler,
+  setFieldValue,
+}) => {
+  const form = useSelector(selectForm);
+
   const [uri, setUri] = useState();
 
   // функція для запису масив об'єктів інгрідієнтів, у формі необхідній для роботи селекту.
@@ -94,6 +103,8 @@ const DrinkDescriptionFields = ({ isAlcoholic, setIsAlcoholic }) => {
     console.log(url.toString().split('blob:')[1]);
     const src = url.toString().split('blob:')[1];
     setUri(src);
+    setFieldValue('drinkThumb', src);
+    onChangeHandler(src, 'drinkThumb');
   };
 
   return (
@@ -106,6 +117,7 @@ const DrinkDescriptionFields = ({ isAlcoholic, setIsAlcoholic }) => {
             <HiddenInput
               type="file"
               id="input"
+              name="drinkThumb"
               accept="image/*"
               onChange={(e) => addImagehandler(e)}
             />
@@ -117,20 +129,24 @@ const DrinkDescriptionFields = ({ isAlcoholic, setIsAlcoholic }) => {
       <DivDesription>
         <Input
           type="text"
-          name="title"
+          name="drink"
           placeholder="Enter item title"
           title="Enter item title"
+          value={form.drink}
           onChange={(e) => {
-            console.log(e.target.value);
+            setFieldValue('drink', e.target.value);
+            onChangeHandler(e.target.value, e.target.name);
           }}
         />
         <Input
           type="text"
-          name="about"
+          name="description"
           placeholder="Enter about recipe"
           title="Enter about recipe"
+          value={form.description}
           onChange={(e) => {
-            console.log(e.target.value);
+            setFieldValue('description', e.target.value);
+            onChangeHandler(e.target.value, e.target.name);
           }}
         />
         <DivSelect>
@@ -179,10 +195,17 @@ const DrinkDescriptionFields = ({ isAlcoholic, setIsAlcoholic }) => {
                   : 'rgba(243, 243, 243, 0.4)',
               }),
             }}
+            name="category"
             options={options(categories)}
+            value={
+              form.category === ''
+                ? null
+                : { value: form.category, label: form.category }
+            }
             defaultValue={options(categories)[1]}
             onChange={(e) => {
-              console.log(e.value);
+              setFieldValue('category', e.value);
+              onChangeHandler(e.value, 'category');
             }}
           />
         </DivSelect>
@@ -229,10 +252,17 @@ const DrinkDescriptionFields = ({ isAlcoholic, setIsAlcoholic }) => {
                   : 'rgba(243, 243, 243, 0.4)',
               }),
             }}
-            options={options(glass)}
-            defaultValue={options(glass)[0]}
+            name="glass"
+            options={options(glassArray)}
+            value={
+              form.glass === ''
+                ? null
+                : { value: form.glass, label: form.glass }
+            }
+            defaultValue={options(glassArray)[0]}
             onChange={(e) => {
-              console.log(e.value);
+              setFieldValue('glass', e.value);
+              onChangeHandler(e.value, 'glass');
             }}
           />
         </DivSelect>
@@ -243,9 +273,13 @@ const DrinkDescriptionFields = ({ isAlcoholic, setIsAlcoholic }) => {
           <input
             type="radio"
             value="Alcoholic"
-            name="isAcloholic"
+            name="alcoholic"
             checked={isAlcoholic === true}
-            onChange={(e) => radioHandler(e.target.value)}
+            onChange={(e) => {
+              setFieldValue('alcoholic', e.target.value);
+              radioHandler(e.target.value);
+              onChangeHandler(e.target.value, 'alcoholic');
+            }}
           />
           Alcoholic
         </label>
@@ -253,9 +287,13 @@ const DrinkDescriptionFields = ({ isAlcoholic, setIsAlcoholic }) => {
           <input
             type="radio"
             value="Non alcoholic"
-            name="isAcloholic"
+            name="alcoholic"
             checked={isAlcoholic === false}
-            onChange={(e) => radioHandler(e.target.value)}
+            onChange={(e) => {
+              setFieldValue('alcoholic', e.target.value);
+              radioHandler(e.target.value);
+              onChangeHandler(e.target.value, 'alcoholic');
+            }}
           />
           Non-alcoholic
         </label>
