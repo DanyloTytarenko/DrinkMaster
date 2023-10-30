@@ -11,13 +11,14 @@ import {
 
 import { ownDrinksReducer, favoriteDrinksReducer } from './drinks/drinksSlice';
 import { persistedFormReducer } from './drinks/formSlice';
+import { newDrinksReducer } from './homepage/newDrinkSlice';
 
 export const store = configureStore({
   reducer: {
     ownDrinks: ownDrinksReducer,
     favoriteDrinks: favoriteDrinksReducer,
     form: persistedFormReducer,
-
+    newDrinks: newDrinksReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
