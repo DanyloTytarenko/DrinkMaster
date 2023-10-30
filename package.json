@@ -14,6 +14,8 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.15",
+    "@mui/x-date-pickers": "^6.17.0",
+    "@mui/icons-material": "^5.14.15",
     "@reduxjs/toolkit": "^1.9.7",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "axios": "^1.6.0",

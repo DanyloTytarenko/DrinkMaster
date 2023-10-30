@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
   Link,
@@ -14,7 +15,6 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useFormik } from 'formik';
 import { signinSchema } from './SinginSchema';
 import { logIn } from '../../redux/auth/operations';
-import { useState } from 'react';
 import { Form } from '../SingupForm/SingupForm.styled';
 import { inputStyled, inputProps, outlineStyled } from '../SingupForm/muiFormStyled';
 
