@@ -3,7 +3,7 @@ import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
 import UserLogo from '../UserLogo/UserLogo';
-
+import { BurgerMenu } from './BurgerMenu/BurgerMenu';
 import {
   HeaderContainer
 } from './Header.styled';
@@ -29,6 +29,7 @@ const Header = () => {
       {windowWidth >= 1440 && <Navigation />}
       <ThemeToggler />
       <UserLogo />
+      {windowWidth < 1440 && <BurgerMenu />}
     </HeaderContainer>
   );
 };
