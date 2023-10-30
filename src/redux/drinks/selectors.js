@@ -10,3 +10,5 @@ export const selectIsLoadingOwn = (state) => state.ownDrinks.isLoading;
 export const selectErrorOwn = (state) => state.ownDrinks.error;
 
 export const selectErrorFavorite = (state) => state.favoriteDrinks.error;
+
+export const selectForm = (state) => state.form.form;

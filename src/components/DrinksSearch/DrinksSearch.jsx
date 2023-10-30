@@ -10,11 +10,19 @@ import {
   StyledSelect,
   customStyles,
 } from './DrinksSearch.styled';
+import { useSelector } from 'react-redux';
+import {
+  selectCategories,
+  selectIngredients,
+} from '../../redux/drinks/drinksPageSelectors';
 
-const DrinksSearch = ({ categories, ingredients }) => {
+// const DrinksSearch = ({ categories, ingredients }) => {
+const DrinksSearch = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [category, setCategory] = useState('');
   const [ingredient, setIngredient] = useState('');
+  const categories = useSelector(selectCategories);
+  const ingredients = useSelector(selectIngredients);
 
   // const navigate = useNavigate();
 
@@ -110,8 +118,8 @@ const DrinksSearch = ({ categories, ingredients }) => {
           placeholder="Ingredients"
           classNamePrefix="react-select"
           options={ingredients.map((item) => ({
-            label: item.title,
-            value: item.title,
+            label: item,
+            value: item,
           }))}
           onChange={handleChangeIngredient}
         />

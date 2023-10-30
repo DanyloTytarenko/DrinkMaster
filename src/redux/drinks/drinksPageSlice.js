@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import {
-  getDrinksCategories,
-  getDrinksIngredients,
-} from '../../services/drinksApi';
+  getDrinksCategoriesThunk,
+  getDrinksIngredientsThunk,
+} from './drinksPageOperations';
 
 const initialState = {
   searchQuery: { keyword: '', category: '', ingredient: '' },
@@ -41,20 +42,19 @@ const drinksSlice = createSlice({
       state.page = payload;
     },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(getDrinksCategories.pending, handlePending)
-      .addCase(getDrinksCategories.fulfilled, (state, { payload }) => {
-        state.categories = payload;
-        state.isLoading = false;
-      })
-      .addCase(getDrinksCategories.rejected, handleRejected)
-      .addCase(getDrinksIngredients.pending, handlePending)
-      .addCase(getDrinksIngredients.fulfilled, (state, { payload }) => {
-        state.ingredients = payload;
-        state.isLoading = false;
-      })
-      .addCase(getDrinksIngredients.rejected, handleRejected);
+  extraReducers: {
+    [getDrinksCategoriesThunk.pending]: handlePending,
+    [getDrinksCategoriesThunk.fulfilled](state, { payload }) {
+      state.categories = payload;
+      state.isLoading = false;
+    },
+    [getDrinksCategoriesThunk.rejected]: handleRejected,
+    [getDrinksIngredientsThunk.pending]: handlePending,
+    [getDrinksIngredientsThunk.fulfilled](state, { payload }) {
+      state.ingredients = payload;
+      state.isLoading = false;
+    },
+    [getDrinksIngredientsThunk.rejected]: handleRejected,
   },
 });
 

@@ -8,7 +8,9 @@ import {
   ButtonIncr,
   List,
 } from './DrinkIngredientsFields.styled';
-import { useState } from 'react';
+
+import { useSelector } from 'react-redux';
+import { selectForm } from '../../../redux/drinks/selectors';
 import IngredientItem from './IngredientItem/IngredientItem';
 
 const ingredientsData = [
@@ -56,8 +58,12 @@ const ingredientsData = [
   },
 ];
 
-const DrinkIngredientsFields = ({ isAlcoholic }) => {
-  const [stateArray, setStateArray] = useState([{ title: '', measure: '' }]);
+const DrinkIngredientsFields = ({
+  isAlcoholic,
+  onChangeHandler,
+  setFieldValue,
+}) => {
+  const form = useSelector(selectForm);
 
   // у зміну записується масив інгрідієнтів, в залежності від обмежень Alcoholic/Non alcoholic
   const ingredientOptions = ingredientsData.filter((el) =>
@@ -69,43 +75,39 @@ const DrinkIngredientsFields = ({ isAlcoholic }) => {
     if (el.title === undefined) {
       el.title = el.type;
     }
-    return el.title;
+    return el;
   });
 
   // у зміну записується масив об'єктів інгрідієнтів, у формі необхідній для роботи селекту.
   const ingredientsForSelect = ingredientTitleArray.map((item) => {
-    return { value: item, label: item };
+    return { value: item.title, label: item.title, id: item._id };
   });
 
   const increment = () => {
-    if (stateArray.length >= ingredientOptions.length) {
+    if (form.ingredients.length >= ingredientOptions.length) {
       return;
     }
 
-    setStateArray((prev) => {
-      const newArray = [...prev];
-      newArray.push({ title: '', measure: '' });
-      return newArray;
-    });
+    const newArray = [...form.ingredients];
+    newArray.push({ title: '', measure: '', _id: { $oid: '' } });
+    onChangeHandler(newArray, 'ingredients');
+    setFieldValue('ingredients', newArray);
   };
 
   const decrement = (index) => {
-    if (stateArray.length === 1) {
+    if (form.ingredients.length === 1) {
       return;
     }
 
     if (index || index === 0) {
-      setStateArray((prev) => {
-        const newArray = [...prev];
-        newArray.splice(index, 1);
-        return newArray;
-      });
+      const newArray = [...form.ingredients];
+      newArray.splice(index, 1);
+      onChangeHandler(newArray, 'ingredients');
     } else {
-      setStateArray((prev) => {
-        const newArray = [...prev];
-        newArray.pop();
-        return newArray;
-      });
+      const newArray = [...form.ingredients];
+      newArray.pop();
+      setFieldValue('ingredients', newArray);
+      onChangeHandler(newArray, 'ingredients');
     }
   };
 
@@ -117,24 +119,24 @@ const DrinkIngredientsFields = ({ isAlcoholic }) => {
           <Button type="button" onClick={() => decrement()}>
             --
           </Button>
-          <SpanIncrement>{stateArray.length}</SpanIncrement>
+          <SpanIncrement>{form.ingredients.length}</SpanIncrement>
           <ButtonIncr type="button" onClick={() => increment()}>
             +
           </ButtonIncr>
         </DivIncrement>
       </DivTop>
       <List>
-        {stateArray.map((el, index) => (
+        {form.ingredients.map((el, index) => (
           <li key={index}>
             <IngredientItem
-              stateArray={stateArray}
-              setStateArray={setStateArray}
+              chosenIngredients={form.ingredients}
+              onChangeHandler={onChangeHandler}
               ingredients={ingredientsForSelect}
               deleteIngredient={decrement}
               index={index}
               chosenIngredientSelect={{
-                value: stateArray[index].title,
-                label: stateArray[index].title,
+                value: form.ingredients[index].title,
+                label: form.ingredients[index].title,
               }}
             />
           </li>

@@ -1,9 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import {
-  getDrinksCategories,
-  getDrinksIngredients,
-} from '../../services/drinksApi';
+
 axios.defaults.baseURL = 'https://drinks-whm4.onrender.com';
 export const fetchOwnDrinks = createAsyncThunk(
   'drinks/fetchOwn',
@@ -68,30 +65,6 @@ export const deleteFavoriteDrink = createAsyncThunk(
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
-    }
-  },
-);
-
-// Отримання категорій коктелів
-export const getDrinksCategoriesThunk = createAsyncThunk(
-  'filters/getDrinksCategories',
-  async (_, thunkAPI) => {
-    try {
-      return await getDrinksCategories();
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  },
-);
-
-// Отримання інгредієнтів коктелів
-export const getDrinksIngredientsThunk = createAsyncThunk(
-  'filters/getDrinksIngredients',
-  async (_, thunkAPI) => {
-    try {
-      return await getDrinksIngredients();
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );

@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   getDrinksCategories,
   getDrinksIngredients,
-} from '../../services/drinksApi';
+} from '../../../services/drinksApi';
 
 export const getDrinksCategoriesThunk = createAsyncThunk(
   'filters/getDrinksCategories',
@@ -14,6 +14,7 @@ export const getDrinksCategoriesThunk = createAsyncThunk(
     // }
     try {
       //   setToken(persistedToken);
+      console.log('object :>> ', getDrinksCategories());
       return await getDrinksCategories();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
