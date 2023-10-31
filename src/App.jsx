@@ -30,10 +30,10 @@ function App() {
           <Route path="my" element={<MyDrinksPage />} />
           <Route path="favorites" element={<FavoriteDrinkPage />} />
 
-          <Route path="home/:id" element={<DrinkDetails />} />
-          <Route path="drinks/:id" element={<DrinkDetails />} />
-          <Route path="my/:id" element={<DrinkDetails />} />
-          <Route path="favorites/:id" element={<DrinkDetails />} />
+          <Route path="home/:drinkId" element={<DrinkDetails />} />
+          <Route path="drinks/:drinkId" element={<DrinkDetails />} />
+          <Route path="my/:drinkId" element={<DrinkDetails />} />
+          <Route path="favorites/:drinkId" element={<DrinkDetails />} />
 
           <Route path="*" element={<ErrorPage />} />
         </Route>

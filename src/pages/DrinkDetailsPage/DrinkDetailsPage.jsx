@@ -11,13 +11,13 @@ import DrinkDetails from '../../components/DrinkDetails/DrinkDetails';
 import { fetchDrinkById } from '../../../redux/drinks/operations';
 
 const DrinkDetailsPage = () => {
-  const { id } = useParams();
+  const { drinkId } = useParams();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoadingFavorite);
   const error = useSelector(selectErrorFavorite);
 
   useEffect(() => {
-    dispatch(fetchDrinkById(id));
+    dispatch(fetchDrinkById(drinkId));
     // dispatch(fetchFavoriteDrinks());
   }, [dispatch]);
 
