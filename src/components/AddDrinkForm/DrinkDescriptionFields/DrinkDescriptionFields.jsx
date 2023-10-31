@@ -16,8 +16,8 @@ import {
 import Select from 'react-select';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectForm } from 'src/redux/drinks/selectors';
-import { selectCategory, selectGlass } from 'src/redux/drinks/selectors';
+import { selectForm } from '../../../redux/drinks/selectors';
+import { selectCategory, selectGlass } from '../../../redux/drinks/selectors';
 
 import DummyDrinkThumb from '../../../images/dummyDrinkThumb.png';
 
