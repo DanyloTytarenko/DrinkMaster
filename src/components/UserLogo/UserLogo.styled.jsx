@@ -1,8 +1,26 @@
 import styled from 'styled-components';
+import { colors } from '../../colors';
 
 export const UserInfoWrap = styled.div`
-width: 32px;
-height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 28px;
+
+  @media screen and (min-width: 768px) {
+    gap: 14px;
+  }
+    @media screen and (min-width: 1440px) {
+    margin-left: 28px;
+  }
+`;
+
+export const UserLogoWrap = styled.div``;
+
+export const UserSvg = styled.svg`
+  width: 32px;
+  height: 32px;
+  display: block;
 
   @media screen and (min-width: 768px) {
     width: 44px;
@@ -10,26 +28,14 @@ height: 32px;
   }
 `;
 
-export const UserLogoWrap = styled.div`
-  @media screen and (min-width: 768px) {
+export const UserName = styled.div`
+color: ${colors.light};
+font-size: 14px;
+font-weight: 500;
+line-height: 18px;
+
+@media screen and (min-width: 768px) {
+  font-size: 16px;
+  line-height: 24px; 
   }
 `;
-
-export const UserSvg = styled.svg`
-  @media screen and (min-width: 768px) {
-  }
-`;
-
-// export const UserName = styled.p`
-// color: #F3F3F3;
-// font-size: 14px;
-// font-weight: 500;
-// line-height: 18px;
-// // margin-left: 8px; 
-
-// @media screen and (min-width: 768px) {
-//   font-size: 16px;
-//   line-height: 24px;
-//   // margin-left: 14px; 
-//   }
-// `;

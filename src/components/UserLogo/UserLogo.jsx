@@ -1,4 +1,4 @@
-import { UserInfoWrap, UserLogoWrap, UserSvg } from './UserLogo.styled';
+import { UserInfoWrap, UserLogoWrap, UserSvg, UserName } from './UserLogo.styled';
 
 const UserLogo = () => {
   return (
@@ -17,7 +17,7 @@ const UserLogo = () => {
           </defs>
         </UserSvg>
       </UserLogoWrap>
-      {/* <UserName>User</UserName> */}
+      <UserName>User</UserName>
     </UserInfoWrap>
   )
 }
