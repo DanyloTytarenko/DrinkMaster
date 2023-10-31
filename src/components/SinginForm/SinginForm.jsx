@@ -16,7 +16,7 @@ import { useFormik } from 'formik';
 import { signinSchema } from './SinginSchema';
 import { logIn } from '../../redux/auth/operations';
 import { Form } from '../SingupForm/SingupForm.styled';
-import { inputStyled, inputProps, outlineStyled } from '../SingupForm/muiFormStyled';
+import { inputStyled, inputProps, outlineStyled, buttonStyled, linkStyled, iconStyled } from '../SingupForm/muiFormStyled';
 
 export const SinginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -45,10 +45,10 @@ export const SinginForm = () => {
       <Form onSubmit={formik.handleSubmit}>
         <TextField
           fullWidth
-          id="email"
           name="email"
           type="email"
           placeholder="Email"
+          autoComplete='off'
           sx={{ ...inputStyled }}
           inputProps={{...inputProps}}
           value={formik.values.email}
@@ -78,18 +78,19 @@ export const SinginForm = () => {
                 onClick={handleClickShowPassword}
                 onMouseDown={handleMouseDownPassword}
                 edge="end"
-                sx={{ color: '#F3F3F3' }}
+                sx={{...iconStyled}}
               >
                 {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
               </IconButton>
             </InputAdornment>
           }
         />
-        {formik.touched.password && <FormHelperText id="password">{formik.errors.password}</FormHelperText>}
-        <Button variant="contained" fullWidth type="submit">
+        {formik.touched.password && <FormHelperText error id="password">{formik.errors.password}</FormHelperText>}
+        <Button
+          sx={{...buttonStyled}} variant="contained" fullWidth type="submit">
           Sing In
         </Button>
-        <Link component={NavLink} to="/singup">
+        <Link component={NavLink} sx={{...linkStyled}} to="/singup">
           Sing Up
         </Link>
       </Form>
