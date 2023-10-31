@@ -14,7 +14,7 @@ import {
   fetchCategories,
   fetchGlass,
   fetchIngredient,
-} from 'src/redux/drinks/operations';
+} from '../../redux/drinks/operations';
 
 const AddDrinkForm = () => {
   const dispatch = useDispatch();
