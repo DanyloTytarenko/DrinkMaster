@@ -16,3 +16,8 @@ export const selectForm = (state) => state.form.form;
 export const selectCategory = (state) => state.category.items;
 export const selectGlass = (state) => state.glass.items;
 export const selectIngredient = (state) => state.ingredient.items;
+
+export const selectDrinkDetails = (state) => state.drinkDetails.drinkById;
+export const selectDrinkDetailsIsLoadin = (state) =>
+  state.drinkDetails.IsLoadin;
+export const selectDrinkDetailsError = (state) => state.drinkDetails.error;
