@@ -68,37 +68,11 @@ export const deleteFavoriteDrink = createAsyncThunk(
   },
 );
 
-// отримання даних із фільтрів (переліки категорій, сервування, інгрідієнтів)
-export const fetchCategories = createAsyncThunk(
-  'drink/getCategory',
-  async (_, thunkAPI) => {
+export const fetchDrinkById = createAsyncThunk(
+  'drinks/fetchDrinkById',
+  async (drinkId, thunkAPI) => {
     try {
-      const response = await axios.get('/filters/categories');
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  },
-);
-
-export const fetchGlass = createAsyncThunk(
-  'drink/getGlasses',
-  async (_, thunkAPI) => {
-    try {
-      const response = await axios.get('/filters/glasses');
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  },
-);
-
-export const fetchIngredient = createAsyncThunk(
-  'drink/getIngredient',
-  async (_, thunkAPI) => {
-    try {
-      const response = await axios.get('/filters/ingredients');
-      console.log(response.data);
+      const response = await axios.get(`/drinks/${drinkId}`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

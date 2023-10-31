@@ -41,3 +41,15 @@ img {
 button {
   cursor: pointer;
 }
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #434d67;
+  /* background: #f3f3f3; - for light theme */
+  border-radius: 20px;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
