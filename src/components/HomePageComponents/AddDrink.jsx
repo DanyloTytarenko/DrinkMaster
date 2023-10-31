@@ -1,7 +1,7 @@
 import {
   AddDrinkWrapper,
   AppDescription,
-  AddDrinksButton,
+  Link,
   HomePageImage,
 } from './AddDrink.styled';
 
@@ -13,10 +13,8 @@ export const AddDrink = () => {
         destination for exploring, crafting, and mastering the worlds finest
         beverages.
       </AppDescription>
-      <AddDrinksButton>Add drinks</AddDrinksButton>
-      <HomePageImage
-        // src={photo}
-        alt="Coctail photo"/>
+      <Link to="/AddDrinkPage">Add drinks</Link>
+      <HomePageImage src="../../assets/homepage_img.jpg" alt="Coctail photo" />
     </AddDrinkWrapper>
   );
 };

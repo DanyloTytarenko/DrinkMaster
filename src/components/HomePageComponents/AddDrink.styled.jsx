@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { colors } from '../../colors';
 
@@ -21,7 +22,7 @@ width: 500px;
 margin-bottom: 40px;
 `;
 
-export const AddDrinksButton = styled.button`
+export const StyledLink = styled(Link)`
 display: flex;
 width: 151px;
 height:46px;
@@ -32,9 +33,9 @@ color: ${colors.secondaryDark}
 background: ${colors.light};
 border-radius: 42px;
 margin-bottom: 47px;
-color: #161F37;
 font-size: 14px;
 font-weight: 600;
+
 @media only screen and (min-width: 704px) {
 width: 169px;
 height: 54px;
@@ -42,8 +43,14 @@ padding: 18px 44px;
 font-size: 16px;
 margin-bottom: 54px;
 };
+
 @media only screen and (min-width: 1140px) {
 width: 160px;
+};
+
+&:active {
+  border: 2px solid rgba(64, 112, 205, 0.50);
+}
 `;
 
 export const HomePageImage = styled.img`

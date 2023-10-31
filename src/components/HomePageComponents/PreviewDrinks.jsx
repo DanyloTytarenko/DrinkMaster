@@ -9,35 +9,29 @@ import {
 } from '../DrinksList/DrinksList.styled';
 import {
   CategoryName,
-  SeeMoreLink,
-  OtherDrinksButton,
+  StyledLinkToDrinkPage,
+  StyledLinkToDrinksPage,
 } from './PreviewDrinks.styled';
 
 export const PreviewDrinks = () => {
-  const popularCategories = [
-    'Ordinary Drink',
-    'Cocktail',
-    'Shake',
-    'Other/Unknown',
-  ];
-
+ 
   const listOfDrinks = useSelector(selectNewDrinks);
 
   return (
     <>
       <List>
         {listOfDrinks.map((drink) => (
-          <DrinksItem key={drink.name} drink={drink}>
-            {popularCategories.map((category) => (
-              <CategoryName key={category}>{category}</CategoryName>
+          <DrinksItem key={drink.drink} drink={drink}>
+            {listOfDrinks.map((category) => (
+              <CategoryName key={category}>{drink.category}</CategoryName>
             ))}
-            <DrinkPhoto src={drink.photo} alt="Photo of cocktail" />
-            <DrinkTitle>{drink.name}</DrinkTitle>
-            <SeeMoreLink>See more</SeeMoreLink>
+            <DrinkPhoto src={drink.drinkThumb} alt="Photo of cocktail" />
+            <DrinkTitle>{drink.drink}</DrinkTitle>
+            <StyledLinkToDrinkPage to="/DrinkPage">See more</StyledLinkToDrinkPage>
           </DrinksItem>
         ))}
       </List>
-      <OtherDrinksButton>Other drinks</OtherDrinksButton>
+      <StyledLinkToDrinksPage to="/DrinksPage">Other drinks</StyledLinkToDrinksPage>
     </>
   );
 };
