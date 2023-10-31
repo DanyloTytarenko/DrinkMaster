@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
 axios.defaults.baseURL = 'https://drinks-whm4.onrender.com';
 export const fetchOwnDrinks = createAsyncThunk(
   'drinks/fetchOwn',

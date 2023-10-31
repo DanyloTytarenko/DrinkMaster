@@ -1,6 +1,13 @@
-import { createSlice} from "@reduxjs/toolkit";
-import { fetchOwnDrinks, addOwnDrink, deleteOwnDrink, fetchFavoriteDrinks, addFavoriteDrink, deleteFavoriteDrink} from "./operations";
-const handlePending = state => {
+import { createSlice } from '@reduxjs/toolkit';
+import {
+  fetchOwnDrinks,
+  addOwnDrink,
+  deleteOwnDrink,
+  fetchFavoriteDrinks,
+  addFavoriteDrink,
+  deleteFavoriteDrink,
+} from './operations';
+const handlePending = (state) => {
   state.isLoading = true;
 };
 const handleRejected = (state, action) => {
@@ -8,13 +15,12 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 const initialState = {
-
-    items: [],
-    isLoading: false,
-    error: null,
+  items: [],
+  isLoading: false,
+  error: null,
 };
 export const ownDrinksSlice = createSlice({
-  name: "ownDrinks",
+  name: 'ownDrinks',
   initialState,
   extraReducers: {
     [fetchOwnDrinks.pending]: handlePending,
@@ -35,14 +41,13 @@ export const ownDrinksSlice = createSlice({
     [deleteOwnDrink.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items = state.items.filter(item => item.id !== action.payload.id);
-
+      state.items = state.items.filter((item) => item.id !== action.payload.id);
     },
     [deleteOwnDrink.rejected]: handleRejected,
   },
 });
 export const favoriteDrinksSlice = createSlice({
-  name: "favoriteDrinks",
+  name: 'favoriteDrinks',
   initialState,
   extraReducers: {
     [fetchFavoriteDrinks.pending]: handlePending,
@@ -63,7 +68,7 @@ export const favoriteDrinksSlice = createSlice({
     [deleteFavoriteDrink.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items = state.items.filter(item => item.id !== action.payload.id);
+      state.items = state.items.filter((item) => item.id !== action.payload.id);
     },
     [deleteFavoriteDrink.rejected]: handleRejected,
   },
