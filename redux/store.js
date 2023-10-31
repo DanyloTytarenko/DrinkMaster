@@ -8,24 +8,13 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { authReducer } from './auth/slice';
 import { ownDrinksReducer, favoriteDrinksReducer } from './drinks/drinksSlice';
-import { persistedFormReducer } from './drinks/formSlice';
-import {
-  categoryReducer,
-  glassReducer,
-  ingredientReducer,
-} from './drinks/drinksSlice';
-
+import { drinkByIdReducer } from './drinks/drinkDetailsSlice';
 export const store = configureStore({
   reducer: {
-    auth: authReducer,
     ownDrinks: ownDrinksReducer,
     favoriteDrinks: favoriteDrinksReducer,
-    form: persistedFormReducer,
-    category: categoryReducer,
-    glass: glassReducer,
-    ingredient: ingredientReducer,
+    drinkById: drinkByIdReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
