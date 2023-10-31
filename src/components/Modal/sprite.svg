@@ -1,0 +1,21 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-edit" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.9714" d="M3.718 25.217c0.105-0.945 0.158-1.418 0.3-1.859 0.127-0.392 0.306-0.765 0.533-1.109 0.256-0.388 0.592-0.724 1.264-1.396l16.852-16.852c1.473-1.473 3.861-1.473 5.333 0v0c1.473 1.473 1.473 3.861 0 5.333l-16.853 16.852c-0.672 0.672-1.009 1.009-1.396 1.264-0.344 0.227-0.717 0.406-1.109 0.533-0.442 0.143-0.914 0.195-1.859 0.301l-3.45 0.383 0.383-3.45z"></path>
+</symbol>
+<symbol id="icon-close" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M24 8l-16 16"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M8 8l16 16"></path>
+</symbol>
+<symbol id="icon-add" viewBox="0 0 32 32">
+<path fill="#546081" style="fill: var(--color1, #546081)" d="M32 16c0 8.837-7.163 16-16 16s-16-7.163-16-16c0-8.837 7.163-16 16-16s16 7.163 16 16z"></path>
+<path fill="none" stroke="#f3f3f3" style="stroke: var(--color2, #f3f3f3)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.2857" d="M16.25 11v10.5"></path>
+<path fill="none" stroke="#f3f3f3" style="stroke: var(--color2, #f3f3f3)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.2857" d="M11 16.25h10.5"></path>
+</symbol>
+<symbol id="icon-user" viewBox="0 0 32 32">
+<path fill="#f3f3f3" style="fill: var(--color2, #f3f3f3)" opacity="0.952941" d="M16 0c8.837 0 16 7.163 16 16s-7.163 16-16 16c-8.837 0-16-7.163-16-16s7.163-16 16-16z"></path>
+<path fill="#939fc0" style="fill: var(--color3, #939fc0)" d="M20.622 17.035c0 2.56-2.075 4.635-4.635 4.635s-4.635-2.075-4.635-4.635c0-2.56 2.075-4.635 4.635-4.635s4.635 2.075 4.635 4.635z"></path>
+<path fill="#939fc0" style="fill: var(--color3, #939fc0)" d="M27.2 32.77c0-1.497-0.295-2.979-0.868-4.363s-1.413-2.64-2.471-3.698c-1.059-1.059-2.315-1.898-3.698-2.471s-2.866-0.868-4.363-0.868-2.979 0.295-4.363 0.868c-1.383 0.573-2.64 1.413-3.698 2.471s-1.898 2.315-2.471 3.698c-0.573 1.383-0.868 2.866-0.868 4.363h22.8z"></path>
+</symbol>
+</defs>
+</svg>
