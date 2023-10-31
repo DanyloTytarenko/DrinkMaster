@@ -44,9 +44,4 @@ export const TogglerBg = styled.div`
   }
 `;
 
-{/* <div class="header-switcher">
-  <input class="switcher-checkbox" type="checkbox" id="switcher" />
-  <label class="switcher" for="switcher"></label>
-  <div class="switcher-bckgrnd"></div>
-</div> */}
 
