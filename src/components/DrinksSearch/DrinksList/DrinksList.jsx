@@ -18,8 +18,11 @@ const DrinksList = () => {
 
   return (
     <StyledDrinksList>
-      {drinks?.map((item) => (
-        <StyledDrinksItem key={item._id}>
+      {(recipes ?? recipes).map((item) => (
+        <StyledDrinksItem
+          // key={item._id}
+          key={item._id.$oid}
+        >
           <StyledDrinkImage
             src={item.drinkThumb}
             alt={item.drink}
