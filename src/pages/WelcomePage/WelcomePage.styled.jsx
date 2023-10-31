@@ -7,5 +7,5 @@ export const WelcomeText = styled.p`
 `
 
 export const WelcomeBox = styled.div`
-    text-align: center;
+width: 485px;
 `

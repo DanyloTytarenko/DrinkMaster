@@ -7,15 +7,15 @@ export const signinSchema = yup.object({
     .required('Email is required'),
   password: yup
     .string('Enter your password')
-    .min(8, 'Password should be of minimum 8 characters length')
+    .min(8, 'Password should be of minimum 8 characters length, contain at least one uppercase and lowercase character, at least one number, at least one special character')
     .matches(
       /(?=.*[a-z])(?=.*[A-Z])\w+/,
-      'Password ahould contain at least one uppercase and lowercase character',
+      'Password should be of minimum 8 characters length, contain at least one uppercase and lowercase character, at least one number, at least one special character'
     )
-    .matches(/\d/, 'Password should contain at least one number')
+    .matches(/\d/, 'Password should be of minimum 8 characters length, contain at least one uppercase and lowercase character, at least one number, at least one special character')
     .matches(
       /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/,
-      'Password should contain at least one special character',
+      'Password should be of minimum 8 characters length, contain at least one uppercase and lowercase character, at least one number, at least one special character'
     )
     .required('Password is required'),
 });

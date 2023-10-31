@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './components/SharedLayout/SharedLayout';
+import { PublicRoute } from './components/PublicRoute/PublicRoute';
 
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const SingupPage = lazy(() => import('./pages/SingupPage/SingupPage'));
@@ -24,8 +25,8 @@ function App() {
         <Route path="/" element={<SharedLayout />}>
 
           <Route path="/welcome" element={<WelcomePage />} />
-          <Route path="/singup" element={<SingupPage />} />
-          <Route path="/singin" element={<SinginPage />} />
+          <Route path="/singup" element={<PublicRoute redirectTo="/home" component={<SingupPage />} />} />
+          <Route path="/singin" element={<PublicRoute redirectTo="/home" component={<SinginPage />} />} />
           <Route path="home" element={<HomePage />} />
           <Route path="drinks" element={<DrinksPage />} />
           <Route path="add" element={<AddDrinkPage />} />
