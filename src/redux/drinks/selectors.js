@@ -11,7 +11,7 @@ export const selectErrorOwn = (state) => state.ownDrinks.error;
 
 export const selectErrorFavorite = (state) => state.favoriteDrinks.error;
 
-export const selectForm = (state) => state.form.form;
+export const selectForm = (state) => state.form;
 
 export const selectCategory = (state) => state.category.items;
 export const selectGlass = (state) => state.glass.items;

@@ -19,7 +19,14 @@ import { useFormik } from 'formik';
 import { signupSchema } from './SingupSchema';
 import { register } from '../../redux/auth/operations';
 import { Form } from './SingupForm.styled';
-import {inputStyled, inputProps, datePickerStyled, outlineStyled} from './muiFormStyled'
+import {
+  inputStyled,
+  inputProps,
+  datePickerStyled,
+  outlineStyled,
+  buttonStyled,
+  linkStyled,
+} from './muiFormStyled';
 
 export const SingupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -54,8 +61,9 @@ export const SingupForm = () => {
           name="name"
           type="text"
           placeholder="Name"
+          autoComplete="off"
           sx={{...inputStyled}}
-          inputProps={{...inputProps}}
+          inputProps={{ ...inputProps }}
           value={formik.values.name}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -67,9 +75,17 @@ export const SingupForm = () => {
           <DatePicker
             id="birthday"
             name="birthday"
-            sx={{ ...datePickerStyled }}
+            
             disableFuture
             format={'DD/MM/YYYY'}
+            slotProps={{
+              textField: {
+                error: false,
+                sx: {
+                  ...datePickerStyled,
+                }
+              },
+            }}
             value={formik.values.birthday}
             onChange={(newDate) => {
               formik.setFieldValue('birthday', newDate);
@@ -79,18 +95,18 @@ export const SingupForm = () => {
           />
         </LocalizationProvider>
         {formik.touched.birthday && (
-          <FormHelperText id="birthday">
+          <FormHelperText error id="birthday">
             {formik.errors.birthday}
           </FormHelperText>
         )}
         <TextField
           fullWidth
-          id="email"
           name="email"
           type="email"
           placeholder="Email"
-          sx={{...inputStyled}}
-          inputProps={{...inputProps}}
+          autoComplete="off"
+          sx={{ ...inputStyled, mt: '14px' }}
+          inputProps={{ ...inputProps }}
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -104,8 +120,8 @@ export const SingupForm = () => {
           name="password"
           type={showPassword ? 'text' : 'password'}
           placeholder="Password"
-          sx={{...outlineStyled}}
-          inputProps={{...inputProps}}
+          sx={{ ...outlineStyled }}
+          inputProps={{ ...inputProps }}
           value={formik.values.password}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -126,14 +142,19 @@ export const SingupForm = () => {
           }
         />
         {formik.touched.password && (
-          <FormHelperText id="password">
+          <FormHelperText error id="password">
             {formik.errors.password}
           </FormHelperText>
         )}
-        <Button variant="contained" fullWidth type="submit">
+        <Button
+          sx={{ ...buttonStyled }}
+          variant="contained"
+          fullWidth
+          type="submit"
+        >
           Sing Up
         </Button>
-        <Link component={NavLink} to="/singin">
+        <Link sx={{ ...linkStyled }} component={NavLink} to="/singin">
           Sing In
         </Link>
       </Form>
