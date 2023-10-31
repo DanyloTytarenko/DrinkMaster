@@ -1,7 +1,7 @@
 import {
   AddDrinkWrapper,
   AppDescription,
-  Link,
+  StyledLink,
   HomePageImage,
 } from './AddDrink.styled';
 
@@ -13,7 +13,7 @@ export const AddDrink = () => {
         destination for exploring, crafting, and mastering the worlds finest
         beverages.
       </AppDescription>
-      <Link to="/AddDrinkPage">Add drinks</Link>
+      <StyledLink to="/AddDrinkPage">Add drinks</StyledLink>
       <HomePageImage src="../../assets/homepage_img.jpg" alt="Coctail photo" />
     </AddDrinkWrapper>
   );
