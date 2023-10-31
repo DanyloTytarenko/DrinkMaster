@@ -11,7 +11,7 @@ import {
 
 import { useSelector } from 'react-redux';
 import { selectForm } from '../../../redux/drinks/selectors';
-import { selectIngredient } from 'src/redux/drinks/selectors';
+import { selectIngredient } from '../../../redux/drinks/selectors';
 import IngredientItem from './IngredientItem/IngredientItem';
 
 const ingredientsData = [
