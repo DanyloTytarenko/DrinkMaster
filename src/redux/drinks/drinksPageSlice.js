@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   getDrinksCategoriesThunk,
   getDrinksIngredientsThunk,
+  searchDrinksThunk,
 } from './drinksPageOperations';
 
 const initialState = {
@@ -29,7 +30,7 @@ const drinksSlice = createSlice({
   name: 'drinks',
   initialState,
   reducers: {
-    setSearchQuery: (state, { payload }) => {
+    setQuery: (state, { payload }) => {
       state.searchQuery.keyword = payload;
     },
     setSelectedCategory: (state, { payload }) => {
@@ -55,14 +56,20 @@ const drinksSlice = createSlice({
       state.isLoading = false;
     },
     [getDrinksIngredientsThunk.rejected]: handleRejected,
+    [searchDrinksThunk.pending]: handlePending,
+    [searchDrinksThunk.fulfilled](state, { payload }) {
+      state.searchResults = payload;
+      state.isLoading = false;
+    },
+    [searchDrinksThunk.rejected]: handleRejected,
   },
 });
 
 export const drinksReducer = drinksSlice.reducer;
 
 export const {
-  setSearchQuery,
-  setSelectCategory,
-  setSelectIngredient,
+  setQuery,
+  setSelectedCategory,
+  setSelectedIngredient,
   setCurrentPage,
 } = drinksSlice.actions;

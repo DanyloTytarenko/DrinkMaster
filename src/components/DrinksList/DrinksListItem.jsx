@@ -14,6 +14,7 @@ import {
   deleteOwnDrink,
   deleteFavoriteDrink,
 } from '../../../redux/drinks/operations';
+
 import sprite from './svg/sprite.svg';
 export const DrinksListItem = ({ id, drink }) => {
   const dispatch = useDispatch();

@@ -10,49 +10,45 @@ import {
   StyledSelect,
   customStyles,
 } from './DrinksSearch.styled';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCategories,
   selectIngredients,
 } from '../../redux/drinks/drinksPageSelectors';
+import {
+  setQuery,
+  setSelectedCategory,
+  setSelectedIngredient,
+} from '../../redux/drinks/drinksPageSlice';
 
 // const DrinksSearch = ({ categories, ingredients }) => {
 const DrinksSearch = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [category, setCategory] = useState('');
-  const [ingredient, setIngredient] = useState('');
+  // const [category, setCategory] = useState('');
+  // const [ingredient, setIngredient] = useState('');
   const categories = useSelector(selectCategories);
   const ingredients = useSelector(selectIngredients);
 
-  // const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('category, ingredient :>> ', category, ingredient);
-    // navigate(
-    //   `/drinks/search?category=${category}&ingredient=${ingredient}&keyword=${searchQuery}`,
-    // );
-    // if (window.innerWidth >= 768) {
-    //   console.log(' :>> ');
-    // }
-    console.log(
-      'route',
-      `/drinks/search?category=${category}&ingredient=${ingredient}&keyword=${searchQuery}`,
-    );
-  }, [category, ingredient, searchQuery]);
+    if (window.innerWidth <= 425) {
+      dispatch(setQuery(searchQuery));
+    }
+  }, [dispatch, searchQuery]);
 
   const onChangeFilter = (label, value = '') => {
     switch (label) {
       case 'searchQuery':
-        console.log('value :>> ', value);
         setSearchQuery(value);
         break;
       case 'category':
-        console.log('valuecategory :>> ', value);
-        setCategory(value);
+        // setCategory(value);
+        dispatch(setSelectedCategory(value));
         break;
       case 'ingredient':
-        console.log('valueingredient :>> ', value);
-        setIngredient(value);
+        // setIngredient(value);
+        dispatch(setSelectedIngredient(value));
         break;
       default:
         break;
@@ -61,12 +57,11 @@ const DrinksSearch = () => {
 
   const handleSearchQuery = (event) => {
     onChangeFilter('searchQuery', event.target.value.trim());
-    console.log('event.target :>> ', event.target.value.trim());
     // setSearchQuery(event.target.value.trim());
   };
 
   const handleChangeCategory = (category) => {
-    console.log('option :>> ', category);
+    console.log('categorych :>> ', category);
     // if (category) onChangeFilter('category', category.value);
     //   else onChangeFilter('category', '');
     onChangeFilter('category', category.value);
@@ -74,13 +69,16 @@ const DrinksSearch = () => {
 
   const handleChangeIngredient = (ingredient) => {
     console.log('option :>> ', ingredient);
-    if (ingredient) onChangeFilter('category', ingredient.value);
-    else onChangeFilter('category', '');
+    // if (ingredient) onChangeFilter('ingredient', ingredient.value);
+    // else
+    // onChangeFilter('category', '');
+    onChangeFilter('ingredient', ingredient.value);
   };
 
   const handleSubmitSearch = (event) => {
     event.preventDefault();
     console.log('searchQuery :>> ', searchQuery);
+    dispatch(setQuery(searchQuery));
   };
 
   return (
@@ -118,8 +116,8 @@ const DrinksSearch = () => {
           placeholder="Ingredients"
           classNamePrefix="react-select"
           options={ingredients.map((item) => ({
-            label: item,
-            value: item,
+            label: item.title,
+            value: item.title,
           }))}
           onChange={handleChangeIngredient}
         />

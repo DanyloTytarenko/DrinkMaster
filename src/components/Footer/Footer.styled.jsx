@@ -6,7 +6,6 @@ export const FooterContainer = styled.footer`
   padding-right: 20px;
   padding-left: 18px;
   border-top: 1px solid rgba(243, 243, 243, 0.20);
-
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;

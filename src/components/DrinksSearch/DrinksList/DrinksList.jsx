@@ -9,12 +9,17 @@ import {
   StyledDrinksItem,
   StyledDrinksList,
 } from './DrinksList.styled';
+import { useSelector } from 'react-redux';
+import { selectSearchResults } from '../../../redux/drinks/drinksPageSelectors';
 
 const DrinksList = () => {
+  const { drinks } = useSelector(selectSearchResults);
+  console.log('searchResults :>> ', drinks);
+
   return (
     <StyledDrinksList>
-      {recipes?.map((item) => (
-        <StyledDrinksItem key={item._id.$oid}>
+      {drinks?.map((item) => (
+        <StyledDrinksItem key={item._id}>
           <StyledDrinkImage
             src={item.drinkThumb}
             alt={item.drink}
