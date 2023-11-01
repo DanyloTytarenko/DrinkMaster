@@ -3,7 +3,7 @@ import { useDispatch,  useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors'
 import { logOut } from '../../redux/auth/operations'
 import UserLogo from '../UserLogo/UserLogo';
-import { Modal, TextDropDown, LogOutBtn, Text, LogOutWrapper, CancelButton, CloseBtn, NameInput, SaveBtn, PhotoWrapper, AddBtn, Photo } from './Modal.styled';
+import { Modal, TextDropDown, LogOutBtn, Text, LogOutWrapper, CancelButton, CloseBtn, NameInput, SaveBtn, PhotoWrapper, AddBtn, Photo, Form, ImgInput } from './Modal.styled';
 import { UserLogoWrap, UserSvg } from '../UserLogo/UserLogo.styled';
 import sprite from './sprite.svg'
 export const DropDown = () => {
@@ -45,13 +45,15 @@ export const DropDown = () => {
                              <CancelButton type="button" onClick={handleClickLogOut}>Cancel</CancelButton>                         
                         </LogOutWrapper>
                     </>
-                ) : EditProfile ? (<>
+          ) : EditProfile ? (
+            <>
                         <CloseBtn onClick={closeModal}>
                             <svg width="18px" height="18px" stroke="#F3F3F3">
                             <use href={`${sprite}#icon-close`} />
                              </svg>
-                        </CloseBtn>
-                        <Photo>
+                </CloseBtn>
+                <Form>
+                  <Photo>
                         <PhotoWrapper>
                           <svg width="100px" height="100px" stroke="#F3F3F3">
                             <use href={`${sprite}#icon-user`} />
@@ -60,10 +62,14 @@ export const DropDown = () => {
                         <svg width="34px" height="34px">
                             <use href={`${sprite}#icon-add`} />
                             </svg>
-                        </AddBtn></Photo>
-                        
-              <NameInput value={ user.name} />
-                        <SaveBtn>Save changes</SaveBtn>
+                    </AddBtn>
+                  </Photo>   
+                  <ImgInput type="text"/>
+                        <NameInput
+                        type="text"
+                        value={user.name} />
+                  <SaveBtn type='submit'>Save changes</SaveBtn>
+                </Form>
                     </>
         ) : (
                             <>                    
