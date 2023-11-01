@@ -52,7 +52,7 @@ export const searchDrinksThunk = createAsyncThunk(
     //   return thunkAPI.rejectWithValue('Unable to fetch user');
     // }
     try {
-      setToken(tempToken);
+      // setToken(tempToken);
       //   setToken(persistedToken);
       return await searchDrinks({ searchQuery }, page, limit);
     } catch (error) {
