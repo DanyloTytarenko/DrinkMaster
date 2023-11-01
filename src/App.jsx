@@ -27,7 +27,9 @@ function App() {
         <Route path="/" element={<SharedLayout />}>
           <Route
             path="/"
-            element={<PrivateRoute component={<SharedLayout />} />}
+            element={
+              <PublicRoute redirectcto="/welcome" component={<WelcomePage />} />
+            }
           />
           <Route path="/welcome" element={<WelcomePage />} />
           <Route

@@ -62,7 +62,7 @@ export const SingupForm = () => {
           type="text"
           placeholder="Name"
           autoComplete="off"
-          sx={{...inputStyled}}
+          sx={{ ...inputStyled }}
           inputProps={{ ...inputProps }}
           value={formik.values.name}
           onChange={formik.handleChange}
@@ -75,7 +75,6 @@ export const SingupForm = () => {
           <DatePicker
             id="birthday"
             name="birthday"
-            
             disableFuture
             format={'DD/MM/YYYY'}
             slotProps={{
@@ -83,7 +82,7 @@ export const SingupForm = () => {
                 error: false,
                 sx: {
                   ...datePickerStyled,
-                }
+                },
               },
             }}
             value={formik.values.birthday}
@@ -154,7 +153,7 @@ export const SingupForm = () => {
         >
           Sing Up
         </Button>
-        <Link sx={{ ...linkStyled }} component={NavLink} to="/singin">
+        <Link sx={{ ...linkStyled }} component={NavLink} to="/signin">
           Sing In
         </Link>
       </Form>
