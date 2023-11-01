@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import DrinksList from '../../components/DrinksSearch/DrinksList/DrinksList';
 import DrinksSearch from '../../components/DrinksSearch/DrinksSearch';
-import { DrinksContainer, Title } from './DrinksPage.styled';
+// import { DrinksContainer, Title } from './DrinksPage.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getDrinksCategoriesThunk,
@@ -17,8 +17,12 @@ import {
   // selectTotalItems,
 } from '../../redux/drinks/drinksPageSelectors';
 import { useSearchParams } from 'react-router-dom';
-import Paginator from 'src/components/Paginator/Paginator';
+// import Paginator from 'src/components/Paginator/Paginator';
 import { useMediaQuery } from '@mui/material';
+import Footer from 'src/components/Footer/Footer';
+import Header from 'src/components/Header/Header';
+import { DrinksContainer } from './DrinksPage.styled';
+// import { Container, Title } from './DrinksPage.styled';
 
 const DrinksPage = () => {
   const dispatch = useDispatch();
@@ -64,12 +68,16 @@ const DrinksPage = () => {
   // }, [searchParams, searchQuery]);
 
   return (
-    <DrinksContainer>
-      <Title>DrinksPage</Title>
-      <DrinksSearch />
-      <DrinksList />
-      {/* <Paginator totalItems={searchResults.max_page} limit={limit} /> */}
-    </DrinksContainer>
+    <>
+      <Header />
+      <DrinksContainer>
+        {/* <Title>DrinksPage</Title> */}
+        <DrinksSearch />
+        <DrinksList />
+        {/* <Paginator totalItems={searchResults.max_page} limit={limit} /> */}
+      </DrinksContainer>
+      <Footer />
+    </>
   );
 };
 

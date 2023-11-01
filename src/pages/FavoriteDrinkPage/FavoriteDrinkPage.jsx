@@ -7,6 +7,8 @@ import {
   selectErrorFavorite,
   selectIsLoadingFavorite,
 } from '../../redux/drinks/selectors';
+import Header from 'src/components/Header/Header';
+import Footer from 'src/components/Footer/Footer';
 const FavoriteDrinkPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoadingFavorite);
@@ -16,11 +18,15 @@ const FavoriteDrinkPage = () => {
     dispatch(fetchFavoriteDrinks());
   }, [dispatch]);
   return (
-    <Container>
-      <Title>FavoriteDrinkPage</Title>
-      {isLoading && !error && <b>Request in progress...</b>}
-      <DrinksList />
-    </Container>
+    <>
+      <Header></Header>
+      <Container>
+        <Title>FavoriteDrinkPage</Title>
+        {isLoading && !error && <b>Request in progress...</b>}
+        <DrinksList />
+      </Container>
+      <Footer></Footer>
+    </>
   );
 };
 
