@@ -20,7 +20,8 @@ const DrinkIngredientsFields = ({
   setFieldValue,
   errors,
 }) => {
-  const form = useSelector(selectForm);
+  const persistedForm = useSelector(selectForm);
+  const form = persistedForm;
 
   const ingredientsData = useSelector(selectIngredient);
 

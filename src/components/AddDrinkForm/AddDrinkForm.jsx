@@ -48,8 +48,8 @@ const AddDrinkForm = () => {
     dispatch(fetchIngredient('ingredients'));
   }, [dispatch]);
 
-  const formValues = useSelector(selectForm);
-
+  const form = useSelector(selectForm);
+  const formValues = form.form;
   const [isAlcoholic, setIsAlcoholic] = useState(true);
 
   const submitHandler = (values, actions) => {
