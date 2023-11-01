@@ -16,58 +16,10 @@ import {
 import Select from 'react-select';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectForm } from 'src/redux/drinks/selectors';
+import { selectForm } from '../../../redux/drinks/selectors';
+import { selectCategory, selectGlass } from '../../../redux/drinks/selectors';
 
 import DummyDrinkThumb from '../../../images/dummyDrinkThumb.png';
-
-const categories = [
-  'Ordinary Drink',
-  'Cocktail',
-  'Shake',
-  'Other/Unknown',
-  'Cocoa',
-  'Shot',
-  'Coffee/Tea',
-  'Homemade Liqueur',
-  'Punch/Party Drink',
-  'Beer',
-  'Soft Drink',
-];
-
-const glassArray = [
-  'Highball glass',
-  'Cocktail glass',
-  'Old-fashioned glass',
-  'Whiskey Glass',
-  'Collins glass',
-  'Pousse cafe glass',
-  'Champagne flute',
-  'Whiskey sour glass',
-  'Cordial glass',
-  'Brandy snifter',
-  'White wine glass',
-  'Nick and Nora Glass',
-  'Hurricane glass',
-  'Coffee mug',
-  'Shot glass',
-  'Jar',
-  'Irish coffee cup',
-  'Punch bowl',
-  'Pitcher',
-  'Pint glass',
-  'Copper Mug',
-  'Wine Glass',
-  'Beer mug',
-  'Margarita/Coupette glass',
-  'Beer pilsner',
-  'Beer Glass',
-  'Parfait glass',
-  'Mason jar',
-  'Margarita glass',
-  'Martini Glass',
-  'Balloon Glass',
-  'Coupe Glass',
-];
 
 const DrinkDescriptionFields = ({
   isAlcoholic,
@@ -75,10 +27,13 @@ const DrinkDescriptionFields = ({
   onChangeHandler,
   setFieldValue,
 }) => {
+  const categories = useSelector(selectCategory);
+  const glassArray = useSelector(selectGlass);
+
   const form = useSelector(selectForm);
 
   const [uri, setUri] = useState();
-
+  console.log(uri);
   // функція для запису масив об'єктів інгрідієнтів, у формі необхідній для роботи селекту.
   // пізніше її буде записано у src/utils для перевикористання всюди де э реакт-селекти
   const options = (array) =>
@@ -102,15 +57,16 @@ const DrinkDescriptionFields = ({
     );
     console.log(url.toString().split('blob:')[1]);
     const src = url.toString().split('blob:')[1];
-    setUri(src);
+    setUri(URL.createObjectURL(e.target.files[0]));
+    // setUri(src);
     setFieldValue('drinkThumb', src);
     onChangeHandler(src, 'drinkThumb');
   };
 
   return (
     <Wrapper>
-      <ImageThumb>
-        {uri && <Img src={uri} />}
+      <ImageThumb style={{ backgroundImage: `url(${uri})` }}>
+        {/* {uri && <Img src={uri} />} */}
         <DivAddImage>
           <Label>
             +

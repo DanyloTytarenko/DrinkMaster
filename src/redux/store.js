@@ -12,6 +12,11 @@ import { authReducer } from './auth/slice';
 import { ownDrinksReducer, favoriteDrinksReducer } from './drinks/drinksSlice';
 import { persistedFormReducer } from './drinks/formSlice';
 import { drinksReducer } from './drinks/drinksPageSlice';
+import {
+  categoryReducer,
+  glassReducer,
+  ingredientReducer,
+} from './drinks/drinksSlice';
 
 export const store = configureStore({
   reducer: {
@@ -20,6 +25,9 @@ export const store = configureStore({
     favoriteDrinks: favoriteDrinksReducer,
     form: persistedFormReducer,
     drinks: drinksReducer,
+    category: categoryReducer,
+    glass: glassReducer,
+    ingredient: ingredientReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

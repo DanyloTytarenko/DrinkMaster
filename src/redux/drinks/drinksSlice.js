@@ -6,6 +6,9 @@ import {
   fetchFavoriteDrinks,
   addFavoriteDrink,
   deleteFavoriteDrink,
+  fetchCategories,
+  fetchGlass,
+  fetchIngredient,
 } from './operations';
 const handlePending = (state) => {
   state.isLoading = true;
@@ -73,5 +76,48 @@ export const favoriteDrinksSlice = createSlice({
     [deleteFavoriteDrink.rejected]: handleRejected,
   },
 });
+
+export const categorySlice = createSlice({
+  name: 'category',
+  initialState,
+  extraReducers: {
+    [fetchCategories.pending]: handlePending,
+    [fetchCategories.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
+    },
+    [fetchCategories.rejected]: handleRejected,
+  },
+});
+export const glassSlice = createSlice({
+  name: 'glass',
+  initialState,
+  extraReducers: {
+    [fetchGlass.pending]: handlePending,
+    [fetchGlass.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
+    },
+    [fetchGlass.rejected]: handleRejected,
+  },
+});
+export const ingredientSlice = createSlice({
+  name: 'ingredient',
+  initialState,
+  extraReducers: {
+    [fetchIngredient.pending]: handlePending,
+    [fetchIngredient.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
+    },
+    [fetchIngredient.rejected]: handleRejected,
+  },
+});
 export const favoriteDrinksReducer = favoriteDrinksSlice.reducer;
 export const ownDrinksReducer = ownDrinksSlice.reducer;
+export const categoryReducer = categorySlice.reducer;
+export const glassReducer = glassSlice.reducer;
+export const ingredientReducer = ingredientSlice.reducer;

@@ -19,8 +19,8 @@ export const ImageThumb = styled.div`
 // background-image: url(${DummyDrinkThumb}); in ImageThumb
 
 export const Img = styled.img`
-  width: 60;
-  height: 60;
+  width: 100%;
+  height: 100%;
 `;
 
 export const DivAddImage = styled.div`
