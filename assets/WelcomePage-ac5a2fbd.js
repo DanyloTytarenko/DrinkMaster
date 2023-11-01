@@ -1,4 +1,4 @@
-import{s as n,L as e,j as o}from"./index-63d0e82c.js";const r=n(e)`
+import{s as n,L as e,j as o}from"./index-5295b128.js";const r=n(e)`
   margin-right: 14px;
   padding: 14px 40px;
 
@@ -24,7 +24,7 @@ import{s as n,L as e,j as o}from"./index-63d0e82c.js";const r=n(e)`
     color: #161f37;
     background: #F3F3F3;
   }
-`,t=()=>o.jsxs(o.Fragment,{children:[o.jsx(r,{to:"/signup",children:"Sing Up"}),o.jsx(i,{to:"/signin",children:"Sing In"})]}),s=n.p`
+`,t=()=>o.jsxs(o.Fragment,{children:[o.jsx(r,{to:"/signup",children:"Sign Up"}),o.jsx(i,{to:"/signin",children:"Sign In"})]}),s=n.p`
     margin-bottom: 40px;
     font-size: 14px;
     color: #FAFAFA;
