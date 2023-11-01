@@ -6,10 +6,9 @@
 }
 body {
   background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.6) 58.58%,
-    rgba(0, 0, 0, 0.345172) 78.98%,
-    rgba(0, 0, 0, 0) 100%
+    135deg,
+    rgba(64, 112, 205, 1) 9%,
+    rgba(10, 10, 17, 1) 58%
   );
 
   /* background-image: url('./assets/background.png'); */
@@ -21,7 +20,7 @@ body {
   font-style: normal;
   color: #111111;
   width: 100%;
-  height: 100vh;
+
   margin: 0;
 }
 h1,
