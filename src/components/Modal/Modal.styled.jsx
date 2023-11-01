@@ -90,6 +90,9 @@ margin-bottom: 18px;
 export const PhotoWrapper = styled.div`
 width: 100px;
 height: 100px;
+position: relative;
+left: 50%;
+transform: translate(-50%, 0);
 border-radius: 50%;
 overflow:hidden;
 `
@@ -102,8 +105,15 @@ left: 50%;
 transform: translate(-50%, -50%);
 `
 export const Photo = styled.div`
-position: relative;
-left: 50%;
-transform: translate(-50%, 0);
+// position: relative;
+// left: 50%;
+// transform: translate(-50%, 0);
 margin-bottom: 50px;
 `
+export const Form = styled.form`
+position: relative;
+display:flex;
+flex-direction:column;
+`
+export const ImgInput = styled.input`
+display:none;`

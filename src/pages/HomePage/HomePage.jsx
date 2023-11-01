@@ -1,3 +1,5 @@
+import Footer from 'src/components/Footer/Footer';
+import Header from 'src/components/Header/Header';
 import { Container, Title } from './HomePage.styled';
 import { AddDrink } from '../../components/HomePageComponents/AddDrink';
 import { PreviewDrinks } from '../../components/HomePageComponents/PreviewDrinks';
@@ -28,11 +30,15 @@ const HomePage = () => {
     return <p>Error: {error.message}</p>;
   }
   return (
-    <Container>
-      <Title>HomePage</Title>
-      <AddDrink />
-      <PreviewDrinks />
-    </Container>
+    <>
+      <Header></Header>
+      <Container>
+        <Title>HomePage</Title>
+        <AddDrink />
+        <PreviewDrinks />
+      </Container>
+      <Footer></Footer>
+    </>
   );
 };
 export default HomePage;

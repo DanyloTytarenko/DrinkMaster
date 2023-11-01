@@ -16,7 +16,14 @@ import { useFormik } from 'formik';
 import { signinSchema } from './SinginSchema';
 import { logIn } from '../../redux/auth/operations';
 import { Form } from '../SingupForm/SingupForm.styled';
-import { inputStyled, inputProps, outlineStyled, buttonStyled, linkStyled, iconStyled } from '../SingupForm/muiFormStyled';
+import {
+  inputStyled,
+  inputProps,
+  outlineStyled,
+  buttonStyled,
+  linkStyled,
+  iconStyled,
+} from '../SingupForm/muiFormStyled';
 
 export const SinginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -35,7 +42,7 @@ export const SinginForm = () => {
     },
     validationSchema: signinSchema,
     onSubmit: (values) => {
-      console.log(values)
+      console.log(values);
       dispatch(logIn(values));
     },
   });
@@ -48,9 +55,9 @@ export const SinginForm = () => {
           name="email"
           type="email"
           placeholder="Email"
-          autoComplete='off'
+          autoComplete="off"
           sx={{ ...inputStyled }}
-          inputProps={{...inputProps}}
+          inputProps={{ ...inputProps }}
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -65,7 +72,7 @@ export const SinginForm = () => {
           type={showPassword ? 'text' : 'password'}
           placeholder="Password"
           sx={{ ...outlineStyled }}
-          inputProps={{...inputProps}}
+          inputProps={{ ...inputProps }}
           value={formik.values.password}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -78,19 +85,27 @@ export const SinginForm = () => {
                 onClick={handleClickShowPassword}
                 onMouseDown={handleMouseDownPassword}
                 edge="end"
-                sx={{...iconStyled}}
+                sx={{ ...iconStyled }}
               >
                 {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
               </IconButton>
             </InputAdornment>
           }
         />
-        {formik.touched.password && <FormHelperText error id="password">{formik.errors.password}</FormHelperText>}
+        {formik.touched.password && (
+          <FormHelperText error id="password">
+            {formik.errors.password}
+          </FormHelperText>
+        )}
         <Button
-          sx={{...buttonStyled}} variant="contained" fullWidth type="submit">
+          sx={{ ...buttonStyled }}
+          variant="contained"
+          fullWidth
+          type="submit"
+        >
           Sing In
         </Button>
-        <Link component={NavLink} sx={{...linkStyled}} to="/singup">
+        <Link component={NavLink} sx={{ ...linkStyled }} to="/signup">
           Sing Up
         </Link>
       </Form>

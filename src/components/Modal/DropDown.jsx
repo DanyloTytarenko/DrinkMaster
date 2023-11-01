@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch,  useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectors'
+import { logOut } from '../../redux/auth/operations'
 import UserLogo from '../UserLogo/UserLogo';
-import { Modal, TextDropDown, LogOutBtn, Text, LogOutWrapper, CancelButton, CloseBtn, NameInput, SaveBtn, PhotoWrapper, AddBtn, Photo } from './Modal.styled';
+import { Modal, TextDropDown, LogOutBtn, Text, LogOutWrapper, CancelButton, CloseBtn, NameInput, SaveBtn, PhotoWrapper, AddBtn, Photo, Form, ImgInput } from './Modal.styled';
 import { UserLogoWrap, UserSvg } from '../UserLogo/UserLogo.styled';
 import sprite from './sprite.svg'
 export const DropDown = () => {
   const [isOpen, setIsOpen] = useState(false);
     const [LogOut, setLogOut] = useState(false);
-    const [EditProfile, setEditProfile] = useState(false);
+  const [EditProfile, setEditProfile] = useState(false);
+  const dispatch = useDispatch();
+   const user = useSelector(selectUser);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     };
@@ -36,17 +41,19 @@ export const DropDown = () => {
                         </CloseBtn>
                         <Text>Are you sure you want to log out?</Text>
                         <LogOutWrapper>
-                             <LogOutBtn>Log out</LogOutBtn> 
-                             <CancelButton onClick={handleClickLogOut}>Cancel</CancelButton>                         
+                             <LogOutBtn type="button" onClick={() => dispatch(logOut())}>Log out</LogOutBtn> 
+                             <CancelButton type="button" onClick={handleClickLogOut}>Cancel</CancelButton>                         
                         </LogOutWrapper>
                     </>
-                ) : EditProfile ? (<>
+          ) : EditProfile ? (
+            <>
                         <CloseBtn onClick={closeModal}>
                             <svg width="18px" height="18px" stroke="#F3F3F3">
                             <use href={`${sprite}#icon-close`} />
                              </svg>
-                        </CloseBtn>
-                        <Photo>
+                </CloseBtn>
+                <Form>
+                  <Photo>
                         <PhotoWrapper>
                           <svg width="100px" height="100px" stroke="#F3F3F3">
                             <use href={`${sprite}#icon-user`} />
@@ -55,10 +62,14 @@ export const DropDown = () => {
                         <svg width="34px" height="34px">
                             <use href={`${sprite}#icon-add`} />
                             </svg>
-                        </AddBtn></Photo>
-                        
-                        <NameInput/>
-                        <SaveBtn>Save changes</SaveBtn>
+                    </AddBtn>
+                  </Photo>   
+                  <ImgInput type="text"/>
+                        <NameInput
+                        type="text"
+                        value={user.name} />
+                  <SaveBtn type='submit'>Save changes</SaveBtn>
+                </Form>
                     </>
         ) : (
                             <>                    
@@ -68,7 +79,7 @@ export const DropDown = () => {
                 <use href={`${sprite}#icon-edit`} />
               </svg>
             </TextDropDown>
-            <LogOutBtn onClick={handleClickLogOut}>Log out</LogOutBtn>
+            <LogOutBtn type="button" onClick={handleClickLogOut}>Log out</LogOutBtn>
           </>
         )}
                 
