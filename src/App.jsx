@@ -25,6 +25,10 @@ function App() {
     <AppWrapper>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
+          <Route
+            path="/"
+            element={<PrivateRoute component={<SharedLayout />} />}
+          />
           <Route path="/welcome" element={<WelcomePage />} />
           <Route
             path="/signup"
