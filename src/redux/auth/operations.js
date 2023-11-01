@@ -9,9 +9,9 @@ const setAuthHeader = token => {
 };
 
 // Utility to remove JWT
-// const clearAuthHeader = () => {
-//   axios.defaults.headers.common.Authorization = '';
-// };
+const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = '';
+};
 
 /*
  * POST @ /signup
@@ -52,3 +52,16 @@ export const logIn = createAsyncThunk(
     }
   }
 );
+
+ /* POST @ /auth/singout
+ * headers: Authorization: Bearer token
+ */
+export const logOut = createAsyncThunk('/auth/logout', async (_, thunkAPI) => {
+  try {
+    await axios.post('/auth/singout');
+    // After a successful logout, remove the token from the HTTP header
+    clearAuthHeader();
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn } from './operations';
+import { register, logIn, logOut } from './operations';
 import { ValidMessage } from 'src/components/ValidMessage/ValidMessage';
 
 const initialState = {
@@ -21,6 +21,12 @@ const handleLoginFulfilled = (state, action) => {
   state.isLoggedIn = true;
 };
 
+const handleLogOutFulfilled = (state) => {
+   state.user = { name: null, email: null, birthday: null, email: null };
+      state.accessToken = null;
+      state.isLoggedIn = false;
+};
+
 const handleRejected = (_, action) => {
   return ValidMessage(action.payload);
 };
@@ -34,6 +40,7 @@ const authSlice = createSlice({
       .addCase(register.rejected, handleRejected)
       .addCase(logIn.fulfilled, handleLoginFulfilled)
       .addCase(logIn.rejected, handleRejected)
+      .addCase(logOut.fulfilled, handleLogOutFulfilled)
   },
 });
 
