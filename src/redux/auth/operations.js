@@ -4,7 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 axios.defaults.baseURL = 'https://drinks-whm4.onrender.com';
 
 // Utility to add JWT
-const setAuthHeader = token => {
+const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -21,16 +21,16 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const result = await axios.post('/auth/singup', credentials);
+      const result = await axios.post('/auth/signup', credentials);
 
       // After successful registration, add the token to the HTTP header
-        setAuthHeader(result.data.accessToken);
+      setAuthHeader(result.data.accessToken);
 
       return result.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.status);
     }
-  }
+  },
 );
 
 /*
@@ -41,8 +41,8 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      const result = await axios.post('/auth/singin', credentials);
-      
+      const result = await axios.post('/auth/signin', credentials);
+
       // After successful login, add the token to the HTTP header
       setAuthHeader(result.data.accessToken);
 
@@ -50,10 +50,10 @@ export const logIn = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.status);
     }
-  }
+  },
 );
 
- /* POST @ /auth/singout
+/* POST @ /auth/singout
  * headers: Authorization: Bearer token
  */
 export const logOut = createAsyncThunk('/auth/logout', async (_, thunkAPI) => {
@@ -66,7 +66,7 @@ export const logOut = createAsyncThunk('/auth/logout', async (_, thunkAPI) => {
   }
 });
 
- /* POST @ /auth/singout
+/* POST @ /auth/singout
  * headers: Authorization: Bearer token
  */
 // export const updateUser = createAsyncThunk('/auth/logout', async (_, thunkAPI) => {
