@@ -18,7 +18,7 @@ const DrinksList = () => {
 
   return (
     <StyledDrinksList>
-      {(recipes ?? recipes).map((item) => (
+      {(drinks ?? recipes).map((item) => (
         <StyledDrinksItem
           // key={item._id}
           key={item._id.$oid}
@@ -32,7 +32,6 @@ const DrinksList = () => {
           />
           <DescriptionWrapper>
             <DrinkTitle>{item.drink}</DrinkTitle>
-            {/* {console.log('item._id', item._id)} */}
             <DescriptionLink to={`/drink/${item._id.$oid}`}>
               See more
             </DescriptionLink>

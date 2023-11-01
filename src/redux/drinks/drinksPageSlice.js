@@ -11,7 +11,6 @@ const initialState = {
   categories: [],
   ingredients: [],
   page: 1,
-  totalPages: null,
   searchResults: [],
   isLoading: false,
   error: null,

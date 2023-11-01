@@ -16,10 +16,12 @@ import {
   selectIngredients,
 } from '../../redux/drinks/drinksPageSelectors';
 import {
+  setCurrentPage,
   setQuery,
   setSelectedCategory,
   setSelectedIngredient,
 } from '../../redux/drinks/drinksPageSlice';
+import { useMediaQuery } from '@mui/material';
 
 // const DrinksSearch = ({ categories, ingredients }) => {
 const DrinksSearch = () => {
@@ -31,24 +33,33 @@ const DrinksSearch = () => {
 
   const dispatch = useDispatch();
 
+  const screenSize = useMediaQuery('(max-width:767px)');
+
+  // useEffect(() => {
+  //   if (window.innerWidth <= 425) {
+  //     dispatch(setQuery(searchQuery));
+  //   }
+  // }, [dispatch, searchQuery]);
+
   useEffect(() => {
-    if (window.innerWidth <= 425) {
-      dispatch(setQuery(searchQuery));
-    }
-  }, [dispatch, searchQuery]);
+    if (screenSize) dispatch(setQuery(searchQuery));
+  }, [dispatch, screenSize, searchQuery]);
 
   const onChangeFilter = (label, value = '') => {
     switch (label) {
       case 'searchQuery':
         setSearchQuery(value);
+        dispatch(setCurrentPage(1));
         break;
       case 'category':
         // setCategory(value);
         dispatch(setSelectedCategory(value));
+        dispatch(setCurrentPage(1));
         break;
       case 'ingredient':
         // setIngredient(value);
         dispatch(setSelectedIngredient(value));
+        dispatch(setCurrentPage(1));
         break;
       default:
         break;
@@ -61,14 +72,14 @@ const DrinksSearch = () => {
   };
 
   const handleChangeCategory = (category) => {
-    console.log('categorych :>> ', category);
+    // console.log('category :>> ', category);
     // if (category) onChangeFilter('category', category.value);
     //   else onChangeFilter('category', '');
     onChangeFilter('category', category.value);
   };
 
   const handleChangeIngredient = (ingredient) => {
-    console.log('option :>> ', ingredient);
+    // console.log('option :>> ', ingredient);
     // if (ingredient) onChangeFilter('ingredient', ingredient.value);
     // else
     // onChangeFilter('category', '');
@@ -77,7 +88,7 @@ const DrinksSearch = () => {
 
   const handleSubmitSearch = (event) => {
     event.preventDefault();
-    console.log('searchQuery :>> ', searchQuery);
+    // console.log('searchQuery :>> ', searchQuery);
     dispatch(setQuery(searchQuery));
   };
 

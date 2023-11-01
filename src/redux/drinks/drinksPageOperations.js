@@ -7,7 +7,7 @@ import {
 } from '../../../services/drinksApi';
 
 const tempToken =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2ZhODU4MTQ5Y2Q0MjUxNDkwNTg1MCIsImlhdCI6MTY5ODY3NDMzMSwiZXhwIjoxNjk4NzYwNzMxfQ.DXUGvk2pApyiYKT-yJB5FX4bamqi5fZZj4Qo5c_9xYA';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NTQxMWFjZGViMWM4MTFhNTEzNjZjNzUiLCJzaWQiOiI2NTQyYjRiOTI5M2Y5MTI1MTBiNGYxZmMiLCJpYXQiOjE2OTg4NzA0NTcsImV4cCI6MTY5ODg3NzY1N30.hQWQayDCL3yEWKD32TtWPuuBGhBoacwwFqzmZXG3WSQ';
 
 export const getDrinksCategoriesThunk = createAsyncThunk(
   'filters/getDrinksCategories',
@@ -19,7 +19,6 @@ export const getDrinksCategoriesThunk = createAsyncThunk(
     // }
     try {
       //   setToken(persistedToken);
-      console.log('object :>> ', getDrinksCategories());
       return await getDrinksCategories();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -47,7 +46,6 @@ export const getDrinksIngredientsThunk = createAsyncThunk(
 export const searchDrinksThunk = createAsyncThunk(
   'filters/searchDrinks',
   async ({ searchQuery, page, limit }, thunkAPI) => {
-    console.log('searchQuery2 :>> ', searchQuery, page, limit);
     // const state = thunkAPI.getState();
     // const persistedToken = state.auth.token;
     // if (persistedToken === null) {

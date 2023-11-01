@@ -54,7 +54,7 @@ export const StyledInput = styled.input`
 
   @media (min-width: 768px) {
     /* width: 264px; по макету*/
-    width: 238px;
+    width: 234px;
     height: 56px;
     padding: 14px 25px 15px 24px;
     font-size: 17px;
@@ -101,7 +101,7 @@ export const StyledSelect = styled(Select)`
     line-height: 1.29;
     @media (min-width: 768px) {
       /* width: 199px; по макету*/
-      width: 225px;
+      width: 235px;
       height: 56px;
       padding: 14px 24px 15px 24px;
       font-size: 17px;
