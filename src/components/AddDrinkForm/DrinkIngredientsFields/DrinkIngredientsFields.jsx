@@ -14,59 +14,15 @@ import { selectForm } from '../../../redux/drinks/selectors';
 import { selectIngredient } from '../../../redux/drinks/selectors';
 import IngredientItem from './IngredientItem/IngredientItem';
 
-const ingredientsData = [
-  {
-    _id: {
-      $oid: '64aebb7f82d96cc69e0eb4a4',
-    },
-    title: 'Light rum',
-    alcohol: 'Yes',
-  },
-  {
-    _id: {
-      $oid: '64aebb7f82d96cc69e0eb4a5',
-    },
-    title: 'Applejack',
-    alcohol: 'Yes',
-  },
-  {
-    _id: {
-      $oid: '64aebb7f82d96cc69e0eb4a6',
-    },
-    title: 'Gin',
-    alcohol: 'Yes',
-  },
-  {
-    _id: {
-      $oid: '64aebb7f82d96cc69e0eb4a7',
-    },
-    title: 'Dark rum',
-    alcohol: 'Yes',
-  },
-  {
-    _id: {
-      $oid: '64f1d5c969d8333cf130fbec',
-    },
-    type: 'fruity juice',
-    alcohol: 'No',
-  },
-  {
-    _id: {
-      $oid: '64f1d5ca69d8333cf130fbfa',
-    },
-    title: 'Cinnamon',
-    alcohol: 'No',
-  },
-];
-
 const DrinkIngredientsFields = ({
   isAlcoholic,
   onChangeHandler,
   setFieldValue,
+  errors,
 }) => {
   const form = useSelector(selectForm);
 
-  // const ingredientsData = useSelector(selectIngredient);
+  const ingredientsData = useSelector(selectIngredient);
 
   // у зміну записується масив інгрідієнтів, в залежності від обмежень Alcoholic/Non alcoholic
   const ingredientOptions = ingredientsData.filter((el) =>
@@ -74,12 +30,7 @@ const DrinkIngredientsFields = ({
   );
 
   // у зміну записується масив інгрідієнтів, із урахуванням того, що в базі є інгрідієнти без назви
-  const ingredientTitleArray = ingredientOptions.map((el) => {
-    if (el.title === undefined) {
-      el.title = el.type;
-    }
-    return el;
-  });
+  const ingredientTitleArray = ingredientOptions.filter((el) => el.title);
 
   // у зміну записується масив об'єктів інгрідієнтів, у формі необхідній для роботи селекту.
   const ingredientsForSelect = ingredientTitleArray.map((item) => {
@@ -120,7 +71,7 @@ const DrinkIngredientsFields = ({
         <Title>Ingredients</Title>
         <DivIncrement>
           <Button type="button" onClick={() => decrement()}>
-            --
+            ---
           </Button>
           <SpanIncrement>{form.ingredients.length}</SpanIncrement>
           <ButtonIncr type="button" onClick={() => increment()}>
@@ -141,6 +92,8 @@ const DrinkIngredientsFields = ({
                 value: form.ingredients[index].title,
                 label: form.ingredients[index].title,
               }}
+              errors={errors}
+              setFieldValue={setFieldValue}
             />
           </li>
         ))}

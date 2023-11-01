@@ -18,9 +18,10 @@ export const Title = styled.h2`
 `;
 
 export const DivIncrement = styled.div`
-  padding: 10px 16px;
+  padding: 0px 12px;
+  height: 38px;
   display: flex;
-  gap: 16px;
+  gap: 12px;
   line-height: calc(18 / 14);
   align-items: center;
   border: 1px solid rgba(243, 243, 243, 0.5);
@@ -40,7 +41,7 @@ export const ButtonIncr = styled.button`
   line-height: calc(18 / 14);
   border: none;
   background-color: inherit;
-  color: rgba(243, 243, 243, 0.3);
+  color: rgba(243, 243, 243, 1);
 `;
 
 export const SpanIncrement = styled.span`

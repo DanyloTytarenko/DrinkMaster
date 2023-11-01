@@ -3,15 +3,20 @@ import {
   ImageThumb,
   Img,
   DivAddImage,
+  LabelTranslucent,
   Label,
   HiddenInput,
   SpanAddImage,
   DivDesription,
   Input,
+  ErrorText,
   DivSelect,
+  DivFlexSelect,
   SpanSelect,
   DivAlcoholic,
+  RadioInput,
 } from './DrinkDescriptionFields.styled';
+import { ErrorIcon } from '../RecipePreparation/RecipePreparation.styled';
 
 import Select from 'react-select';
 import { useState } from 'react';
@@ -26,6 +31,7 @@ const DrinkDescriptionFields = ({
   setIsAlcoholic,
   onChangeHandler,
   setFieldValue,
+  errors,
 }) => {
   const categories = useSelector(selectCategory);
   const glassArray = useSelector(selectGlass);
@@ -33,7 +39,7 @@ const DrinkDescriptionFields = ({
   const form = useSelector(selectForm);
 
   const [uri, setUri] = useState();
-  console.log(uri);
+
   // функція для запису масив об'єктів інгрідієнтів, у формі необхідній для роботи селекту.
   // пізніше її буде записано у src/utils для перевикористання всюди де э реакт-селекти
   const options = (array) =>
@@ -49,7 +55,7 @@ const DrinkDescriptionFields = ({
 
   // функція відправки обраного файлу на сервер
   const addImagehandler = (e) => {
-    console.log(e.target.files);
+    console.log(e.target.files[0]);
     const binaryData = [];
     binaryData.push(e.target.files);
     const url = URL.createObjectURL(
@@ -67,9 +73,9 @@ const DrinkDescriptionFields = ({
     <Wrapper>
       <ImageThumb style={{ backgroundImage: `url(${uri})` }}>
         {/* {uri && <Img src={uri} />} */}
-        <DivAddImage>
-          <Label>
-            +
+        {uri ? (
+          <LabelTranslucent>
+            Change
             <HiddenInput
               type="file"
               id="input"
@@ -77,10 +83,23 @@ const DrinkDescriptionFields = ({
               accept="image/*"
               onChange={(e) => addImagehandler(e)}
             />
-          </Label>
+          </LabelTranslucent>
+        ) : (
+          <DivAddImage>
+            <Label>
+              +
+              <HiddenInput
+                type="file"
+                id="input"
+                name="drinkThumb"
+                accept="image/*"
+                onChange={(e) => addImagehandler(e)}
+              />
+            </Label>
 
-          <SpanAddImage>Add image</SpanAddImage>
-        </DivAddImage>
+            <SpanAddImage>Add image</SpanAddImage>
+          </DivAddImage>
+        )}
       </ImageThumb>
       <DivDesription>
         <Input
@@ -94,6 +113,10 @@ const DrinkDescriptionFields = ({
             onChangeHandler(e.target.value, e.target.name);
           }}
         />
+        <ErrorText>
+          {errors.drink}
+          {errors.drink && <ErrorIcon>!</ErrorIcon>}
+        </ErrorText>
         <Input
           type="text"
           name="description"
@@ -105,128 +128,146 @@ const DrinkDescriptionFields = ({
             onChangeHandler(e.target.value, e.target.name);
           }}
         />
+        <ErrorText>
+          {errors.description} {errors.description && <ErrorIcon>!</ErrorIcon>}
+        </ErrorText>
         <DivSelect>
-          <SpanSelect>Category</SpanSelect>
-          <Select
-            styles={{
-              dropdownIndicator: (provided, state) => ({
-                ...provided,
-                transform: state.selectProps.menuIsOpen && 'rotate(180deg)',
-              }),
-              control: (base, state) => ({
-                ...base,
-                background: 'inherit',
-                border: 'none',
-                fontSize: '14px',
-                fontWeight: 'regular',
-                color: '#f3f3f3',
-              }),
-              menu: (base) => ({
-                ...base,
+          <DivFlexSelect>
+            <SpanSelect>Category</SpanSelect>
+            <Select
+              styles={{
+                dropdownIndicator: (provided, state) => ({
+                  ...provided,
+                  transform: state.selectProps.menuIsOpen && 'rotate(180deg)',
+                }),
+                control: (base, state) => ({
+                  ...base,
+                  background: 'inherit',
+                  border: 'none',
+                  fontSize: '14px',
+                  fontWeight: 'regular',
+                  color: '#f3f3f3',
 
-                width: '233px',
-                right: '0px',
-                backgroundColor: '#161f37',
-                border: '0px solid transparent',
-                borderColor: 'red',
-                borderRadius: '12px',
+                  position: 'relative',
+                  top: 20,
+                }),
 
-                padding: 10,
-              }),
-              indicatorSeparator: (base) => ({
-                ...base,
-                display: 'none',
-              }),
-              option: (styles, { isFocused, isSelected }) => ({
-                ...styles,
-                fontSize: '14px',
+                menu: (base) => ({
+                  ...base,
 
-                lineHeight: '1.33',
-                background: 'transparent',
-                zIndex: 1,
-                color: isFocused
-                  ? 'rgba(243, 243, 243, 0.75)'
-                  : isSelected
-                  ? '#f3f3f3'
-                  : 'rgba(243, 243, 243, 0.4)',
-              }),
-            }}
-            name="category"
-            options={options(categories)}
-            value={
-              form.category === ''
-                ? null
-                : { value: form.category, label: form.category }
-            }
-            defaultValue={options(categories)[1]}
-            onChange={(e) => {
-              setFieldValue('category', e.value);
-              onChangeHandler(e.value, 'category');
-            }}
-          />
+                  width: '131px',
+                  right: '0px',
+                  backgroundColor: '#161f37',
+                  border: '0px solid transparent',
+
+                  borderRadius: '12px',
+                }),
+                indicatorSeparator: (base) => ({
+                  ...base,
+                  display: 'none',
+                }),
+                option: (styles, { isFocused, isSelected }) => ({
+                  ...styles,
+                  fontSize: '14px',
+
+                  lineHeight: '1.33',
+                  background: 'transparent',
+                  zIndex: 1,
+                  color: isFocused
+                    ? 'rgba(243, 243, 243, 0.75)'
+                    : isSelected
+                    ? '#f3f3f3'
+                    : 'rgba(243, 243, 243, 0.4)',
+                }),
+              }}
+              name="category"
+              options={options(categories)}
+              value={
+                form.category === ''
+                  ? null
+                  : { value: form.category, label: form.category }
+              }
+              defaultValue={options(categories)[1]}
+              onChange={(e) => {
+                setFieldValue('category', e.value);
+                onChangeHandler(e.value, 'category');
+              }}
+            />
+          </DivFlexSelect>
+          <ErrorText>
+            {errors.category}
+            {errors.category && <ErrorIcon>!</ErrorIcon>}
+          </ErrorText>
         </DivSelect>
-        <DivSelect>
-          <SpanSelect>Glass</SpanSelect>
-          <Select
-            styles={{
-              dropdownIndicator: (provided, state) => ({
-                ...provided,
-                transform: state.selectProps.menuIsOpen && 'rotate(180deg)',
-              }),
-              control: (base, state) => ({
-                ...base,
-                background: 'inherit',
-                border: 'none',
-                fontSize: '14px',
-                fontWeight: 'regular',
-                color: '#f3f3f3',
-              }),
-              menu: (base) => ({
-                ...base,
-                width: '133px',
-                right: '0px',
-                backgroundColor: '#161f37',
-                border: '0px solid transparent',
-                borderColor: 'red',
-                borderRadius: '12px',
 
-                padding: 10,
-              }),
-              indicatorSeparator: (base) => ({
-                ...base,
-                display: 'none',
-              }),
-              option: (styles, { isFocused, isSelected }) => ({
-                ...styles,
-                fontSize: '14px',
-                lineHeight: '1.33',
-                background: 'transparent',
-                color: isFocused
-                  ? 'rgba(243, 243, 243, 0.75)'
-                  : isSelected
-                  ? '#f3f3f3'
-                  : 'rgba(243, 243, 243, 0.4)',
-              }),
-            }}
-            name="glass"
-            options={options(glassArray)}
-            value={
-              form.glass === ''
-                ? null
-                : { value: form.glass, label: form.glass }
-            }
-            defaultValue={options(glassArray)[0]}
-            onChange={(e) => {
-              setFieldValue('glass', e.value);
-              onChangeHandler(e.value, 'glass');
-            }}
-          />
+        <DivSelect>
+          <DivFlexSelect>
+            <SpanSelect>Glass</SpanSelect>
+            <Select
+              styles={{
+                dropdownIndicator: (provided, state) => ({
+                  ...provided,
+                  transform: state.selectProps.menuIsOpen && 'rotate(180deg)',
+                }),
+                control: (base, state) => ({
+                  ...base,
+                  background: 'inherit',
+                  border: 'none',
+                  fontSize: '14px',
+                  fontWeight: '400',
+                  color: '#f3f3f3',
+                  position: 'relative',
+                  top: 20,
+                }),
+                menu: (base) => ({
+                  ...base,
+                  width: '131px',
+                  right: '0px',
+                  backgroundColor: '#161f37',
+                  border: '0px solid transparent',
+
+                  borderRadius: '12px',
+                }),
+                indicatorSeparator: (base) => ({
+                  ...base,
+                  display: 'none',
+                }),
+                option: (styles, { isFocused, isSelected }) => ({
+                  ...styles,
+                  fontSize: '14px',
+                  lineHeight: '1.33',
+                  background: 'transparent',
+                  color: isFocused
+                    ? 'rgba(243, 243, 243, 0.75)'
+                    : isSelected
+                    ? '#f3f3f3'
+                    : 'rgba(243, 243, 243, 0.4)',
+                }),
+              }}
+              name="glass"
+              options={options(glassArray)}
+              value={
+                form.glass === ''
+                  ? null
+                  : { value: form.glass, label: form.glass }
+              }
+              defaultValue={options(glassArray)[0]}
+              onChange={(e) => {
+                setFieldValue('glass', e.value);
+                onChangeHandler(e.value, 'glass');
+              }}
+            />
+          </DivFlexSelect>
+          <ErrorText>
+            {errors.glass}
+            {errors.glass && <ErrorIcon>!</ErrorIcon>}
+          </ErrorText>
         </DivSelect>
       </DivDesription>
 
       <DivAlcoholic>
         <label>
-          <input
+          <RadioInput
             type="radio"
             value="Alcoholic"
             name="alcoholic"
@@ -240,7 +281,7 @@ const DrinkDescriptionFields = ({
           Alcoholic
         </label>
         <label>
-          <input
+          <RadioInput
             type="radio"
             value="Non alcoholic"
             name="alcoholic"

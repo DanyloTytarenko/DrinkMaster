@@ -98,7 +98,6 @@ export const fetchIngredient = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/filters/ingredients');
-      console.log(response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

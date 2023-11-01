@@ -16,6 +16,29 @@ import {
   fetchIngredient,
 } from '../../redux/drinks/operations';
 
+import { object, string, array } from 'yup';
+
+const addDrinkSchema = object({
+  drink: string().trim().required('This field is required'),
+  description: string().required('This field is required'),
+  category: string().required('This field is required'),
+  glass: string().required('This field is required'),
+  alcoholic: string().required('This field is required'),
+  ingredients: array()
+    .min(1, 'Must be at least one ingredient')
+    .of(
+      object({
+        title: string('title should be string').required(
+          'This field is required',
+        ),
+        measure: string('measure should be string').required(
+          'This field is required',
+        ),
+      }),
+    ),
+  instructions: string().required('This field is required'),
+});
+
 const AddDrinkForm = () => {
   const dispatch = useDispatch();
 
@@ -33,6 +56,7 @@ const AddDrinkForm = () => {
     console.log(formValues);
     console.log(values);
     dispatch(setForm(initialValues));
+    actions.resetForm({ values: initialValues });
   };
 
   const onChangeHandler = (payload, field) => {
@@ -47,23 +71,31 @@ const AddDrinkForm = () => {
 
   return (
     <Wrapper>
-      <Formik initialValues={formValues} onSubmit={submitHandler}>
-        {({ setFieldValue }) => (
+      <Formik
+        initialValues={formValues}
+        validationSchema={addDrinkSchema}
+        onSubmit={submitHandler}
+      >
+        {({ setFieldValue, errors, values, resetForm }) => (
           <Form>
             <DrinkDescriptionFields
               isAlcoholic={isAlcoholic}
               setIsAlcoholic={setIsAlcoholic}
               onChangeHandler={onChangeHandler}
               setFieldValue={setFieldValue}
+              errors={errors}
             />
             <DrinkIngredientsFields
               isAlcoholic={isAlcoholic}
               onChangeHandler={onChangeHandler}
               setFieldValue={setFieldValue}
+              errors={errors}
             />
+            <p>{console.log(errors)}</p>
             <RecipePreparation
               onChangeHandler={onChangeHandler}
               setFieldValue={setFieldValue}
+              errors={errors}
             />
             <Button
               type="submit"

@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 10px;
   margin-bottom: 80px;
 `;
 
@@ -15,12 +15,13 @@ export const ImageThumb = styled.div`
   height: 320px;
   border-radius: 8px;
   background-color: rgba(22, 31, 55, 0.5);
+  background-size: cover;
 `;
 // background-image: url(${DummyDrinkThumb}); in ImageThumb
 
 export const Img = styled.img`
   width: 100%;
-  height: 100%;
+  height: auto;
 `;
 
 export const DivAddImage = styled.div`
@@ -29,6 +30,17 @@ export const DivAddImage = styled.div`
   justify-content: center;
   gap: 18px;
   align-items: center;
+`;
+
+export const LabelTranslucent = styled.label`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 80%;
+  height: 80%;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgba(243, 243, 243, 0.75);
 `;
 
 export const Label = styled.label`
@@ -55,37 +67,49 @@ export const SpanAddImage = styled.span`
 `;
 
 export const DivDesription = styled.div`
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   letter-spacing: -0.02em;
-  gap: 30px;
   width: 100%;
 `;
 
 export const Input = styled.input`
-  padding-bottom: 14px;
+  padding-top: 30px;
   background-color: inherit;
+  font-size: 14px;
   color: #f3f3f3;
   letter-spacing: -0.02em;
   outline: none;
   border: none;
-  border-bottom: 1px solid rgba(243, 243, 243, 0.5);
+
   text-transform: capitalize;
+`;
+export const ErrorText = styled.div`
+  display: flex;
+  height: 14px;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+  letter-spacing: 0;
+  color: #da1414;
+  border-bottom: 1px solid rgba(243, 243, 243, 0.5);
 `;
 
 export const DivSelect = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 14px;
   background-color: inherit;
   color: #f3f3f3;
-  border-bottom: 1px solid rgba(243, 243, 243, 0.5);
+`;
+
+export const DivFlexSelect = styled.span`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const SpanSelect = styled.span`
+  padding-top: 30px;
   font-size: 14px;
-  font-weight: regular;
-  line-height: auto;
+  font-weight: 400;
   letter-spacing: -0.02em;
   color: rgba(243, 243, 243, 0.5);
 `;
@@ -96,4 +120,25 @@ export const DivAlcoholic = styled.div`
   color: #f3f3f3;
   font-size: 14px;
   letter-spacing: -0.02em;
+`;
+export const RadioInput = styled.input`
+  appearance: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  border: 1.3px solid rgba(243, 243, 243, 0.5);
+  margin-right: 4px;
+  margin-left: 0;
+  position: relative;
+  top: 3px;
+  // opacity: 0.5;
+  :checked {
+    box-sizing: content-box;
+    width: 10px;
+    height: 10px;
+    background-color: #f3f3f3;
+    border: 3px solid black;
+    outline: 1.3px ridge #f3f3f3;
+    // opacity: 1;
+  }
 `;
