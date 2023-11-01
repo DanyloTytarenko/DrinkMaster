@@ -1,4 +1,4 @@
-import{n as t,o as e,r as i,H as f,j as s}from"./index-b707c6f8.js";import{D as n}from"./DrinksList-edb34e57.js";import{e as c,f as p}from"./selectors-b7d0a63b.js";import{u as x}from"./useDispatch-0d88a869.js";const d=t.div`
+import{n as t,o as e,r as i,H as f,j as s}from"./index-a9339471.js";import{D as n}from"./DrinksList-312d2360.js";import{e as c,f as p}from"./selectors-b7d0a63b.js";import{u as x}from"./useDispatch-1e1cb225.js";const d=t.div`
 padding: 100px;
 `,l=t.h1`
   color: #ffffff;
