@@ -109,12 +109,12 @@ export const DrinksList = () => {
   //   },
   // ];
   console.log(location.pathname);
-   if (location.pathname === '/DrinkMaster/my') {
-     listOfDrinks = useSelector(selectOwnDrinks);
-     console.log(listOfDrinks)
+  if (location.pathname === '/DrinkMaster/my') {
+    listOfDrinks = useSelector(selectOwnDrinks);
+    console.log(listOfDrinks);
   } else if (location.pathname === '/DrinkMaster/favorites') {
-     listOfDrinks = useSelector(selectFavoriteDrinks);
-      console.log(listOfDrinks)
+    listOfDrinks = useSelector(selectFavoriteDrinks);
+    console.log(listOfDrinks);
   }
   return (
     <List>
