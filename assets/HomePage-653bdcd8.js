@@ -1,4 +1,4 @@
-import{n as t,j as e}from"./index-3bd5e235.js";import{H as a,F as r}from"./Footer-39f6f2c2.js";import"./useDispatch-c31e1ece.js";const f=t.div`
+import{n as t,j as e}from"./index-21836d55.js";import{H as a,F as r}from"./Header-12b1000d.js";import"./index.esm-626fefcd.js";const f=t.div`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,4 +1,4 @@
-import{s as o,m as i,L as $,o as s,j as t,r as c,p as f,q as C,t as g,v as z,w as I,x as L,y as E}from"./index-3bd5e235.js";import{S as M}from"./react-select.esm-f14e440a.js";import{u as b}from"./useMediaQuery-782d7724.js";import{u as w}from"./useDispatch-c31e1ece.js";import{H as Q,F as T}from"./Footer-39f6f2c2.js";import"./assertThisInitialized-442eebbc.js";import"./getThemeProps-66d04ca9.js";const F="/DrinkMaster/assets/drink-image-fca35edf.jpg",P=e=>e.drinks.searchQuery,k=e=>e.drinks.categories,y=e=>e.drinks.ingredients,R=e=>e.drinks.page,S=e=>e.drinks.searchResults,W=o.ul`
+import{s as o,L as $,u as s,j as t,r as c,h as f,i as C,k as g,m as z,o as I,p as L,q as E}from"./index-21836d55.js";import{c as i,H as M,F as Q}from"./Header-12b1000d.js";import{S as T}from"./react-select.esm-bf535a7e.js";import{u as b}from"./useMediaQuery-1da90b27.js";import{u as w}from"./index.esm-626fefcd.js";import"./assertThisInitialized-0aa154e7.js";import"./getThemeProps-5b8d601d.js";const F="/DrinkMaster/assets/drink-image-fca35edf.jpg",P=e=>e.drinks.searchQuery,k=e=>e.drinks.categories,y=e=>e.drinks.ingredients,R=e=>e.drinks.page,S=e=>e.drinks.searchResults,W=o.ul`
   margin-top: 40px;
   display: flex;
   flex-direction: column;
@@ -137,7 +137,7 @@ import{s as o,m as i,L as $,o as s,j as t,r as c,p as f,q as C,t as g,v as z,w a
 `,X=o(G)`
   display: block;
   stroke: ${i.light}; //#f3f3f3
-`,m=o(M)`
+`,m=o(T)`
   .react-select__control {
     width: 335px;
     height: 54px;
@@ -267,7 +267,7 @@ import{s as o,m as i,L as $,o as s,j as t,r as c,p as f,q as C,t as g,v as z,w a
       background-color: transparent;
     }
   }
-`,u={dropdownIndicator:(e,a)=>({...e,transform:a.isFocused?"rotate(180deg)":"rotate(0deg)"})},Y=()=>{const[e,a]=c.useState(""),d=s(k),l=s(y),n=w(),h=b("(max-width:767px)");c.useEffect(()=>{h&&n(f(e))},[n,h,e]);const p=(r,x="")=>{switch(r){case"searchQuery":a(x),n(g(1));break;case"category":n(z(x)),n(g(1));break;case"ingredient":n(C(x)),n(g(1));break}},j=r=>{p("searchQuery",r.target.value.trim())},_=r=>{p("category",r.value)},v=r=>{p("ingredient",r.value)},D=r=>{r.preventDefault(),n(f(e))};return t.jsx(J,{children:t.jsxs(K,{onSubmit:D,children:[t.jsxs(O,{children:[t.jsx(U,{type:"text",placeholder:"Enter the text",onChange:j}),t.jsx(V,{type:"submit",children:t.jsx(X,{})})]}),t.jsx(m,{name:"category",placeholder:"All categories",classNamePrefix:"react-select",styles:u,options:d.map(r=>({label:r,value:r})),onChange:_}),t.jsx(m,{name:"ingredient",styles:u,placeholder:"Ingredients",classNamePrefix:"react-select",options:l.map(r=>({label:r.title,value:r.title})),onChange:v})]})})},ee=o.h1`
+`,u={dropdownIndicator:(e,a)=>({...e,transform:a.isFocused?"rotate(180deg)":"rotate(0deg)"})},Y=()=>{const[e,a]=c.useState(""),d=s(k),l=s(y),n=w(),h=b("(max-width:767px)");c.useEffect(()=>{h&&n(f(e))},[n,h,e]);const p=(r,x="")=>{switch(r){case"searchQuery":a(x),n(g(1));break;case"category":n(z(x)),n(g(1));break;case"ingredient":n(C(x)),n(g(1));break}},j=r=>{p("searchQuery",r.target.value.trim())},_=r=>{p("category",r.value)},D=r=>{p("ingredient",r.value)},v=r=>{r.preventDefault(),n(f(e))};return t.jsx(J,{children:t.jsxs(K,{onSubmit:v,children:[t.jsxs(O,{children:[t.jsx(U,{type:"text",placeholder:"Enter the text",onChange:j}),t.jsx(V,{type:"submit",children:t.jsx(X,{})})]}),t.jsx(m,{name:"category",placeholder:"All categories",classNamePrefix:"react-select",styles:u,options:d.map(r=>({label:r,value:r})),onChange:_}),t.jsx(m,{name:"ingredient",styles:u,placeholder:"Ingredients",classNamePrefix:"react-select",options:l.map(r=>({label:r.title,value:r.title})),onChange:D})]})})},ee=o.h1`
   color: #ffffff;
   text-shadow:
     0 0 5px #00baff,
@@ -300,4 +300,4 @@ import{s as o,m as i,L as $,o as s,j as t,r as c,p as f,q as C,t as g,v as z,w a
     padding-top: 160px;
     max-width: 1440px;
   }
-`,de=()=>{const e=s(k),a=s(y);s(S);const d=s(R),l=s(P),n=w(),p=b("(min-width:769px)")?9:10;return c.useEffect(()=>{e.length||n(I())},[e,n]),c.useEffect(()=>{a.length||n(L())},[n,a]),c.useEffect(()=>{n(E({searchQuery:l,page:d,limit:p}))},[n,p,d,l]),t.jsxs(t.Fragment,{children:[t.jsx(Q,{}),t.jsxs(te,{children:[t.jsx(ee,{children:"DrinksPage"}),t.jsx(Y,{}),t.jsx(Z,{})]}),t.jsx(T,{})]})};export{de as default};
+`,de=()=>{const e=s(k),a=s(y);s(S);const d=s(R),l=s(P),n=w(),p=b("(min-width:769px)")?9:10;return c.useEffect(()=>{e.length||n(I())},[e,n]),c.useEffect(()=>{a.length||n(L())},[n,a]),c.useEffect(()=>{n(E({searchQuery:l,page:d,limit:p}))},[n,p,d,l]),t.jsxs(t.Fragment,{children:[t.jsx(M,{}),t.jsxs(te,{children:[t.jsx(ee,{children:"DrinksPage"}),t.jsx(Y,{}),t.jsx(Z,{})]}),t.jsx(Q,{})]})};export{de as default};
