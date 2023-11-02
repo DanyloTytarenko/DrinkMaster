@@ -10,7 +10,6 @@ export const DropDown = () => {
   const [isOpen, setIsOpen] = useState(false);
     const [LogOut, setLogOut] = useState(false);
   const [EditProfile, setEditProfile] = useState(false);
-  
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [inputName, setInputName] = useState(user.name);

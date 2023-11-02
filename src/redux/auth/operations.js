@@ -72,7 +72,6 @@ export const updateUser = createAsyncThunk('/users/update', async (userData, thu
     const result = await axios.patch('/users/update', userData);
     console.log(result)
     return result.data;
-    // After a successful logout, remove the token from the HTTP header
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }

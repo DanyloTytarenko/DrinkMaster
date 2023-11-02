@@ -53,5 +53,17 @@ export const MenuItems = styled.ul`
     right: 0;
     bottom: 0;
     background: ${colors.primaryDark};
+    z-index: 10;
   `}
 `;
+
+export const Gradient = styled.div`
+width: 257px;
+height: 247px;
+border-radius: 257px;
+background: rgba(188, 230, 210, 0.40);
+filter: blur(104.8543701171875px);
+position: absolute;
+top:0;
+left: 10%;
+`
