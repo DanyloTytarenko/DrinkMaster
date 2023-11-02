@@ -1,6 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 axios.defaults.baseURL = 'https://drinks-whm4.onrender.com';
+
+export const setToken = (token) => {
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+};
+
 export const fetchOwnDrinks = createAsyncThunk(
   'drinks/fetchOwn',
   async (_, thunkAPI) => {

@@ -69,7 +69,7 @@ function App() {
           />
 
           <Route
-            path="drinks/:drinkId"
+            path="drink/:drinkId"
             element={
               <PrivateRoute component={<DrinkDetailsPage />}></PrivateRoute>
             }
