@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import {
   Container,
   Title,
@@ -7,6 +9,7 @@ import {
   Button,
 } from './DrinkDetails.styled';
 import data from './recipes';
+import { fetchDrinkById } from 'src/redux/drinks/operations';
 
 // import { useState, useEffect, useRef, Suspense } from 'react';
 // import { Outlet, Link, useParams, useLocation } from 'react-router-dom';
@@ -15,9 +18,18 @@ import data from './recipes';
 // import Loader from 'components/Loader/Loader';
 
 const DrinkDetails = () => {
-  // const { id } = useParams();
-  // const [isError, setIsError] = useState(false);
-  // const location = useLocation();
+  // ** from DrinkDetaisPage
+  const { drinkId } = useParams();
+  const dispatch = useDispatch();
+  // const isLoading = useSelector(selectDrinkDetailsIsLoadin);
+  // const error = useSelector(selectDrinkDetailsError);
+
+  useEffect(() => {
+    dispatch(fetchDrinkById(drinkId));
+    // dispatch(fetchFavoriteDrinks());
+  }, [dispatch]);
+
+  // **
 
   const [favorite, setfavorite] = useState(true);
   // const favorite = true;
