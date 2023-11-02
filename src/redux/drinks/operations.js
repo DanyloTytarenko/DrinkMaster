@@ -105,3 +105,16 @@ export const fetchIngredient = createAsyncThunk(
     }
   },
 );
+
+// *** for DrinkById
+export const fetchDrinkById = createAsyncThunk(
+  'drinks/fetchDrinkById',
+  async (drinkId, thunkAPI) => {
+    try {
+      const response = await axios.get(`/drinks/${drinkId}`);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+);
