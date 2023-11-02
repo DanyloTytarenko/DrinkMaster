@@ -1,4 +1,4 @@
-import{s as t,F as s,j as e,G as l,H as c,u as r}from"./index-cca17720.js";import{u as p}from"./formik.esm-be4a9e5b.js";import{g as d,h as x}from"./selectors-6ace5bbf.js";const h=t.ul`
+import{s as t,M as s,j as e,O as l,P as c,t as r}from"./index-954ebb4f.js";import{u as p}from"./useDispatch-464cbf80.js";import{g as d,h as x}from"./selectors-6ace5bbf.js";const h=t.ul`
 display: flex;
 flex-wrap: wrap; 
 justify-content:center;
@@ -72,4 +72,4 @@ border-radius: 42px;
 background: ${s.secondaryDark};
 font-weight: 600;
 border:none;
-`,b="/DrinkMaster/assets/sprite-4ab4835d.svg",v=({id:n,drink:i})=>{const o=p(),a=()=>{location.pathname==="/my"?o(l(n)):location.pathname==="/favorites"&&o(c(n))};return e.jsxs(m,{children:[e.jsx(g,{src:i.photo,alt:"Photo of cocktail"}),e.jsxs(D,{children:[e.jsx(f,{children:i.name}),e.jsx(w,{children:i.alco})]}),e.jsx(u,{children:i.desc}),e.jsxs(k,{children:[e.jsx(j,{children:"See more"}),e.jsx(y,{onClick:a,children:e.jsx("svg",{width:"24px",height:"24px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${b}#icon-trash`})})})]})]})},M=()=>{let n;return console.log(location.pathname),location.pathname==="/DrinkMaster/my"?(n=r(d),console.log(n)):location.pathname==="/DrinkMaster/favorites"&&(n=r(x),console.log(n)),e.jsx(h,{children:n.map((i,o)=>e.jsx(v,{drink:i},o))})};export{M as D};
+`,b="/DrinkMaster/assets/sprite-4ab4835d.svg",v=({id:n,drink:i})=>{const o=p(),a=()=>{location.pathname==="/my"?o(l(n)):location.pathname==="/favorites"&&o(c(n))};return e.jsxs(m,{children:[e.jsx(g,{src:i.photo,alt:"Photo of cocktail"}),e.jsxs(D,{children:[e.jsx(f,{children:i.name}),e.jsx(w,{children:i.alco})]}),e.jsx(u,{children:i.desc}),e.jsxs(k,{children:[e.jsx(j,{children:"See more"}),e.jsx(y,{onClick:a,children:e.jsx("svg",{width:"24px",height:"24px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${b}#icon-trash`})})})]})]})},$=()=>{let n;return console.log(location.pathname),location.pathname==="/DrinkMaster/my"?(n=r(d),console.log(n)):location.pathname==="/DrinkMaster/favorites"&&(n=r(x),console.log(n)),e.jsx(h,{children:n.map((i,o)=>e.jsx(v,{drink:i},o))})};export{$ as D};
