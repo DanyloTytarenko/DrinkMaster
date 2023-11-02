@@ -7,6 +7,8 @@ import {
   selectErrorOwn,
   selectIsLoadingOwn,
 } from '../../redux/drinks/selectors';
+import Header from 'src/components/Header/Header';
+import Footer from 'src/components/Footer/Footer';
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoadingOwn);
@@ -16,11 +18,15 @@ const MyDrinksPage = () => {
     dispatch(fetchOwnDrinks());
   }, [dispatch]);
   return (
-    <Container>
-      <Title>DrinksPage Page</Title>
-      {isLoading && !error && <b>Request in progress...</b>}
-      <DrinksList />
-    </Container>
+    <>
+      <Header></Header>
+      <Container>
+        <Title>DrinksPage Page</Title>
+        {isLoading && !error && <b>Request in progress...</b>}
+        <DrinksList />
+      </Container>
+      <Footer></Footer>
+    </>
   );
 };
 
