@@ -1,46 +1,69 @@
 import styled from 'styled-components';
+import { colors } from '../../../colors';
+
 export const BurgerContainer = styled.div`
   position: relative;
 `;
 
 export const BurgerIcon = styled.div`
   display: flex;
+  align-items: center;
   flex-direction: column;
   width: 32px;
-  height:32px;
+  height: 32px;
   justify-content: space-evenly;
   cursor: pointer;
+
+    @media screen and (min-width: 768px) { 
+      width: 38px;
+      height: 38px;
+  }
 `;
 
 export const Bar = styled.div`
-  height: 3px;
+  width: 26px;  
+  height: 2px;
   border-radius: 10px;
-  background-color: #F3F3F3;
-  margin: 0
+  background-color: ${colors.light};
+  margin: 0;
   transition: 0.4s;
-   @media screen and (min-width: 768px) { 
-    width: 28px;
-   }
+
+    @media screen and (min-width: 768px) { 
+      width: 30px;
+  }
 `;
 
 export const MenuItems = styled.ul`
   display: none;
+
   ${({ open }) =>
-open &&
+    open &&
     `
     display: block;
     width: 100vw;
     height: 100vh;
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
     gap: 16px;
     justify-content: center;
     align-items: center;
-     position: fixed;
-  top: 85px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-//   background: #0A0A11;
+    position: fixed;
+    top: 73px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: ${colors.primaryDark};
+    z-index: 10;
   `}
 `;
+
+export const Gradient = styled.div`
+width: 257px;
+height: 247px;
+border-radius: 257px;
+background: rgba(188, 230, 210, 0.40);
+filter: blur(104.8543701171875px);
+position: absolute;
+top:0;
+left: 10%;
+`

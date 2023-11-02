@@ -7,7 +7,7 @@ import { BurgerMenu } from './BurgerMenu/BurgerMenu';
 import {
   HeaderContainer
 } from './Header.styled';
-
+import { DropDown } from '../Modal/DropDown';
 const Header = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -23,13 +23,25 @@ const Header = () => {
     };
   }, []);
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <HeaderContainer>
       <Logo />
-      {windowWidth >= 1440 && <Navigation />}
-      <ThemeToggler />
-      <UserLogo />
-      {windowWidth < 1440 && <BurgerMenu />}
+      {windowWidth >= 1440 && <>
+       <Navigation />
+       <ThemeToggler />
+        <DropDown />
+      </>
+      }
+      {windowWidth < 1440 && <>
+        {isMenuOpen ? <ThemeToggler /> : <DropDown />}
+        <BurgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+      </>}
     </HeaderContainer>
   );
 };

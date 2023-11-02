@@ -8,8 +8,10 @@ flex-direction: column;
 align-items: center;
 gap: 16px;
 
-@media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     flex-direction: row;
+    margin-left: 224px;
+    margin-right: 191px;
   }
 `;
 
@@ -25,12 +27,12 @@ export const StyledNavigationLink = styled(NavLink)`
   transition: background 0.2s;
   overflow: hidden;
 
-&.active {
+  &.active {
     background: ${colors.secondaryDark};
     border: ${colors.primaryDark};
   }
 
   @media screen and (min-width: 768px) {
-    line-height: 22.4px; /* 160% */
+    line-height: 22.4px; 
   }
 `;
