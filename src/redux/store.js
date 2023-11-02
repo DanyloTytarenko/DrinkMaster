@@ -12,6 +12,7 @@ import { authReducer } from './auth/slice';
 import { ownDrinksReducer, favoriteDrinksReducer } from './drinks/drinksSlice';
 import { persistedFormReducer } from './drinks/formSlice';
 import { newDrinksReducer } from './homepage/newDrinkSlice';
+import { drinksReducer } from './drinks/drinksPage/drinksPageSlice';
 import {
   categoryReducer,
   glassReducer,
@@ -25,6 +26,7 @@ export const store = configureStore({
     favoriteDrinks: favoriteDrinksReducer,
     form: persistedFormReducer,
     newDrinks: newDrinksReducer,
+    drinks: drinksReducer,
     category: categoryReducer,
     glass: glassReducer,
     ingredient: ingredientReducer,
