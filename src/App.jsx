@@ -50,7 +50,7 @@ function App() {
           />
           <Route
             path="drinks"
-            element={<PrivateRoute component={<DrinksPage />}></PrivateRoute>}
+            element={<PrivateRoute component={<DrinksPage />} />}
           />
           <Route
             path="add"
