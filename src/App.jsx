@@ -13,6 +13,9 @@ const MyDrinksPage = lazy(() => import('./pages/MyDrinksPage/MyDrinksPage'));
 const FavoriteDrinkPage = lazy(() =>
   import('./pages/FavoriteDrinkPage/FavoriteDrinkPage'),
 );
+const DrinkDetailsPage = lazy(() =>
+  import('./pages/DrinkDetailsPage/DrinkDetailsPage'),
+);
 const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 import { AppWrapper } from './App.styled';
@@ -63,6 +66,13 @@ function App() {
           <Route
             path="favorites"
             element={<PrivateRoute component={<FavoriteDrinkPage />} />}
+          />
+
+          <Route
+            path="drinks/:drinkId"
+            element={
+              <PrivateRoute component={<DrinkDetailsPage />}></PrivateRoute>
+            }
           />
 
           <Route path="*" element={<ErrorPage />} />

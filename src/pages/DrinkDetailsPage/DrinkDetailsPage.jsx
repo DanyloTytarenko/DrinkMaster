@@ -22,10 +22,14 @@ const DrinkDetailsPage = () => {
   }, [dispatch]);
 
   return (
-    <Container>
-      {isLoading && !error && <b>Request in progress...</b>}
-      <DrinkDetails />
-    </Container>
+    <>
+      <Header></Header>
+      <Container>
+        {/* {isLoading && !error && <b>Request in progress...</b>} */}
+        <DrinkDetails />
+      </Container>
+      <Footer></Footer>
+    </>
   );
 };
 

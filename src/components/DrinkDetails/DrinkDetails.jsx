@@ -39,7 +39,7 @@ const DrinkDetails = () => {
 
   const { drink, glass, alcoholic, description, drinkThumb } = data;
   return (
-    <Container>
+    <div>
       <Title>{drink}</Title>
       <Glass>
         {glass} / {alcoholic}
@@ -55,9 +55,9 @@ const DrinkDetails = () => {
         </Button>
       )}
       <div>
-        <img src={drinkThumb} alt="" height={400} />
+        <img src={drinkThumb} alt="picture Cocktail" height={400} />
       </div>
-    </Container>
+    </div>
   );
 };
 
