@@ -9,18 +9,29 @@ export const Title = styled.h2`
   margin-bottom: 40px;
   font-size: 28px;
   line-height: calc(32 / 28);
+  @media only screen and (min-width: 768px) {
+    font-size: 40px;
+    line-height: calc(44 / 40);
+  }
   letter-spacing: 0;
   color: #f3f3f3;
 `;
 
 export const Textarea = styled.textarea`
   padding: 16px 18px;
-  width: 90%;
-  text-transform: capitalize;
+  width: 100%;
+  @media only screen and (min-width: 768px) {
+    width: 480px;
+  }
+  height: 184px;
+  font-size: 17px;
+  line-height: 1.59;
+  letter-spacing: 0;
   background-color: inherit;
-  color: rgba(243, 243, 243, 0.5);
+  color: rgba(243, 243, 243, 1);
   border: 1px solid rgba(243, 243, 243, 0.5);
   border-radius: 14px;
+  box-sizing: border-box;
 `;
 
 export const Span = styled.span`

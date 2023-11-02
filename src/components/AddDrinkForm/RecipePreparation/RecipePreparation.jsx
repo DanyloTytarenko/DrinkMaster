@@ -29,7 +29,7 @@ const RecipePreparation = ({ onChangeHandler, setFieldValue, errors }) => {
       <Textarea
         name="instructions"
         placeholder="Enter the recipe"
-        rows={7}
+        rows={6}
         value={form.instructions}
         onChange={(e) => {
           setFieldValue('instructions', e.target.value);

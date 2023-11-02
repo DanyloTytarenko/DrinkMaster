@@ -6,7 +6,6 @@ const AddDrinkPage = () => {
     <Container>
       <Title>AddDrinkPage</Title>
       <AddDrinkForm />
-      <div>Follow us</div>
     </Container>
   );
 };

@@ -26,6 +26,11 @@ export const DivIncrement = styled.div`
   align-items: center;
   border: 1px solid rgba(243, 243, 243, 0.5);
   border-radius: 200px;
+  @media only screen and (min-width: 768px) {
+    height: 44px;
+    padding: 0px 10px;
+    gap: 18px;
+  }
 `;
 
 export const Button = styled.button`
@@ -48,6 +53,10 @@ export const SpanIncrement = styled.span`
   color: #f3f3f3;
   font-size: 14px;
   line-height: calc(18 / 14);
+  @media only screen and (min-width: 768px) {
+    font-size: 17px;
+    line-height: 1.56;
+  }
 `;
 
 export const List = styled.ul`
@@ -55,4 +64,7 @@ export const List = styled.ul`
   gap: 18px;
   flex-direction: column;
   list-style: none;
+  @media only screen and (min-width: 768px) {
+    gap: 24px;
+  }
 `;
