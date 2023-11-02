@@ -37,7 +37,7 @@ const DrinkDescriptionFields = ({
   const glassArray = useSelector(selectGlass);
 
   const persistedForm = useSelector(selectForm);
-  const form = persistedForm;
+  const form = persistedForm.form;
 
   const [uri, setUri] = useState();
 

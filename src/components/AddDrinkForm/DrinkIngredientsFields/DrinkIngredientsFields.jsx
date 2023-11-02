@@ -21,7 +21,7 @@ const DrinkIngredientsFields = ({
   errors,
 }) => {
   const persistedForm = useSelector(selectForm);
-  const form = persistedForm;
+  const form = persistedForm.form;
 
   const ingredientsData = useSelector(selectIngredient);
 

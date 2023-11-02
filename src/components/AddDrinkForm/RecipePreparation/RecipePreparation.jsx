@@ -12,7 +12,8 @@ import { selectForm } from '../../../redux/drinks/selectors';
 
 const RecipePreparation = ({ onChangeHandler, setFieldValue, errors }) => {
   const persistedForm = useSelector(selectForm);
-  const form = persistedForm;
+  const form = persistedForm.form;
+  console.log(form);
   return (
     <Div>
       <Title>Recipe Preparation</Title>
