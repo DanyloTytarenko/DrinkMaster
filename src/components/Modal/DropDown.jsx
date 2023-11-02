@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch,  useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors'
-import { logOut } from '../../redux/auth/operations'
+import { logOut, updateUser } from '../../redux/auth/operations'
 import UserLogo from '../UserLogo/UserLogo';
 import { Modal, TextDropDown, LogOutBtn, Text, LogOutWrapper, CancelButton, CloseBtn, NameInput, SaveBtn, PhotoWrapper, AddBtn, Photo, Form, ImgInput } from './Modal.styled';
 import { UserLogoWrap, UserSvg } from '../UserLogo/UserLogo.styled';
@@ -10,8 +10,10 @@ export const DropDown = () => {
   const [isOpen, setIsOpen] = useState(false);
     const [LogOut, setLogOut] = useState(false);
   const [EditProfile, setEditProfile] = useState(false);
+  
   const dispatch = useDispatch();
-   const user = useSelector(selectUser);
+  const user = useSelector(selectUser);
+  const [inputName, setInputName] = useState(user.name);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     };
@@ -26,6 +28,14 @@ export const DropDown = () => {
          setEditProfile(false);
          setIsOpen(false);
   };
+  const handleSubmit = e => {
+    e.preventDefault();
+    const name = e.target.elements.name.value;
+    if (name === user.name) { 
+      return;
+    } else {
+      dispatch(updateUser({name}))
+    }}
     return (
         <>
             <div onClick={toggleMenu}>
@@ -52,7 +62,7 @@ export const DropDown = () => {
                             <use href={`${sprite}#icon-close`} />
                              </svg>
                 </CloseBtn>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                   <Photo>
                         <PhotoWrapper>
                           <svg width="100px" height="100px" stroke="#F3F3F3">
@@ -64,10 +74,13 @@ export const DropDown = () => {
                             </svg>
                     </AddBtn>
                   </Photo>   
-                  <ImgInput type="text"/>
+                        <ImgInput type="text"/>
                         <NameInput
-                        type="text"
-                        value={user.name} />
+                    type="text"
+                    name="name"
+                    value={inputName}
+                    onChange={(e) => setInputName(e.target.value)}
+                  />
                   <SaveBtn type='submit'>Save changes</SaveBtn>
                 </Form>
                     </>
