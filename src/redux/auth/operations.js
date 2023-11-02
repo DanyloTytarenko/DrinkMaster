@@ -1,18 +1,17 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// розкоментувати коли буде готовий бек
 axios.defaults.baseURL = 'https://drinks-whm4.onrender.com';
-// https://drinks-whm4.onrender.com/auth/singup
+
 // Utility to add JWT
-const setAuthHeader = token => {
+const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 // Utility to remove JWT
-// const clearAuthHeader = () => {
-//   axios.defaults.headers.common.Authorization = '';
-// };
+const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = '';
+};
 
 /*
  * POST @ /signup
@@ -22,16 +21,16 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
+      const result = await axios.post('/auth/signup', credentials);
 
-      const result = await axios.post('/auth/singup', credentials);
       // After successful registration, add the token to the HTTP header
-        // setAuthHeader(result.data.token);
+      setAuthHeader(result.data.accessToken);
 
       return result.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.status);
     }
-  }
+  },
 );
 
 /*
@@ -42,14 +41,40 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      const result = await axios.post('/auth/singin', credentials);
-      console.log(result.data)
+      const result = await axios.post('/auth/signin', credentials);
+
       // After successful login, add the token to the HTTP header
-      setAuthHeader(result.data.token);
+      setAuthHeader(result.data.accessToken);
 
       return result.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.status);
     }
-  }
+  },
 );
+
+/* POST @ /auth/singout
+ * headers: Authorization: Bearer token
+ */
+export const logOut = createAsyncThunk('/auth/logout', async (_, thunkAPI) => {
+  try {
+    await axios.post('/auth/signout');
+    // After a successful logout, remove the token from the HTTP header
+    clearAuthHeader();
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+/* POST @ /auth/singout
+ * headers: Authorization: Bearer token
+ */
+// export const updateUser = createAsyncThunk('/auth/logout', async (_, thunkAPI) => {
+//   try {
+//     await axios.post('/auth/singout');
+//     // After a successful logout, remove the token from the HTTP header
+//     clearAuthHeader();
+//   } catch (error) {
+//     return thunkAPI.rejectWithValue(error.message);
+//   }
+// });

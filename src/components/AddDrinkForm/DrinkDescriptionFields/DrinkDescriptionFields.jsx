@@ -23,11 +23,13 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectForm } from '../../../redux/drinks/selectors';
 import { selectCategory, selectGlass } from '../../../redux/drinks/selectors';
+import { selectUser } from '../../../redux/auth/selectors';
+
+import { isUserAdult } from '../../../utils/isUserAdult';
 
 import DummyDrinkThumb from '../../../images/dummyDrinkThumb.png';
 
 const DrinkDescriptionFields = ({
-  isAlcoholic,
   setIsAlcoholic,
   onChangeHandler,
   setFieldValue,
@@ -39,6 +41,13 @@ const DrinkDescriptionFields = ({
   const persistedForm = useSelector(selectForm);
   const form = persistedForm.form;
 
+  const user = useSelector(selectUser);
+  console.log(user);
+
+  if (isUserAdult(user.birthday) === false && form.alcoholic === 'Alcoholic') {
+    onChangeHandler('Non alcoholic', 'alcoholic');
+  }
+
   const [uri, setUri] = useState();
 
   // функція для запису масив об'єктів інгрідієнтів, у формі необхідній для роботи селекту.
@@ -47,12 +56,6 @@ const DrinkDescriptionFields = ({
     array.map((item) => {
       return { value: item, label: item };
     });
-
-  const radioHandler = (value) => {
-    if (value === 'Alcoholic') {
-      setIsAlcoholic(true);
-    } else setIsAlcoholic(false);
-  };
 
   // функція відправки обраного файлу на сервер
   const addImagehandler = (e) => {
@@ -272,12 +275,13 @@ const DrinkDescriptionFields = ({
             type="radio"
             value="Alcoholic"
             name="alcoholic"
-            checked={isAlcoholic === true}
+            checked={form.alcoholic === 'Alcoholic' ? true : false}
             onChange={(e) => {
               setFieldValue('alcoholic', e.target.value);
-              radioHandler(e.target.value);
+
               onChangeHandler(e.target.value, 'alcoholic');
             }}
+            disabled={isUserAdult(user.birthday) ? false : true}
           />
           Alcoholic
         </label>
@@ -286,10 +290,15 @@ const DrinkDescriptionFields = ({
             type="radio"
             value="Non alcoholic"
             name="alcoholic"
-            checked={isAlcoholic === false}
+            checked={
+              isUserAdult(user.birthday) === false ||
+              form.alcoholic === 'Non alcoholic'
+                ? true
+                : false
+            }
             onChange={(e) => {
               setFieldValue('alcoholic', e.target.value);
-              radioHandler(e.target.value);
+
               onChangeHandler(e.target.value, 'alcoholic');
             }}
           />

@@ -5,15 +5,17 @@ import RecipePreparation from './RecipePreparation/RecipePreparation';
 
 import { Formik, Form } from 'formik';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setForm } from '../../redux/drinks/formSlice';
 import { selectForm } from '../../redux/drinks/selectors';
+
 import { initialValues } from '../../utils/addDrinkFormInitials';
 import {
   fetchCategories,
   fetchGlass,
   fetchIngredient,
+  addOwnDrink,
 } from '../../redux/drinks/operations';
 
 import { object, string, array } from 'yup';
@@ -28,12 +30,8 @@ const addDrinkSchema = object({
     .min(1, 'Must be at least one ingredient')
     .of(
       object({
-        title: string('title should be string').required(
-          'This field is required',
-        ),
-        measure: string('measure should be string').required(
-          'This field is required',
-        ),
+        title: string().required('This field is required'),
+        measure: string().required('This field is required'),
       }),
     ),
   instructions: string().required('This field is required'),
@@ -50,11 +48,11 @@ const AddDrinkForm = () => {
 
   const persistedForm = useSelector(selectForm);
   const formValues = persistedForm.form;
-  const [isAlcoholic, setIsAlcoholic] = useState(true);
 
   const submitHandler = (values, actions) => {
     console.log(formValues);
     console.log(values);
+    dispatch(addOwnDrink(formValues));
     dispatch(setForm(initialValues));
     actions.resetForm({ values: initialValues });
   };
@@ -79,14 +77,11 @@ const AddDrinkForm = () => {
         {({ setFieldValue, errors, values, resetForm }) => (
           <Form>
             <DrinkDescriptionFields
-              isAlcoholic={isAlcoholic}
-              setIsAlcoholic={setIsAlcoholic}
               onChangeHandler={onChangeHandler}
               setFieldValue={setFieldValue}
               errors={errors}
             />
             <DrinkIngredientsFields
-              isAlcoholic={isAlcoholic}
               onChangeHandler={onChangeHandler}
               setFieldValue={setFieldValue}
               errors={errors}

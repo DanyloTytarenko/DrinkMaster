@@ -13,7 +13,6 @@ export const Input = styled.input`
   font-size: 14px;
   color: #f3f3f3;
   letter-spacing: -0.02em;
-  text-transform: capitalize;
   outline: none;
   border: 1px solid rgba(243, 243, 243, 0.5);
   border-radius: 200px;

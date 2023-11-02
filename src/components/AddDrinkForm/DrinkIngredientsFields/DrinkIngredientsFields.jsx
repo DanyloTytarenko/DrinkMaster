@@ -14,12 +14,7 @@ import { selectForm } from '../../../redux/drinks/selectors';
 import { selectIngredient } from '../../../redux/drinks/selectors';
 import IngredientItem from './IngredientItem/IngredientItem';
 
-const DrinkIngredientsFields = ({
-  isAlcoholic,
-  onChangeHandler,
-  setFieldValue,
-  errors,
-}) => {
+const DrinkIngredientsFields = ({ onChangeHandler, setFieldValue, errors }) => {
   const persistedForm = useSelector(selectForm);
   const form = persistedForm.form;
 
@@ -27,7 +22,7 @@ const DrinkIngredientsFields = ({
 
   // у зміну записується масив інгрідієнтів, в залежності від обмежень Alcoholic/Non alcoholic
   const ingredientOptions = ingredientsData.filter((el) =>
-    isAlcoholic === true ? el.alcohol : el.alcohol === 'No',
+    form.alcoholic === 'Alcoholic' ? el.alcohol : el.alcohol === 'No',
   );
 
   // у зміну записується масив інгрідієнтів, із урахуванням того, що в базі є інгрідієнти без назви

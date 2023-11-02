@@ -9,9 +9,6 @@ export const initialValues = {
     {
       title: '',
       measure: '',
-      _id: {
-        $oid: '',
-      },
     },
   ],
   instructions: '',
