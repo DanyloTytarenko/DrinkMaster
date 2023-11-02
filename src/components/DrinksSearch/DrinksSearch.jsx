@@ -1,5 +1,18 @@
 import { useEffect, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useMediaQuery } from '@mui/material';
+
+import {
+  selectCategories,
+  selectIngredients,
+} from '../../redux/drinks/drinksPage/drinksPageSelectors';
+import {
+  setCurrentPage,
+  setQuery,
+  setSelectedCategory,
+  setSelectedIngredient,
+} from '../../redux/drinks/drinksPage/drinksPageSlice';
+
 import {
   StyledInput,
   StyledLabel,
@@ -10,36 +23,15 @@ import {
   StyledSelect,
   customStyles,
 } from './DrinksSearch.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectCategories,
-  selectIngredients,
-} from '../../redux/drinks/drinksPageSelectors';
-import {
-  setCurrentPage,
-  setQuery,
-  setSelectedCategory,
-  setSelectedIngredient,
-} from '../../redux/drinks/drinksPageSlice';
-import { useMediaQuery } from '@mui/material';
 
-// const DrinksSearch = ({ categories, ingredients }) => {
 const DrinksSearch = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  // const [category, setCategory] = useState('');
-  // const [ingredient, setIngredient] = useState('');
   const categories = useSelector(selectCategories);
   const ingredients = useSelector(selectIngredients);
 
   const dispatch = useDispatch();
 
   const screenSize = useMediaQuery('(max-width:767px)');
-
-  // useEffect(() => {
-  //   if (window.innerWidth <= 425) {
-  //     dispatch(setQuery(searchQuery));
-  //   }
-  // }, [dispatch, searchQuery]);
 
   useEffect(() => {
     if (screenSize) dispatch(setQuery(searchQuery));
@@ -66,29 +58,23 @@ const DrinksSearch = () => {
     }
   };
 
+  // Пошук за ключовим словом
   const handleSearchQuery = (event) => {
     onChangeFilter('searchQuery', event.target.value.trim());
-    // setSearchQuery(event.target.value.trim());
   };
 
+  // Пошук по категорії напитку
   const handleChangeCategory = (category) => {
-    // console.log('category :>> ', category);
-    // if (category) onChangeFilter('category', category.value);
-    //   else onChangeFilter('category', '');
     onChangeFilter('category', category.value);
   };
 
+  // Пошук по інградієнту
   const handleChangeIngredient = (ingredient) => {
-    // console.log('option :>> ', ingredient);
-    // if (ingredient) onChangeFilter('ingredient', ingredient.value);
-    // else
-    // onChangeFilter('category', '');
     onChangeFilter('ingredient', ingredient.value);
   };
 
   const handleSubmitSearch = (event) => {
     event.preventDefault();
-    // console.log('searchQuery :>> ', searchQuery);
     dispatch(setQuery(searchQuery));
   };
 
@@ -96,18 +82,16 @@ const DrinksSearch = () => {
     <StyledSearchWrapper>
       <StyledSearchForm onSubmit={handleSubmitSearch}>
         <StyledLabel>
-          <div>
-            <StyledInput
-              type="text"
-              placeholder="Enter the text"
-              onChange={handleSearchQuery}
-              // value={searchQuery}
-            />
+          <StyledInput
+            type="text"
+            placeholder="Enter the text"
+            onChange={handleSearchQuery}
+            // value={searchQuery}
+          />
 
-            <StyledSearchButton type="submit">
-              <StyledSearchIcon />
-            </StyledSearchButton>
-          </div>
+          <StyledSearchButton type="submit">
+            <StyledSearchIcon />
+          </StyledSearchButton>
         </StyledLabel>
         <StyledSelect
           // isSearchable={false}

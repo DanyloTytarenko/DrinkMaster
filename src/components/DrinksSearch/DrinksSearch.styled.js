@@ -1,9 +1,16 @@
 import Select from 'react-select';
 import styled from 'styled-components';
 import { ReactComponent as SearchIcon } from '../../assets/images/searchIcon.svg';
+import { colors } from '../../colors';
 
 export const StyledSearchWrapper = styled.div`
-  background-color: #0a0a11;
+  margin-top: 40px;
+  @media (min-width: 768px) {
+    margin-top: 60px;
+  }
+  @media (min-width: 1440px) {
+    margin-top: 80px;
+  }
 `;
 
 export const StyledSearchForm = styled.form`
@@ -15,6 +22,7 @@ export const StyledSearchForm = styled.form`
   @media (min-width: 768px) {
     flex-direction: row;
     gap: 8px;
+    justify-content: start;
   }
 `;
 
@@ -32,7 +40,7 @@ export const StyledInput = styled.input`
   border-radius: 200px;
   border: 1px solid rgba(243, 243, 243, 0.2);
   /* opacity: 0.8; */
-  color: #f3f3f3;
+  color: ${colors.light}; //#f3f3f3
   /* text-align: center; */
   font-family: Manrope;
   font-size: 14px;
@@ -41,9 +49,10 @@ export const StyledInput = styled.input`
   line-height: 1.29;
   outline: none;
   box-shadow: none;
+  transition: border-color 250ms ease;
 
   &::placeholder {
-    color: #f3f3f3;
+    color: ${colors.light}; //#f3f3f3
     opacity: 1;
   }
 
@@ -54,7 +63,7 @@ export const StyledInput = styled.input`
 
   @media (min-width: 768px) {
     /* width: 264px; по макету*/
-    width: 234px;
+    width: 230px;
     height: 56px;
     padding: 14px 25px 15px 24px;
     font-size: 17px;
@@ -80,7 +89,7 @@ export const StyledSearchButton = styled.button`
 
 export const StyledSearchIcon = styled(SearchIcon)`
   display: block;
-  stroke: #f3f3f3;
+  stroke: ${colors.light}; //#f3f3f3
 `;
 
 export const StyledSelect = styled(Select)`
@@ -94,14 +103,14 @@ export const StyledSelect = styled(Select)`
     box-shadow: none;
     border-radius: 200px;
     /* cursor: pointer; */
-    color: #f3f3f3;
+    color: ${colors.light}; //#f3f3f3
     font-size: 14px;
     font-family: Manrope;
     font-weight: 400;
     line-height: 1.29;
     @media (min-width: 768px) {
       /* width: 199px; по макету*/
-      width: 235px;
+      width: 229px;
       height: 56px;
       padding: 14px 24px 15px 24px;
       font-size: 17px;
@@ -110,7 +119,7 @@ export const StyledSelect = styled(Select)`
   }
 
   .react-select__placeholder {
-    color: #f3f3f3;
+    color: ${colors.light}; //#f3f3f3
     font-size: 14px;
     font-family: Manrope;
     font-weight: 400;
@@ -123,7 +132,7 @@ export const StyledSelect = styled(Select)`
   .react-select__input-container {
     margin: 0;
     padding: 0;
-    color: #f3f3f3;
+    color: ${colors.light}; //#f3f3f3
   }
 
   .react-select__indicator-separator {
@@ -132,7 +141,7 @@ export const StyledSelect = styled(Select)`
   }
 
   .react-select__dropdown-indicator {
-    color: #f3f3f3;
+    color: ${colors.light}; //#f3f3f3
     padding: 0;
     position: absolute;
     /* transform: rotate(180deg); */
@@ -159,38 +168,38 @@ export const StyledSelect = styled(Select)`
     max-height: 360px;
     border-radius: 20px;
     @media (min-width: 768px) {
-      /* width: 199px; по макету*/
+      /* width: 199px; //по макету*/
       width: 225px;
     }
   }
 
   .react-select__single-value {
-    color: #f3f3f3;
+    color: ${colors.light}; //#f3f3f3
     &:focus-within {
       color: brown;
     }
   }
   .react-select__menuList {
     max-height: 60px;
-    background-color: #f3f3f3;
+    background-color: ${colors.light}; //#f3f3f3
   }
 
   .react-select__option--is-selected {
-    color: #f3f3f3;
+    color: ${colors.light}; //#f3f3f3
   }
 
   .react-select__menu-list {
-    color: #f3f3f3;
+    color: ${colors.light}; //#f3f3f3
     &::-webkit-scrollbar {
       width: 8px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: #434d67;
+      background-color: ${colors.gray}; //#434d67;
       border-radius: 20px;
     }
     &::-webkit-scrollbar-thumb:horizontal {
-      background-color: #434d67;
+      background-color: ${colors.gray}; //#434d67;
       border-radius: 20px;
     }
   }
@@ -202,10 +211,14 @@ export const StyledSelect = styled(Select)`
   .react-select__option {
     color: rgba(243, 243, 243, 0.4);
     background-color: transparent;
+    transition:
+      color 250ms ease,
+      background-color 250ms ease;
+
     &:focus,
     &:active,
     &:hover {
-      color: #f3f3f3;
+      color: ${colors.light}; //#f3f3f3
       background-color: transparent;
     }
   }
