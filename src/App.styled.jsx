@@ -3,7 +3,7 @@ import example from './assets/background.png';
 
 export const AppWrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.6) 58.58%,
