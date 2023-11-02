@@ -1,6 +1,8 @@
 import { UserInfoWrap, UserLogoWrap, UserSvg, UserName } from './UserLogo.styled';
-
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectors'
 const UserLogo = () => {
+  const user = useSelector(selectUser);
   return (
     <UserInfoWrap>
       <UserLogoWrap>
@@ -17,7 +19,7 @@ const UserLogo = () => {
           </defs>
         </UserSvg>
       </UserLogoWrap>
-      <UserName>User</UserName>
+      <UserName>{user.name}</UserName>
     </UserInfoWrap>
   )
 }
