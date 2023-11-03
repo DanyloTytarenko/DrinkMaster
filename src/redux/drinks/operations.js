@@ -1,6 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 axios.defaults.baseURL = 'https://drinks-whm4.onrender.com';
+
+export const setToken = (token) => {
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+};
+
 export const fetchOwnDrinks = createAsyncThunk(
   'drinks/fetchOwn',
   async (_, thunkAPI) => {
@@ -101,6 +106,20 @@ export const fetchIngredient = createAsyncThunk(
     try {
       const response = await axios.get('/filters/ingredients');
       return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+);
+
+// *** for DrinkById
+export const fetchDrinkById = createAsyncThunk(
+  'drinks/fetchDrinkById',
+  async (drinkId, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`/drinks/${drinkId}`);
+      console.log(data);
+      return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
