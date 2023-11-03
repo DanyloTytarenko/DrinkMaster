@@ -18,13 +18,19 @@ export const Title = styled.h2`
 `;
 
 export const DivIncrement = styled.div`
-  padding: 10px 16px;
+  padding: 0px 12px;
+  height: 38px;
   display: flex;
-  gap: 16px;
+  gap: 12px;
   line-height: calc(18 / 14);
   align-items: center;
   border: 1px solid rgba(243, 243, 243, 0.5);
   border-radius: 200px;
+  @media only screen and (min-width: 768px) {
+    height: 44px;
+    padding: 0px 10px;
+    gap: 18px;
+  }
 `;
 
 export const Button = styled.button`
@@ -40,13 +46,17 @@ export const ButtonIncr = styled.button`
   line-height: calc(18 / 14);
   border: none;
   background-color: inherit;
-  color: rgba(243, 243, 243, 0.3);
+  color: rgba(243, 243, 243, 1);
 `;
 
 export const SpanIncrement = styled.span`
   color: #f3f3f3;
   font-size: 14px;
   line-height: calc(18 / 14);
+  @media only screen and (min-width: 768px) {
+    font-size: 17px;
+    line-height: 1.56;
+  }
 `;
 
 export const List = styled.ul`
@@ -54,4 +64,7 @@ export const List = styled.ul`
   gap: 18px;
   flex-direction: column;
   list-style: none;
+  @media only screen and (min-width: 768px) {
+    gap: 24px;
+  }
 `;
