@@ -6,11 +6,14 @@ export const AddDrinkWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
+  max-width: 335px;
+  @media only screen and (min-width: 704px) {
+  max-width: 619px;
+  };
+  
 `;
 
 export const AppDescription = styled.p`
-width: 500px;
-font-size: 14px;
 line-height: 20px;
 color: ${colors.light};
 margin-bottom: 32px;
@@ -58,8 +61,9 @@ export const HomePageImage = styled.img`
   height: 313px;
   flex-shrink: 0;
   margin: auto;
+  margin-bottom: 112px;
   @media only screen and (min-width: 704px) {
-    width: 359px;
-    height: 445px;
+  width: 359px;
+  height: 445px;
   }
 `;

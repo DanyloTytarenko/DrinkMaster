@@ -16,7 +16,7 @@ export const AddDrink = () => {
       </AppDescription>
       <StyledLink to="/AddDrinkPage">Add drinks</StyledLink>
       </AddDrinkWrapper>
-      <HomePageImage src="../../assets/homepage.jpg" alt="Coctail photo" />
+      <HomePageImage src="../../../public/homepage.jpg" alt="Coctail photo" />
       </>
   );
 };
