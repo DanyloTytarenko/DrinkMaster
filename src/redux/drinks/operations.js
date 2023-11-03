@@ -117,7 +117,6 @@ export const fetchDrinkById = createAsyncThunk(
   async (drinkId, thunkAPI) => {
     try {
       const { data } = await axios.get(`/drinks/${drinkId}`);
-      console.log(data);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

@@ -27,12 +27,39 @@ import example from '../../images/any-cocktail.jpg';
 // `;
 
 export const Container = styled.div`
-  // display: flex;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  // padding-top: 500px;
-  background-color: #000000;
+  /* background-color: #0a0a11; */
+  box-sizing: border-box;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+  padding-bottom: 80px;
+
+  @media (min-width: 768px) {
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 60px;
+    padding-bottom: 140px;
+  }
+  @media (min-width: 1440px) {
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 160px;
+    max-width: 1440px;
+  }
 `;
+
+// export const Container = styled.div`
+//   // display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   // padding-top: 500px;
+//   background-color: #000000;
+// `;
 
 export const Title = styled.h1`
   color: #ffffff;

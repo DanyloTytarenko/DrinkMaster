@@ -3,24 +3,23 @@ import { Container } from './DrinkDetailsPage.styled';
 import DrinkDetails from '../../components/DrinkDetails/DrinkDetails';
 import Header from 'src/components/Header/Header';
 import Footer from 'src/components/Footer/Footer';
-// import {
-//   selectDrinkDetailsError,
-//   selectDrinkDetailsIsLoadin,
-// } from 'src/redux/drinks/selectors';
+import Loader from 'src/components/Loader/Loader';
+import {
+  selectDrinkDetailsError,
+  selectDrinkDetailsIsLoading,
+} from 'src/redux/drinks/selectors';
 
 const DrinkDetailsPage = () => {
-  // const dispatch = useDispatch();
-  // const isLoading = useSelector(selectDrinkDetailsIsLoadin);
-  // const error = useSelector(selectDrinkDetailsError);
-
+  const isLoading = useSelector(selectDrinkDetailsIsLoading);
+  const error = useSelector(selectDrinkDetailsError);
   return (
     <>
-      <Header></Header>
+      <Header />
       <Container>
-        {/* {isLoading && !error && <b>Request in progress...</b>} */}
+        {isLoading && !error && <Loader />}
         <DrinkDetails />
       </Container>
-      <Footer></Footer>
+      <Footer />
     </>
   );
 };

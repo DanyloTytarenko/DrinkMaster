@@ -2,26 +2,20 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {
-  Container,
   Title,
   Glass,
   Description,
   Button,
+  StyledImage,
 } from './DrinkDetails.styled';
-// import data from './recipes';
+import defaultImage from '../../assets/images/drink-image.jpg';
 import { fetchDrinkById } from 'src/redux/drinks/operations';
 import { selectDrinkById } from '../../redux/drinks/drinkDetailsSlice';
-
-// import { useState, useEffect, useRef, Suspense } from 'react';
-// import { Outlet, Link, useParams, useLocation } from 'react-router-dom';
-// import Button from '../button/Button';
-// import ErrorWrapper from 'pages/Error/ErrorWrapper';
-// import Loader from 'components/Loader/Loader';
+import { StyledSearchWrapper } from '../DrinksSearch/DrinksSearch.styled';
 
 const DrinkDetails = () => {
   const { drinkId } = useParams();
   const dispatch = useDispatch();
-  // dispatch(fetchDrinkById(drinkId));
 
   // const isLoading = useSelector(selectDrinkDetailsIsLoadin);
   // const error = useSelector(selectDrinkDetailsError);
@@ -53,7 +47,7 @@ const DrinkDetails = () => {
 
   const { drink, glass, alcoholic, description, drinkThumb } = drinkDetails;
   return (
-    <div>
+    <StyledSearchWrapper>
       <Title>{drink}</Title>
       <Glass>
         {glass} / {alcoholic}
@@ -69,9 +63,16 @@ const DrinkDetails = () => {
         </Button>
       )}
       <div>
-        <img src={drinkThumb} alt="picture Cocktail" height={400} />
+        <StyledImage
+          src={drinkThumb}
+          alt="picture Cocktail"
+          height={400}
+          onError={(event) => {
+            event.currentTarget.src = defaultImage;
+          }}
+        />
       </div>
-    </div>
+    </StyledSearchWrapper>
   );
 };
 

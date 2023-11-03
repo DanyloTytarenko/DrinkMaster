@@ -26,13 +26,13 @@ import styled from '@emotion/styled';
 //     0 0 80px #00baff;
 // `;
 
-export const Container = styled.div`
-  // display: flex;
-  justify-content: center;
-  align-items: center;
-  // padding-top: 500px;
-  background-color: #000000;
-`;
+// export const Container = styled.div`
+//   // display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   // padding-top: 500px;
+//   background-color: #000000;
+// `;
 
 export const Title = styled.h1`
   color: #ffffff;
@@ -62,4 +62,19 @@ export const Button = styled.button`
   color: #000000;
   border-radius: 42px;
   padding: 14px 40px;
+`;
+
+export const StyledImage = styled.img`
+  width: 335px;
+  height: 360px;
+  border-radius: 8px;
+
+  @media (min-width: 768px) {
+    width: 342px;
+    height: 360px;
+  }
+  @media (min-width: 1440px) {
+    width: 400px;
+    height: 400px;
+  }
 `;
