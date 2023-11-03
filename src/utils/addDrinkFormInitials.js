@@ -4,14 +4,11 @@ export const initialValues = {
   description: '',
   category: '',
   glass: '',
-  alcoholic: '',
+  alcoholic: 'Alcoholic',
   ingredients: [
     {
       title: '',
       measure: '',
-      _id: {
-        $oid: '',
-      },
     },
   ],
   instructions: '',
