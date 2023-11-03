@@ -12,7 +12,7 @@ import { selectForm } from '../../../redux/drinks/selectors';
 
 const RecipePreparation = ({ onChangeHandler, setFieldValue, errors }) => {
   const persistedForm = useSelector(selectForm);
-  console.log(persistedForm, 'form');
+  // console.log(persistedForm, 'form');
   const form = persistedForm.form;
 
   return (

@@ -15,6 +15,7 @@ export const Wrapper = styled.div`
 `;
 
 export const ImageThumb = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,11 +49,9 @@ export const DivAddImage = styled.div`
 `;
 
 export const LabelTranslucent = styled.label`
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  width: 80%;
-  height: 80%;
+  position: relative;
+  top: 130px;
+  left: 110px;
   font-size: 20px;
   font-weight: bold;
   color: rgba(243, 243, 243, 0.75);

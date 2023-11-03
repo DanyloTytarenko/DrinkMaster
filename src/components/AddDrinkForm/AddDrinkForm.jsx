@@ -20,6 +20,8 @@ import {
 
 import { object, string, array } from 'yup';
 
+import { useNavigate } from 'react-router-dom';
+
 const addDrinkSchema = object({
   drink: string().trim().required('This field is required'),
   description: string().required('This field is required'),
@@ -39,6 +41,7 @@ const addDrinkSchema = object({
 
 const AddDrinkForm = () => {
   const dispatch = useDispatch();
+  let navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchCategories('categories'));
@@ -49,16 +52,46 @@ const AddDrinkForm = () => {
   const persistedForm = useSelector(selectForm);
   const formValues = persistedForm.form;
 
-  const submitHandler = (values, actions) => {
-    console.log(formValues);
-    console.log(values);
-    dispatch(addOwnDrink(formValues));
-    dispatch(setForm(initialValues));
-    actions.resetForm({ values: initialValues });
+  const submitHandler = async (values, actions) => {
+    // console.log(formValues);
+    // console.log(values);
+    dispatch(
+      addOwnDrink({
+        drinkThumb:
+          'https://res.cloudinary.com/dl1cncruu/image/upload/v1698760293/cocktails/653fa858149cd42514905850-2EmQibRWanpjmcqFMIbOK.jpg',
+        drink: 'Diego16',
+        description: 'Drink for friday night',
+        category: 'Cocktail',
+        glass: 'Cocktail Glass',
+        alcoholic: 'Alcoholic',
+        ingredients: [
+          {
+            title: 'Kahlua',
+            measure: '50 ml',
+          },
+          {
+            title: 'Bourbon',
+            measure: '40 ml',
+          },
+        ],
+        instructions: 'Not mix',
+        shortDescription: 'Just refreshing cocktail',
+      }),
+    ).then((resp) => {
+      if (resp.payload.message === 'drink added') {
+        navigate('/my');
+        dispatch(setForm(initialValues));
+        actions.resetForm({ values: initialValues });
+        return;
+      }
+      console.log(resp.payload.message);
+    });
   };
 
   const onChangeHandler = (payload, field) => {
-    const tempObj = { ...formValues };
+    const tempObj = {
+      ...formValues,
+    };
 
     const freshData = { [field]: payload };
 
@@ -71,8 +104,9 @@ const AddDrinkForm = () => {
     <Wrapper>
       <Formik
         initialValues={formValues}
-        validationSchema={addDrinkSchema} validateOnChange={false}
-        validateOnBlur={false}
+        // validationSchema={addDrinkSchema}
+        // validateOnChange={false}
+        // validateOnBlur={false}
         onSubmit={submitHandler}
       >
         {({ setFieldValue, errors, values, resetForm }) => (

@@ -37,7 +37,6 @@ const DrinkDescriptionFields = ({ onChangeHandler, setFieldValue, errors }) => {
   const form = persistedForm.form;
 
   const user = useSelector(selectUser);
-  console.log(user);
 
   if (isUserAdult(user.birthday) === false && form.alcoholic === 'Alcoholic') {
     onChangeHandler('Non alcoholic', 'alcoholic');
@@ -60,7 +59,8 @@ const DrinkDescriptionFields = ({ onChangeHandler, setFieldValue, errors }) => {
     const url = URL.createObjectURL(
       new Blob(binaryData, { type: 'application/zip' }),
     );
-    console.log(url.toString().split('blob:')[1]);
+    console.log(url);
+    // console.log(url.toString().split('blob:')[1]);
     const src = url.toString().split('blob:')[1];
     setUri(URL.createObjectURL(e.target.files[0]));
     // setUri(src);

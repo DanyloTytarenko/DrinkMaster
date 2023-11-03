@@ -25,14 +25,15 @@ export const fetchFavoriteDrinks = createAsyncThunk(
 );
 export const addOwnDrink = createAsyncThunk(
   'drinks/addOwnDrink',
-  async (drink, thunkAPI) => {
+  async (drink, { rejectWithValue }) => {
     try {
-      console.log('in asyncThunk');
       const response = await axios.post('/drinks/own/add', drink);
-      console.log(response);
-      return response.data;
+      return response.status === 200 ? response.data : e.response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      if (!e.response) {
+        throw e;
+      }
+      return rejectWithValue(e.response.data);
     }
   },
 );
