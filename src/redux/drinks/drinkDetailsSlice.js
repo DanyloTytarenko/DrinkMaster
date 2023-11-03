@@ -17,13 +17,14 @@ export const drinkByIdSlice = createSlice({
   initialState,
   extraReducers: {
     [fetchDrinkById.pending]: handlePending,
-    [fetchDrinkById.fulfilled](state, action) {
+    [fetchDrinkById.fulfilled](state, { payload }) {
+      state.drinkById = payload;
       state.isLoading = false;
       state.error = null;
-      state.items = action.payload;
     },
     [fetchDrinkById.rejected]: handleRejected,
   },
 });
 
 export const drinkByIdReducer = drinkByIdSlice.reducer;
+export const selectDrinkById = (state) => state.drinkDetails.drinkById;

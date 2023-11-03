@@ -29,7 +29,7 @@ export const store = configureStore({
     category: categoryReducer,
     glass: glassReducer,
     ingredient: ingredientReducer,
-    drinkById: drinkByIdReducer,
+    drinkDetails: drinkByIdReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
