@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '../../colors';
 
 export const LoaderWrap = styled.div`
 display: flex;
@@ -13,11 +14,11 @@ export const StyledLoader = styled.span`
   height: 98px;
   display: inline-block;
   position: relative;
-  border: 2px solid #F3F3F3;
+  border: 2px solid ${colors.light};
   box-sizing: border-box;
-  color: #BCE6D2;
+  color: ${colors.green};
   border-radius: 20px 20px 4px 4px;
-  background: #F3F3F3;
+  background: ${colors.light};
   animation: fill 2s linear infinite alternate;
 
   &::after {
@@ -27,9 +28,9 @@ export const StyledLoader = styled.span`
     left: 50%;
     top: 0%;
     transform: translate(-50%, -95%);
-    border: 2px solid #F3F3F3;
+    border: 2px solid ${colors.light};
     border-bottom: none;
-    background: #F3F3F3;
+    background: ${colors.light};
     width: 15px;
     height: 35px;
     animation: fillNeck 2s linear infinite alternate;
@@ -62,10 +63,10 @@ export const StyledLoader = styled.span`
   // display: inline-block; 
   // left: 5px; 
   // position: relative; 
-  // border: 2px solid #F3F3F3; 
+  // border: 2px solid ${colors.light};; 
   // box-sizing: border-box; 
   // animation: animloader 2s linear infinite alternate; 
-  // color: #BCE6D2; 
+  // color: ${colors.green}; 
   // border-radius: 0 0 4px 4px; 
   // transform: perspective(140px) rotateX(-45deg); 
 
