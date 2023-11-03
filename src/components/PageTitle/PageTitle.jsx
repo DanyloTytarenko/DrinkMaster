@@ -1,17 +1,16 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const Title = TitleComponent`
+const Title = styled.h1`
   font-family: 'Manrope', sans-serif;
   font-weight: 600;
   color: ${({ theme }) => (theme === 'light' ? '#0A0A11' : '#F3F3F3')};
 
-  @media (max-width: 1024px) {
+  @media screen and(min-width: 1440px) {
     font-size: 56px;
     line-height: 60px;
   }
 
-  @media (max-width: 768px) {
+  @media screen and(min-width: 768px) {
     font-size: 32px;
     line-height: 38px;
   }

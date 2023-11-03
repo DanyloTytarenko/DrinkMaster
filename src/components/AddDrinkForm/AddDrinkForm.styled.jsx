@@ -2,6 +2,14 @@ import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
   margin-bottom: 80px;
+  width: 100%;
+  max-width: 335px;
+  @media only screen and (min-width: 768px) {
+    max-width: 704px;
+    @media only screen and (min-width: 1440px) {
+      max-width: 833px;
+    }
+  }
 `;
 
 export const Button = styled.button`
@@ -14,4 +22,9 @@ export const Button = styled.button`
   border: 0 solid transparent;
   border-radius: 42px;
   background-color: #f3f3f3;
+  @media only screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: calc(18 / 16);
+    padding: 18px 44px;
+  }
 `;
