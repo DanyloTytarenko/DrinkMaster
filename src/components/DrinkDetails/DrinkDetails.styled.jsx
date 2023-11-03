@@ -46,6 +46,7 @@ export const Title = styled.h1`
 
 export const Glass = styled.p`
   color: #ffffff;
+  margin-bottom: 20px;
   // text-shadow:
   //   0 0 5px #00baff,
   //   0 0 10px #00baff,
@@ -54,14 +55,16 @@ export const Glass = styled.p`
   //   0 0 80px #00baff;
 `;
 
-export const Description = styled.div`
+export const Description = styled.p`
   color: #ffffff;
+  margin-bottom: 40px;
 `;
 
 export const Button = styled.button`
   color: #000000;
   border-radius: 42px;
   padding: 14px 40px;
+  margin-bottom: 80px;
 `;
 
 export const StyledImage = styled.img`

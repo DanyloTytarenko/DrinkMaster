@@ -12,6 +12,7 @@ import {
 const DrinkDetailsPage = () => {
   const isLoading = useSelector(selectDrinkDetailsIsLoading);
   const error = useSelector(selectDrinkDetailsError);
+
   return (
     <>
       <Header />

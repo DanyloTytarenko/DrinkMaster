@@ -10,22 +10,18 @@ import {
 } from './DrinkDetails.styled';
 import defaultImage from '../../assets/images/drink-image.jpg';
 import { fetchDrinkById } from 'src/redux/drinks/operations';
-import { selectDrinkById } from '../../redux/drinks/drinkDetailsSlice';
 import { StyledSearchWrapper } from '../DrinksSearch/DrinksSearch.styled';
+import { selectDrinkById } from 'src/redux/drinks/selectors';
 
 const DrinkDetails = () => {
   const { drinkId } = useParams();
   const dispatch = useDispatch();
-
-  // const isLoading = useSelector(selectDrinkDetailsIsLoadin);
-  // const error = useSelector(selectDrinkDetailsError);
+  const drinkDetails = useSelector(selectDrinkById);
 
   useEffect(() => {
     dispatch(fetchDrinkById(drinkId));
     // dispatch(fetchFavoriteDrinks());
   }, [dispatch]);
-
-  const drinkDetails = useSelector(selectDrinkById);
 
   // const [favorite, setfavorite] = useState(true);
   const favorite = true;
