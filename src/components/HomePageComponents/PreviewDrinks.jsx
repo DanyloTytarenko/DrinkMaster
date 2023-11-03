@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { selectNewDrinks } from '../../redux/homepage/selectors.js';
-
+import React from 'react';
 import {
   List,
   DrinksItem,
@@ -14,24 +14,32 @@ import {
 } from './PreviewDrinks.styled';
 
 export const PreviewDrinks = () => {
- 
-  const listOfDrinks = useSelector(selectNewDrinks);
+  const data = useSelector(selectNewDrinks);
 
   return (
     <>
       <List>
-        {listOfDrinks.map((drink) => (
-          <DrinksItem key={drink.drink} drink={drink}>
-            {listOfDrinks.map((category) => (
-              <CategoryName key={category}>{drink.category}</CategoryName>
+        {data.map((categoryData) => (
+          <React.Fragment key={categoryData.category}>
+            <CategoryName>{categoryData.category}</CategoryName>
+            {categoryData.drinks.map((drink, index) => (
+              <DrinksItem key={index}>
+                <DrinkPhoto
+                  src={drink.drinkThumb}
+                  alt={`Photo of ${drink.drink}`}
+                />
+                <DrinkTitle>{drink.drink}</DrinkTitle>
+                <StyledLinkToDrinkPage to="/DrinkPage">
+                  See more
+                </StyledLinkToDrinkPage>
+              </DrinksItem>
             ))}
-            <DrinkPhoto src={drink.drinkThumb} alt="Photo of cocktail" />
-            <DrinkTitle>{drink.drink}</DrinkTitle>
-            <StyledLinkToDrinkPage to="/DrinkPage">See more</StyledLinkToDrinkPage>
-          </DrinksItem>
+          </React.Fragment>
         ))}
       </List>
-      <StyledLinkToDrinksPage to="/DrinksPage">Other drinks</StyledLinkToDrinksPage>
+      <StyledLinkToDrinksPage to="/DrinksPage">
+        Other drinks
+      </StyledLinkToDrinksPage>
     </>
   );
 };

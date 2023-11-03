@@ -24,10 +24,9 @@ export const StyledLinkToDrinksPage = styled(Link)`
 display: flex;
 width: 163px;
 height: 46px;
-padding: 14px 40px;
 justify-content: center;
 align-items: center;
-color: ${colors.secondaryDark}
+color: ${colors.secondaryDark};
 background: ${colors.light};
 border-radius: 42px;
 font-weight: 600;
@@ -35,7 +34,6 @@ font-weight: 600;
 @media only screen and (min-width: 704px) {
 width: 183px;
 height: 54px;
-padding: 18px 44px;
 font-size: 16px;
 };
 

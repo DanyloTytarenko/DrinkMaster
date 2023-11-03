@@ -1,6 +1,6 @@
 import Footer from 'src/components/Footer/Footer';
 import Header from 'src/components/Header/Header';
-import { Container, Title } from './HomePage.styled';
+import { Container } from './HomePage.styled';
 import { AddDrink } from '../../components/HomePageComponents/AddDrink';
 import { PreviewDrinks } from '../../components/HomePageComponents/PreviewDrinks';
 
@@ -12,6 +12,7 @@ import {
 } from '../../redux/homepage/selectors.js';
 
 import { fetchNewDrinks } from '../../redux/homepage/operations.js';
+// import PageTitle from 'src/components/PageTitle/PageTitle';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const HomePage = () => {
     <>
       <Header></Header>
       <Container>
-        <Title>HomePage</Title>
+       {/* <PageTitle /> */}
         <AddDrink />
         <PreviewDrinks />
       </Container>
