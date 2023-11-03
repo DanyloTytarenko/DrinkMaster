@@ -12,16 +12,17 @@ import {
 import {
   selectCategories,
   selectIngredients,
+  selectIsLoading,
   selectPage,
   selectSearchQuery,
   selectSearchResults,
-  // selectTotalItems,
 } from '../../redux/drinks/drinksPage/drinksPageSelectors';
-// import Paginator from 'src/components/Paginator/Paginator';
+import Paginator from 'src/components/Paginator/Paginator';
 import Footer from 'src/components/Footer/Footer';
 import Header from 'src/components/Header/Header';
 
 import { DrinksContainer, Title } from './DrinksPage.styled';
+import Loader from 'src/components/Loader/Loader';
 // import { Container, Title } from './DrinksPage.styled';
 
 const DrinksPage = () => {
@@ -30,6 +31,7 @@ const DrinksPage = () => {
   const searchResults = useSelector(selectSearchResults);
   const page = useSelector(selectPage);
   const searchQuery = useSelector(selectSearchQuery);
+  const isLoading = useSelector(selectIsLoading);
 
   const dispatch = useDispatch();
 
@@ -56,8 +58,14 @@ const DrinksPage = () => {
       <DrinksContainer>
         <Title>DrinksPage</Title>
         <DrinksSearch />
-        <DrinksList />
-        {/* <Paginator totalItems={searchResults.max_page} limit={limit} /> */}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <DrinksList />
+            <Paginator totalItems={searchResults.max_page} limit={limit} />
+          </>
+        )}
       </DrinksContainer>
       <Footer />
     </>
