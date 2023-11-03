@@ -71,7 +71,8 @@ const AddDrinkForm = () => {
     <Wrapper>
       <Formik
         initialValues={formValues}
-        validationSchema={addDrinkSchema}
+        validationSchema={addDrinkSchema} validateOnChange={false}
+        validateOnBlur={false}
         onSubmit={submitHandler}
       >
         {({ setFieldValue, errors, values, resetForm }) => (
