@@ -8,14 +8,10 @@ import {
   DescriptionIngredient,
   TitleIngredient,
   MeasureIngredien,
-  Title,
-  Description,
-  AnyCocktail,
-} from './IngredientByDrink.styled';
+} from './DrinkIngredientsList.styled';
 import defaultImage from '../../../assets/images/drink-image.jpg';
-import anyCocktail from '../../../assets/images/any-cocktail.jpg';
 
-const IngredientByDrink = () => {
+const DrinkIngredientsList = () => {
   const drinkDetails = useSelector(selectDrinkById);
   const { ingredients, description, instructions } = drinkDetails;
   return (
@@ -39,12 +35,12 @@ const IngredientByDrink = () => {
           </ItemIngredient>
         ))}
       </ListIngredient>
-      <Title>Recipe Preparation</Title>
+      {/* <Title>Recipe Preparation</Title>
       <Description>{description}</Description>
       <Description>{instructions}</Description>
-      <AnyCocktail src={anyCocktail} alt="Any Cocktail" />
+      <AnyCocktail src={anyCocktail} alt="Any Cocktail" /> */}
     </>
   );
 };
 
-export default IngredientByDrink;
+export default DrinkIngredientsList;

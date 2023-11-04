@@ -7,23 +7,11 @@ import {
   Description,
   Button,
   StyledImage,
-} from './DrinkDetails.styled';
-import defaultImage from '../../assets/images/drink-image.jpg';
-import { fetchDrinkById } from 'src/redux/drinks/operations';
-import { StyledSearchWrapper } from '../DrinksSearch/DrinksSearch.styled';
-import { selectDrinkById } from 'src/redux/drinks/selectors';
-import IngredientByDrink from './IngredientByDrink/IngredientByDrink';
+} from './DrinkPageHero.styled';
+import defaultImage from '../../../assets/images/drink-image.jpg';
+import { StyledSearchWrapper } from '../../DrinksSearch/DrinksSearch.styled';
 
-const DrinkDetails = () => {
-  const { drinkId } = useParams();
-  const dispatch = useDispatch();
-  const drinkDetails = useSelector(selectDrinkById);
-
-  useEffect(() => {
-    dispatch(fetchDrinkById(drinkId));
-    // dispatch(fetchFavoriteDrinks());
-  }, [dispatch]);
-
+const DrinkPageHero = ({ drinkDetails }) => {
   // const [favorite, setfavorite] = useState(true);
   const favorite = true;
 
@@ -69,9 +57,8 @@ const DrinkDetails = () => {
           }}
         />
       </div>
-      <IngredientByDrink />
     </StyledSearchWrapper>
   );
 };
 
-export default DrinkDetails;
+export default DrinkPageHero;

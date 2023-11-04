@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { colors } from '../../colors';
+import { colors } from '../../../colors';
 // import example from '../../../image/any-cocktail.jpg';
 
 // export const Container = styled.div`
