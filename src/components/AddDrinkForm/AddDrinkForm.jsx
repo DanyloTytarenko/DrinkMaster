@@ -92,7 +92,7 @@ const AddDrinkForm = () => {
     });
   };
 
-  const onChangeHandler = (payload, field) => {
+  function onChangeHandler(payload, field, setFieldValue) {
     const tempObj = {
       ...formValues,
     };
@@ -100,9 +100,9 @@ const AddDrinkForm = () => {
     const freshData = { [field]: payload };
 
     Object.assign(tempObj, freshData);
-
+    setFieldValue(field, payload);
     dispatch(setForm(tempObj));
-  };
+  }
 
   // dispatch(setForm(initialValues));
 
