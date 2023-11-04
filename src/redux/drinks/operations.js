@@ -23,9 +23,31 @@ export const fetchFavoriteDrinks = createAsyncThunk(
     }
   },
 );
+export const addOwnDrinkImg = createAsyncThunk(
+  'drinks/addOwnDrinkImg',
+  async (formData, { rejectWithValue }) => {
+    try {
+      const response = await axios.post('/drinks/own/add/img', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      // console.log(response);
+      return response.status === 201
+        ? response.data.avatarURL
+        : e.response.data;
+    } catch (e) {
+      if (!e.response) {
+        throw e;
+      }
+      return rejectWithValue(e.response.data);
+    }
+  },
+);
 export const addOwnDrink = createAsyncThunk(
   'drinks/addOwnDrink',
   async (drink, { rejectWithValue }) => {
+    console.log(drink, 'drink');
     try {
       const response = await axios.post('/drinks/own/add', drink);
       return response.status === 200 ? response.data : e.response.data;

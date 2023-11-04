@@ -1,15 +1,17 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 10px;
-  column-gap: 32px;
   margin-bottom: 80px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 40px;
+
   @media only screen and (min-width: 768px) {
+    column-gap: 32px;
     @media only screen and (min-width: 1440px) {
       column-gap: 40px;
+      width: 833px;
     }
   }
 `;
@@ -24,6 +26,7 @@ export const ImageThumb = styled.div`
   border-radius: 8px;
   background-color: rgba(22, 31, 55, 0.5);
   background-size: cover;
+  background-image: ${({ uri }) => (uri ? `url(${uri})` : 'none')};
   @media only screen and (min-width: 768px) {
     width: 320px;
     height: 320px;
@@ -32,12 +35,6 @@ export const ImageThumb = styled.div`
       height: 400px;
     }
   }
-`;
-// background-image: url(${DummyDrinkThumb}); in ImageThumb
-
-export const Img = styled.img`
-  width: 100%;
-  height: auto;
 `;
 
 export const DivAddImage = styled.div`
@@ -48,13 +45,22 @@ export const DivAddImage = styled.div`
   align-items: center;
 `;
 
-export const LabelTranslucent = styled.label`
+export const DivTranslucent = styled.div`
   position: relative;
-  top: 130px;
-  left: 110px;
-  font-size: 20px;
+  top: 40%;
+  display: flex;
+  gap: 170px;
+  align-items: center;
   font-weight: bold;
   color: rgba(243, 243, 243, 0.75);
+`;
+
+export const LabelTranslucent = styled.label`
+  width: 70px;
+  text-align: center;
+  font-weight: bold;
+  color: rgba(243, 243, 243, 0.75);
+  cursor: pointer;
 `;
 
 export const Label = styled.label`
@@ -85,23 +91,27 @@ export const DivDesription = styled.div`
   margin-bottom: 40px;
   display: flex;
   flex-direction: column;
-  // gap: 30px;
+  gap: 31px;
   letter-spacing: -0.02em;
   width: 335px;
   @media only screen and (min-width: 768px) {
     width: 352px;
+    @media only screen and (min-width: 1440px) {
+      width: 393px;
+      gap: 40px;
+    }
   }
 `;
 
+export const DivRow = styled.div``;
+
 export const Input = styled.input`
-  padding-top: 30px;
   background-color: inherit;
   font-size: 14px;
   color: #f3f3f3;
   letter-spacing: -0.02em;
   outline: none;
   border: none;
-  text-transform: capitalize;
   @media only screen and (min-width: 768px) {
     font-size: 16px;
   }
@@ -115,7 +125,6 @@ export const ErrorText = styled.div`
   color: #da1414;
   border-bottom: 1px solid rgba(243, 243, 243, 0.5);
   @media only screen and (min-width: 768px) {
-    // margin-bottom: 31px;
     height: 18px;
     font-size: 14px;
   }
@@ -126,14 +135,14 @@ export const DivSelect = styled.div`
   color: #f3f3f3;
 `;
 
-export const DivFlexSelect = styled.span`
+export const DivFlexSelect = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const SpanSelect = styled.span`
-  padding-top: 30px;
   font-size: 14px;
   font-weight: 400;
   letter-spacing: -0.02em;

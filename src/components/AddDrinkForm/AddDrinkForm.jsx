@@ -5,18 +5,19 @@ import RecipePreparation from './RecipePreparation/RecipePreparation';
 
 import { Formik, Form } from 'formik';
 
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setForm } from '../../redux/drinks/formSlice';
-import { selectForm } from '../../redux/drinks/selectors';
+import { setForm } from 'src/redux/drinks/formSlice';
+import { selectForm, selectIsLoadingOwn } from 'src/redux/drinks/selectors';
 
-import { initialValues } from '../../utils/addDrinkFormInitials';
+import { initialValues } from 'src/utils/addDrinkFormInitials';
 import {
   fetchCategories,
   fetchGlass,
   fetchIngredient,
+  addOwnDrinkImg,
   addOwnDrink,
-} from '../../redux/drinks/operations';
+} from 'src/redux/drinks/operations';
 
 import { object, string, array } from 'yup';
 
@@ -28,14 +29,12 @@ const addDrinkSchema = object({
   category: string().required('This field is required'),
   glass: string().required('This field is required'),
   alcoholic: string().required('This field is required'),
-  ingredients: array()
-    .min(1, 'Must be at least one ingredient')
-    .of(
-      object({
-        title: string().required('This field is required'),
-        measure: string().required('This field is required'),
-      }),
-    ),
+  ingredients: array().of(
+    object({
+      title: string().required('This field is required'),
+      measure: string().required('This field is required'),
+    }),
+  ),
   instructions: string().required('This field is required'),
 });
 
@@ -52,37 +51,42 @@ const AddDrinkForm = () => {
   const persistedForm = useSelector(selectForm);
   const formValues = persistedForm.form;
 
-  const submitHandler = async (values, actions) => {
-    // console.log(formValues);
-    // console.log(values);
-    dispatch(
-      addOwnDrink({
-        drinkThumb:
-          'https://res.cloudinary.com/dl1cncruu/image/upload/v1698760293/cocktails/653fa858149cd42514905850-2EmQibRWanpjmcqFMIbOK.jpg',
-        drink: 'Diego16',
-        description: 'Drink for friday night',
-        category: 'Cocktail',
-        glass: 'Cocktail Glass',
-        alcoholic: 'Alcoholic',
-        ingredients: [
-          {
-            title: 'Kahlua',
-            measure: '50 ml',
-          },
-          {
-            title: 'Bourbon',
-            measure: '40 ml',
-          },
-        ],
-        instructions: 'Not mix',
-        shortDescription: 'Just refreshing cocktail',
-      }),
-    ).then((resp) => {
-      if (resp.payload.message === 'drink added') {
-        navigate('/my');
-        dispatch(setForm(initialValues));
-        actions.resetForm({ values: initialValues });
-        return;
+  const isLoadingOwnDrink = useSelector(selectIsLoadingOwn);
+
+  const [file, setFile] = useState();
+
+  const submitHandler = (values, actions) => {
+    // запит на створення власного коктейлю без зображення
+    if (!file) {
+      const formWithImgUrl = {
+        ...formValues,
+      };
+      const freshData = { drinkThumb: 'src/images/dummyDrinkThumb.png' };
+      Object.assign(formWithImgUrl, freshData);
+
+      sendForm(formWithImgUrl, values, actions);
+      return;
+    }
+
+    // відправки обраного файлу на сервер
+    const formData = new FormData();
+    formData.append('cocktail', file);
+    dispatch(addOwnDrinkImg(formData)).then((resp) => {
+      if (
+        typeof resp.payload === 'string' &&
+        resp.payload.startsWith('https://res.cloudinary.com')
+      ) {
+        const formWithImgUrl = {
+          ...formValues,
+        };
+        const freshData = { drinkThumb: resp.payload };
+        Object.assign(formWithImgUrl, freshData);
+
+        sendForm(formWithImgUrl, values, actions);
+      } else {
+        console.log(
+          "Something get wront. Please, try upload image-type file, e.g. '.jpeg', '.png'",
+        );
       }
       console.log(resp.payload.message);
     });
@@ -100,18 +104,33 @@ const AddDrinkForm = () => {
     dispatch(setForm(tempObj));
   };
 
+  // dispatch(setForm(initialValues));
+
+  const sendForm = (formWithImgUrl, values, actions) => {
+    dispatch(addOwnDrink(formWithImgUrl, values)).then((resp) => {
+      if (resp.payload.message === 'drink added') {
+        navigate('/my');
+        dispatch(setForm(initialValues));
+        actions.resetForm({ values: initialValues });
+        return;
+      }
+      console.log(resp.payload.message);
+    });
+  };
+
   return (
     <Wrapper>
       <Formik
         initialValues={formValues}
-        // validationSchema={addDrinkSchema}
-        // validateOnChange={false}
-        // validateOnBlur={false}
+        validationSchema={addDrinkSchema}
+        validateOnChange={false}
+        validateOnBlur={false}
         onSubmit={submitHandler}
       >
-        {({ setFieldValue, errors, values, resetForm }) => (
+        {({ setFieldValue, errors }) => (
           <Form>
             <DrinkDescriptionFields
+              setFile={setFile}
               onChangeHandler={onChangeHandler}
               setFieldValue={setFieldValue}
               errors={errors}
@@ -121,7 +140,6 @@ const AddDrinkForm = () => {
               setFieldValue={setFieldValue}
               errors={errors}
             />
-            <p>{console.log(errors)}</p>
             <RecipePreparation
               onChangeHandler={onChangeHandler}
               setFieldValue={setFieldValue}
@@ -129,11 +147,7 @@ const AddDrinkForm = () => {
             />
             <Button
               type="submit"
-              // disabled={
-              //   isLoading || addLoading || delLoading || editLoading
-              //     ? true
-              //     : false
-              // }
+              disabled={isLoadingOwnDrink === true}
               title="Add"
             >
               Add

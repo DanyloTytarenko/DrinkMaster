@@ -1,13 +1,14 @@
 import {
   Wrapper,
   ImageThumb,
-  Img,
   DivAddImage,
+  DivTranslucent,
   LabelTranslucent,
   Label,
   HiddenInput,
   SpanAddImage,
   DivDesription,
+  DivRow,
   Input,
   ErrorText,
   DivSelect,
@@ -21,15 +22,20 @@ import { ErrorIcon } from '../RecipePreparation/RecipePreparation.styled';
 import Select from 'react-select';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectForm } from '../../../redux/drinks/selectors';
-import { selectCategory, selectGlass } from '../../../redux/drinks/selectors';
-import { selectUser } from '../../../redux/auth/selectors';
+import { selectForm } from 'src/redux/drinks/selectors';
+import { selectCategory, selectGlass } from 'src/redux/drinks/selectors';
+import { selectUser } from 'src/redux/auth/selectors';
 
-import { isUserAdult } from '../../../utils/isUserAdult';
+import { isUserAdult } from 'src/utils/isUserAdult';
 
-import DummyDrinkThumb from '../../../images/dummyDrinkThumb.png';
+import DummyDrinkThumb from 'src/images/dummyDrinkThumb.png';
 
-const DrinkDescriptionFields = ({ onChangeHandler, setFieldValue, errors }) => {
+const DrinkDescriptionFields = ({
+  setFile,
+  onChangeHandler,
+  setFieldValue,
+  errors,
+}) => {
   const categories = useSelector(selectCategory);
   const glassArray = useSelector(selectGlass);
 
@@ -51,38 +57,40 @@ const DrinkDescriptionFields = ({ onChangeHandler, setFieldValue, errors }) => {
       return { value: item, label: item };
     });
 
-  // функція відправки обраного файлу на сервер
-  const addImagehandler = (e) => {
-    console.log(e.target.files[0]);
-    const binaryData = [];
-    binaryData.push(e.target.files);
-    const url = URL.createObjectURL(
-      new Blob(binaryData, { type: 'application/zip' }),
-    );
-    console.log(url);
-    // console.log(url.toString().split('blob:')[1]);
-    const src = url.toString().split('blob:')[1];
+  // функція превью зображення обраного файлу
+  const addImagePreview = (e) => {
+    if (!e.target.files[0].type.startsWith('image/')) {
+      console.log("Please, upload image-type file, e.g. '.jpeg', '.png'");
+      return;
+    }
+    setFile(e.target.files[0]);
     setUri(URL.createObjectURL(e.target.files[0]));
-    // setUri(src);
-    setFieldValue('drinkThumb', src);
-    onChangeHandler(src, 'drinkThumb');
   };
 
   return (
     <Wrapper>
-      <ImageThumb uri={uri} style={{ backgroundImage: `url(${uri})` }}>
-        {/* {uri && <Img src={uri} />} */}
+      <ImageThumb uri={uri}>
         {uri ? (
-          <LabelTranslucent>
-            Change
-            <HiddenInput
-              type="file"
-              id="input"
-              name="drinkThumb"
-              accept="image/*"
-              onChange={(e) => addImagehandler(e)}
-            />
-          </LabelTranslucent>
+          <DivTranslucent>
+            <LabelTranslucent
+              onClick={() => {
+                setFile();
+                setUri();
+              }}
+            >
+              Without image
+            </LabelTranslucent>
+            <LabelTranslucent>
+              Change
+              <HiddenInput
+                type="file"
+                id="input"
+                name="drinkThumb"
+                accept="image/*"
+                onChange={(e) => addImagePreview(e)}
+              />
+            </LabelTranslucent>
+          </DivTranslucent>
         ) : (
           <DivAddImage>
             <Label>
@@ -92,7 +100,7 @@ const DrinkDescriptionFields = ({ onChangeHandler, setFieldValue, errors }) => {
                 id="input"
                 name="drinkThumb"
                 accept="image/*"
-                onChange={(e) => addImagehandler(e)}
+                onChange={(e) => addImagePreview(e)}
               />
             </Label>
 
@@ -102,36 +110,41 @@ const DrinkDescriptionFields = ({ onChangeHandler, setFieldValue, errors }) => {
       </ImageThumb>
       <div>
         <DivDesription>
-          <Input
-            type="text"
-            name="drink"
-            placeholder="Enter item title"
-            title="Enter item title"
-            value={form.drink}
-            onChange={(e) => {
-              setFieldValue('drink', e.target.value);
-              onChangeHandler(e.target.value, e.target.name);
-            }}
-          />
-          <ErrorText>
-            {errors.drink}
-            {errors.drink && <ErrorIcon>!</ErrorIcon>}
-          </ErrorText>
-          <Input
-            type="text"
-            name="description"
-            placeholder="Enter about recipe"
-            title="Enter about recipe"
-            value={form.description}
-            onChange={(e) => {
-              setFieldValue('description', e.target.value);
-              onChangeHandler(e.target.value, e.target.name);
-            }}
-          />
-          <ErrorText>
-            {errors.description}{' '}
-            {errors.description && <ErrorIcon>!</ErrorIcon>}
-          </ErrorText>
+          <DivRow>
+            <Input
+              type="text"
+              name="drink"
+              placeholder="Enter item title"
+              title="Enter item title"
+              value={form.drink}
+              onChange={(e) => {
+                setFieldValue('drink', e.target.value);
+                onChangeHandler(e.target.value, e.target.name);
+              }}
+            />
+            <ErrorText>
+              {errors.drink}
+              {errors.drink && <ErrorIcon>!</ErrorIcon>}
+            </ErrorText>
+          </DivRow>
+          <DivRow>
+            <Input
+              type="text"
+              name="description"
+              placeholder="Enter about recipe"
+              title="Enter about recipe"
+              value={form.description}
+              onChange={(e) => {
+                setFieldValue('description', e.target.value);
+                onChangeHandler(e.target.value, e.target.name);
+              }}
+            />
+            <ErrorText>
+              {errors.description}
+              {errors.description && <ErrorIcon>!</ErrorIcon>}
+            </ErrorText>
+          </DivRow>
+
           <DivSelect>
             <DivFlexSelect>
               <SpanSelect>Category</SpanSelect>
@@ -148,8 +161,6 @@ const DrinkDescriptionFields = ({ onChangeHandler, setFieldValue, errors }) => {
                     fontSize: '14px',
                     fontWeight: 'regular',
                     color: '#f3f3f3',
-                    position: 'relative',
-                    top: 20,
                     cursor: 'pointer',
                   }),
 
@@ -214,8 +225,6 @@ const DrinkDescriptionFields = ({ onChangeHandler, setFieldValue, errors }) => {
                     fontSize: '14px',
                     fontWeight: '400',
                     color: '#f3f3f3',
-                    position: 'relative',
-                    top: 20,
                     cursor: 'pointer',
                   }),
                   menu: (base) => ({
