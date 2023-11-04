@@ -1,9 +1,18 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-padding: 100px;
+  padding: 80px 0;
+  width: 335px;
+  margin: 0 auto;
+  @media only screen and (min-width: 768px) {
+    padding: 140px 0;
+width: 704px;
+}
+@media only screen and (min-width: 1440px) {
+  padding: 160px 0 140px;
+width: 1240px;
+}
 `;
-
 export const Title = styled.h1`
   color: #ffffff;
   text-shadow:
