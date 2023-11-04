@@ -21,7 +21,6 @@ const ErrorMessage = ({ message }) => (
 
 const SubscribeForm = () => {
   const dispatch = useDispatch();
-  const [errorVisible, setErrorVisible] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -29,18 +28,14 @@ const SubscribeForm = () => {
     },
     validationSchema: schema,
     onSubmit: (values, actions) => {
-      if (formik.errors.email) {
-        setErrorVisible(true);
-      } else {
-        setErrorVisible(false);
+      if (!formik.errors.email) {
+        dispatch(subscribeEmail(values));
+        actions.resetForm();
       }
-      dispatch(subscribeEmail(values));
-      actions.resetForm();
     }
   });
 
-  const isFormValid = formik.dirty && !formik.errors.email;
-
+  const isEmailError = formik.touched.email && formik.errors.email;
   return (
     <Form onSubmit={formik.handleSubmit}>
       <SubscribeTitle>
@@ -56,15 +51,16 @@ const SubscribeForm = () => {
         onChange={formik.handleChange}
         value={formik.values.email}
         onBlur={formik.handleBlur}
-        // className={formik.errors.email ? 'error' : ''}
-        className={errorVisible ? '' : (formik.errors.email ? 'error' : '')}
+        className={isEmailError ? 'error' : ''}
       />
 
       {formik.touched.email && formik.errors.email ? (
         <ErrorMessage message={formik.errors.email} />
       ) : null}
 
-      <SubscribeButton type="submit" disabled={!isFormValid}>Subscribe</SubscribeButton>
+      <SubscribeButton type="submit" disabled={!formik.dirty || isEmailError}>
+        Subscribe
+      </SubscribeButton>
     </Form>
   );
 };
