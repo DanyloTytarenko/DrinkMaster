@@ -76,3 +76,16 @@ export const updateUser = createAsyncThunk('/auth/users/update', async (userData
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+/*
+ * POST @ /users/subscribe
+ * body: { email }
+ */
+export const subscribeEmail = createAsyncThunk('/users/subscribe',async (userData, thunkAPI) => {
+    try {
+      await axios.post('/users/subscribe', userData);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);

@@ -6,6 +6,7 @@ export const FooterContainer = styled.footer`
   padding-right: 20px;
   padding-left: 18px;
   border-top: 1px solid rgba(243, 243, 243, 0.20);
+
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
@@ -20,6 +21,10 @@ export const FooterContainer = styled.footer`
     padding-right: 100px;
     padding-left: 100px;
   }
+  
+`;
+export const FooterWrap = styled.div`
+  // margin: 0 auto;
 `;
 
 export const MainWrap = styled.div`
