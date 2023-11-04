@@ -17,6 +17,7 @@ import {
   glassReducer,
   ingredientReducer,
 } from './drinks/drinksSlice';
+import { drinkByIdReducer } from './drinks/drinkDetailsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -28,6 +29,7 @@ export const store = configureStore({
     category: categoryReducer,
     glass: glassReducer,
     ingredient: ingredientReducer,
+    drinkDetails: drinkByIdReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import {
   Container,
   Title,
@@ -6,7 +8,9 @@ import {
   Description,
   Button,
 } from './DrinkDetails.styled';
-import data from './recipes';
+// import data from './recipes';
+import { fetchDrinkById } from 'src/redux/drinks/operations';
+import { selectDrinkById } from '../../redux/drinks/drinkDetailsSlice';
 
 // import { useState, useEffect, useRef, Suspense } from 'react';
 // import { Outlet, Link, useParams, useLocation } from 'react-router-dom';
@@ -15,31 +19,41 @@ import data from './recipes';
 // import Loader from 'components/Loader/Loader';
 
 const DrinkDetails = () => {
-  // const { id } = useParams();
-  // const [isError, setIsError] = useState(false);
-  // const location = useLocation();
+  const { drinkId } = useParams();
+  const dispatch = useDispatch();
+  // dispatch(fetchDrinkById(drinkId));
 
-  const [favorite, setfavorite] = useState(true);
-  // const favorite = true;
+  // const isLoading = useSelector(selectDrinkDetailsIsLoadin);
+  // const error = useSelector(selectDrinkDetailsError);
+
+  useEffect(() => {
+    dispatch(fetchDrinkById(drinkId));
+    // dispatch(fetchFavoriteDrinks());
+  }, [dispatch]);
+
+  const drinkDetails = useSelector(selectDrinkById);
+
+  // const [favorite, setfavorite] = useState(true);
+  const favorite = true;
 
   // ***redax
   // const dispatch = useDispatch();
   // const handleAddToFavorite = (id) => dispatch(AddFavorite(id));
   // const handleRemoveToFavorite = (id) => dispatch(RemoveFavorite(id));
 
-  useEffect(() => {
-    function handleAddToFavorite() {
-      setfavorite(false);
-    }
+  // useEffect(() => {
+  //   function handleAddToFavorite() {
+  //     setfavorite(false);
+  //   }
 
-    function handleRemoveToFavorite() {
-      setfavorite(true);
-    }
-  }, [favorite]);
+  //   function handleRemoveToFavorite() {
+  //     setfavorite(true);
+  //   }
+  // }, [favorite]);
 
-  const { drink, glass, alcoholic, description, drinkThumb } = data;
+  const { drink, glass, alcoholic, description, drinkThumb } = drinkDetails;
   return (
-    <Container>
+    <div>
       <Title>{drink}</Title>
       <Glass>
         {glass} / {alcoholic}
@@ -55,9 +69,9 @@ const DrinkDetails = () => {
         </Button>
       )}
       <div>
-        <img src={drinkThumb} alt="" height={400} />
+        <img src={drinkThumb} alt="picture Cocktail" height={400} />
       </div>
-    </Container>
+    </div>
   );
 };
 
