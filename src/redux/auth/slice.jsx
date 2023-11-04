@@ -53,6 +53,7 @@ const authSlice = createSlice({
       .addCase(logIn.rejected, handleRejected)
       .addCase(logOut.fulfilled, handleLogOutFulfilled)
       .addCase(subscribeEmail.fulfilled, handleSubscribeFulfilled)
+      .addCase(subscribeEmail.rejected, handleRejected)
     //   .addCase(updateUser.fulfilled, handleUpdatedFulfilled)
     // .addCase(updateUser.rejected, handleRejected)
   },
