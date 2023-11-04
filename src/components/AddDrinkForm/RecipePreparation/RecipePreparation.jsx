@@ -1,25 +1,27 @@
 import {
   Div,
   Title,
+  TextareaDiv,
   Textarea,
-  Span,
+  MockPlaceholder,
   ErrorText,
   ErrorIcon,
 } from './RecipePreparation.styled';
 
 import { useSelector } from 'react-redux';
-import { selectForm } from '../../../redux/drinks/selectors';
+import { selectForm } from 'src/redux/drinks/selectors';
 
 const RecipePreparation = ({ onChangeHandler, setFieldValue, errors }) => {
   const persistedForm = useSelector(selectForm);
-  console.log(persistedForm, 'form');
+  // console.log(persistedForm, 'form');
   const form = persistedForm.form;
 
   return (
     <Div>
       <Title>Recipe Preparation</Title>
+      <TextareaDiv></TextareaDiv>
       {form.instructions ? (
-        <Span>Enter the recipe</Span>
+        <MockPlaceholder>Enter the recipe</MockPlaceholder>
       ) : (
         <ErrorText>
           {errors.instructions}
