@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import drinkImage from '../../../assets/images/drink-image.jpg';
+import drinkImage from '../../../assets/images/emptyImage/drink-image.jpg';
 import { selectSearchResults } from '../../../redux/drinks/drinksPage/drinksPageSelectors';
 
 import {
