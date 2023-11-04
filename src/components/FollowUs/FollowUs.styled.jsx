@@ -15,6 +15,12 @@ export const FollowIconLink = styled.a`
   justify-content: center;
   border-radius: 10px;
   border: 1px solid rgba(243, 243, 243, 0.20);
+  transition: border-color 250ms ease;
+
+  &:hover,
+  &:focus {
+    border-color: rgba(243, 243, 243, 0.50);
+  } 
 `;
 
 export const IconSvg = styled.svg`

@@ -10,8 +10,8 @@ import {
 } from './DrinkIngredientsFields.styled';
 
 import { useSelector } from 'react-redux';
-import { selectForm } from '../../../redux/drinks/selectors';
-import { selectIngredient } from '../../../redux/drinks/selectors';
+import { selectForm } from 'src/redux/drinks/selectors';
+import { selectIngredient } from 'src/redux/drinks/selectors';
 import IngredientItem from './IngredientItem/IngredientItem';
 
 const DrinkIngredientsFields = ({ onChangeHandler, setFieldValue, errors }) => {
@@ -30,7 +30,7 @@ const DrinkIngredientsFields = ({ onChangeHandler, setFieldValue, errors }) => {
 
   // у зміну записується масив об'єктів інгрідієнтів, у формі необхідній для роботи селекту.
   const ingredientsForSelect = ingredientTitleArray.map((item) => {
-    return { value: item.title, label: item.title, id: item._id };
+    return { value: item.title, label: item.title };
   });
 
   const increment = () => {
@@ -39,7 +39,7 @@ const DrinkIngredientsFields = ({ onChangeHandler, setFieldValue, errors }) => {
     }
 
     const newArray = [...form.ingredients];
-    newArray.push({ title: '', measure: '', _id: { $oid: '' } });
+    newArray.push({ title: '', measure: '' });
     onChangeHandler(newArray, 'ingredients');
     setFieldValue('ingredients', newArray);
   };

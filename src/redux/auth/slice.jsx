@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  register, logIn, logOut, //updateUser
+  register, logIn, logOut, subscribeEmail, updateUser
 } from './operations';
 import { ValidMessage } from 'src/components/ValidMessage/ValidMessage';
 
@@ -12,31 +12,36 @@ const initialState = {
 };
 
 const handleRegisterFulfilled = (state, action) => {
-   state.user = action.payload.user;
+  state.user = action.payload.user;
   state.accessToken = action.payload.accessToken;
   state.isLoggedIn = true;
 };
 
 const handleLoginFulfilled = (state, action) => {
-   state.user = action.payload.user;
+  state.user = action.payload.user;
   state.accessToken = action.payload.accessToken;
   state.isLoggedIn = true;
 };
 const handleUpdatedFulfilled = (state, action) => {
-   state.user = action.payload.user;
+  state.user = action.payload.user;
   state.accessToken = action.payload.accessToken;
   state.isLoggedIn = true;
+
 };
 
 const handleLogOutFulfilled = (state) => {
-   state.user = { name: null, email: null, birthday: null, email: null };
-      state.accessToken = null;
-      state.isLoggedIn = false;
+  state.user = { name: null, email: null, birthday: null, email: null };
+  state.accessToken = null;
+  state.isLoggedIn = false;
 };
 
 const handleRejected = (_, action) => {
   return ValidMessage(action.payload);
 };
+
+const handleSubscribeFulfilled = (state) => {
+  state.isSubscribed = true;
+}
 
 const authSlice = createSlice({
   name: 'auth',
@@ -48,8 +53,12 @@ const authSlice = createSlice({
       .addCase(logIn.fulfilled, handleLoginFulfilled)
       .addCase(logIn.rejected, handleRejected)
       .addCase(logOut.fulfilled, handleLogOutFulfilled)
-    //   .addCase(updateUser.fulfilled, handleUpdatedFulfilled)
-    // .addCase(updateUser.rejected, handleRejected)
+      .addCase(subscribeEmail.fulfilled, handleSubscribeFulfilled)
+      .addCase(subscribeEmail.rejected, handleRejected)
+
+      .addCase(updateUser.fulfilled, handleUpdatedFulfilled)
+    .addCase(updateUser.rejected, handleRejected)
+
   },
 });
 

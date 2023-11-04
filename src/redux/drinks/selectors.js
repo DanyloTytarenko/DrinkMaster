@@ -2,6 +2,8 @@ export const selectOwnDrinks = (state) => state.ownDrinks.items;
 
 export const selectFavoriteDrinks = (state) => state.favoriteDrinks.items;
 
+export const selectPopularDrinks = (state) => state.popularDrinks.items;
+
 export const selectIsLoadingFavorite = (state) =>
   state.favoriteDrinks.isLoading;
 
