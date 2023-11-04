@@ -28,6 +28,20 @@ export const fetchFavoriteDrinks = createAsyncThunk(
     }
   },
 );
+
+export const fetchPopularDrinks = createAsyncThunk(
+  'drinks/fetchPopular',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get('/drinks/popular');
+      console.log(response.data)
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+);
+
 export const addOwnDrink = createAsyncThunk(
   'drinks/addOwnDrink',
   async (drink, thunkAPI) => {

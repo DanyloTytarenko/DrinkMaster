@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { colors } from '../../colors';
+
 export const List = styled.ul`
 display: flex;
 flex-wrap: wrap; 
@@ -77,7 +78,7 @@ width: 56px;
 height:56px;
 }
 `;
-export const SeeMoreButton = styled.button`
+export const SeeMoreButton = styled(NavLink)`
 color: ${colors.light};
 padding: 18px 44px;
 border-radius: 42px;

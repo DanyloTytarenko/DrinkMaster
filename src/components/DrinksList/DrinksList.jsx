@@ -6,108 +6,9 @@ import {
   selectOwnDrinks,
   selectFavoriteDrinks,
 } from '../../redux/drinks/selectors';
+import { Alert } from '@mui/material';
 export const DrinksList = () => {
   let listOfDrinks;
-  // const listOfDrinks = [
-  //   {
-  //     photo:
-  //       'https://www.crowdedkitchen.com/wp-content/uploads/2021/01/passion-fruit-martini-11.jpg',
-  //     name: 'Pornstar Martini',
-  //     alco: 'Alcoholic ',
-  //     desc: 'The porn star martini is a passion-fruit-flavoured cocktail made with vanilla-flavoured vodka, Passoã, passion fruit juice, and lime juice. It is traditionally accompanied by a chilled shot glass of prosecco. ',
-  //   },
-  //   {
-  //     photo:
-  //       'https://www.crowdedkitchen.com/wp-content/uploads/2021/01/passion-fruit-martini-11.jpg',
-  //     name: 'Pornstar Martini',
-  //     alco: 'Alcoholic ',
-  //     desc: 'The porn star martini is a passion-fruit-flavoured cocktail made with vanilla-flavoured vodka, Passoã, passion fruit juice, and lime juice. It is traditionally accompanied by a chilled shot glass of prosecco. ',
-  //   },
-  //   {
-  //     photo:
-  //       'https://www.crowdedkitchen.com/wp-content/uploads/2021/01/passion-fruit-martini-11.jpg',
-  //     name: 'Pornstar Martini',
-  //     alco: 'Alcoholic ',
-  //     desc: 'The porn star martini is a passion-fruit-flavoured cocktail made with vanilla-flavoured vodka, Passoã, passion fruit juice, and lime juice. It is traditionally accompanied by a chilled shot glass of prosecco. ',
-  //   },
-  //   {
-  //     photo:
-  //       'https://www.crowdedkitchen.com/wp-content/uploads/2021/01/passion-fruit-martini-11.jpg',
-  //     name: 'Pornstar Martini',
-  //     alco: 'Alcoholic ',
-  //     desc: 'The porn star martini is a passion-fruit-flavoured cocktail made with vanilla-flavoured vodka, Passoã, passion fruit juice, and lime juice. It is traditionally accompanied by a chilled shot glass of prosecco. ',
-  //   },
-  //   {
-  //     photo:
-  //       'https://www.crowdedkitchen.com/wp-content/uploads/2021/01/passion-fruit-martini-11.jpg',
-  //     name: 'Pornstar Martini',
-  //     alco: 'Alcoholic ',
-  //     desc: 'The porn star martini is a passion-fruit-flavoured cocktail made with vanilla-flavoured vodka, Passoã, passion fruit juice, and lime juice. It is traditionally accompanied by a chilled shot glass of prosecco. ',
-  //   },
-  //   {
-  //     photo:
-  //       'https://www.crowdedkitchen.com/wp-content/uploads/2021/01/passion-fruit-martini-11.jpg',
-  //     name: 'Pornstar Martini',
-  //     alco: 'Alcoholic ',
-  //     desc: 'The porn star martini is a passion-fruit-flavoured cocktail made with vanilla-flavoured vodka, Passoã, passion fruit juice, and lime juice. It is traditionally accompanied by a chilled shot glass of prosecco. ',
-  //   },
-  //   {
-  //     photo:
-  //       'https://www.crowdedkitchen.com/wp-content/uploads/2021/01/passion-fruit-martini-11.jpg',
-  //     name: 'Pornstar Martini',
-  //     alco: 'Alcoholic ',
-  //     desc: 'The porn star martini is a passion-fruit-flavoured cocktail made with vanilla-flavoured vodka, Passoã, passion fruit juice, and lime juice. It is traditionally accompanied by a chilled shot glass of prosecco. ',
-  //   },
-  //   {
-  //     photo:
-  //       'https://www.crowdedkitchen.com/wp-content/uploads/2021/01/passion-fruit-martini-11.jpg',
-  //     name: 'Pornstar Martini',
-  //     alco: 'Alcoholic ',
-  //     desc: 'The porn star martini is a passion-fruit-flavoured cocktail made with vanilla-flavoured vodka, Passoã, passion fruit juice, and lime juice. It is traditionally accompanied by a chilled shot glass of prosecco. ',
-  //   },
-  //   {
-  //     photo:
-  //       'https://www.crowdedkitchen.com/wp-content/uploads/2021/01/passion-fruit-martini-11.jpg',
-  //     name: 'Pornstar Martini',
-  //     alco: 'Alcoholic ',
-  //     desc: 'The porn star martini is a passion-fruit-flavoured cocktail made with vanilla-flavoured vodka, Passoã, passion fruit juice, and lime juice. It is traditionally accompanied by a chilled shot glass of prosecco. ',
-  //   },
-  //   {
-  //     photo:
-  //       'https://www.crowdedkitchen.com/wp-content/uploads/2021/01/passion-fruit-martini-11.jpg',
-  //     name: 'Pornstar Martini',
-  //     alco: 'Alcoholic ',
-  //     desc: 'The porn star martini is a passion-fruit-flavoured cocktail made with vanilla-flavoured vodka, Passoã, passion fruit juice, and lime juice. It is traditionally accompanied by a chilled shot glass of prosecco. ',
-  //   },
-  //   {
-  //     photo:
-  //       'https://www.crowdedkitchen.com/wp-content/uploads/2021/01/passion-fruit-martini-11.jpg',
-  //     name: 'Pornstar Martini',
-  //     alco: 'Alcoholic ',
-  //     desc: 'The porn star martini is a passion-fruit-flavoured cocktail made with vanilla-flavoured vodka, Passoã, passion fruit juice, and lime juice. It is traditionally accompanied by a chilled shot glass of prosecco. ',
-  //   },
-  //   {
-  //     photo:
-  //       'https://www.crowdedkitchen.com/wp-content/uploads/2021/01/passion-fruit-martini-11.jpg',
-  //     name: 'Pornstar Martini',
-  //     alco: 'Alcoholic ',
-  //     desc: 'The porn star martini is a passion-fruit-flavoured cocktail made with vanilla-flavoured vodka, Passoã, passion fruit juice, and lime juice. It is traditionally accompanied by a chilled shot glass of prosecco. ',
-  //   },
-  //   {
-  //     photo:
-  //       'https://www.crowdedkitchen.com/wp-content/uploads/2021/01/passion-fruit-martini-11.jpg',
-  //     name: 'Pornstar Martini',
-  //     alco: 'Alcoholic ',
-  //     desc: 'The porn star martini is a passion-fruit-flavoured cocktail made with vanilla-flavoured vodka, Passoã, passion fruit juice, and lime juice. It is traditionally accompanied by a chilled shot glass of prosecco. ',
-  //   },
-  //   {
-  //     photo:
-  //       'https://www.crowdedkitchen.com/wp-content/uploads/2021/01/passion-fruit-martini-11.jpg',
-  //     name: 'Pornstar Martini',
-  //     alco: 'Alcoholic ',
-  //     desc: 'The porn star martini is a passion-fruit-flavoured cocktail made with vanilla-flavoured vodka, Passoã, passion fruit juice, and lime juice. It is traditionally accompanied by a chilled shot glass of prosecco. ',
-  //   },
-  // ];
   console.log(location.pathname);
   if (location.pathname === '/DrinkMaster/my') {
     listOfDrinks = useSelector(selectOwnDrinks);
@@ -117,10 +18,14 @@ export const DrinksList = () => {
     console.log(listOfDrinks);
   }
   return (
-    <List>
-      {listOfDrinks.map((drink, index) => (
-        <DrinksListItem key={index} drink={drink} />
+    (listOfDrinks.length > 0 ?
+      <List>
+      {listOfDrinks.map((drink) => (
+        <DrinksListItem key={drink.id} drink={drink} />
       ))}
-    </List>
+      </List> : 
+    <Alert severity='info' variant='outlined'>Your drink list is empty</Alert>
+    )
+    
   );
 };
