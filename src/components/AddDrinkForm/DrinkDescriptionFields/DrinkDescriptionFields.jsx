@@ -75,7 +75,7 @@ const DrinkDescriptionFields = ({
             <LabelTranslucent
               onClick={() => {
                 setFile();
-                setUri();
+                setUri(DummyDrinkThumb);
               }}
             >
               Without image
