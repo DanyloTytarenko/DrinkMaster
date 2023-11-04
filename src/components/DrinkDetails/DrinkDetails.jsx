@@ -12,6 +12,7 @@ import defaultImage from '../../assets/images/drink-image.jpg';
 import { fetchDrinkById } from 'src/redux/drinks/operations';
 import { StyledSearchWrapper } from '../DrinksSearch/DrinksSearch.styled';
 import { selectDrinkById } from 'src/redux/drinks/selectors';
+import IngredientByDrink from './IngredientByDrink/IngredientByDrink';
 
 const DrinkDetails = () => {
   const { drinkId } = useParams();
@@ -68,6 +69,7 @@ const DrinkDetails = () => {
           }}
         />
       </div>
+      <IngredientByDrink />
     </StyledSearchWrapper>
   );
 };

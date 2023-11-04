@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { colors } from '../../colors';
 // import example from '../../../image/any-cocktail.jpg';
 
 // export const Container = styled.div`
@@ -45,7 +46,8 @@ export const Title = styled.h1`
 `;
 
 export const Glass = styled.p`
-  color: #ffffff;
+  color: ${colors.light};
+  color: rgba(243, 243, 243, 0.5);
   margin-bottom: 20px;
   // text-shadow:
   //   0 0 5px #00baff,
@@ -56,7 +58,7 @@ export const Glass = styled.p`
 `;
 
 export const Description = styled.p`
-  color: #ffffff;
+  color: ${colors.light};
   margin-bottom: 40px;
 `;
 

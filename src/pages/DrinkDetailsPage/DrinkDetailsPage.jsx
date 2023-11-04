@@ -17,8 +17,7 @@ const DrinkDetailsPage = () => {
     <>
       <Header />
       <Container>
-        {isLoading && !error && <Loader />}
-        <DrinkDetails />
+        {isLoading && !error ? <Loader /> : <DrinkDetails />}
       </Container>
       <Footer />
     </>
