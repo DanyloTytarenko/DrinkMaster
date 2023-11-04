@@ -29,7 +29,7 @@ useEffect(() => {
                   <Photo src={drink.drinkThumb} alt={drink.drink}/>
               <DescrWrapper>
                   <DrinkName>{drink.drink}</DrinkName>
-                  <DrinkDescr>{drink.drink}</DrinkDescr>
+                  <DrinkDescr>{drink.description}</DrinkDescr>
                   </DescrWrapper>
               </DrinkLink>
           </ListItem>

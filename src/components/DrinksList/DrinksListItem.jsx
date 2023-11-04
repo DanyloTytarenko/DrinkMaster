@@ -32,7 +32,7 @@ export const DrinksListItem = ({ drink }) => {
         <DrinkTitle>{drink.drink}</DrinkTitle>
         <DrinkAlc>{drink.alcoholic}</DrinkAlc>
       </TitleWrapper>
-      <DrinkDesc>{drink.desc}</DrinkDesc>
+      <DrinkDesc>{drink.description}</DrinkDesc>
       <BtnWrapper>
         <SeeMoreButton to={`/drink/${drink.id}`}>See more</SeeMoreButton>
         <DeleteButton onClick={handleDelete}>
