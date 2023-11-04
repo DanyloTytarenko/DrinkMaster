@@ -24,7 +24,7 @@ export const FooterContainer = styled.footer`
   
 `;
 export const FooterWrap = styled.div`
-  margin: 0 auto;
+  // margin: 0 auto;
 `;
 
 export const MainWrap = styled.div`
