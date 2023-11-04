@@ -1,9 +1,7 @@
-// import React from 'react';
 import { AnyCocktail, Description, Title } from './RecipePreparation.styled';
 import anyCocktail from '../../../assets/images/any-cocktail.jpg';
 
 const RecipePreparation = ({ drinkDetails }) => {
-  console.log(drinkDetails);
   const { description, instructions } = drinkDetails;
 
   return (

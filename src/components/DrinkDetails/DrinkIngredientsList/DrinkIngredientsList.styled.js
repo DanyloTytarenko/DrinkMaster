@@ -20,14 +20,17 @@ export const AllTitleIngredients = styled.h2`
 
 export const ListIngredient = styled.ul`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  // flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  // justify-content: center;
   align-items: center;
 
   @media (min-width: 768px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    column-gap: 20px;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    // column-gap: 20px;
   }
 `;
 
@@ -39,17 +42,17 @@ export const ItemIngredient = styled.li`
 `;
 
 export const ImageIngredient = styled.img`
-  width: 167px;
+  width: 157px;
   // height: 360px;
   border-radius: 8px;
 
   @media (min-width: 768px) {
-    width: 342px;
-    height: 360px;
+    width: 220px;
+    // height: 360px;
   }
   @media (min-width: 1440px) {
-    width: 400px;
-    height: 400px;
+    // width: 400px;
+    // height: 400px;
   }
 `;
 

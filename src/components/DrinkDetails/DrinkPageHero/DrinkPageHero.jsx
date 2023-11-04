@@ -5,32 +5,16 @@ import {
   Title,
   Glass,
   Description,
-  Button,
   StyledImage,
+  StyledImageContainer,
 } from './DrinkPageHero.styled';
 import defaultImage from '../../../assets/images/drink-image.jpg';
 import { StyledSearchWrapper } from '../../DrinksSearch/DrinksSearch.styled';
+import Button from '../Button/Button';
 
 const DrinkPageHero = ({ drinkDetails }) => {
-  // const [favorite, setfavorite] = useState(true);
-  const favorite = true;
-
-  // ***redax
-  // const dispatch = useDispatch();
-  // const handleAddToFavorite = (id) => dispatch(AddFavorite(id));
-  // const handleRemoveToFavorite = (id) => dispatch(RemoveFavorite(id));
-
-  // useEffect(() => {
-  //   function handleAddToFavorite() {
-  //     setfavorite(false);
-  //   }
-
-  //   function handleRemoveToFavorite() {
-  //     setfavorite(true);
-  //   }
-  // }, [favorite]);
-
   const { drink, glass, alcoholic, description, drinkThumb } = drinkDetails;
+
   return (
     <StyledSearchWrapper>
       <Title>{drink}</Title>
@@ -38,16 +22,8 @@ const DrinkPageHero = ({ drinkDetails }) => {
         {glass} / {alcoholic}
       </Glass>
       <Description>{description}</Description>
-      {favorite ? (
-        <Button type="button" onClick={() => handleAddToFavorite(id)}>
-          Add to favorite drinks
-        </Button>
-      ) : (
-        <Button type="button" onClick={() => handleRemoveToFavorite(id)}>
-          Remove from favorites
-        </Button>
-      )}
-      <div>
+      <Button />
+      <StyledImageContainer>
         <StyledImage
           src={drinkThumb}
           alt="picture Cocktail"
@@ -56,7 +32,7 @@ const DrinkPageHero = ({ drinkDetails }) => {
             event.currentTarget.src = defaultImage;
           }}
         />
-      </div>
+      </StyledImageContainer>
     </StyledSearchWrapper>
   );
 };
