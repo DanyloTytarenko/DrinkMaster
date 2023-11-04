@@ -17,6 +17,7 @@ export const fetchOwnDrinks = createAsyncThunk(
     }
   },
 );
+
 export const fetchFavoriteDrinks = createAsyncThunk(
   'drinks/fetchFavorite',
   async (_, thunkAPI) => {
@@ -28,6 +29,20 @@ export const fetchFavoriteDrinks = createAsyncThunk(
     }
   },
 );
+
+export const fetchPopularDrinks = createAsyncThunk(
+  'drinks/fetchPopular',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get('/drinks/popular');
+      console.log(response.data)
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+);
+
 export const addOwnDrinkImg = createAsyncThunk(
   'drinks/addOwnDrinkImg',
   async (formData, { rejectWithValue }) => {
@@ -49,6 +64,7 @@ export const addOwnDrinkImg = createAsyncThunk(
     }
   },
 );
+
 export const addOwnDrink = createAsyncThunk(
   'drinks/addOwnDrink',
   async (drink, { rejectWithValue }) => {

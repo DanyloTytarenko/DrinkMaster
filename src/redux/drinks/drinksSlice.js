@@ -9,6 +9,7 @@ import {
   fetchCategories,
   fetchGlass,
   fetchIngredient,
+  fetchPopularDrinks
 } from './operations';
 const handlePending = (state) => {
   state.isLoading = true;
@@ -22,6 +23,22 @@ const initialState = {
   isLoading: false,
   error: null,
 };
+
+export const popularDrinksSlice = createSlice({
+  name: 'popularDrinks',
+  initialState,
+  extraReducers: {
+    [fetchPopularDrinks.pending]: handlePending,
+    [fetchPopularDrinks.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
+    },
+    [fetchPopularDrinks.rejected]: handleRejected,
+  },
+});
+
+
 export const ownDrinksSlice = createSlice({
   name: 'ownDrinks',
   initialState,
@@ -118,6 +135,7 @@ export const ingredientSlice = createSlice({
 });
 export const favoriteDrinksReducer = favoriteDrinksSlice.reducer;
 export const ownDrinksReducer = ownDrinksSlice.reducer;
+export const popularDrinksReducer = popularDrinksSlice.reducer;
 export const categoryReducer = categorySlice.reducer;
 export const glassReducer = glassSlice.reducer;
 export const ingredientReducer = ingredientSlice.reducer;
