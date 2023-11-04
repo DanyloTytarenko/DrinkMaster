@@ -16,7 +16,6 @@ import { recipes } from '../testListRecipes';
 
 const DrinksList = () => {
   const { drinks } = useSelector(selectSearchResults);
-  console.log('searchResults :>> ', drinks);
 
   return (
     <StyledDrinksList>
