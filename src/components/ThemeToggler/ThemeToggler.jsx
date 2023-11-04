@@ -1,11 +1,15 @@
-import { TogglerInput, TogglerLabel, TogglerBg, ThemeToggle } from './ThemeToggler.styled';
-
+import { TogglerBtn, ThemeToggle } from './ThemeToggler.styled';
+import { useState } from 'react';
 const ThemeToggler = () => {
+   const [theme, setTheme] = useState('dark');
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+  };
   return (
-    <ThemeToggle>
-      <TogglerInput type="checkbox" id="toggler" />
-      <TogglerLabel htmlFor="toggler"></TogglerLabel>
-      <TogglerBg></TogglerBg>
+    <ThemeToggle theme={theme}>
+      <TogglerBtn onClick={toggleTheme} theme={theme}></TogglerBtn>
     </ThemeToggle>
   )
 }

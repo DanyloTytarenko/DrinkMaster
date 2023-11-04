@@ -3,45 +3,29 @@ import { colors } from '../../colors';
 
 export const ThemeToggle = styled.div`
   position: relative;
-`;
-
-export const TogglerInput = styled.input`
-  display: none;
-  background: ${colors.light};
+  width: 40px;
+  height: 20px;
+  border-radius: 10px;
   box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.10) inset;
-
-  &:checked {
-    transform: translateX(110%);
-  }
+  ${({ theme }) =>
+    theme === 'dark' ?
+    `background: ${colors.light}` : ` background: ${colors.secondaryDark};`} 
 `;
 
-export const TogglerLabel = styled.label`
+export const TogglerBtn = styled.button`
   border-radius: 50%;
-  background: ${colors.secondaryDark};
   position: absolute;
   width: 18px;
   height: 18px;
   translate: 0 -50%;
-  right: 1px;
   top: 50%;
   cursor: pointer;
   transition: transform 300ms ease;
-
-    &:checked {
-      background: ${colors.light};
-  }
+  border: none;
+${({ theme }) =>
+    theme === 'dark' ?
+    ` right: 1px; background: ${colors.secondaryDark};` : `left: 1px; background: ${colors.light};`} }
 `;
 
-export const TogglerBg = styled.div`
-  width: 40px;
-  height: 20px;
-  border-radius: 10px;
-  background: ${colors.light};
-  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.10) inset;
-
-    &:checked {
-    background: ${colors.secondaryDark};
-  }
-`;
 
 
