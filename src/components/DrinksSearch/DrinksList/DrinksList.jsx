@@ -12,7 +12,7 @@ import {
   StyledDrinksList,
 } from './DrinksList.styled';
 
-import { recipes } from '../testListRecipes';
+// import { recipes } from '../testListRecipes';
 
 const DrinksList = () => {
   const { drinks } = useSelector(selectSearchResults);
