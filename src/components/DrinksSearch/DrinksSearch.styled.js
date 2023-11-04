@@ -172,6 +172,7 @@ export const StyledSelect = styled(Select)`
 
   .react-select__single-value {
     color: ${colors.light}; //#f3f3f3
+    width: 160px;
   }
   .react-select__menuList {
     max-height: 60px;
@@ -195,6 +196,7 @@ export const StyledSelect = styled(Select)`
 
   .react-select__option {
     background-color: transparent;
+    text-overflow: ellipsis;
     transition:
       color 250ms ease,
       background-color 250ms ease;

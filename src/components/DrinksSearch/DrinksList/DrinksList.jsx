@@ -12,36 +12,28 @@ import {
   StyledDrinksList,
 } from './DrinksList.styled';
 
-// import { recipes } from '../testListRecipes';
-
 const DrinksList = () => {
   const { drinks } = useSelector(selectSearchResults);
 
   return (
     <StyledDrinksList>
-      {
-        /* (drinks ?? recipes) */
-        drinks?.map((item) => (
-          <StyledDrinksItem
-            key={item._id}
-            // key={item._id.$oid}
-          >
-            <StyledDrinkImage
-              src={item.drinkThumb}
-              alt={item.drink}
-              onError={(event) => {
-                event.currentTarget.src = drinkImage;
-              }}
-            />
-            <DescriptionWrapper>
-              <DrinkTitle>{item.drink}</DrinkTitle>
-              <DescriptionLink to={`/drink/${item._id}`}>
-                See more
-              </DescriptionLink>
-            </DescriptionWrapper>
-          </StyledDrinksItem>
-        ))
-      }
+      {drinks?.map((item) => (
+        <StyledDrinksItem key={item._id}>
+          <StyledDrinkImage
+            src={item.drinkThumb}
+            alt={item.drink}
+            onError={(event) => {
+              event.currentTarget.src = drinkImage;
+            }}
+          />
+          <DescriptionWrapper>
+            <DrinkTitle>{item.drink}</DrinkTitle>
+            <DescriptionLink to={`/drink/${item._id}`}>
+              See more
+            </DescriptionLink>
+          </DescriptionWrapper>
+        </StyledDrinksItem>
+      ))}
     </StyledDrinksList>
   );
 };
