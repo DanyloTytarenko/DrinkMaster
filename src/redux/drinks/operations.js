@@ -17,6 +17,7 @@ export const fetchOwnDrinks = createAsyncThunk(
     }
   },
 );
+
 export const fetchFavoriteDrinks = createAsyncThunk(
   'drinks/fetchFavorite',
   async (_, thunkAPI) => {
@@ -42,16 +43,40 @@ export const fetchPopularDrinks = createAsyncThunk(
   },
 );
 
+export const addOwnDrinkImg = createAsyncThunk(
+  'drinks/addOwnDrinkImg',
+  async (formData, { rejectWithValue }) => {
+    try {
+      const response = await axios.post('/drinks/own/add/img', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      // console.log(response);
+      return response.status === 201
+        ? response.data.avatarURL
+        : e.response.data;
+    } catch (e) {
+      if (!e.response) {
+        throw e;
+      }
+      return rejectWithValue(e.response.data);
+    }
+  },
+);
+
 export const addOwnDrink = createAsyncThunk(
   'drinks/addOwnDrink',
-  async (drink, thunkAPI) => {
+  async (drink, { rejectWithValue }) => {
+    console.log(drink, 'drink');
     try {
-      console.log('in asyncThunk');
       const response = await axios.post('/drinks/own/add', drink);
-      console.log(response);
-      return response.data;
+      return response.status === 200 ? response.data : e.response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      if (!e.response) {
+        throw e;
+      }
+      return rejectWithValue(e.response.data);
     }
   },
 );

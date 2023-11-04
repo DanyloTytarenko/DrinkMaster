@@ -46,11 +46,16 @@ export const Button = styled.button`
 export const ErrorText = styled.p`
   margin-left: 18px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   position: absolute;
   top: 54px;
   font-size: 12px;
   line-height: calc(14 / 12);
   letter-spacing: 0;
   color: #da1414;
+  @media only screen and (min-width: 768px) {
+    top: 64px;
+    font-size: 14px;
+    line-height: calc(18 / 14);
+  }
 `;

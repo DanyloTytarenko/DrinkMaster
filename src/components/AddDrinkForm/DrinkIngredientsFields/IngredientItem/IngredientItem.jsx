@@ -13,17 +13,10 @@ const IngredientItem = ({
   setFieldValue,
 }) => {
   // композитна функція контрольованої обробки двох інпутів (інгрідієнта і його кількості)
-  const onChangeIngredientHandler = (payload, field, id) => {
+  const onChangeIngredientHandler = (payload, field) => {
     let tempArray = [...chosenIngredients];
 
-    const freshData = id
-      ? {
-          [field]: payload,
-          _id: {
-            $oid: id,
-          },
-        }
-      : { [field]: payload };
+    const freshData = { [field]: payload };
 
     tempArray[index] = tempArray[index]
       ? Object.assign({}, tempArray[index], freshData)

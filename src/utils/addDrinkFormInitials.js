@@ -12,4 +12,5 @@ export const initialValues = {
     },
   ],
   instructions: '',
+  shortDescription: 'Just refreshing cocktail',
 };
