@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 const Title = styled.h1`
-  font-family: 'Manrope', sans-serif;
-  font-weight: 600;
-  color: ${({ theme }) => (theme === 'light' ? '#0A0A11' : '#F3F3F3')};
-
+  margin-right: auto;
+  margin-bottom: ${({ $marginM }) => $marginM};
   font-size: 32px;
-  line-height: 1.19;
+  font-weight: 600;
+  line-height: calc(38 / 32);
+  color: ${({ theme }) => (theme === 'light' ? '#0A0A11' : '#F3F3F3')};
 
   @media (min-width: 768px) {
     font-size: 56px;
@@ -19,8 +19,23 @@ const Title = styled.h1`
   }
 `;
 
-const PageTitle = ({ title, theme }) => {
-  return <Title theme={theme}>{title}</Title>;
+const PageTitle = ({
+  title,
+  theme,
+  marginMobile,
+  marginTablet,
+  marginDesktop,
+}) => {
+  return (
+    <Title
+      theme={theme}
+      $marginM={marginMobile}
+      $marginT={marginTablet}
+      $marginD={marginDesktop}
+    >
+      {title}
+    </Title>
+  );
 };
 
 export default PageTitle;

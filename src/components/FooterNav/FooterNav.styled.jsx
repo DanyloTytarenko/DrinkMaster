@@ -12,6 +12,12 @@ export const StyledNavigationLink = styled(NavLink)`
   color: ${colors.light};
   font-size: 14px;
   font-weight: 500;
-  line-height: 22.4px; 
+  line-height: 22.4px;
+  transition: transform 250ms ease;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+  } 
 `;
 

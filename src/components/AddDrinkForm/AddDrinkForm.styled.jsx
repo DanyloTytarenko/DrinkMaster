@@ -1,9 +1,6 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
-  margin-bottom: 80px;
-  width: 100%;
-  max-width: 335px;
   @media only screen and (min-width: 768px) {
     max-width: 704px;
     @media only screen and (min-width: 1440px) {

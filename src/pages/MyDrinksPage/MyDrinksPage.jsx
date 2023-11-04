@@ -9,6 +9,10 @@ import {
 } from '../../redux/drinks/selectors';
 import Header from 'src/components/Header/Header';
 import Footer from 'src/components/Footer/Footer';
+import { PopularDrinksComponent } from 'src/components/PopularDrinks/PopularDrinks';
+import PageTitle from 'src/components/PageTitle/PageTitle';
+import Loader from 'src/components/Loader/Loader';
+import { Alert } from '@mui/material';
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoadingOwn);
@@ -21,8 +25,9 @@ const MyDrinksPage = () => {
     <>
       <Header></Header>
       <Container>
-        <Title>DrinksPage Page</Title>
-        {isLoading && !error && <b>Request in progress...</b>}
+        <PageTitle  title='My drinks' theme="dark"/>
+        {isLoading && !error && <Loader />}
+        {error && <Alert severity='info' variant='outlined'>Your drink list is empty</Alert>}
         <DrinksList />
       </Container>
       <Footer></Footer>
