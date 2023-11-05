@@ -1,6 +1,3 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import {
   Title,
   Glass,
@@ -13,7 +10,8 @@ import { StyledSearchWrapper } from '../../DrinksSearch/DrinksSearch.styled';
 import Button from '../Button/Button';
 
 const DrinkPageHero = ({ drinkDetails }) => {
-  const { drink, glass, alcoholic, description, drinkThumb } = drinkDetails;
+  const { _id, drink, glass, alcoholic, description, drinkThumb } =
+    drinkDetails;
 
   return (
     <StyledSearchWrapper>
@@ -22,7 +20,7 @@ const DrinkPageHero = ({ drinkDetails }) => {
         {glass} / {alcoholic}
       </Glass>
       <Description>{description}</Description>
-      <Button />
+      <Button drinkId={_id} />
       <StyledImageContainer>
         <StyledImage
           src={drinkThumb}

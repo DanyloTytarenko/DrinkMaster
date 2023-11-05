@@ -1,22 +1,41 @@
-import { useState } from 'react';
-import { StyledButton } from './Button.styled';
+import { useEffect, useState } from 'react';
 
-const Button = () => {
-  const [favorite, setfavorite] = useState(false);
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchFavoriteDrinks } from 'src/redux/drinks/operations';
+import { StyledButton } from './Button.styled';
+import { selectFavoriteDrinks } from 'src/redux/drinks/selectors';
+
+const Button = (drinkId) => {
+  const [favorite, setfavorite] = useState(true);
   console.log(favorite);
-  //   const favorite = true;
   const handleAddToFavorite = () => setfavorite(true);
   const handleRemoveToFavorite = () => setfavorite(false);
-  // ***redax
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const dataFavoriteDrinks = useSelector(selectFavoriteDrinks);
   // const handleAddToFavorite = (id) => dispatch(AddFavorite(id));
   // const handleRemoveToFavorite = (id) => dispatch(RemoveFavorite(id));
 
-  // useEffect(() => {
-  //   function handleAddToFavorite() {
+  // function handletheFirstValueFavorite() {
+  //   dataFavoriteDrinks.map(({ id }) => {
+  //     console.log(id);
+  //   });
+  //   // setfavorite(false);
+  // }
+
+  useEffect(() => {
+    dispatch(fetchFavoriteDrinks());
+    console.log(dataFavoriteDrinks.favoriteDrinks);
+
+    if (dataFavoriteDrinks.favoriteDrinks.length === 0)
+      return setfavorite(false);
+
+    // setfavorite(false);
+  }, []);
+
+  // function handleAddToFavorite() {
   //     setfavorite(false);
   //   }
-
+  console.log(drinkId);
   //   function handleRemoveToFavorite() {
   //     setfavorite(true);
   //   }
