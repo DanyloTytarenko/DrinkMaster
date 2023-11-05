@@ -1,8 +1,10 @@
-import { PrivacyWrap, Title, SubTitle, PrivacyText } from './TermsOfService.styled';
+import { PrivacyWrap, MainTitle, Title, SubTitle, PrivacyText } from './TermsOfService.styled';
 
 const TermsOfService = () => {
   return (
     <PrivacyWrap>
+      <MainTitle>Terms of Service</MainTitle>
+
       <Title>
         This &quot;User Agreement&quot; (the &quot;Agreement&quot;) sets forth the terms and conditions governing the use of the Drink Master application (&quot;App&quot;) and its services.
       </Title>

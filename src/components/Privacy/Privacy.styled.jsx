@@ -25,6 +25,16 @@ export const PrivacyWrap = styled.div`
   }
 `;
 
+export const MainTitle = styled.h1`
+  color: ${colors.light};
+  font-size: 36px;
+  margin-bottom: 100px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 80px;
+  }
+`;
+
 export const Title = styled.h2`
   color: ${colors.light};
   font-size: 24px;

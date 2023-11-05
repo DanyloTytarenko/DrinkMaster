@@ -1,8 +1,10 @@
-import { PrivacyWrap, Title, SubTitle, PrivacyText } from './Privacy.styled';
+import { PrivacyWrap, MainTitle, Title, SubTitle, PrivacyText } from './Privacy.styled';
 
 const Privacy = () => {
   return (
     <PrivacyWrap>
+      <MainTitle>Privacy Policy</MainTitle>
+
       <Title>
         Your privacy is important to us.  This section outlines how we collect, use, process, and protect your personal data. This Privacy Policy applies to the use of our website, applications, and services, so please take a moment to read it.
       </Title>
