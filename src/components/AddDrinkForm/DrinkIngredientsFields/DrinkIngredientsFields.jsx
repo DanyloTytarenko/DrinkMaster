@@ -40,8 +40,7 @@ const DrinkIngredientsFields = ({ onChangeHandler, setFieldValue, errors }) => {
 
     const newArray = [...form.ingredients];
     newArray.push({ title: '', measure: '' });
-    onChangeHandler(newArray, 'ingredients');
-    setFieldValue('ingredients', newArray);
+    onChangeHandler(newArray, 'ingredients', setFieldValue);
   };
 
   const decrement = (index) => {
@@ -52,12 +51,11 @@ const DrinkIngredientsFields = ({ onChangeHandler, setFieldValue, errors }) => {
     if (index || index === 0) {
       const newArray = [...form.ingredients];
       newArray.splice(index, 1);
-      onChangeHandler(newArray, 'ingredients');
+      onChangeHandler(newArray, 'ingredients', setFieldValue);
     } else {
       const newArray = [...form.ingredients];
       newArray.pop();
-      setFieldValue('ingredients', newArray);
-      onChangeHandler(newArray, 'ingredients');
+      onChangeHandler(newArray, 'ingredients', setFieldValue);
     }
   };
 
@@ -81,6 +79,7 @@ const DrinkIngredientsFields = ({ onChangeHandler, setFieldValue, errors }) => {
             <IngredientItem
               chosenIngredients={form.ingredients}
               onChangeHandler={onChangeHandler}
+              setFieldValue={setFieldValue}
               ingredients={ingredientsForSelect}
               deleteIngredient={decrement}
               index={index}
@@ -89,7 +88,6 @@ const DrinkIngredientsFields = ({ onChangeHandler, setFieldValue, errors }) => {
                 label: form.ingredients[index].title,
               }}
               errors={errors}
-              setFieldValue={setFieldValue}
             />
           </li>
         ))}

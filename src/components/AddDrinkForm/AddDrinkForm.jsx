@@ -72,6 +72,7 @@ const AddDrinkForm = () => {
     const formData = new FormData();
     formData.append('cocktail', file);
     dispatch(addOwnDrinkImg(formData)).then((resp) => {
+      console.log(resp, 'from backend');
       if (
         typeof resp.payload === 'string' &&
         resp.payload.startsWith('https://res.cloudinary.com')
@@ -92,7 +93,7 @@ const AddDrinkForm = () => {
     });
   };
 
-  const onChangeHandler = (payload, field) => {
+  function onChangeHandler(payload, field, setFieldValue) {
     const tempObj = {
       ...formValues,
     };
@@ -100,9 +101,9 @@ const AddDrinkForm = () => {
     const freshData = { [field]: payload };
 
     Object.assign(tempObj, freshData);
-
+    setFieldValue(field, payload);
     dispatch(setForm(tempObj));
-  };
+  }
 
   // dispatch(setForm(initialValues));
 

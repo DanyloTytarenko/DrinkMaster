@@ -21,6 +21,7 @@ export const TextareaDiv = styled.div`
 `;
 
 export const Textarea = styled.textarea`
+  font-family: 'Manrope', sans-serif;
   position: relative;
   padding: 16px 18px;
   width: 100%;
