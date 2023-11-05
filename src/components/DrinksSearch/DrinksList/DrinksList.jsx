@@ -11,11 +11,12 @@ import {
   StyledDrinksItem,
   StyledDrinksList,
 } from './DrinksList.styled';
+import NotFound from 'src/components/NotFound/NotFound';
 
 const DrinksList = () => {
   const { drinks } = useSelector(selectSearchResults);
 
-  return (
+  return drinks?.length !== 0 ? (
     <StyledDrinksList>
       {drinks?.map((item) => (
         <StyledDrinksItem key={item._id}>
@@ -35,6 +36,8 @@ const DrinksList = () => {
         </StyledDrinksItem>
       ))}
     </StyledDrinksList>
+  ) : (
+    <NotFound message={'No cocktails found for your request'} />
   );
 };
 
