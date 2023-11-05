@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { colors } from '../../colors';
 export const UserInfoWrap = styled.div`
 width: 32px;
 height: 32px;
@@ -29,12 +29,13 @@ export const UserSvg = styled.svg`
 `;
 
 export const UserName = styled.p`
-color: #F3F3F3;
 font-size: 14px;
-font-weight: 500;
 line-height: 18px;
 // margin-left: 8px; 
-
+font-weight: 500;
+${({ theme }) =>
+    theme === 'dark' ?
+    ` color: ${colors.light};` : `color: ${colors.secondaryDark};`}
 @media screen and (min-width: 768px) {
   font-size: 16px;
   line-height: 24px;

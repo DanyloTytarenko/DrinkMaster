@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
-import ThemeToggler from '../ThemeToggler/ThemeToggler';
+import ThemeToggler from './ThemeToggler/ThemeToggler';
 import UserLogo from '../UserLogo/UserLogo';
 import { BurgerMenu } from './BurgerMenu/BurgerMenu';
 import {
@@ -9,6 +9,8 @@ import {
 } from './Header.styled';
 import { DropDown } from '../Modal/DropDown';
 const Header = () => {
+
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const handleWindowResize = () => {

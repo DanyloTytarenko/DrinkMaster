@@ -1,24 +1,25 @@
 // import React, { useState, useEffect } from 'react';
 import { useState } from 'react';
-import { BurgerContainer, BurgerIcon, Bar, MenuItems, Gradient } from './BurgerMenu.styled';
+import { BurgerContainer, BurgerIcon, Bar, MenuItems, Gradient, SvgClose } from './BurgerMenu.styled';
 import { StyledNavigationLink } from '../../Navigation/Navigation.styled.jsx';
+import { useSelector} from 'react-redux';
+import {selectTheme } from '../../../redux/theme/themeSlice'
+import sprite from '../../Modal/sprite.svg'
 
 export const BurgerMenu = ({isOpen, toggleMenu}) => {
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // const toggleMenu = () => {
-  //   setIsOpen(!isOpen);
-  // };
-
+  
+const theme = useSelector(selectTheme);
   return (
-    <BurgerContainer>
-      <BurgerIcon onClick={toggleMenu}>
-        <Bar />
-        <Bar />
-        <Bar />
-        <Bar />
-      </BurgerIcon>
-      <MenuItems open={isOpen}>
+    <BurgerContainer >
+      {isOpen === false ?<BurgerIcon onClick={toggleMenu}>
+        <Bar theme={theme} />
+        <Bar  theme={theme}/>
+        <Bar  theme={theme}/>
+        <Bar theme={theme} />  
+      </BurgerIcon> :  <SvgClose width="24px" height="24px" theme={theme} onClick={toggleMenu}>
+                <use href={`${sprite}#icon-close`} />
+              </SvgClose>}
+      <MenuItems open={isOpen} theme={theme}>
         <Gradient/>
         <StyledNavigationLink to="/home" onClick={toggleMenu}>
           Home

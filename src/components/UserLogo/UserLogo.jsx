@@ -1,7 +1,10 @@
 import { UserInfoWrap, UserLogoWrap, UserSvg, UserName } from './UserLogo.styled';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors'
+import {selectTheme } from '../../redux/theme/themeSlice'
+
 const UserLogo = () => {
+  const theme = useSelector(selectTheme);
   const user = useSelector(selectUser);
   return (
     <UserInfoWrap>
@@ -19,7 +22,7 @@ const UserLogo = () => {
           </defs>
         </UserSvg>
       </UserLogoWrap>
-      <UserName>{user.name}</UserName>
+      <UserName theme={theme}>{user.name}</UserName>
     </UserInfoWrap>
   )
 }

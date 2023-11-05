@@ -3,6 +3,7 @@ import { colors } from '../../../colors';
 
 export const BurgerContainer = styled.div`
   position: relative;
+
 `;
 
 export const BurgerIcon = styled.div`
@@ -24,7 +25,9 @@ export const Bar = styled.div`
   width: 26px;  
   height: 2px;
   border-radius: 10px;
-  background-color: ${colors.light};
+  ${({ theme }) =>
+    theme === 'dark' ?
+    ` background: ${colors.light};` : `background: ${colors.secondaryDark};`}
   margin: 0;
   transition: 0.4s;
 
@@ -52,9 +55,11 @@ export const MenuItems = styled.ul`
     left: 0;
     right: 0;
     bottom: 0;
-    background: ${colors.primaryDark};
     z-index: 10;
   `}
+  ${({ theme }) =>
+    theme === 'dark' ?
+    ` background: ${colors.primaryDark};` : `background: ${colors.light};`}
 `;
 
 export const Gradient = styled.div`
@@ -67,3 +72,9 @@ position: absolute;
 top:0;
 left: 10%;
 `
+export const SvgClose = styled.svg`
+ 
+  ${({ theme }) =>
+    theme === 'dark' ?
+    ` stroke: ${colors.light};` : `stroke: ${colors.primaryDark};`}
+`;

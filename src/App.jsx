@@ -19,13 +19,16 @@ const DrinkDetailsPage = lazy(() =>
 const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 import { AppWrapper } from './App.styled';
+import { useSelector} from 'react-redux';
+import {selectTheme } from './redux/theme/themeSlice'
 
 // const test = import.meta.env.VITE_API_TEST;
 
 function App() {
+  const theme = useSelector(selectTheme);
   // console.log(test);
   return (
-    <AppWrapper>
+    <AppWrapper theme={theme}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route
