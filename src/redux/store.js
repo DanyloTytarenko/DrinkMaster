@@ -9,7 +9,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { authReducer } from './auth/slice';
-import { ownDrinksReducer, favoriteDrinksReducer } from './drinks/drinksSlice';
+import { ownDrinksReducer, favoriteDrinksReducer, popularDrinksReducer } from './drinks/drinksSlice';
 import { persistedFormReducer } from './drinks/formSlice';
 import { newDrinksReducer } from './homepage/newDrinkSlice';
 import { drinksReducer } from './drinks/drinksPage/drinksPageSlice';
@@ -25,6 +25,7 @@ export const store = configureStore({
     auth: authReducer,
     ownDrinks: ownDrinksReducer,
     favoriteDrinks: favoriteDrinksReducer,
+    popularDrinks: popularDrinksReducer,
     form: persistedFormReducer,
     newDrinks: newDrinksReducer,
     drinks: drinksReducer,

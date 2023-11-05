@@ -67,7 +67,7 @@ export const logOut = createAsyncThunk('/auth/logout', async (_, thunkAPI) => {
 /* PATCH @ /users/update
  * headers: Authorization: Bearer token
  */
-export const updateUser = createAsyncThunk('/users/update', async (userData, thunkAPI) => {
+export const updateUser = createAsyncThunk('/auth/users/update', async (userData, thunkAPI) => {
   try {
     const result = await axios.patch('/users/update', userData);
     console.log(result)
@@ -76,3 +76,16 @@ export const updateUser = createAsyncThunk('/users/update', async (userData, thu
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+/*
+ * POST @ /users/subscribe
+ * body: { email }
+ */
+export const subscribeEmail = createAsyncThunk('/users/subscribe',async (userData, thunkAPI) => {
+    try {
+      await axios.post('/users/subscribe', userData);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
