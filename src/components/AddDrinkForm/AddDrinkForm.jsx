@@ -28,7 +28,9 @@ const addDrinkSchema = object({
   description: string().required('This field is required'),
   category: string().required('This field is required'),
   glass: string().required('This field is required'),
-  alcoholic: string().required('This field is required'),
+  alcoholic: string()
+    .matches(/(Alcoholic|Non alcoholic)/)
+    .required('This field is required'),
   ingredients: array().of(
     object({
       title: string().required('This field is required'),
@@ -49,14 +51,37 @@ const AddDrinkForm = () => {
   }, [dispatch]);
 
   const persistedForm = useSelector(selectForm);
+  if (!persistedForm?.form) {
+    // initiation persist form
+    dispatch(setForm(initialValues));
+  }
   const formValues = persistedForm.form;
 
   const isLoadingOwnDrink = useSelector(selectIsLoadingOwn);
 
   const [file, setFile] = useState();
 
+  const isNonAlcoholicDrinkContainAlcohol = (setFieldValue) => {
+    // console.log(formValues.ingredients);
+    if (formValues.alcoholic === 'Alcoholic') {
+      return;
+    }
+    if (formValues.alcoholic === 'Non alcoholic') {
+      const alcoholicIngredients = formValues.ingredients.filter(
+        (el) => el.alcohol === 'Yes',
+      );
+
+      // console.log(alcoholicIngredients);
+      alcoholicIngredients.length > 0 &&
+        console.log(
+          'повідомлення про те, що напій безалкогольний, але у ньому є алкоголь',
+        );
+    }
+  };
+
   const submitHandler = (values, actions) => {
     // запит на створення власного коктейлю без зображення
+
     if (!file) {
       const formWithImgUrl = {
         ...formValues,
@@ -72,7 +97,6 @@ const AddDrinkForm = () => {
     const formData = new FormData();
     formData.append('cocktail', file);
     dispatch(addOwnDrinkImg(formData)).then((resp) => {
-      console.log(resp, 'from backend');
       if (
         typeof resp.payload === 'string' &&
         resp.payload.startsWith('https://res.cloudinary.com')
@@ -101,13 +125,16 @@ const AddDrinkForm = () => {
     const freshData = { [field]: payload };
 
     Object.assign(tempObj, freshData);
+
     setFieldValue(field, payload);
     dispatch(setForm(tempObj));
   }
 
-  // dispatch(setForm(initialValues));
-
   const sendForm = (formWithImgUrl, values, actions) => {
+    console.log(persistedForm, 'persistedForm');
+    if (formWithImgUrl?.form) {
+      delete formWithImgUrl.form;
+    }
     dispatch(addOwnDrink(formWithImgUrl, values)).then((resp) => {
       if (resp.payload.message === 'drink added') {
         navigate('/my');
@@ -147,6 +174,9 @@ const AddDrinkForm = () => {
               errors={errors}
             />
             <Button
+              onClick={(setFieldValue) => {
+                isNonAlcoholicDrinkContainAlcohol(setFieldValue);
+              }}
               type="submit"
               disabled={isLoadingOwnDrink === true}
               title="Add"
