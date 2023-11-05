@@ -16,21 +16,23 @@ const DrinkIngredientsList = ({ drinkDetails }) => {
     <>
       <AllTitleIngredients>Ingredient</AllTitleIngredients>
       <ListIngredient>
-        {ingredients?.map(({ ingredientId, title, measure }) => (
-          <ItemIngredient key={ingredientId}>
-            <ImageIngredient
-              src={defaultImage}
-              alt={title}
-              // onError={(event) => {
-              //   event.currentTarget.src = drinkImage;
-              // }}
-            />
-            <DescriptionIngredient>
-              <TitleIngredient>{title}</TitleIngredient>
-              <MeasureIngredien>{measure}</MeasureIngredien>
-            </DescriptionIngredient>
-          </ItemIngredient>
-        ))}
+        {ingredients?.map(
+          ({ ingredientId, title, measure, ingredientThumb }) => (
+            <ItemIngredient key={ingredientId}>
+              <ImageIngredient
+                src={ingredientThumb}
+                alt={title}
+                onError={(event) => {
+                  event.currentTarget.src = defaultImage;
+                }}
+              />
+              <DescriptionIngredient>
+                <TitleIngredient>{title}</TitleIngredient>
+                <MeasureIngredien>{measure}</MeasureIngredien>
+              </DescriptionIngredient>
+            </ItemIngredient>
+          ),
+        )}
       </ListIngredient>
     </>
   );

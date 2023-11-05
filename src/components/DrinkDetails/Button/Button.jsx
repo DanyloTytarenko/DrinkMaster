@@ -11,7 +11,8 @@ const Button = (drinkId) => {
   const handleAddToFavorite = () => setfavorite(true);
   const handleRemoveToFavorite = () => setfavorite(false);
   const dispatch = useDispatch();
-  const dataFavoriteDrinks = useSelector(selectFavoriteDrinks);
+  // const dataFavoriteDrinks = useSelector(selectFavoriteDrinks);
+  const { favoriteDrinks } = useSelector(selectFavoriteDrinks);
   // const handleAddToFavorite = (id) => dispatch(AddFavorite(id));
   // const handleRemoveToFavorite = (id) => dispatch(RemoveFavorite(id));
 
@@ -24,10 +25,16 @@ const Button = (drinkId) => {
 
   useEffect(() => {
     dispatch(fetchFavoriteDrinks());
-    console.log(dataFavoriteDrinks.favoriteDrinks);
+    console.log(favoriteDrinks);
 
-    if (dataFavoriteDrinks.favoriteDrinks.length === 0)
+    if (favoriteDrinks.length == 0) {
       return setfavorite(false);
+    }
+    // else {
+    //   resulte = dataFavoriteDrinks.favoriteDrinks.find(
+    //     (option) => option.label === 'white',
+    //   ); // undefined
+    // }
 
     // setfavorite(false);
   }, []);
