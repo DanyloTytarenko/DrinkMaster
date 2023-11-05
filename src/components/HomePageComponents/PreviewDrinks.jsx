@@ -7,6 +7,7 @@ import {
   List,
   ListCard,
   CategoryName,
+  DrinkList,
   DrinksItem,
   DrinkPhoto,
   TitleWrapper,
@@ -37,25 +38,31 @@ export const PreviewDrinks = () => {
       <List>
         {data.map((categoryData) => (
           <ListCard key={categoryData.category}>
+          
             <CategoryName>{categoryData.category}</CategoryName>
             {categoryData.drinks.map((drink, index) => (
-              <DrinksItem key={index}>
+              <DrinkList key={index}>
+              <DrinksItem >
+                
                 <DrinkPhoto
                   src={drink.drinkThumb}
                   alt={`Photo of ${drink.drink}`}
                 />
                 <TitleWrapper>
                   <DrinkTitle>{drink.drink}</DrinkTitle>
-                  <StyledLinkToDrinkPage to="/DrinkPage">
+                  <StyledLinkToDrinkPage to={`/drink/${drink._id}`}>
                     See more
                   </StyledLinkToDrinkPage>
                 </TitleWrapper>
+                
               </DrinksItem>
+              </DrinkList>
             ))}
           </ListCard>
+          
         ))}
       </List>
-      <StyledLinkToDrinksPage to="/DrinksPage">
+      <StyledLinkToDrinksPage to="/drinks">
         Other drinks
       </StyledLinkToDrinksPage>
     </>

@@ -6,7 +6,12 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   padding: 80px 20px;
-  
+  @media only screen and (min-width: 768px) {
+  padding: 120px 32px;
+  };
+  @media only screen and (min-width: 1440px) {
+    padding: 128px 100px;
+  }
 `;
 
 // export const Title = styled.h1`

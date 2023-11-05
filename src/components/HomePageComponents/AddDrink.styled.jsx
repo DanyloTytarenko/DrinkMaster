@@ -2,27 +2,37 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { colors } from '../../colors';
 
+export const TitleWrapper = styled.div`
+@media only screen and (min-width: 1440px) {
+display: flex;
+gap: 130px;
+`;
+
 export const AddDrinkWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
   max-width: 335px;
-  @media only screen and (min-width: 704px) {
+  @media only screen and (min-width: 768px) {
   max-width: 619px;
   };
-  
+`;
+
+export const DesktopTitle = styled.div`
+display: flex;
+flex-direction: column;
 `;
 
 export const AppDescription = styled.p`
 line-height: 20px;
 color: ${colors.light};
 margin-bottom: 32px;
-@media only screen and (min-width: 704px) {
+@media only screen and (min-width: 768px) {
 font-size: 18px;
 line-height: 24px;
 margin-bottom: 48px;
 }
-@media only screen and (min-width: 1140px) {
+@media only screen and (min-width: 1440px) {
 width: 500px;
 margin-bottom: 40px;
 `;
@@ -40,14 +50,14 @@ margin-bottom: 47px;
 font-size: 14px;
 font-weight: 600;
 
-@media only screen and (min-width: 704px) {
+@media only screen and (min-width: 768px) {
 width: 169px;
 height: 54px;
 font-size: 16px;
 margin-bottom: 54px;
 };
 
-@media only screen and (min-width: 1140px) {
+@media only screen and (min-width: 1440px) {
 width: 160px;
 };
 
@@ -62,7 +72,7 @@ export const HomePageImage = styled.img`
   flex-shrink: 0;
   margin: auto;
   margin-bottom: 112px;
-  @media only screen and (min-width: 704px) {
+  @media only screen and (min-width: 768px) {
   width: 359px;
   height: 445px;
   }
