@@ -13,7 +13,15 @@ const MyDrinksPage = lazy(() => import('./pages/MyDrinksPage/MyDrinksPage'));
 const FavoriteDrinkPage = lazy(() =>
   import('./pages/FavoriteDrinkPage/FavoriteDrinkPage'),
 );
+<<<<<<< HEAD
 const DrinkDetailsPage = lazy(() => import('./pages/DrinkPage/DrinkPage'));
+=======
+const DrinkDetailsPage = lazy(() =>
+  import('./pages/DrinkDetailsPage/DrinkDetailsPage'),
+);
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage/PrivacyPage'));
+const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage/TermsOfServicePage'));
+>>>>>>> main
 const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 import { AppWrapper } from './App.styled';
@@ -71,6 +79,15 @@ function App() {
             element={
               <PrivateRoute component={<DrinkDetailsPage />}></PrivateRoute>
             }
+          />
+
+          <Route
+            path="privacy"
+            element={<PrivateRoute component={<PrivacyPage />} />}
+          />
+          <Route
+            path="service"
+            element={<PrivateRoute component={<TermsOfServicePage />} />}
           />
 
           <Route path="*" element={<ErrorPage />} />

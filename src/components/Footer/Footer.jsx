@@ -1,16 +1,19 @@
+import Logo from '../Logo/Logo';
 import FooterNav from '../FooterNav/FooterNav';
 import FollowUs from '../FollowUs/FollowUs';
 import SubscribeForm from '../SubscribeForm/SubscribeForm';
-import Logo from '../Logo/Logo';
+import FooterRightsAndPolicy from '../FooterRightsAndPolicy/FooterRightsAndPolicy';
 
 import {
-  FooterContainer, FooterWrap, MainWrap, LogoFollowWrap, LogoFollowNavWrap, AllRightsWrap, AllRightsText
+  FooterContainer,
+  FooterWrap,
+  MainWrap,
+  LogoFollowWrap,
+  LogoFollowNavWrap
 } from './Footer.styled';
-
 
 const Footer = () => {
   return (
-
     <FooterContainer>
       <FooterWrap>
         <MainWrap>
@@ -23,9 +26,8 @@ const Footer = () => {
           </LogoFollowNavWrap>
           <SubscribeForm />
         </MainWrap>
-        <AllRightsWrap>
-          <AllRightsText>©2023 Drink Master. All rights reserved.</AllRightsText>
-        </AllRightsWrap></FooterWrap>
+        <FooterRightsAndPolicy />
+      </FooterWrap>
     </FooterContainer>
   );
 };

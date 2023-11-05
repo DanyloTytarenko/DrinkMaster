@@ -5,13 +5,14 @@ export const Form = styled.form`
   width: 335px;
 
   @media screen and (min-width: 768px) {
-    width: 209px;
+    width: 309px;
   }
 `;
 
 export const SubscribeFormInput = styled.input`
   position: relative;
-  width: 331px;
+  width: 100%;
+  box-sizing: border-box;
   border-radius: 200px;
   border: 1px solid rgba(243, 243, 243, 0.2);
   background-color: transparent;
@@ -36,7 +37,6 @@ export const SubscribeFormInput = styled.input`
   }
 
   @media screen and (min-width: 768px) {
-    width: 305px;
     font-size: 17px;
     line-height: 156%;
     padding-top: 13.5px;
@@ -50,10 +50,18 @@ export const SubscribeFormInput = styled.input`
     background-repeat: no-repeat;
     background-position: right 14px center;
   }
+
+  &.valid {
+    margin-bottom: 0;
+    border-color: rgba(60, 188, 129, 0.50);
+    background-image: url('src/components/SubscribeForm/Done.svg');
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
 `;
 
 export const SubscribeButton = styled.button`
-  width: 335px;
+  width: 100%;
   border-radius: 200px;
   border: 1px solid rgba(243, 243, 243, 0.2);
   background-color: transparent;
@@ -67,11 +75,20 @@ export const SubscribeButton = styled.button`
   font-size: 16px;
   font-weight: 600;
   line-height: 18px;
-  
-  transition: color 250ms ease;
+
+  transition: transform 250ms ease;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+  }
+
+  &:disabled {
+    color: ${colors.disabled};
+    cursor: not-allowed;
+  }
 
   @media screen and (min-width: 768px) {
-    width: 309px;
     font-size: 17px;
     line-height: 156%;
     padding-top: 13.5px;
@@ -88,12 +105,9 @@ export const SubscribeTitle = styled.h3`
   line-height: 20px;
   margin-bottom: 24px;
 
-    @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 209px;
   }
-`;
-
-export const SubscribeFormLabel = styled.label`
 `;
 
 
