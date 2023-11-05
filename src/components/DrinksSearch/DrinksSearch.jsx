@@ -94,7 +94,6 @@ const DrinksSearch = () => {
           </StyledSearchButton>
         </StyledLabel>
         <StyledSelect
-          // isSearchable={false}
           name="category"
           placeholder="All categories"
           classNamePrefix="react-select"
