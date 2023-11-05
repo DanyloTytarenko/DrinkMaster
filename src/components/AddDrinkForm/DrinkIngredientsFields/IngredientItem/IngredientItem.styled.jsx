@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Input = styled.input`
-  padding-left: 18px;
+  padding: 0 18px;
   height: 50px;
   width: 100px;
   background-color: inherit;

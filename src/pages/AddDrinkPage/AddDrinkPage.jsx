@@ -9,7 +9,7 @@ import Header from 'src/components/Header/Header';
 import Footer from 'src/components/Footer/Footer';
 import PageTitle from 'src/components/PageTitle/PageTitle';
 import FollowUs from 'src/components/FollowUs/FollowUs';
-
+import { PopularDrinksComponent } from 'src/components/PopularDrinks/PopularDrinks';
 const AddDrinkPage = () => {
   return (
     <>
@@ -23,10 +23,13 @@ const AddDrinkPage = () => {
         ></PageTitle>
         <FlexBox>
           <AddDrinkForm />
-          <DivFollowUs>
-            <Undertitle>Follow Us</Undertitle>
-            <FollowUs></FollowUs>
-          </DivFollowUs>
+          <div>
+            <DivFollowUs>
+              <Undertitle>Follow Us</Undertitle>
+              <FollowUs></FollowUs>
+            </DivFollowUs>
+            <PopularDrinksComponent></PopularDrinksComponent>
+          </div>
         </FlexBox>
       </Container>
       <Footer></Footer>
