@@ -11,12 +11,16 @@ const NotFound = ({ message }) => {
         <source
           media="(min-width: 768px)"
           srcSet={`${notFoundDesk} 1x, ${notFoundDesk2} 2x`}
+          width="261"
+          height="326"
         />
         <source
           media="(min-width: 375px)"
           srcSet={`${notFoundMobile} 1x, ${notFoundMobile2} 2x`}
+          width="198"
+          height="247"
         />
-        <img src={notFoundDesk} alt="not found" />
+        <img src={notFoundMobile} alt="not found" width="198" height="247" />
       </picture>
       <TextMessage>{message}</TextMessage>
     </NotFoundWrapper>
