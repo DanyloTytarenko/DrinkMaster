@@ -13,15 +13,12 @@ const MyDrinksPage = lazy(() => import('./pages/MyDrinksPage/MyDrinksPage'));
 const FavoriteDrinkPage = lazy(() =>
   import('./pages/FavoriteDrinkPage/FavoriteDrinkPage'),
 );
-<<<<<<< HEAD
 const DrinkDetailsPage = lazy(() => import('./pages/DrinkPage/DrinkPage'));
-=======
-const DrinkDetailsPage = lazy(() =>
-  import('./pages/DrinkDetailsPage/DrinkDetailsPage'),
-);
+
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage/PrivacyPage'));
-const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage/TermsOfServicePage'));
->>>>>>> main
+const TermsOfServicePage = lazy(() =>
+  import('./pages/TermsOfServicePage/TermsOfServicePage'),
+);
 const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 import { AppWrapper } from './App.styled';
