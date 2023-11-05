@@ -3,20 +3,31 @@ import styled from 'styled-components';
 export const FooterContainer = styled.footer`
   padding-top: 40px;
   padding-bottom: 18px;
-  padding-right: 20px;
-  padding-left: 18px;
   border-top: 1px solid rgba(243, 243, 243, 0.20);
+
   @media screen and (min-width: 768px) {
-    display: flex;
-    flex-direction: column;
     padding-top: 80px;
     padding-bottom: 24px;
-    padding-right: 32px;
-    padding-left: 32px;
+  }
+`;
+
+export const FooterWrap = styled.div`
+  margin: 0 auto;
+  padding-right: 20px;
+  padding-left: 20px;
+
+  @media screen and (min-width: 375px) {
+    max-width: 375px;
   }
 
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+    padding-right: 32px;
+    padding-left: 32px;
+  } 
+
   @media screen and (min-width: 1440px) {
-    padding-top: 80px;
+    max-width: 1440px;
     padding-right: 100px;
     padding-left: 100px;
   }
@@ -40,9 +51,9 @@ export const LogoFollowWrap = styled.div`
 `;
 
 export const LogoFollowNavWrap = styled.div`
-display: flex;
-gap: 90px;
-margin-bottom: 40px;
+  display: flex;
+  gap: 90px;
+  margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
     flex-direction: column;
@@ -54,16 +65,4 @@ margin-bottom: 40px;
     flex-direction: row;
     gap: 411px;
   }
-`;
-
-export const AllRightsWrap = styled.div`
-`;
-
-export const AllRightsText = styled.p`
-color: rgba(243, 243, 243, 0.50);
-font-size: 12px;
-font-weight: 400;
-line-height: 16px;
-letter-spacing: -0.24px;
-margin-top: 80px;
 `;
