@@ -24,7 +24,7 @@ const IngredientItem = ({
 
     onChangeHandler(tempArray, 'ingredients', setFieldValue);
   };
-  console.log(setFieldValue);
+
   return (
     <Wrapper>
       <Select

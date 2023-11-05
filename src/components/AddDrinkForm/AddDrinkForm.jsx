@@ -72,6 +72,7 @@ const AddDrinkForm = () => {
     const formData = new FormData();
     formData.append('cocktail', file);
     dispatch(addOwnDrinkImg(formData)).then((resp) => {
+      console.log(resp, 'from backend');
       if (
         typeof resp.payload === 'string' &&
         resp.payload.startsWith('https://res.cloudinary.com')

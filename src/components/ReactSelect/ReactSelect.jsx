@@ -12,11 +12,13 @@ const ReactSelect = ({
       ...provided,
       transform: state.selectProps.menuIsOpen && 'rotate(180deg)',
     }),
-    control: (base) => ({
+    control: (base, { isFocused }) => ({
       ...base,
       background: 'inherit',
-      border: 'none',
+      border: isFocused ? '0.5px solid #4070cd50' : 'none',
+      borderRadius: '20px',
       fontSize: '14px',
+      boxShadow: 'none',
       cursor: 'pointer',
     }),
 
