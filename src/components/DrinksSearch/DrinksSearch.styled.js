@@ -213,7 +213,7 @@ export const StyledSelect = styled(Select)`
 export const customStyles = {
   dropdownIndicator: (baseStyles, state) => ({
     ...baseStyles,
-    transform: state.isFocused ? 'rotate(180deg)' : 'rotate(0deg)',
+    transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
   }),
   option: (baseStyles, state) => ({
     ...baseStyles,
