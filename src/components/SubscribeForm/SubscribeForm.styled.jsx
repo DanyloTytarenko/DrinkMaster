@@ -75,15 +75,15 @@ export const SubscribeButton = styled.button`
   font-size: 16px;
   font-weight: 600;
   line-height: 18px;
-  
-  transition: color 250ms ease;
+
+  transition: transform 250ms ease;
 
   &:hover,
   &:focus {
-    border-color: rgba(243, 243, 243, 0.50);
+    transform: scale(1.05);
   }
 
-    &:disabled {
+  &:disabled {
     color: ${colors.disabled};
     cursor: not-allowed;
   }
