@@ -5,31 +5,16 @@ export const FooterContainer = styled.footer`
   padding-bottom: 18px;
   border-top: 1px solid rgba(243, 243, 243, 0.20);
 
+  background: linear-gradient(
+    360deg,
+    rgba(0, 0, 0, 0.6) 58.58%,
+    rgba(0, 0, 0, 0.345172) 78.98%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
   @media screen and (min-width: 768px) {
     padding-top: 80px;
     padding-bottom: 24px;
-  }
-`;
-
-export const FooterWrap = styled.div`
-  margin: 0 auto;
-  padding-right: 20px;
-  padding-left: 20px;
-
-  @media screen and (min-width: 375px) {
-    max-width: 375px;
-  }
-
-  @media screen and (min-width: 768px) {
-    max-width: 768px;
-    padding-right: 32px;
-    padding-left: 32px;
-  } 
-
-  @media screen and (min-width: 1440px) {
-    max-width: 1440px;
-    padding-right: 100px;
-    padding-left: 100px;
   }
 `;
 

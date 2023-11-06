@@ -3,10 +3,10 @@ import FooterNav from '../FooterNav/FooterNav';
 import FollowUs from '../FollowUs/FollowUs';
 import SubscribeForm from '../SubscribeForm/SubscribeForm';
 import FooterRightsAndPolicy from '../FooterRightsAndPolicy/FooterRightsAndPolicy';
+import MainAppContainer from '../MainAppContainer/MainAppContainer';
 
 import {
   FooterContainer,
-  FooterWrap,
   MainWrap,
   LogoFollowWrap,
   LogoFollowNavWrap
@@ -15,7 +15,7 @@ import {
 const Footer = () => {
   return (
     <FooterContainer>
-      <FooterWrap>
+      <MainAppContainer>
         <MainWrap>
           <LogoFollowNavWrap>
             <LogoFollowWrap>
@@ -27,7 +27,7 @@ const Footer = () => {
           <SubscribeForm />
         </MainWrap>
         <FooterRightsAndPolicy />
-      </FooterWrap>
+      </MainAppContainer>
     </FooterContainer>
   );
 };
