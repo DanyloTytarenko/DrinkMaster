@@ -39,10 +39,6 @@ const DrinkIngredientsFields = ({
   });
 
   const increment = () => {
-    if (form.ingredients.length >= ingredientOptions.length) {
-      return;
-    }
-
     const newArray = [...form.ingredients];
     newArray.push({ title: '', measure: '', alcohol: '' });
     onChangeHandler(newArray, 'ingredients', setFieldValue);
