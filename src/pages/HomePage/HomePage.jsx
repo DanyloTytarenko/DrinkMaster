@@ -4,7 +4,6 @@ import { Container } from './HomePage.styled';
 import { AddDrink } from '../../components/HomePageComponents/AddDrink';
 import { PreviewDrinks } from '../../components/HomePageComponents/PreviewDrinks';
 
-
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {
@@ -13,7 +12,6 @@ import {
 } from '../../redux/homepage/selectors.js';
 
 import { fetchNewDrinks } from '../../redux/homepage/operations.js';
-
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -35,7 +33,6 @@ const HomePage = () => {
     <>
       <Header></Header>
       <Container>
-       
         <AddDrink />
         <PreviewDrinks />
       </Container>

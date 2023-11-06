@@ -90,16 +90,10 @@ width: 160px;
 }
 `;
 
-export const HomePageImage = styled.img`
-  max-width: 252px;
-  height: 313px;
-  flex-shrink: 0;
-  margin: auto;
-  @media only screen and (min-width: 768px) {
-  max-width: 359px;
-  height: 445px;
-  }
-
-  @media only screen and (min-width: 1440px) {
-  margin-top: 128px;
+export const PictureWrapper = styled.div`
+display: flex;
+justify-content: center;
+flex-shrink: 0; 
+@media only screen and (min-width: 1440px) {
+margin-top: 128px;
 `;
