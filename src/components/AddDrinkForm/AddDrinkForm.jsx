@@ -199,13 +199,21 @@ const AddDrinkForm = () => {
 
     dispatch(addOwnDrink(formWithImgUrl, values)).then((resp) => {
       if (resp.payload.message === 'drink added') {
+        Notify.success('You added new cocktail!');
         navigate('/my');
         dispatch(setForm(initialValues));
         actions.resetForm({ values: initialValues });
         return;
       }
       console.log(resp.payload.message);
+      errorsHandler(resp.payload.message);
     });
+  };
+
+  const errorsHandler = (message) => {
+    if (message === 'Image file format webp not allowed') {
+      Notify.failure(`Format "webp" not allowed. Try upload .jpeg or .png`);
+    }
   };
 
   // dispatch(setForm(initialValues));
@@ -239,9 +247,6 @@ const AddDrinkForm = () => {
               errors={errors}
             />
             <Button
-              onClick={() => {
-                setWrongIngredients(null);
-              }}
               type="submit"
               disabled={isLoadingOwnDrink === true}
               title="Add"
