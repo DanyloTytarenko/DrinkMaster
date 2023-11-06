@@ -107,6 +107,14 @@ const AddDrinkForm = () => {
   };
 
   const submitHandler = (values, actions) => {
+    if (!isAllIngredientsUniq()) {
+      return Notify.failure('Duplicate ingredients are not allowed');
+    }
+
+    if (!isAllIngredientsUniq()) {
+      return;
+    }
+
     if (
       !isNonAlcoholicDrinkFreeAlcohol(true) ||
       !isAlcoholicDrinkContainAlcohol(true)
@@ -170,9 +178,7 @@ const AddDrinkForm = () => {
 
         sendForm(formWithImgUrl, values, actions);
       } else {
-        console.log(
-          "Something get wront. Please, try upload image-type file, e.g. '.jpeg', '.png'",
-        );
+        Notify.failure(`Format "webp" not allowed. Try upload .jpeg or .png`);
       }
       console.log(resp.payload.message);
     });
@@ -211,8 +217,24 @@ const AddDrinkForm = () => {
   };
 
   const errorsHandler = (message) => {
-    if (message === 'Image file format webp not allowed') {
-      Notify.failure(`Format "webp" not allowed. Try upload .jpeg or .png`);
+    if (message.includes('length must be at least')) {
+      Notify.failure(`All field must be at least 2 symbols long`);
+    }
+    if (message.includes('duplicate')) {
+      Notify.failure('Drink with that title already exist');
+    }
+  };
+
+  const isAllIngredientsUniq = () => {
+    const ingredients = formValues.ingredients;
+    const flatUniq = ingredients.flatMap((el) => el.title);
+
+    const duplicateElement = flatUniq.filter(
+      (item, index) => flatUniq.indexOf(item) !== index,
+    );
+
+    if (duplicateElement) {
+      return false;
     }
   };
 
