@@ -52,7 +52,7 @@ const IngredientItem = ({
           errors?.ingredients?.length > 0 &&
           errors.ingredients[index]?.title}
         {wrongIngredients &&
-          wrongIngredients[index]?.title &&
+          chosenIngredients[index]?.alcohol === 'Yes' &&
           `That ingredient is not fit the chosen type Alcoholic/Non alcoholic drink`}
         {errors?.ingredients?.length > 0 &&
           errors.ingredients[index]?.title && (
