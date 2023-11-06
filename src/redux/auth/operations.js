@@ -52,6 +52,20 @@ export const logIn = createAsyncThunk(
   },
 );
 
+export const loginWithGoogle = createAsyncThunk(
+  'auth/google',
+  async (_, thunkAPI) => {
+    try {
+      const result = await axios.get('/auth/google');
+
+      // setAuthHeader(result.data.accessToken);
+      return result.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.status);
+    }
+  },
+);
+
 /*
  * POST @ /auth/refresh
  * body: { id }

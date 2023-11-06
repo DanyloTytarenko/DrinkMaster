@@ -6,6 +6,7 @@ import {
   logOut,
   subscribeEmail,
   updateUser,
+  loginWithGoogle,
 } from './operations';
 import { ValidMessage } from 'src/components/ValidMessage/ValidMessage';
 
@@ -33,6 +34,10 @@ const handleLoginFulfilled = (state, action) => {
   state.accessToken = action.payload.accessToken;
   state.refreshToken = action.payload.refreshToken;
   state.isLoggedIn = true;
+};
+
+const handleLoginWithGoogle = (state, action) => {
+  console.log(action.payload)
 };
 
 const handleRefreshFulfilled = (state, action) => {
@@ -78,6 +83,8 @@ const authSlice = createSlice({
       .addCase(register.rejected, handleRejected)
       .addCase(logIn.fulfilled, handleLoginFulfilled)
       .addCase(logIn.rejected, handleRejected)
+      .addCase(loginWithGoogle.fulfilled, handleLoginWithGoogle)
+      .addCase(loginWithGoogle.rejected, handleRejected)
       .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
       })
