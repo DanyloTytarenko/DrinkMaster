@@ -1,4 +1,4 @@
-import{n as g,s as i,h as t,L as l,j as e,u as x,r as p,i as f}from"./index-30995329.js";import{H as w,F as y}from"./Header-d5e5fc60.js";import{P as u}from"./PageTitle-d823a65b.js";import{u as c}from"./useMediaQuery-7a247bc5.js";import{u as k}from"./index.esm-159577c4.js";import"./getThemeProps-5b1f9c8a.js";const j=g.div`
+import{n as g,s as i,h as t,L as l,j as e,i as x,r as p,u as f,k as w}from"./index-ffe094ce.js";import{H as y,F as u}from"./Header-016801e8.js";import{P as k}from"./PageTitle-db114689.js";import{u as c}from"./useMediaQuery-aa8aa1b1.js";import"./index.esm-15a4539a.js";import"./getThemeProps-ac62763d.js";const j=g.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,7 +74,7 @@ width: 160px;
   width: 359px;
   height: 445px;
   }
-`,T=()=>e.jsxs(b,{children:[e.jsxs(L,{children:[e.jsx(u,{title:"Craft Your Perfect Drink with Drink Master",theme:"dark",marginMobile:"16px",marginTablet:"28px",marginDesktop:"28px"}),e.jsxs(D,{children:[e.jsx(z,{children:"Unlock your inner mixologist with Drink Master, your one-stop destination for exploring, crafting, and mastering the worlds finest beverages."}),e.jsx(v,{to:"/add",children:"Add drinks"})]})]}),e.jsx(P,{src:"../../../public/homepage.jpg",alt:"Coctail photo"})]}),$=n=>n.newDrinks.items,S=n=>n.newDrinks.isLoading,E=n=>n.newDrinks.error,C=i.ul`
+`,T=()=>e.jsxs(b,{children:[e.jsxs(L,{children:[e.jsx(k,{title:"Craft Your Perfect Drink with Drink Master",theme:"dark",marginMobile:"16px",marginTablet:"28px",marginDesktop:"28px"}),e.jsxs(D,{children:[e.jsx(z,{children:"Unlock your inner mixologist with Drink Master, your one-stop destination for exploring, crafting, and mastering the worlds finest beverages."}),e.jsx(v,{to:"/add",children:"Add drinks"})]})]}),e.jsx(P,{src:"../../../public/homepage.jpg",alt:"Coctail photo"})]}),$=n=>n.newDrinks.items,S=n=>n.newDrinks.isLoading,E=n=>n.newDrinks.error,C=i.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -172,4 +172,4 @@ gap: 20px;
   &:active {
     border: 2px solid rgba(64, 112, 205, 0.5);
   }
-`,R=()=>{const n=x($),s=c("(max-width: 767px)"),r=c("(min-width: 768px) and (max-width: 1439px)"),[h,a]=p.useState(n);return p.useEffect(()=>{a(s?n.slice(0,1):r?n.slice(0,2):n.slice(0,3))},[s,r,n]),e.jsxs(e.Fragment,{children:[e.jsx(C,{children:h.map(d=>e.jsxs(N,{children:[e.jsx(M,{children:d.category}),d.drinks.map((o,m)=>e.jsx(A,{children:e.jsxs(F,{children:[e.jsx(H,{src:o.drinkThumb,alt:`Photo of ${o.drink}`}),e.jsxs(I,{children:[e.jsx(W,{children:o.drink}),e.jsx(O,{to:`/drink/${o._id}`,children:"See more"})]})]})},m))]},d.category))}),e.jsx(Q,{to:"/drinks",children:"Other drinks"})]})},J=()=>{const n=k(),s=x(S),r=x(E);return p.useEffect(()=>{n(f())},[n]),s?e.jsx("p",{children:"Loading..."}):r?e.jsxs("p",{children:["Error: ",r.message]}):e.jsxs(e.Fragment,{children:[e.jsx(w,{}),e.jsxs(j,{children:[e.jsx(T,{}),e.jsx(R,{})]}),e.jsx(y,{})]})};export{J as default};
+`,R=()=>{const n=x($),s=c("(max-width: 767px)"),r=c("(min-width: 768px) and (max-width: 1439px)"),[h,a]=p.useState(n);return p.useEffect(()=>{a(s?n.slice(0,1):r?n.slice(0,2):n.slice(0,3))},[s,r,n]),e.jsxs(e.Fragment,{children:[e.jsx(C,{children:h.map(d=>e.jsxs(N,{children:[e.jsx(M,{children:d.category}),d.drinks.map((o,m)=>e.jsx(A,{children:e.jsxs(F,{children:[e.jsx(H,{src:o.drinkThumb,alt:`Photo of ${o.drink}`}),e.jsxs(I,{children:[e.jsx(W,{children:o.drink}),e.jsx(O,{to:`/drink/${o._id}`,children:"See more"})]})]})},m))]},d.category))}),e.jsx(Q,{to:"/drinks",children:"Other drinks"})]})},J=()=>{const n=f(),s=x(S),r=x(E);return p.useEffect(()=>{n(w())},[n]),s?e.jsx("p",{children:"Loading..."}):r?e.jsxs("p",{children:["Error: ",r.message]}):e.jsxs(e.Fragment,{children:[e.jsx(y,{}),e.jsxs(j,{children:[e.jsx(T,{}),e.jsx(R,{})]}),e.jsx(u,{})]})};export{J as default};
