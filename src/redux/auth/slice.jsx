@@ -23,9 +23,9 @@ const handleLoginFulfilled = (state, action) => {
   state.isLoggedIn = true;
 };
 const handleUpdatedFulfilled = (state, action) => {
-  state.user = action.payload.user;
-  state.accessToken = action.payload.accessToken;
-  state.isLoggedIn = true;
+  state.user.name = action.payload.user.name;
+  // state.accessToken = action.payload.accessToken;
+  // state.isLoggedIn = true;
 
 };
 
