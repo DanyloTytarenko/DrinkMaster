@@ -231,7 +231,7 @@ const AddDrinkForm = () => {
     );
 
     if (duplicateElement.length > 0) {
-      return екгу;
+      return true;
     }
   };
   // dispatch(setForm(initialValues));
