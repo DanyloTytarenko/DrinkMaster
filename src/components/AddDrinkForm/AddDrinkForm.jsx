@@ -120,6 +120,20 @@ const AddDrinkForm = () => {
       const formWithImgUrl = {
         ...formValues,
       };
+
+      if (formWithImgUrl?.form) {
+        delete formWithImgUrl.form;
+      }
+      let tempArr = [];
+      formWithImgUrl.ingredients.filter((el) =>
+        tempArr.push({
+          title: el.title,
+          measure: el.measure,
+        }),
+      );
+      delete formWithImgUrl.ingredients;
+      formWithImgUrl.ingredients = tempArr;
+
       const freshData = { drinkThumb: 'src/images/dummyDrinkThumb.png' };
       Object.assign(formWithImgUrl, freshData);
 
@@ -141,7 +155,16 @@ const AddDrinkForm = () => {
         if (formWithImgUrl?.form) {
           delete formWithImgUrl.form;
         }
-        formWithImgUrl.ingredients.map((el) => delete el?.alcohol);
+        let tempArray = [];
+        formWithImgUrl.ingredients.filter((el) =>
+          tempArray.push({
+            title: el.title,
+            measure: el.measure,
+          }),
+        );
+        delete formWithImgUrl.ingredients;
+        formWithImgUrl.ingredients = tempArray;
+
         const freshData = { drinkThumb: resp.payload };
         Object.assign(formWithImgUrl, freshData);
 
