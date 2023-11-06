@@ -67,7 +67,6 @@ export const addOwnDrinkImg = createAsyncThunk(
 export const addOwnDrink = createAsyncThunk(
   'drinks/addOwnDrink',
   async (drink, { rejectWithValue }) => {
-    console.log(drink, 'drink');
     try {
       const response = await axios.post('/drinks/own/add', drink);
       return response.status === 200 ? response.config.data : e.response.data;
