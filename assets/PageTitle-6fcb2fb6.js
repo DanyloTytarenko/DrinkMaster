@@ -1,4 +1,4 @@
-import{s as r,j as a}from"./index-dabc5a85.js";const h=r.h1`
+import{s as r,j as a}from"./index-2a52f4ab.js";const h=r.h1`
   margin-right: auto;
   margin-bottom: ${({$marginM:i})=>i};
   font-size: 32px;
