@@ -41,6 +41,10 @@ export const Button = styled.button`
   border: none;
   background-color: inherit;
   color: rgba(243, 243, 243, 0.3);
+  :hover {
+    color: #f3f3f380;
+    scale: 1.25;
+  }
 `;
 export const ButtonIncr = styled.button`
   font-size: 20px;
@@ -49,6 +53,10 @@ export const ButtonIncr = styled.button`
   border: none;
   background-color: inherit;
   color: rgba(243, 243, 243, 1);
+  :hover {
+    color: #f3f3f380;
+    scale: 1.45;
+  }
 `;
 
 export const SpanIncrement = styled.span`

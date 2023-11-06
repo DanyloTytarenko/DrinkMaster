@@ -131,7 +131,10 @@ const ReactSelect = ({
         padding: '0px 24px',
       },
     }),
-    singleValue: (base) => ({ ...base, color: '#f3f3f3' }),
+    singleValue: (base) => ({
+      ...base,
+      color: '#f3f3f3',
+    }),
     placeholder: (base) => ({
       ...base,
       '@media only screen and (min-width: 768px)': {

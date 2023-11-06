@@ -61,9 +61,16 @@ export const LabelTranslucent = styled.label`
   font-weight: bold;
   color: rgba(243, 243, 243, 0.75);
   cursor: pointer;
+  :hover {
+    text-shadow:
+      1px 1px 2px #161f37,
+      0 0 1em #bce6d2,
+      0 0 0.2em #4070cd;
+  }
 `;
 
 export const Label = styled.label`
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,6 +82,16 @@ export const Label = styled.label`
   color: #161f37;
   border-radius: 6px;
   cursor: pointer;
+  &:hover {
+    background-color: #161f37;
+    color: #f3f3f3;
+    border: 1px solid #f3f3f350;
+  }
+  &:active {
+    color: #161f37;
+    border: 2px solid #4070cd50;
+    background-color: #f3f3f3;
+  }
 `;
 export const HiddenInput = styled.input`
   display: none;
@@ -115,6 +132,12 @@ export const Input = styled.input`
   border: none;
   @media only screen and (min-width: 768px) {
     font-size: 16px;
+  }
+  :hover {
+    color: red;
+    ::-webkit-input-placeholder {
+      color: #f3f3f380;
+    }
   }
 `;
 export const ErrorText = styled.div`
