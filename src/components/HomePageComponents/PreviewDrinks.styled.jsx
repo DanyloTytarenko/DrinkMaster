@@ -92,8 +92,14 @@ export const StyledLinkToDrinkPage = styled(Link)`
   text-align: right;
   font-weight: 500;
   line-height: 18px;
+  transition: 250ms ease;
+
   @media only screen and (min-width: 768px) {
     font-size: 16px;
+  }
+
+  &:hover {
+    color: ${colors.light};
   }
 `;
 
@@ -107,6 +113,7 @@ export const StyledLinkToDrinksPage = styled(Link)`
   background: ${colors.light};
   border-radius: 42px;
   font-weight: 600;
+  transition: 250ms ease;
 
   @media only screen and (min-width: 768px) {
     width: 183px;
@@ -116,5 +123,10 @@ export const StyledLinkToDrinksPage = styled(Link)`
 
   &:active {
     border: 2px solid rgba(64, 112, 205, 0.5);
+  };
+
+  &:hover {
+    color: ${colors.light};
+    background-color: ${colors.secondaryDark}; 
   }
 `;
