@@ -23,16 +23,20 @@ import { object, string, array } from 'yup';
 
 import { useNavigate } from 'react-router-dom';
 
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 const addDrinkSchema = object({
   drink: string().trim().required('This field is required'),
   description: string().required('This field is required'),
   category: string().required('This field is required'),
   glass: string().required('This field is required'),
-  alcoholic: string().required('This field is required'),
+  alcoholic: string()
+    .matches(/(Alcoholic|Non alcoholic)/)
+    .required('This field is required'),
   ingredients: array().of(
     object({
       title: string().required('This field is required'),
-      measure: string().required('This field is required'),
+      measure: string().required('Required'),
     }),
   ),
   instructions: string().required('This field is required'),
@@ -49,18 +53,87 @@ const AddDrinkForm = () => {
   }, [dispatch]);
 
   const persistedForm = useSelector(selectForm);
+  if (!persistedForm?.form) {
+    // initiation persist form
+    dispatch(setForm(initialValues));
+  }
   const formValues = persistedForm.form;
 
   const isLoadingOwnDrink = useSelector(selectIsLoadingOwn);
 
   const [file, setFile] = useState();
+  const [wrongIngredients, setWrongIngredients] = useState();
+
+  const isNonAlcoholicDrinkFreeAlcohol = (isNotify) => {
+    if (formValues.alcoholic === 'Alcoholic') {
+      return true;
+    }
+
+    if (formValues.alcoholic === 'Non alcoholic') {
+      const alcoholicIngredients = formValues.ingredients.filter(
+        (el) => el.alcohol === 'Yes',
+      );
+
+      if (alcoholicIngredients.length === 0) {
+        setWrongIngredients(null);
+        return true;
+      }
+
+      isNotify &&
+        Notify.failure(
+          'The drink is labeled non-alcoholic but contains alcohol',
+        );
+
+      setWrongIngredients(true);
+      return false;
+    }
+  };
+
+  const isAlcoholicDrinkContainAlcohol = (isNotify) => {
+    if (formValues.alcoholic === 'Non alcoholic') {
+      return true;
+    }
+
+    if (formValues.ingredients.some((el) => el.alcohol === 'Yes')) {
+      return true;
+    }
+
+    isNotify &&
+      Notify.failure(
+        `The drink is labeled as alcoholic, but it doesn't contain alcohol`,
+      );
+
+    return false;
+  };
 
   const submitHandler = (values, actions) => {
+    if (
+      !isNonAlcoholicDrinkFreeAlcohol(true) ||
+      !isAlcoholicDrinkContainAlcohol(true)
+    ) {
+      return;
+    }
+
     // запит на створення власного коктейлю без зображення
+
     if (!file) {
       const formWithImgUrl = {
         ...formValues,
       };
+
+      if (formWithImgUrl?.form) {
+        delete formWithImgUrl.form;
+      }
+      let tempArr = [];
+      formWithImgUrl.ingredients.filter((el) =>
+        tempArr.push({
+          title: el.title,
+          measure: el.measure,
+        }),
+      );
+      delete formWithImgUrl.ingredients;
+      formWithImgUrl.ingredients = tempArr;
+
       const freshData = { drinkThumb: 'src/images/dummyDrinkThumb.png' };
       Object.assign(formWithImgUrl, freshData);
 
@@ -72,7 +145,6 @@ const AddDrinkForm = () => {
     const formData = new FormData();
     formData.append('cocktail', file);
     dispatch(addOwnDrinkImg(formData)).then((resp) => {
-      console.log(resp, 'from backend');
       if (
         typeof resp.payload === 'string' &&
         resp.payload.startsWith('https://res.cloudinary.com')
@@ -80,6 +152,19 @@ const AddDrinkForm = () => {
         const formWithImgUrl = {
           ...formValues,
         };
+        if (formWithImgUrl?.form) {
+          delete formWithImgUrl.form;
+        }
+        let tempArray = [];
+        formWithImgUrl.ingredients.filter((el) =>
+          tempArray.push({
+            title: el.title,
+            measure: el.measure,
+          }),
+        );
+        delete formWithImgUrl.ingredients;
+        formWithImgUrl.ingredients = tempArray;
+
         const freshData = { drinkThumb: resp.payload };
         Object.assign(formWithImgUrl, freshData);
 
@@ -101,23 +186,37 @@ const AddDrinkForm = () => {
     const freshData = { [field]: payload };
 
     Object.assign(tempObj, freshData);
+
     setFieldValue(field, payload);
     dispatch(setForm(tempObj));
+    if (wrongIngredients) {
+      isNonAlcoholicDrinkFreeAlcohol();
+    }
   }
 
-  // dispatch(setForm(initialValues));
-
   const sendForm = (formWithImgUrl, values, actions) => {
+    console.log(persistedForm, 'persistedForm');
+
     dispatch(addOwnDrink(formWithImgUrl, values)).then((resp) => {
       if (resp.payload.message === 'drink added') {
+        Notify.success('You added new cocktail!');
         navigate('/my');
         dispatch(setForm(initialValues));
         actions.resetForm({ values: initialValues });
         return;
       }
       console.log(resp.payload.message);
+      errorsHandler(resp.payload.message);
     });
   };
+
+  const errorsHandler = (message) => {
+    if (message === 'Image file format webp not allowed') {
+      Notify.failure(`Format "webp" not allowed. Try upload .jpeg or .png`);
+    }
+  };
+
+  // dispatch(setForm(initialValues));
 
   return (
     <Wrapper>
@@ -140,6 +239,7 @@ const AddDrinkForm = () => {
               onChangeHandler={onChangeHandler}
               setFieldValue={setFieldValue}
               errors={errors}
+              wrongIngredients={wrongIngredients}
             />
             <RecipePreparation
               onChangeHandler={onChangeHandler}

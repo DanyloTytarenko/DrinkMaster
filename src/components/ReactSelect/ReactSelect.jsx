@@ -6,17 +6,21 @@ const ReactSelect = ({
   value,
   onChangeIngredientHandler,
   setFieldValue,
+  errors,
+  wrongIngredient,
 }) => {
   const selectCategoryOptions = {
     dropdownIndicator: (provided, state) => ({
       ...provided,
       transform: state.selectProps.menuIsOpen && 'rotate(180deg)',
     }),
-    control: (base, { isFocused }) => ({
-      ...base,
+    control: (provided, { isFocused }) => ({
+      ...provided,
+      top: '-6px',
+      minHeight: '22px',
+      height: '22px',
       background: 'inherit',
-      border: isFocused ? '0.5px solid #4070cd50' : 'none',
-      borderRadius: '20px',
+      border: isFocused ? 'none' : 'none',
       fontSize: '14px',
       boxShadow: 'none',
       cursor: 'pointer',
@@ -43,7 +47,14 @@ const ReactSelect = ({
       ...base,
       display: 'none',
     }),
-    singleValue: (base) => ({ ...base, color: '#f3f3f3' }),
+    valueContainer: (base) => ({
+      ...base,
+      padding: 0,
+    }),
+    singleValue: (base) => ({
+      ...base,
+      color: '#f3f3f3',
+    }),
     option: (styles, { isFocused, isSelected }) => ({
       ...styles,
       padding: '3px 0 3px 10px',
@@ -67,6 +78,11 @@ const ReactSelect = ({
   const selectIngredientOptions = {
     dropdownIndicator: (provided, state) => ({
       ...provided,
+      paddingRight: '18px',
+      '@media only screen and (min-width: 768px)': {
+        ...provided['@media only screen and (min-width: 768px)'],
+        paddingRight: '24px',
+      },
       transform: state.selectProps.menuIsOpen && 'rotate(180deg)',
     }),
     control: (base, styles) => ({
@@ -74,7 +90,12 @@ const ReactSelect = ({
       width: '200px',
       height: '50px',
       background: 'inherit',
-      border: '1px solid rgba(243, 243, 243, 0.5)',
+      border:
+        value && errors
+          ? '1px solid #3cbc8150'
+          : errors || wrongIngredient
+          ? '1px solid #da141450'
+          : '1px solid rgba(243, 243, 243, 0.5)',
       borderRadius: '200px',
       fontSize: '14px',
       lineHeight: 'calc(18 / 14)',
@@ -89,6 +110,7 @@ const ReactSelect = ({
     }),
     menu: (base) => ({
       ...base,
+      marginTop: '2px',
       padding: '0px 12px',
       backgroundColor: '#161f37',
       borderRadius: '12px',
@@ -109,7 +131,10 @@ const ReactSelect = ({
         padding: '0px 24px',
       },
     }),
-    singleValue: (base) => ({ ...base, color: '#f3f3f3' }),
+    singleValue: (base) => ({
+      ...base,
+      color: '#f3f3f3',
+    }),
     placeholder: (base) => ({
       ...base,
       '@media only screen and (min-width: 768px)': {

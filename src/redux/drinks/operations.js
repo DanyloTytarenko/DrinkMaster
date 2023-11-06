@@ -52,7 +52,6 @@ export const addOwnDrinkImg = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         },
       });
-      console.log(response, 'in operations');
       return response.status === 201
         ? response.data.avatarURL
         : e.response.data;

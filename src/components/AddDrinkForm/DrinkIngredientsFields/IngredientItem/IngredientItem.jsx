@@ -1,5 +1,11 @@
-import { Wrapper, Input, Button, ErrorText } from './IngredientItem.styled';
-import { ErrorIcon } from '../../RecipePreparation/RecipePreparation.styled';
+import {
+  Wrapper,
+  Input,
+  Button,
+  ErrorText,
+  ErrorIcon,
+} from './IngredientItem.styled';
+// import { ErrorIcon } from '../../RecipePreparation/RecipePreparation.styled';
 import Select from '../../../ReactSelect/ReactSelect';
 
 const IngredientItem = ({
@@ -11,12 +17,13 @@ const IngredientItem = ({
   deleteIngredient,
   chosenIngredientSelect,
   errors,
+  wrongIngredients,
 }) => {
   // композитна функція контрольованої обробки двох інпутів (інгрідієнта і його кількості)
   const onChangeIngredientHandler = (payload, field) => {
     let tempArray = [...chosenIngredients];
 
-    const freshData = { [field]: payload };
+    const freshData = { [field]: payload, alcohol: ingredients[index].alcohol };
 
     tempArray[index] = tempArray[index]
       ? Object.assign({}, tempArray[index], freshData)
@@ -35,14 +42,28 @@ const IngredientItem = ({
         }
         onChangeIngredientHandler={onChangeIngredientHandler}
         setFieldValue={setFieldValue}
+        errors={errors?.ingredients}
+        wrongIngredient={
+          wrongIngredients ? wrongIngredients[index]?.title : null
+        }
       />
       <ErrorText>
-        {errors?.ingredients?.length > 0 && errors.ingredients[index]?.title}
+        {!chosenIngredients[index]?.title &&
+          errors?.ingredients?.length > 0 &&
+          errors.ingredients[index]?.title}
+        {wrongIngredients &&
+          chosenIngredients[index]?.alcohol === 'Yes' &&
+          `That ingredient is not fit the chosen type Alcoholic/Non alcoholic drink`}
         {errors?.ingredients?.length > 0 &&
-          errors.ingredients[index]?.title && <ErrorIcon>!</ErrorIcon>}
+          errors.ingredients[index]?.title && (
+            <ErrorIcon value={chosenIngredients[index].title}>
+              {chosenIngredients[index]?.title ? '✔' : '!'}
+            </ErrorIcon>
+          )}
       </ErrorText>
       <div>
         <Input
+          errors={errors.ingredients}
           type="text"
           name="measure"
           placeholder="1 cl"
@@ -57,10 +78,16 @@ const IngredientItem = ({
           }}
         />
         <ErrorText>
-          {errors?.ingredients?.length > 0 &&
+          {!chosenIngredients[index]?.measure &&
+            errors?.ingredients?.length > 0 &&
             errors.ingredients[index]?.measure}
-          {errors?.ingredients?.length > 0 &&
-            errors.ingredients[index]?.measure && <ErrorIcon>!</ErrorIcon>}
+          {!chosenIngredients[index]?.measure &&
+            errors?.ingredients?.length > 0 &&
+            errors.ingredients[index]?.measure && (
+              <ErrorIcon measure={'measure'}>
+                {errors.ingredients ? '!' : '✔'}
+              </ErrorIcon>
+            )}
         </ErrorText>
       </div>
 

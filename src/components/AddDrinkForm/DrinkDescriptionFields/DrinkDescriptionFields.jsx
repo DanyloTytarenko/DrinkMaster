@@ -11,6 +11,7 @@ import {
   DivRow,
   Input,
   ErrorText,
+  ErrorIconCategory,
   DivSelect,
   DivFlexSelect,
   SpanSelect,
@@ -122,9 +123,9 @@ const DrinkDescriptionFields = ({
                 onChangeHandler(e.target.value, e.target.name, setFieldValue);
               }}
             />
-            <ErrorText>
-              {errors.drink}
-              {errors.drink && <ErrorIcon>!</ErrorIcon>}
+            <ErrorText errors={errors.drink} value={form.drink}>
+              {!form.drink && errors.drink}
+              {!form.drink && errors.drink && <ErrorIcon>!</ErrorIcon>}
             </ErrorText>
           </DivRow>
           <DivRow>
@@ -138,9 +139,11 @@ const DrinkDescriptionFields = ({
                 onChangeHandler(e.target.value, e.target.name, setFieldValue);
               }}
             />
-            <ErrorText>
-              {errors.description}
-              {errors.description && <ErrorIcon>!</ErrorIcon>}
+            <ErrorText errors={errors.description} value={form.description}>
+              {!form.description && errors.description}
+              {!form.description && errors.description && (
+                <ErrorIcon>!</ErrorIcon>
+              )}
             </ErrorText>
           </DivRow>
 
@@ -159,9 +162,11 @@ const DrinkDescriptionFields = ({
                 setFieldValue={setFieldValue}
               />
             </DivFlexSelect>
-            <ErrorText>
-              {errors.category}
-              {errors.category && <ErrorIcon>!</ErrorIcon>}
+            <ErrorText errors={errors.category} value={form.category}>
+              {!form.category && errors.category}
+              {!form.category && errors.category && (
+                <ErrorIconCategory>{errors.category && '!'}</ErrorIconCategory>
+              )}
             </ErrorText>
           </DivSelect>
 
@@ -180,9 +185,11 @@ const DrinkDescriptionFields = ({
                 setFieldValue={setFieldValue}
               />
             </DivFlexSelect>
-            <ErrorText>
-              {errors.glass}
-              {errors.glass && <ErrorIcon>!</ErrorIcon>}
+            <ErrorText errors={errors.glass} value={form.glass}>
+              {!form.glass && errors.glass}
+              {!form.glass && errors.glass && (
+                <ErrorIconCategory>!</ErrorIconCategory>
+              )}
             </ErrorText>
           </DivSelect>
         </DivDesription>
