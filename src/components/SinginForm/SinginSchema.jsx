@@ -3,7 +3,11 @@ import * as yup from 'yup';
 export const signinSchema = yup.object({
   email: yup
     .string('Enter your email')
-    .email('Enter a valid email')
+    .matches(
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      'Email format: test@mail.com',
+    )
+    .email('Email format: test@mail.com')
     .required('Email is required'),
   password: yup
     .string('Enter your password')
