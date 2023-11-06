@@ -8,16 +8,14 @@ const Title = styled.h1`
   line-height: calc(38 / 32);
   color: ${({ theme }) => (theme === 'light' ? '#0A0A11' : '#F3F3F3')};
 
-  @media only screen and (min-width: 768px) {
-    margin-bottom: ${({ $marginT }) => $marginT};
+  @media (min-width: 768px) {
     font-size: 56px;
-    line-height: calc(60 / 56);
+    line-height: 1.07;
   }
 
-  @media only screen and (min-width: 1440px) {
-    margin-bottom: ${({ $marginD }) => $marginD};
+  @media (min-width: 1440px) {
     font-size: 64px;
-    line-height: calc(68 / 64);
+    line-height: 1.06;
   }
 `;
 

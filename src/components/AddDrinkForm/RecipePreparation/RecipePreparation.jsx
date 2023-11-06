@@ -13,7 +13,6 @@ import { selectForm } from 'src/redux/drinks/selectors';
 
 const RecipePreparation = ({ onChangeHandler, setFieldValue, errors }) => {
   const persistedForm = useSelector(selectForm);
-  // console.log(persistedForm, 'form');
   const form = persistedForm.form;
 
   return (
@@ -34,8 +33,7 @@ const RecipePreparation = ({ onChangeHandler, setFieldValue, errors }) => {
         rows={6}
         value={form.instructions}
         onChange={(e) => {
-          setFieldValue('instructions', e.target.value);
-          onChangeHandler(e.target.value, e.target.name);
+          onChangeHandler(e.target.value, e.target.name, setFieldValue);
         }}
       />
     </Div>

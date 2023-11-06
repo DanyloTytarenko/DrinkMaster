@@ -21,8 +21,9 @@ import Paginator from 'src/components/Paginator/Paginator';
 import Footer from 'src/components/Footer/Footer';
 import Header from 'src/components/Header/Header';
 
-import { DrinksContainer, Title } from './DrinksPage.styled';
+import { DrinksContainer } from './DrinksPage.styled';
 import Loader from 'src/components/Loader/Loader';
+import PageTitle from 'src/components/PageTitle/PageTitle';
 // import { Container, Title } from './DrinksPage.styled';
 
 const DrinksPage = () => {
@@ -56,7 +57,7 @@ const DrinksPage = () => {
     <>
       <Header />
       <DrinksContainer>
-        <Title>DrinksPage</Title>
+        <PageTitle title="Drinks" />
         <DrinksSearch />
         {isLoading ? (
           <Loader />

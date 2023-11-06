@@ -39,9 +39,7 @@ export const StyledInput = styled.input`
   background-color: transparent;
   border-radius: 200px;
   border: 1px solid rgba(243, 243, 243, 0.2);
-  /* opacity: 0.8; */
   color: ${colors.light}; //#f3f3f3
-  /* text-align: center; */
   font-family: Manrope;
   font-size: 14px;
   font-style: normal;
@@ -102,7 +100,6 @@ export const StyledSelect = styled(Select)`
     outline: none;
     box-shadow: none;
     border-radius: 200px;
-    /* cursor: pointer; */
     color: ${colors.light}; //#f3f3f3
     font-size: 14px;
     font-family: Manrope;
@@ -175,21 +172,14 @@ export const StyledSelect = styled(Select)`
 
   .react-select__single-value {
     color: ${colors.light}; //#f3f3f3
-    &:focus-within {
-      color: brown;
-    }
+    width: 160px;
   }
   .react-select__menuList {
     max-height: 60px;
     background-color: ${colors.light}; //#f3f3f3
   }
 
-  .react-select__option--is-selected {
-    color: ${colors.light}; //#f3f3f3
-  }
-
   .react-select__menu-list {
-    color: ${colors.light}; //#f3f3f3
     &::-webkit-scrollbar {
       width: 8px;
     }
@@ -204,13 +194,9 @@ export const StyledSelect = styled(Select)`
     }
   }
 
-  .react-select__option--custom-selected {
-    color: red;
-  }
-
   .react-select__option {
-    color: rgba(243, 243, 243, 0.4);
     background-color: transparent;
+    text-overflow: ellipsis;
     transition:
       color 250ms ease,
       background-color 250ms ease;
@@ -219,7 +205,7 @@ export const StyledSelect = styled(Select)`
     &:active,
     &:hover {
       color: ${colors.light}; //#f3f3f3
-      background-color: transparent;
+      cursor: pointer;
     }
   }
 `;
@@ -227,6 +213,13 @@ export const StyledSelect = styled(Select)`
 export const customStyles = {
   dropdownIndicator: (baseStyles, state) => ({
     ...baseStyles,
-    transform: state.isFocused ? 'rotate(180deg)' : 'rotate(0deg)',
+    transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+  }),
+  option: (baseStyles, state) => ({
+    ...baseStyles,
+    color:
+      state.isSelected || state.isFocused
+        ? `${colors.light}`
+        : 'rgba(243, 243, 243, 0.4)',
   }),
 };
