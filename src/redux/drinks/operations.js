@@ -70,8 +70,7 @@ export const addOwnDrink = createAsyncThunk(
     console.log(drink, 'drink');
     try {
       const response = await axios.post('/drinks/own/add', drink);
-      console.log(response.data);
-      return response.status === 200 ? response.data : e.response.data;
+      return response.status === 200 ? response.config.data : e.response.data;
     } catch (e) {
       if (!e.response) {
         throw e;

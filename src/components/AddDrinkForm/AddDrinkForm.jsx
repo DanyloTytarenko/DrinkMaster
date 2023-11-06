@@ -149,36 +149,40 @@ const AddDrinkForm = () => {
     // відправки обраного файлу на сервер
     const formData = new FormData();
     formData.append('cocktail', file);
-    dispatch(addOwnDrinkImg(formData)).then((resp) => {
-      if (
-        typeof resp.payload === 'string' &&
-        resp.payload.startsWith('https://res.cloudinary.com')
-      ) {
-        const formWithImgUrl = {
-          ...formValues,
-        };
-        if (formWithImgUrl?.form) {
-          delete formWithImgUrl.form;
+    dispatch(addOwnDrinkImg(formData))
+      .then((resp) => {
+        if (
+          typeof resp.payload === 'string' &&
+          resp.payload.startsWith('https://res.cloudinary.com')
+        ) {
+          const formWithImgUrl = {
+            ...formValues,
+          };
+          if (formWithImgUrl?.form) {
+            delete formWithImgUrl.form;
+          }
+          let tempArray = [];
+          formWithImgUrl.ingredients.filter((el) =>
+            tempArray.push({
+              title: el.title,
+              measure: el.measure,
+            }),
+          );
+          delete formWithImgUrl.ingredients;
+          formWithImgUrl.ingredients = tempArray;
+
+          const freshData = { drinkThumb: resp.payload };
+          Object.assign(formWithImgUrl, freshData);
+
+          sendForm(formWithImgUrl, values, actions);
+        } else {
+          Notify.failure(`Format "webp" not allowed. Try upload .jpeg or .png`);
         }
-        let tempArray = [];
-        formWithImgUrl.ingredients.filter((el) =>
-          tempArray.push({
-            title: el.title,
-            measure: el.measure,
-          }),
-        );
-        delete formWithImgUrl.ingredients;
-        formWithImgUrl.ingredients = tempArray;
-
-        const freshData = { drinkThumb: resp.payload };
-        Object.assign(formWithImgUrl, freshData);
-
-        sendForm(formWithImgUrl, values, actions);
-      } else {
-        Notify.failure(`Format "webp" not allowed. Try upload .jpeg or .png`);
-      }
-      console.log(resp.payload.message);
-    });
+        console.log(resp.payload.message);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   function onChangeHandler(payload, field, setFieldValue) {
@@ -201,7 +205,8 @@ const AddDrinkForm = () => {
     console.log(persistedForm, 'persistedForm');
 
     dispatch(addOwnDrink(formWithImgUrl, values)).then((resp) => {
-      if (resp.payload.message === 'drink added') {
+      console.log(resp, 'response');
+      if (resp.type === 'drinks/addOwnDrink/fulfilled') {
         Notify.success('You added new cocktail!');
         navigate('/my');
         dispatch(setForm(initialValues));
@@ -214,6 +219,9 @@ const AddDrinkForm = () => {
   };
 
   const errorsHandler = (message) => {
+    if (!message) {
+      return;
+    }
     if (message.includes('length must be at least')) {
       Notify.failure(`All field must be at least 2 symbols long`);
     }
