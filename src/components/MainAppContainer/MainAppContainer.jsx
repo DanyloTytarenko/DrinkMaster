@@ -1,8 +1,8 @@
 import { Container } from './MainAppContainer.styled';
 
-const MainAppContainer = () => {
+const MainAppContainer = ({ children }) => {
   return (
-    <Container />
+    <Container>{children}</Container>
   );
 };
 
