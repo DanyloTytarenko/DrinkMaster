@@ -134,7 +134,6 @@ export const Input = styled.input`
     font-size: 16px;
   }
   :hover {
-    color: red;
     ::-webkit-input-placeholder {
       color: #f3f3f380;
     }
