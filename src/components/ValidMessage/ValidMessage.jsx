@@ -2,8 +2,17 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export const ValidMessage = (statusCode) => {
   Notify.init({
+    width: 'fit-content',
+    fontFamily: 'Manrope',
+    fontSize: '16px',
+    textAlign: 'center',
     position: 'center-top',
-    useIcon: false
+    useIcon: false,
+    borderRadius: "18px",
+    failure: {
+      background: '#161F37',
+textColor: '#ff5549',
+},
   })
   switch (statusCode) {
     case 400:
