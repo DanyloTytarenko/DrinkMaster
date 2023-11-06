@@ -230,9 +230,7 @@ const AddDrinkForm = () => {
       (item, index) => flatUniq.indexOf(item) !== index,
     );
 
-    if (duplicateElement.length > 0) {
-      return true;
-    }
+    return duplicateElement.length > 0 ? false : true;
   };
   // dispatch(setForm(initialValues));
 
