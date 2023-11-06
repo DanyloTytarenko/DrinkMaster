@@ -14,7 +14,12 @@ import { selectForm } from 'src/redux/drinks/selectors';
 import { selectIngredient } from 'src/redux/drinks/selectors';
 import IngredientItem from './IngredientItem/IngredientItem';
 
-const DrinkIngredientsFields = ({ onChangeHandler, setFieldValue, errors }) => {
+const DrinkIngredientsFields = ({
+  onChangeHandler,
+  setFieldValue,
+  errors,
+  wrongIngredients,
+}) => {
   const persistedForm = useSelector(selectForm);
   const form = persistedForm.form;
 
@@ -88,6 +93,7 @@ const DrinkIngredientsFields = ({ onChangeHandler, setFieldValue, errors }) => {
                 label: form.ingredients[index].title,
               }}
               errors={errors}
+              wrongIngredients={wrongIngredients}
             />
           </li>
         ))}

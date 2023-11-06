@@ -23,6 +23,8 @@ import { object, string, array } from 'yup';
 
 import { useNavigate } from 'react-router-dom';
 
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 const addDrinkSchema = object({
   drink: string().trim().required('This field is required'),
   description: string().required('This field is required'),
@@ -34,7 +36,7 @@ const addDrinkSchema = object({
   ingredients: array().of(
     object({
       title: string().required('This field is required'),
-      measure: string().required('This field is required'),
+      measure: string().required('Required'),
     }),
   ),
   instructions: string().required('This field is required'),
@@ -60,40 +62,58 @@ const AddDrinkForm = () => {
   const isLoadingOwnDrink = useSelector(selectIsLoadingOwn);
 
   const [file, setFile] = useState();
+  const [wrongIngredients, setWrongIngredients] = useState();
 
-  const isNonAlcoholicDrinkContainAlcohol = (setFieldValue) => {
+  const isNonAlcoholicDrinkFreeAlcohol = (isNotify) => {
     if (formValues.alcoholic === 'Alcoholic') {
-      return;
+      return true;
     }
+
     if (formValues.alcoholic === 'Non alcoholic') {
       const alcoholicIngredients = formValues.ingredients.filter(
         (el) => el.alcohol === 'Yes',
       );
 
-      alcoholicIngredients.length > 0 &&
-        console.log(
-          'повідомлення про те, що напій позначений як безалкогольний, але у ньому є алкоголь',
+      if (alcoholicIngredients.length === 0) {
+        return true;
+      }
+
+      isNotify &&
+        Notify.failure(
+          'The drink is labeled non-alcoholic but contains alcohol',
         );
+
+      setWrongIngredients(alcoholicIngredients);
+      return false;
     }
   };
 
-  const isAlcoholicDrinkContainAlcohol = (setFieldValue) => {
+  const isAlcoholicDrinkContainAlcohol = (isNotify) => {
     if (formValues.alcoholic === 'Non alcoholic') {
-      return;
+      return true;
     }
-    if (formValues.alcoholic === 'Alcoholic') {
-      const alcoholicIngredients = formValues.ingredients.filter(
-        (el) => el.alcohol === 'No',
+
+    if (formValues.ingredients.some((el) => el.alcohol === 'Yes')) {
+      return true;
+    }
+
+    isNotify &&
+      Notify.failure(
+        `The drink is labeled as alcoholic, but it doesn't contain alcohol`,
       );
 
-      alcoholicIngredients.length > 0 &&
-        console.log(
-          'повідомлення про те, що напій позначений як алкогольний, але він не містить алкоголь',
-        );
-    }
+    setWrongIngredients(null);
+    return false;
   };
 
   const submitHandler = (values, actions) => {
+    if (
+      !isNonAlcoholicDrinkFreeAlcohol(true) ||
+      !isAlcoholicDrinkContainAlcohol(true)
+    ) {
+      return;
+    }
+
     // запит на створення власного коктейлю без зображення
 
     if (!file) {
@@ -146,6 +166,9 @@ const AddDrinkForm = () => {
 
     setFieldValue(field, payload);
     dispatch(setForm(tempObj));
+    if (wrongIngredients) {
+      isNonAlcoholicDrinkFreeAlcohol();
+    }
   }
 
   const sendForm = (formWithImgUrl, values, actions) => {
@@ -161,6 +184,8 @@ const AddDrinkForm = () => {
       console.log(resp.payload.message);
     });
   };
+
+  // dispatch(setForm(initialValues));
 
   return (
     <Wrapper>
@@ -183,6 +208,7 @@ const AddDrinkForm = () => {
               onChangeHandler={onChangeHandler}
               setFieldValue={setFieldValue}
               errors={errors}
+              wrongIngredients={wrongIngredients}
             />
             <RecipePreparation
               onChangeHandler={onChangeHandler}
@@ -190,9 +216,8 @@ const AddDrinkForm = () => {
               errors={errors}
             />
             <Button
-              onClick={(setFieldValue) => {
-                isNonAlcoholicDrinkContainAlcohol(setFieldValue);
-                isAlcoholicDrinkContainAlcohol(setFieldValue);
+              onClick={() => {
+                setWrongIngredients(null);
               }}
               type="submit"
               disabled={isLoadingOwnDrink === true}

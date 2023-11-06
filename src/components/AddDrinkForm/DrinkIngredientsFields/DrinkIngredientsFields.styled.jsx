@@ -18,18 +18,20 @@ export const Title = styled.h2`
 `;
 
 export const DivIncrement = styled.div`
+  box-sizing: border-box;
   padding: 0px 12px;
+  width: 104px;
   height: 38px;
   display: flex;
-  gap: 12px;
+  justify-content: space-between;
   line-height: calc(18 / 14);
   align-items: center;
   border: 1px solid rgba(243, 243, 243, 0.5);
   border-radius: 200px;
   @media only screen and (min-width: 768px) {
+    width: 114px;
     height: 44px;
     padding: 0px 10px;
-    gap: 18px;
   }
 `;
 

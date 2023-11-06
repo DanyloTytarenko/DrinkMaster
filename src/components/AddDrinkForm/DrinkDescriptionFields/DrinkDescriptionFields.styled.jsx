@@ -124,10 +124,38 @@ export const ErrorText = styled.div`
   line-height: calc(14 / 12);
   letter-spacing: 0;
   color: #da1414;
-  border-bottom: 1px solid rgba(243, 243, 243, 0.5);
+  border-bottom: 1px solid #f3f3f350;
+  border-bottom: ${({ errors, value }) =>
+    value && errors
+      ? '1px solid #3cbc8150'
+      : errors
+      ? '1px solid #da141450'
+      : '1px solid #f3f3f350'};
   @media only screen and (min-width: 768px) {
     height: 18px;
     font-size: 14px;
+  }
+`;
+export const ErrorIconCategory = styled.span`
+  position: relative;
+  bottom: 22px;
+  left: 105px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 18px;
+  height: 18px;
+  color: '#da1414';
+  border: 2px solid #da1414;
+  border-radius: 50%;
+  @media only screen and (min-width: 768px) {
+    left: 100px;
+    width: 20px;
+    height: 20px;
+    @media only screen and (min-width: 1440px) {
+      left: 140px;
+    }
   }
 `;
 
