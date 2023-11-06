@@ -21,7 +21,7 @@ export const DrinksList = () => {
     (listOfDrinks.length > 0 ?
       <List>
       {listOfDrinks.map((drink) => (
-        <DrinksListItem key={drink.id} drink={drink} />
+        <DrinksListItem key={drink._id} drink={drink} />
       ))}
       </List> : 
     <Alert severity='info' variant='outlined'>Your drink list is empty</Alert>
