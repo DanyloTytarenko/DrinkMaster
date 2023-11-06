@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { StyledButton } from './Button.styled';
 // import { selectFavoriteDrinks } from 'src/redux/drinks/selectors';
 
-const Button = (drinkId) => {
+const Button = ({ drinkId, favoriteStatus }) => {
   const [favorite, setfavorite] = useState(true);
 
-  console.log(favorite);
-  // console.log(favoriteStatus);
-  console.log(drinkId);
+  console.log('favorite:', favorite);
+  console.log('favoriteStatus:', favoriteStatus);
+  console.log('drinkId:', drinkId);
 
   const handleAddToFavorite = () => setfavorite(true);
   const handleRemoveToFavorite = () => setfavorite(false);
@@ -19,6 +19,10 @@ const Button = (drinkId) => {
   // const { favoriteDrinks } = useSelector(selectFavoriteDrinks);
   // const handleAddToFavorite = (id) => dispatch(AddFavorite(id));
   // const handleRemoveToFavorite = (id) => dispatch(RemoveFavorite(id));
+
+  useEffect(() => {
+    setfavorite(favoriteStatus);
+  }, []);
 
   // function handletheFirstValueFavorite() {
   //   dataFavoriteDrinks.map(({ id }) => {

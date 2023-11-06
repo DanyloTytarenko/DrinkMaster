@@ -10,7 +10,7 @@ import { StyledSearchWrapper } from '../../DrinksSearch/DrinksSearch.styled';
 import Button from '../Button/Button';
 
 const DrinkPageHero = ({ drinkDetails }) => {
-  const { _id, drink, glass, alcoholic, description, drinkThumb } =
+  const { _id, drink, glass, alcoholic, description, drinkThumb, favorite } =
     drinkDetails;
 
   return (
@@ -20,7 +20,7 @@ const DrinkPageHero = ({ drinkDetails }) => {
         {glass} / {alcoholic}
       </Glass>
       <Description>{description}</Description>
-      <Button drinkId={_id} />
+      <Button drinkId={_id} favoriteStatus={favorite} />
       <StyledImageContainer>
         <StyledImage
           src={drinkThumb}
