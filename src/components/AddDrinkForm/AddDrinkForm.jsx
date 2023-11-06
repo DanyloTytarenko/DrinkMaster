@@ -62,7 +62,6 @@ const AddDrinkForm = () => {
   const [file, setFile] = useState();
 
   const isNonAlcoholicDrinkContainAlcohol = (setFieldValue) => {
-    // console.log(formValues.ingredients);
     if (formValues.alcoholic === 'Alcoholic') {
       return;
     }
@@ -71,10 +70,25 @@ const AddDrinkForm = () => {
         (el) => el.alcohol === 'Yes',
       );
 
-      // console.log(alcoholicIngredients);
       alcoholicIngredients.length > 0 &&
         console.log(
-          'повідомлення про те, що напій безалкогольний, але у ньому є алкоголь',
+          'повідомлення про те, що напій позначений як безалкогольний, але у ньому є алкоголь',
+        );
+    }
+  };
+
+  const isAlcoholicDrinkContainAlcohol = (setFieldValue) => {
+    if (formValues.alcoholic === 'Non alcoholic') {
+      return;
+    }
+    if (formValues.alcoholic === 'Alcoholic') {
+      const alcoholicIngredients = formValues.ingredients.filter(
+        (el) => el.alcohol === 'No',
+      );
+
+      alcoholicIngredients.length > 0 &&
+        console.log(
+          'повідомлення про те, що напій позначений як алкогольний, але він не містить алкоголь',
         );
     }
   };
@@ -104,6 +118,10 @@ const AddDrinkForm = () => {
         const formWithImgUrl = {
           ...formValues,
         };
+        if (formWithImgUrl?.form) {
+          delete formWithImgUrl.form;
+        }
+        formWithImgUrl.ingredients.map((el) => delete el?.alcohol);
         const freshData = { drinkThumb: resp.payload };
         Object.assign(formWithImgUrl, freshData);
 
@@ -132,9 +150,7 @@ const AddDrinkForm = () => {
 
   const sendForm = (formWithImgUrl, values, actions) => {
     console.log(persistedForm, 'persistedForm');
-    if (formWithImgUrl?.form) {
-      delete formWithImgUrl.form;
-    }
+
     dispatch(addOwnDrink(formWithImgUrl, values)).then((resp) => {
       if (resp.payload.message === 'drink added') {
         navigate('/my');
@@ -176,6 +192,7 @@ const AddDrinkForm = () => {
             <Button
               onClick={(setFieldValue) => {
                 isNonAlcoholicDrinkContainAlcohol(setFieldValue);
+                isAlcoholicDrinkContainAlcohol(setFieldValue);
               }}
               type="submit"
               disabled={isLoadingOwnDrink === true}
