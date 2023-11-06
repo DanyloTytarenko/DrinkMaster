@@ -106,6 +106,7 @@ const AddDrinkForm = () => {
     return false;
   };
 
+  // функція обробки форми-----------------
   const submitHandler = (values, actions) => {
     if (!isAllIngredientsUniq()) {
       return Notify.failure('Duplicate ingredients are not allowed');
@@ -229,8 +230,8 @@ const AddDrinkForm = () => {
       (item, index) => flatUniq.indexOf(item) !== index,
     );
 
-    if (duplicateElement) {
-      return false;
+    if (duplicateElement.length > 0) {
+      return екгу;
     }
   };
   // dispatch(setForm(initialValues));
