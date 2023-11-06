@@ -1,12 +1,16 @@
+import { useDispatch } from 'react-redux';
+// import { loginWithGoogle } from 'src/redux/auth/operations';
 import { Button } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import { buttonStyled } from '../SingupForm/muiFormStyled';
 
 export const GoogleButton = () => {
-    const handleButtonClick = () => {
-        
-    }
+  const dispatch = useDispatch();
 
+    const handleButtonClick = () => {
+      // dispatch(loginWithGoogle());
+    }
+  
     return (
         <Button
             onClick={handleButtonClick}
@@ -16,7 +20,7 @@ export const GoogleButton = () => {
           type="button"
           startIcon={<GoogleIcon sx={{mr: '4px'}}/>}
         >
-          Sing up with Google
+          Sign in with Google
         </Button>
     )
 }
