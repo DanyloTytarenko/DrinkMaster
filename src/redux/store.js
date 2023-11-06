@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -8,6 +9,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/slice';
 import { ownDrinksReducer, favoriteDrinksReducer, popularDrinksReducer } from './drinks/drinksSlice';
 import { persistedFormReducer } from './drinks/formSlice';
@@ -19,9 +21,15 @@ import {
 } from './drinks/drinksSlice';
 import { drinkByIdReducer } from './drinks/drinkDetailsSlice';
 
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['id','accessToken','refreshToken'],
+};
+
 export const store = configureStore({
   reducer: {
-    auth: authReducer,
+    auth: persistReducer(authPersistConfig, authReducer),
     ownDrinks: ownDrinksReducer,
     favoriteDrinks: favoriteDrinksReducer,
     popularDrinks: popularDrinksReducer,
