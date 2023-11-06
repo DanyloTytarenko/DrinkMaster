@@ -41,7 +41,13 @@ function App() {
     <AppWrapper>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<WelcomePage />} />
+            <Route index element={<WelcomePage />} />
+            <Route
+            path="/"
+            element={
+              <PublicRoute redirectcto="/welcome" component={<WelcomePage />} />
+            }
+          />
           <Route path="/welcome" element={<WelcomePage />} />
           <Route
             path="/signup"

@@ -3,7 +3,7 @@ export const inputProps = {
     opacity: 1,
     color: 'rgba(243, 243, 243, 0.50)',
     fontFamily: 'Manrope',
-    fontSize: '14px',
+    fontSize: {xs:'14px', sm: '17px', lg: '17px'},
     '&:hover, focus': {
       color: '#F3F3F3',
     },
@@ -134,12 +134,13 @@ export const iconStyled = {
   color: '#F3F3F3',
 };
 
+
 export const buttonStyled = {
-  mt: '14px',
+  mt: '28px',
   pt: '18px',
   pb: '18px',
   fontFamily: 'Manrope',
-  fontSize: '14px',
+  fontSize: {xs:'14px', sm: '16px', lg: '16px'},
   fontWeight: 600,
   lineHeight: '18px',
   textTransform: 'capitalize',
@@ -157,8 +158,8 @@ export const linkStyled = {
   mt: '14px',
   color: '#F3F3F3',
   fontFamily: 'Manrope',
-  fontSize: '12px',
+  fontSize: {xs:'12px', sm: '14px', lg: '14px'},
   fontWeight: 600,
-  lineHeight: '16px',
+  lineHeight: {xs:'16px', sm: '18px', lg: '18px'},
   textDecoration: 'underline',
 };

@@ -23,11 +23,14 @@ const RecipePreparation = ({ onChangeHandler, setFieldValue, errors }) => {
         <MockPlaceholder>Enter the recipe</MockPlaceholder>
       ) : (
         <ErrorText>
-          {errors.instructions}
-          {errors.instructions && <ErrorIcon>!</ErrorIcon>}
+          {!form.instructions && errors.instructions}
+          {!form.instructions && errors.instructions && (
+            <ErrorIcon>!</ErrorIcon>
+          )}
         </ErrorText>
       )}
       <Textarea
+        errors={errors.instructions}
         name="instructions"
         placeholder="Enter the recipe"
         rows={6}
