@@ -10,7 +10,11 @@ export const Wrapper = styled.div`
 `;
 
 export const Button = styled.button`
-  padding: 14px 40px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 107px;
+  height: 46px;
   color: #161f37;
   font-size: 14px;
   font-weight: 600;
@@ -22,6 +26,21 @@ export const Button = styled.button`
   @media only screen and (min-width: 768px) {
     font-size: 16px;
     line-height: calc(18 / 16);
-    padding: 18px 44px;
+    width: 118px;
+    height: 54px;
+  }
+
+  &:hover {
+    background-color: #161f37;
+    color: #f3f3f3;
+  }
+  &:active {
+    color: #161f37;
+    border: 2px solid #4070cd50;
+    background-color: #f3f3f3;
+  }
+  &:disabled {
+    color: #f3f3f320;
+    background-color: #434d67;
   }
 `;

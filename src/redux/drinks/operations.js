@@ -35,7 +35,7 @@ export const fetchPopularDrinks = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/drinks/popular');
-      console.log(response.data)
+      console.log(response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -52,7 +52,7 @@ export const addOwnDrinkImg = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         },
       });
-      // console.log(response);
+      console.log(response, 'in operations');
       return response.status === 201
         ? response.data.avatarURL
         : e.response.data;

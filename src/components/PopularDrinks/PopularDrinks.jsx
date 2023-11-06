@@ -1,42 +1,52 @@
-import { List, ListItem, Photo,DescrWrapper,DrinkName, DrinkDescr, PopularDrinks, PopularTitle , DrinkLink } from './PopularDrinks.styled';
+import {
+  List,
+  ListItem,
+  Photo,
+  DescrWrapper,
+  DrinkName,
+  DrinkDescr,
+  PopularDrinks,
+  PopularTitle,
+  DrinkLink,
+} from './PopularDrinks.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchPopularDrinks } from '../../redux/drinks/operations';
-import {
-  selectPopularDrinks
-} from '../../redux/drinks/selectors';
-import FollowUs from '../FollowUs/FollowUs';
+import { selectPopularDrinks } from '../../redux/drinks/selectors';
+import DummyDrinkThumb from 'src/images/dummyDrinkThumb.png';
+
 export const PopularDrinksComponent = () => {
-const dispatch = useDispatch();
-useEffect(() => {
+  const dispatch = useDispatch();
+  useEffect(() => {
     dispatch(fetchPopularDrinks());
   }, [dispatch]);
-    
-    let listOfPopularDrinks = useSelector(selectPopularDrinks);
-  
-    return (
-        <PopularDrinks>
-            <div>
-                <PopularTitle>Follow us</PopularTitle>
-             <FollowUs></FollowUs>   
-            </div>
-            <div>
-            <PopularTitle>Popular drinks</PopularTitle>
+
+  let listOfPopularDrinks = useSelector(selectPopularDrinks);
+
+  return (
+    <PopularDrinks>
+      <div>
+        <PopularTitle>Popular drinks</PopularTitle>
         <List>
-      {listOfPopularDrinks.map((drink) => (
-          <ListItem key={drink.id}>
-              <DrinkLink to={`/drink/${drink.id}`}>
-                  <Photo src={drink.drinkThumb} alt={drink.drink}/>
-              <DescrWrapper>
+          {listOfPopularDrinks.map((drink) => (
+            <ListItem key={drink._id}>
+              <DrinkLink to={`/drink/${drink._id}`}>
+                <Photo
+                  src={drink.drinkThumb}
+                  alt={drink.drink}
+                  onError={(event) => {
+                    event.currentTarget.src = DummyDrinkThumb;
+                  }}
+                />
+                <DescrWrapper>
                   <DrinkName>{drink.drink}</DrinkName>
-                  <DrinkDescr>{drink.drink}</DrinkDescr>
-                  </DescrWrapper>
+                  <DrinkDescr>{drink.description}</DrinkDescr>
+                </DescrWrapper>
               </DrinkLink>
-          </ListItem>
-          
-      ))}
+            </ListItem>
+          ))}
         </List>
-            </div>
+      </div>
     </PopularDrinks>
   );
 };

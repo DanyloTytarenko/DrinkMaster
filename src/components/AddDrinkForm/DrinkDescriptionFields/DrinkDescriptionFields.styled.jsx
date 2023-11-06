@@ -106,6 +106,7 @@ export const DivDesription = styled.div`
 export const DivRow = styled.div``;
 
 export const Input = styled.input`
+  width: 100%;
   background-color: inherit;
   font-size: 14px;
   color: #f3f3f3;
@@ -161,6 +162,16 @@ export const DivAlcoholic = styled.div`
   @media only screen and (min-width: 768px) {
     font-size: 16px;
   }
+`;
+
+export const LabelAlcoholic = styled.label`
+  opacity: ${({ isAlcoholic }) => (isAlcoholic === 'Alcoholic' ? '1' : '0.5')};
+  cursor: pointer;
+`;
+export const LabelNonAlcoholic = styled.label`
+  opacity: ${({ isAlcoholic }) =>
+    isAlcoholic === 'Non alcoholic' ? '1' : '0.5'};
+  cursor: pointer;
 `;
 
 export const RadioInput = styled.input`

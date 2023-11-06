@@ -15,11 +15,12 @@ import {
   DivFlexSelect,
   SpanSelect,
   DivAlcoholic,
+  LabelAlcoholic,
+  LabelNonAlcoholic,
   RadioInput,
 } from './DrinkDescriptionFields.styled';
 import { ErrorIcon } from '../RecipePreparation/RecipePreparation.styled';
 
-import Select from 'react-select';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectForm } from 'src/redux/drinks/selectors';
@@ -27,7 +28,7 @@ import { selectCategory, selectGlass } from 'src/redux/drinks/selectors';
 import { selectUser } from 'src/redux/auth/selectors';
 
 import { isUserAdult } from 'src/utils/isUserAdult';
-
+import Select from '../../ReactSelect/ReactSelect';
 import DummyDrinkThumb from 'src/images/dummyDrinkThumb.png';
 
 const DrinkDescriptionFields = ({
@@ -45,7 +46,7 @@ const DrinkDescriptionFields = ({
   const user = useSelector(selectUser);
 
   if (isUserAdult(user.birthday) === false && form.alcoholic === 'Alcoholic') {
-    onChangeHandler('Non alcoholic', 'alcoholic');
+    onChangeHandler('Non alcoholic', 'alcoholic', setFieldValue);
   }
 
   const [uri, setUri] = useState();
@@ -118,8 +119,7 @@ const DrinkDescriptionFields = ({
               title="Enter item title"
               value={form.drink}
               onChange={(e) => {
-                setFieldValue('drink', e.target.value);
-                onChangeHandler(e.target.value, e.target.name);
+                onChangeHandler(e.target.value, e.target.name, setFieldValue);
               }}
             />
             <ErrorText>
@@ -135,8 +135,7 @@ const DrinkDescriptionFields = ({
               title="Enter about recipe"
               value={form.description}
               onChange={(e) => {
-                setFieldValue('description', e.target.value);
-                onChangeHandler(e.target.value, e.target.name);
+                onChangeHandler(e.target.value, e.target.name, setFieldValue);
               }}
             />
             <ErrorText>
@@ -149,46 +148,6 @@ const DrinkDescriptionFields = ({
             <DivFlexSelect>
               <SpanSelect>Category</SpanSelect>
               <Select
-                styles={{
-                  dropdownIndicator: (provided, state) => ({
-                    ...provided,
-                    transform: state.selectProps.menuIsOpen && 'rotate(180deg)',
-                  }),
-                  control: (base, state) => ({
-                    ...base,
-                    background: 'inherit',
-                    border: 'none',
-                    fontSize: '14px',
-                    fontWeight: 'regular',
-                    color: '#f3f3f3',
-                    cursor: 'pointer',
-                  }),
-
-                  menu: (base) => ({
-                    ...base,
-                    width: '131px',
-                    right: '0px',
-                    backgroundColor: '#161f37',
-                    border: '0px solid transparent',
-                    borderRadius: '12px',
-                  }),
-                  indicatorSeparator: (base) => ({
-                    ...base,
-                    display: 'none',
-                  }),
-                  option: (styles, { isFocused, isSelected }) => ({
-                    ...styles,
-                    fontSize: '14px',
-                    lineHeight: '1.33',
-                    background: 'transparent',
-                    zIndex: 1,
-                    color: isFocused
-                      ? 'rgba(243, 243, 243, 0.75)'
-                      : isSelected
-                      ? '#f3f3f3'
-                      : 'rgba(243, 243, 243, 0.4)',
-                  }),
-                }}
                 name="category"
                 options={options(categories)}
                 value={
@@ -196,11 +155,8 @@ const DrinkDescriptionFields = ({
                     ? null
                     : { value: form.category, label: form.category }
                 }
-                defaultValue={options(categories)[1]}
-                onChange={(e) => {
-                  setFieldValue('category', e.value);
-                  onChangeHandler(e.value, 'category');
-                }}
+                onChangeIngredientHandler={onChangeHandler}
+                setFieldValue={setFieldValue}
               />
             </DivFlexSelect>
             <ErrorText>
@@ -213,44 +169,6 @@ const DrinkDescriptionFields = ({
             <DivFlexSelect>
               <SpanSelect>Glass</SpanSelect>
               <Select
-                styles={{
-                  dropdownIndicator: (provided, state) => ({
-                    ...provided,
-                    transform: state.selectProps.menuIsOpen && 'rotate(180deg)',
-                  }),
-                  control: (base, state) => ({
-                    ...base,
-                    background: 'inherit',
-                    border: 'none',
-                    fontSize: '14px',
-                    fontWeight: '400',
-                    color: '#f3f3f3',
-                    cursor: 'pointer',
-                  }),
-                  menu: (base) => ({
-                    ...base,
-                    width: '131px',
-                    right: '0px',
-                    backgroundColor: '#161f37',
-                    border: '0px solid transparent',
-                    borderRadius: '12px',
-                  }),
-                  indicatorSeparator: (base) => ({
-                    ...base,
-                    display: 'none',
-                  }),
-                  option: (styles, { isFocused, isSelected }) => ({
-                    ...styles,
-                    fontSize: '14px',
-                    lineHeight: '1.33',
-                    background: 'transparent',
-                    color: isFocused
-                      ? 'rgba(243, 243, 243, 0.75)'
-                      : isSelected
-                      ? '#f3f3f3'
-                      : 'rgba(243, 243, 243, 0.4)',
-                  }),
-                }}
                 name="glass"
                 options={options(glassArray)}
                 value={
@@ -258,11 +176,8 @@ const DrinkDescriptionFields = ({
                     ? null
                     : { value: form.glass, label: form.glass }
                 }
-                defaultValue={options(glassArray)[0]}
-                onChange={(e) => {
-                  setFieldValue('glass', e.value);
-                  onChangeHandler(e.value, 'glass');
-                }}
+                onChangeIngredientHandler={onChangeHandler}
+                setFieldValue={setFieldValue}
               />
             </DivFlexSelect>
             <ErrorText>
@@ -273,31 +188,20 @@ const DrinkDescriptionFields = ({
         </DivDesription>
 
         <DivAlcoholic>
-          <label
-            style={{
-              opacity: form.alcoholic === 'Alcoholic' ? '1' : '0.5',
-              cursor: 'pointer',
-            }}
-          >
+          <LabelAlcoholic isAlcoholic={form.alcoholic}>
             <RadioInput
               type="radio"
               value="Alcoholic"
               name="alcoholic"
               checked={form.alcoholic === 'Alcoholic' ? true : false}
               onChange={(e) => {
-                setFieldValue('alcoholic', e.target.value);
-                onChangeHandler(e.target.value, 'alcoholic');
+                onChangeHandler(e.target.value, 'alcoholic', setFieldValue);
               }}
               disabled={isUserAdult(user.birthday) ? false : true}
             />
             Alcoholic
-          </label>
-          <label
-            style={{
-              opacity: form.alcoholic === 'Non alcoholic' ? '1' : '0.5',
-              cursor: 'pointer',
-            }}
-          >
+          </LabelAlcoholic>
+          <LabelNonAlcoholic isAlcoholic={form.alcoholic}>
             <RadioInput
               type="radio"
               value="Non alcoholic"
@@ -309,12 +213,11 @@ const DrinkDescriptionFields = ({
                   : false
               }
               onChange={(e) => {
-                setFieldValue('alcoholic', e.target.value);
-                onChangeHandler(e.target.value, 'alcoholic');
+                onChangeHandler(e.target.value, 'alcoholic', setFieldValue);
               }}
             />
             Non-alcoholic
-          </label>
+          </LabelNonAlcoholic>
         </DivAlcoholic>
       </div>
     </Wrapper>
