@@ -75,6 +75,7 @@ const AddDrinkForm = () => {
       );
 
       if (alcoholicIngredients.length === 0) {
+        setWrongIngredients(null);
         return true;
       }
 
@@ -83,7 +84,7 @@ const AddDrinkForm = () => {
           'The drink is labeled non-alcoholic but contains alcohol',
         );
 
-      setWrongIngredients(alcoholicIngredients);
+      setWrongIngredients(true);
       return false;
     }
   };
@@ -102,7 +103,6 @@ const AddDrinkForm = () => {
         `The drink is labeled as alcoholic, but it doesn't contain alcohol`,
       );
 
-    setWrongIngredients(null);
     return false;
   };
 
