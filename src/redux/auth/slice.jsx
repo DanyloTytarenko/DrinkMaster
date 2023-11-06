@@ -49,10 +49,7 @@ const handleRefreshFulfilled = (state, action) => {
 };
 
 const handleUpdatedFulfilled = (state, action) => {
-  state.user = action.payload.user;
-  state.user = action.payload.user;
-  state.accessToken = action.payload.accessToken;
-  state.isLoggedIn = true;
+  state.user.name = action.payload.name;
 };
 
 const handleLogOutFulfilled = (state) => {
