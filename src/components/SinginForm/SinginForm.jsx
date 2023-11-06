@@ -27,6 +27,7 @@ import {
   linkStyled,
   iconStyled,
 } from '../SingupForm/muiFormStyled';
+import { GoogleButton } from '../GoogleButton/GoogleButton';
 
 export const SinginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
