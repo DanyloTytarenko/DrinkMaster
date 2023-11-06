@@ -1,4 +1,4 @@
-import{s as i,c as n,N as u,j as e,u as B,r as p,a5 as O,k as D,z as T,a6 as R,a7 as A}from"./index-49dbacba.js";import{c as P,a as Z,u as U}from"./index.esm-ae33b3ff.js";const _=i(u)`
+import{s as i,c as n,N as u,j as e,u as B,r as p,a4 as O,i as D,y as T,a5 as R,a6 as A}from"./index-2a52f4ab.js";import{c as P,a as Z,u as U}from"./index.esm-f47ee94b.js";const _=i(u)`
   display: inline-flex;
   align-items: center;
 `,q=i.svg`
@@ -413,7 +413,7 @@ line-height: 18px;
     @media screen and (min-width: 768px) { 
       width: 30px;
   }
-`,ze=i.ul`
+`,Me=i.ul`
   display: none;
 
   ${({open:t})=>t&&`
@@ -433,7 +433,7 @@ line-height: 18px;
     background: ${n.primaryDark};
     z-index: 10;
   `}
-`,Me=i.div`
+`,ze=i.div`
 width: 257px;
 height: 247px;
 border-radius: 257px;
@@ -442,7 +442,7 @@ filter: blur(104.8543701171875px);
 position: absolute;
 top:0;
 left: 10%;
-`,Be=({isOpen:t,toggleMenu:o})=>e.jsxs(Le,{children:[e.jsxs(Se,{onClick:o,children:[e.jsx(m,{}),e.jsx(m,{}),e.jsx(m,{}),e.jsx(m,{})]}),e.jsxs(ze,{open:t,children:[e.jsx(Me,{}),e.jsx(s,{to:"/home",onClick:o,children:"Home"}),e.jsx(s,{to:"/drinks",onClick:o,children:"Drinks"}),e.jsx(s,{to:"/add",onClick:o,children:"Add drink"}),e.jsx(s,{to:"/my",onClick:o,children:"My drinks"}),e.jsx(s,{to:"/favorites",onClick:o,children:"Favorites"})]})]}),De=i.header`
+`,Be=({isOpen:t,toggleMenu:o})=>e.jsxs(Le,{children:[e.jsxs(Se,{onClick:o,children:[e.jsx(m,{}),e.jsx(m,{}),e.jsx(m,{}),e.jsx(m,{})]}),e.jsxs(Me,{open:t,children:[e.jsx(ze,{}),e.jsx(s,{to:"/home",onClick:o,children:"Home"}),e.jsx(s,{to:"/drinks",onClick:o,children:"Drinks"}),e.jsx(s,{to:"/add",onClick:o,children:"Add drink"}),e.jsx(s,{to:"/my",onClick:o,children:"My drinks"}),e.jsx(s,{to:"/favorites",onClick:o,children:"Favorites"})]})]}),De=i.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -514,7 +514,7 @@ color: ${n.light};
 line-height: 1.3;
 letter-spacing: -0.28px;
 margin: 0 auto 35px;
-`,z=i.button`
+`,M=i.button`
 margin-bottom: 12px;
 position: relative;
 right: calc(-100% + 20px);
@@ -558,4 +558,4 @@ position: relative;
 display:flex;
 flex-direction:column;
 `,Ze=i.input`
-display:none;`,c="/DrinkMaster/assets/sprite-062e31f9.svg",M=()=>{const[t,o]=p.useState(!1),[a,r]=p.useState(!1),[l,d]=p.useState(!1),x=B(),v=D(T),[I,H]=p.useState(v.name),W=()=>{o(!t)},V=()=>{d(!l)},C=()=>{r(!a)},k=()=>{r(!1),d(!1),o(!1)},N=h=>{h.preventDefault();const y=h.target.elements.name.value;y!==v.name&&x(A({name:y}))};return e.jsxs(e.Fragment,{children:[e.jsx("div",{onClick:W,children:e.jsx($e,{})}),e.jsx(Te,{open:t,children:a?e.jsxs(e.Fragment,{children:[e.jsx(z,{onClick:k,children:e.jsx("svg",{width:"18px",height:"18px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${c}#icon-close`})})}),e.jsx(We,{children:"Are you sure you want to log out?"}),e.jsxs(Ie,{children:[e.jsx(S,{type:"button",onClick:()=>x(R()),children:"Log out"}),e.jsx(He,{type:"button",onClick:C,children:"Cancel"})]})]}):l?e.jsxs(e.Fragment,{children:[e.jsx(z,{onClick:k,children:e.jsx("svg",{width:"18px",height:"18px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${c}#icon-close`})})}),e.jsxs(Pe,{onSubmit:N,children:[e.jsxs(Ae,{children:[e.jsx(Oe,{children:e.jsx("svg",{width:"100px",height:"100px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${c}#icon-user`})})}),e.jsx(Re,{children:e.jsx("svg",{width:"34px",height:"34px",children:e.jsx("use",{href:`${c}#icon-add`})})})]}),e.jsx(Ze,{type:"text"}),e.jsx(Ne,{type:"text",name:"name",value:I,onChange:h=>H(h.target.value)}),e.jsx(Ve,{type:"submit",children:"Save changes"})]})]}):e.jsxs(e.Fragment,{children:[e.jsxs(Ee,{onClick:V,children:[e.jsx("span",{children:"Edit profile"}),e.jsx("svg",{width:"14px",height:"14px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${c}#icon-edit`})})]}),e.jsx(S,{type:"button",onClick:C,children:"Log out"})]})})]})},Ge=()=>{const[t,o]=p.useState(window.innerWidth),a=()=>{o(window.innerWidth)};p.useEffect(()=>(window.addEventListener("resize",a),()=>{window.removeEventListener("resize",a)}),[]);const[r,l]=p.useState(!1),d=()=>{l(!r)};return e.jsxs(De,{children:[e.jsx(E,{}),t>=1440&&e.jsxs(e.Fragment,{children:[e.jsx(fe,{}),e.jsx(L,{}),e.jsx(M,{})]}),t<1440&&e.jsxs(e.Fragment,{children:[r?e.jsx(L,{}):e.jsx(M,{}),e.jsx(Be,{isOpen:r,toggleMenu:d})]})]})};export{qe as F,Ge as H,Q as a};
+display:none;`,c="/DrinkMaster/assets/sprite-062e31f9.svg",z=()=>{const[t,o]=p.useState(!1),[a,r]=p.useState(!1),[l,d]=p.useState(!1),x=B(),v=D(T),[I,H]=p.useState(v.name),W=()=>{o(!t)},V=()=>{d(!l)},C=()=>{r(!a)},k=()=>{r(!1),d(!1),o(!1)},N=h=>{h.preventDefault();const y=h.target.elements.name.value;y!==v.name&&x(A({name:y}))};return e.jsxs(e.Fragment,{children:[e.jsx("div",{onClick:W,children:e.jsx($e,{})}),e.jsx(Te,{open:t,children:a?e.jsxs(e.Fragment,{children:[e.jsx(M,{onClick:k,children:e.jsx("svg",{width:"18px",height:"18px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${c}#icon-close`})})}),e.jsx(We,{children:"Are you sure you want to log out?"}),e.jsxs(Ie,{children:[e.jsx(S,{type:"button",onClick:()=>x(R()),children:"Log out"}),e.jsx(He,{type:"button",onClick:C,children:"Cancel"})]})]}):l?e.jsxs(e.Fragment,{children:[e.jsx(M,{onClick:k,children:e.jsx("svg",{width:"18px",height:"18px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${c}#icon-close`})})}),e.jsxs(Pe,{onSubmit:N,children:[e.jsxs(Ae,{children:[e.jsx(Oe,{children:e.jsx("svg",{width:"100px",height:"100px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${c}#icon-user`})})}),e.jsx(Re,{children:e.jsx("svg",{width:"34px",height:"34px",children:e.jsx("use",{href:`${c}#icon-add`})})})]}),e.jsx(Ze,{type:"text"}),e.jsx(Ne,{type:"text",name:"name",value:I,onChange:h=>H(h.target.value)}),e.jsx(Ve,{type:"submit",children:"Save changes"})]})]}):e.jsxs(e.Fragment,{children:[e.jsxs(Ee,{onClick:V,children:[e.jsx("span",{children:"Edit profile"}),e.jsx("svg",{width:"14px",height:"14px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${c}#icon-edit`})})]}),e.jsx(S,{type:"button",onClick:C,children:"Log out"})]})})]})},Ge=()=>{const[t,o]=p.useState(window.innerWidth),a=()=>{o(window.innerWidth)};p.useEffect(()=>(window.addEventListener("resize",a),()=>{window.removeEventListener("resize",a)}),[]);const[r,l]=p.useState(!1),d=()=>{l(!r)};return e.jsxs(De,{children:[e.jsx(E,{}),t>=1440&&e.jsxs(e.Fragment,{children:[e.jsx(fe,{}),e.jsx(L,{}),e.jsx(z,{})]}),t<1440&&e.jsxs(e.Fragment,{children:[r?e.jsx(L,{}):e.jsx(z,{}),e.jsx(Be,{isOpen:r,toggleMenu:d})]})]})};export{qe as F,Ge as H,Q as a};
