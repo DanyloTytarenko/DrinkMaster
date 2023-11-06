@@ -144,7 +144,6 @@ export const SinginForm = () => {
         >
           Sing In
         </Button>
-        <GoogleButton/>
         <Link component={NavLink} sx={{ ...linkStyled }} to="/signup">
           Sing Up
         </Link>
