@@ -13,6 +13,7 @@ import {
 
 import { fetchNewDrinks } from '../../redux/homepage/operations.js';
 import MainAppContainer from 'src/components/MainAppContainer/MainAppContainer';
+import Loader from 'src/components/Loader/Loader';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const HomePage = () => {
   }, [dispatch]);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   if (error) {
