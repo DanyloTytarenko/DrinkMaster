@@ -10,8 +10,8 @@ gap: 16px;
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
-    margin-left: 224px;
-    margin-right: 191px;
+    margin-left: 204px;
+    margin-right: 171px;
   }
 `;
 

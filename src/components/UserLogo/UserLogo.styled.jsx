@@ -7,7 +7,7 @@ display: flex;
 // align-items: center;
 // text-align: center;
 gap: 7px;
-cursor: pointer;
+cursor: pointer; 
 
   @media screen and (min-width: 768px) {
     width: 44px;
@@ -16,9 +16,11 @@ cursor: pointer;
     // margin-right: 24px;
     // margin-left: 260px;
   }
-  //  @media screen and (min-width: 768px) {
-  //   gap: 14px;
-  // }
+   @media screen and (min-width: 1440px) {
+    gap: 14px;
+    margin-right: 100px;
+    margin-left: 28px;
+  }
 `;
 
 export const UserLogoWrap = styled.div`
