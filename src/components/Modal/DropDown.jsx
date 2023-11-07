@@ -32,11 +32,7 @@ export const DropDown = () => {
     e.preventDefault();
     const name = e.target.elements.name.value;
     const avatar = e.target.elements.avatar.files[0];
-    if (name === user.name) { 
-      return;
-    } else {
       dispatch(updateUser({name, avatar}))
-    }
   }
   const handlePhoto = (e) => {
     const avatar = e.target.files[0];
