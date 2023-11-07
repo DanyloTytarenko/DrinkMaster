@@ -23,7 +23,7 @@ export const fetchFavoriteDrinks = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/drinks/favorite');
-      return response.data.drinks;
+      return response.data.favoriteDrinks;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -95,7 +95,7 @@ export const deleteOwnDrink = createAsyncThunk(
   async (drinkId, thunkAPI) => {
     try {
       const response = await axios.delete(`/drinks/own/remove/${drinkId}`);
-      return response.data;
+      return drinkId;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -106,7 +106,7 @@ export const deleteFavoriteDrink = createAsyncThunk(
   async (drinkId, thunkAPI) => {
     try {
       const response = await axios.delete(`/drinks/favorite/remove/${drinkId}`);
-      return response.data;
+      return drinkId;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
