@@ -13,6 +13,7 @@ export const DropDown = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [inputName, setInputName] = useState(user.name);
+  const [photo, setPhoto] = useState(user.avatar);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     };
@@ -30,11 +31,18 @@ export const DropDown = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const name = e.target.elements.name.value;
+    const avatar = e.target.elements.avatar.files[0];
     if (name === user.name) { 
       return;
     } else {
-      dispatch(updateUser({name}))
-    }}
+      dispatch(updateUser({name, avatar}))
+    }
+  }
+  const handlePhoto = (e) => {
+    const avatar = e.target.files[0];
+    const avatarURL = URL.createObjectURL(avatar);
+    setPhoto(avatarURL)
+  }
     return (
         <>
             <div onClick={toggleMenu}>
@@ -64,16 +72,21 @@ export const DropDown = () => {
                 <Form onSubmit={handleSubmit}>
                   <Photo>
                         <PhotoWrapper>
-                          <svg width="100px" height="100px" stroke="#F3F3F3">
+                          {/* <svg width="100px" height="100px" stroke="#F3F3F3">
                             <use href={`${sprite}#icon-user`} />
-                            </svg>
-                        </PhotoWrapper><AddBtn>
+                            </svg> */}
+                      <img width="100" height="100" src={photo || '/src/images/user.jpg'} alt="User avatar" onError={(event) => {
+                      event.currentTarget.src = '/src/images/user.jpg';
+                    }}/>
+                    </PhotoWrapper>
+                    <AddBtn htmlFor="avatar">
                         <svg width="34px" height="34px">
                             <use href={`${sprite}#icon-add`} />
-                            </svg>
+                      </svg>
+                      <ImgInput type="file" name="avatar" id='avatar' accept=".jpg, .jpeg, .png" onChange={handlePhoto} />
                     </AddBtn>
                   </Photo>   
-                        <ImgInput type="text"/>
+                        
                         <NameInput
                     type="text"
                     name="name"

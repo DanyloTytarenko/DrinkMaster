@@ -7,15 +7,14 @@ import {
   DrinkTitle,
   DrinkDesc,
   TitleWrapper,
-  DrinkAlc,
-  DrinkImgPlug
+  DrinkAlc
 } from './DrinksList.styled';
 import { useDispatch } from 'react-redux';
 import {
   deleteOwnDrink,
   deleteFavoriteDrink,
 } from '../../redux/drinks/operations';
-
+import DummyDrinkThumb from 'src/images/dummyDrinkThumb.png';
 import sprite from './svg/sprite.svg';
 export const DrinksListItem = ({ drink }) => {
   const dispatch = useDispatch();
@@ -28,7 +27,10 @@ export const DrinksListItem = ({ drink }) => {
   };
   return (
     <DrinksItem>
-      {drink.drinkThumb ? <DrinkPhoto src={drink.drinkThumb} alt="Photo of cocktail" /> : <DrinkImgPlug></DrinkImgPlug>}
+      <DrinkPhoto src={drink.drinkThumb} alt={` Photo of cocktail ${drink.drink} `}
+      onError={(event) => {
+                      event.currentTarget.src = DummyDrinkThumb;
+                    }}/> 
       <TitleWrapper>
         <DrinkTitle>{drink.drink}</DrinkTitle>
         <DrinkAlc>{drink.alcoholic}</DrinkAlc>
