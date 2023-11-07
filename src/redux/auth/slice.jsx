@@ -59,6 +59,11 @@ const handleLogOutFulfilled = (state) => {
 };
 
 const handleRejected = (_, action) => {
+  if (action.payload === 'Request failed with status code 500') {
+    refreshUser();
+   return ValidMessage(500);
+  }
+  
   return ValidMessage(action.payload);
 };
 

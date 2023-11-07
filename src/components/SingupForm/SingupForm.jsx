@@ -12,7 +12,6 @@ import {
   ThemeProvider,
 } from '@mui/material';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import dayjs from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -63,13 +62,14 @@ export const SingupForm = () => {
     <div>
       <Form onSubmit={formik.handleSubmit}>
         <ThemeProvider theme={theme}>
-          <FormControl sx={{ zIndex: 5, width: '100%' }}>
+          <FormControl sx={{ width: '100%' }}>
             <OutlinedInput
               fullWidth
               name="name"
               placeholder="Name"
               autoComplete="off"
               sx={{
+                zIndex: 5,
                 ...outlineStyled,
                 ...(formik.touched.name &&
                   Boolean(formik.errors.name) && { ...outlineError }),
@@ -105,7 +105,7 @@ export const SingupForm = () => {
               </FormHelperText>
             )}
           </FormControl>
-          <FormControl sx={{ zIndex: 5, width: '100%' }}>
+          <FormControl sx={{ width: '100%' }}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DesktopDatePicker
                 views={['year', 'month', 'day']}
@@ -137,13 +137,14 @@ export const SingupForm = () => {
               </FormHelperText>
             )}
           </FormControl>
-          <FormControl sx={{ zIndex: 5, width: '100%' }}>
+          <FormControl sx={{ width: '100%' }}>
             <OutlinedInput
               fullWidth
               name="email"
               placeholder="Email"
               autoComplete="off"
               sx={{
+                zIndex: 5,
                 ...outlineStyled,
                 mt: '14px',
                 ...(formik.touched.email &&
@@ -177,7 +178,7 @@ export const SingupForm = () => {
               </FormHelperText>
             )}
           </FormControl>
-          <FormControl sx={{ zIndex: 5, width: '100%' }}>
+          <FormControl sx={{ width: '100%' }}>
             <OutlinedInput
               fullWidth
               id="password"
@@ -185,6 +186,7 @@ export const SingupForm = () => {
               type={showPassword ? 'text' : 'password'}
               placeholder="Password"
               sx={{
+                zIndex: 5,
                 ...outlineStyled,
                 mt: '14px',
                 ...(formik.touched.password &&
