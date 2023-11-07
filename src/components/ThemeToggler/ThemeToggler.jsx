@@ -1,6 +1,6 @@
 import { TogglerBtn, ThemeToggle } from './ThemeToggler.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleTheme, selectTheme } from '../../../redux/theme/themeSlice'
+import { toggleTheme, selectTheme } from '../../redux/theme/themeSlice'
 const ThemeToggler = () => {
   const theme = useSelector(selectTheme);
   const dispatch = useDispatch();

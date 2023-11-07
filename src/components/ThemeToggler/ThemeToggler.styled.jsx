@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../../../colors';
+import { colors } from '../../colors';
 
 export const ThemeToggle = styled.div`
   position: relative;
