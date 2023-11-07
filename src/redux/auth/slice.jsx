@@ -42,7 +42,7 @@ const handleRefreshFulfilled = (state, action) => {
   state.user.name = action.payload.user.name;
   state.user.email = action.payload.user.email;
   state.user.birthday = action.payload.user.birthday;
-  
+  state.user.avatar = action.payload.user.avatar;
   state.isLoggedIn = true;
   state.isRefreshing = false;
 };

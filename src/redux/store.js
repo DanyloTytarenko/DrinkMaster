@@ -21,7 +21,7 @@ import {
   ingredientReducer,
 } from './drinks/drinksSlice';
 import { drinkByIdReducer } from './drinks/drinkDetailsSlice';
-
+import {themeReducer} from './theme/themeSlice'
 const authPersistConfig = {
   key: 'auth',
   storage,
@@ -41,6 +41,7 @@ export const store = configureStore({
     glass: glassReducer,
     ingredient: ingredientReducer,
     drinkDetails: drinkByIdReducer,
+    theme: themeReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
