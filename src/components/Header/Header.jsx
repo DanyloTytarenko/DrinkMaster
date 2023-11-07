@@ -5,7 +5,7 @@ import ThemeToggler from '../ThemeToggler/ThemeToggler';
 import UserLogo from '../UserLogo/UserLogo';
 import { BurgerMenu } from './BurgerMenu/BurgerMenu';
 import {
-  HeaderContainer
+  HeaderContainer, HeaderWrap
 } from './Header.styled';
 import { DropDown } from '../Modal/DropDown';
 const Header = () => {
@@ -31,17 +31,19 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <Logo />
-      {windowWidth >= 1440 && <>
-       <Navigation />
-       <ThemeToggler />
-        <DropDown />
-      </>
-      }
-      {windowWidth < 1440 && <>
-        {isMenuOpen ? <ThemeToggler /> : <DropDown />}
-        <BurgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
-      </>}
+      <HeaderWrap>
+        <Logo />
+        {windowWidth >= 1440 && <>
+          <Navigation />
+          <ThemeToggler />
+          <DropDown />
+        </>
+        }
+        {windowWidth < 1440 && <>
+          {isMenuOpen ? <ThemeToggler /> : <DropDown />}
+          <BurgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+        </>}
+      </HeaderWrap>
     </HeaderContainer>
   );
 };

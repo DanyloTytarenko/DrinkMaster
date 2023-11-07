@@ -27,6 +27,13 @@ export const StyledNavigationLink = styled(NavLink)`
   transition: background 0.2s;
   overflow: hidden;
 
+  transition: border-color 250ms ease;
+
+  &:hover,
+  &:focus {
+    border-color: rgba(243, 243, 243, 0.50);
+  }
+
   &.active {
     background: ${colors.secondaryDark};
     border: ${colors.primaryDark};
