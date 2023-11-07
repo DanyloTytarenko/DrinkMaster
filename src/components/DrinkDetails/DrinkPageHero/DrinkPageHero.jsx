@@ -26,7 +26,6 @@ const DrinkPageHero = ({ drinkDetails }) => {
         <StyledImage
           src={drinkThumb}
           alt="picture Cocktail"
-          // height={400}
           onError={(event) => {
             event.currentTarget.src = defaultImage;
           }}

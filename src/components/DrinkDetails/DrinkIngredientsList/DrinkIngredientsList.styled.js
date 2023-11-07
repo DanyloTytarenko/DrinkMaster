@@ -5,16 +5,16 @@ export const AllTitleIngredients = styled.h2`
   color: ${colors.light};
   color: rgba(243, 243, 243, 0.5);
   font-family: Manrope;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 1.29;
+  line-height: 1.25;
   transition: color 250ms ease;
   margin-top: 18px;
   margin-bottom: 42px;
 
   @media (min-width: 768px) {
-    font-size: 20px;
-    line-height: 1.13;
+    margin-top: 80px;
+    margin-bottom: 24px;
   }
 `;
 
@@ -67,9 +67,15 @@ export const TitleIngredient = styled.p`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.13;
+
   @media (min-width: 768px) {
     font-size: 18px;
     line-height: 1.34;
+  }
+
+  @media (min-width: 1440px) {
+    // width: 400px;
+    // height: 400px;
   }
 `;
 

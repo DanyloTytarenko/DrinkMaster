@@ -15,12 +15,14 @@ export const Glass = styled.p`
   color: rgba(243, 243, 243, 0.5);
   margin-top: -32px;
   margin-bottom: 20px;
-  // text-shadow:
-  //   0 0 5px #00baff,
-  //   0 0 10px #00baff,
-  //   0 0 20px #00baff,
-  //   0 0 40px #00baff,
-  //   0 0 80px #00baff;
+  font-size: 12px;
+  line-height: 1.29;
+
+  @media (min-width: 768px) {
+    margin-top: -42px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
 `;
 
 export const Description = styled.p`
@@ -30,6 +32,7 @@ export const Description = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.29;
+
   @media (min-width: 768px) {
     font-size: 16px;
     line-height: 1.38;
@@ -49,8 +52,10 @@ export const StyledImage = styled.img`
   border-radius: 8px;
 
   @media (min-width: 768px) {
-    width: 342px;
-    height: 360px;
+    width: 704px;
+    height: 400px;
+    object-fit: none;
+    object-position: 50% 20%;
   }
   @media (min-width: 1440px) {
     width: 400px;
