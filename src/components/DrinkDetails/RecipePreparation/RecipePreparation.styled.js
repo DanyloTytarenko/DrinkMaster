@@ -27,7 +27,7 @@ export const Description = styled.p`
   }
 
   @media (min-width: 1440px) {
-    // width: 400px;
+    width: 549px;
     // height: 400px;
   }
 `;
@@ -44,7 +44,19 @@ export const AnyCocktail = styled.img`
     margin-top: 20px;
   }
   @media (min-width: 1440px) {
-    width: 400px;
-    height: 400px;
+    width: 704px;
+    height: 430px;
+    margin-top: 20px;
+  }
+`;
+
+export const Recipe = styled.div`
+  @media (min-width: 1440px) {
+    display: flex;
+
+    // flex-direction: column;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
   }
 `;

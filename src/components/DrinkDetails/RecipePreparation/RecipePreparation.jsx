@@ -1,4 +1,9 @@
-import { AnyCocktail, Description, Title } from './RecipePreparation.styled';
+import {
+  AnyCocktail,
+  Description,
+  Recipe,
+  Title,
+} from './RecipePreparation.styled';
 import anyCocktail from '../../../assets/images/any-cocktail.jpg';
 
 const RecipePreparation = ({ drinkDetails }) => {
@@ -7,9 +12,13 @@ const RecipePreparation = ({ drinkDetails }) => {
   return (
     <>
       <Title>Recipe Preparation</Title>
-      <Description>{description}</Description>
-      <Description>{instructions}</Description>
-      <AnyCocktail src={anyCocktail} alt="Any Cocktail" />
+      <Recipe>
+        <div>
+          <Description>{description}</Description>
+          <Description>{instructions}</Description>
+        </div>
+        <AnyCocktail src={anyCocktail} alt="Any Cocktail" />
+      </Recipe>
     </>
   );
 };
