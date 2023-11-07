@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+// import { colors } from '../../../src/colors';
 
 export const HomeContainer = styled.div`
   display: flex;
@@ -7,6 +8,7 @@ export const HomeContainer = styled.div`
   align-items: center;
   padding-top: 80px;
   padding-bottom: 80px;
+  
   @media only screen and (min-width: 768px) {
   padding-top: 120px;
   padding-bottom: 140px;

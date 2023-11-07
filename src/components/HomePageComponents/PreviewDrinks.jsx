@@ -16,6 +16,7 @@ import {
   StyledLinkToDrinkPage,
   StyledLinkToDrinksPage,
 } from './PreviewDrinks.styled';
+import { selectTheme } from 'src/redux/theme/themeSlice';
 
 export const PreviewDrinks = () => {
   const initialData = useSelector(selectNewDrinks);
@@ -23,6 +24,7 @@ export const PreviewDrinks = () => {
   const screenSizeTablet = useMediaQuery(
     '(min-width: 768px) and (max-width: 1439px)',
   );
+  const theme = useSelector(selectTheme);
 
   const [data, setData] = useState(initialData);
 
@@ -42,7 +44,7 @@ export const PreviewDrinks = () => {
       <List>
         {data.map((categoryData) => (
           <ListCard key={categoryData.category}>
-            <CategoryName>{categoryData.category}</CategoryName>
+            <CategoryName theme={theme}>{categoryData.category}</CategoryName>
             <DrinkList>
               {categoryData.drinks.map((drink, index) => (
                 <DrinksItem key={index}>
@@ -54,8 +56,11 @@ export const PreviewDrinks = () => {
                     }}
                   />
                   <TitleWrapper>
-                    <DrinkTitle>{drink.drink}</DrinkTitle>
-                    <StyledLinkToDrinkPage to={`/drink/${drink._id}`}>
+                    <DrinkTitle theme={theme}>{drink.drink}</DrinkTitle>
+                    <StyledLinkToDrinkPage
+                      to={`/drink/${drink._id}`}
+                      theme={theme}
+                    >
                       See more
                     </StyledLinkToDrinkPage>
                   </TitleWrapper>
