@@ -62,6 +62,7 @@ export const SinginForm = () => {
               placeholder="Email"
               autoComplete="off"
               sx={{
+                zIndex: 5,
                 ...outlineStyled,
                 ...(formik.touched.email &&
                   Boolean(formik.errors.email) && { ...outlineError }),
@@ -102,6 +103,7 @@ export const SinginForm = () => {
               type={showPassword ? 'text' : 'password'}
               placeholder="Password"
               sx={{
+                zIndex: 5,
                 ...outlineStyled,
                 mt: '14px',
                 ...(formik.touched.password &&
@@ -141,14 +143,14 @@ export const SinginForm = () => {
             )}
           </FormControl>
           <Button
-            sx={{ ...buttonStyled }}
+            sx={{zIndex: 5, ...buttonStyled }}
             variant="contained"
             fullWidth
             type="submit"
           >
             Sign In
           </Button>
-          <Link component={NavLink} sx={{ ...linkStyled }} to="/signup">
+          <Link component={NavLink} sx={{zIndex: 5, ...linkStyled }} to="/signup">
             Sign Up
           </Link>
         </ThemeProvider>

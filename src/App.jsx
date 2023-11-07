@@ -25,13 +25,14 @@ const TermsOfServicePage = lazy(() =>
 const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 import { AppWrapper } from './App.styled';
+import {selectTheme } from './redux/theme/themeSlice'
 
 // const test = import.meta.env.VITE_API_TEST;
 
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
-
+const theme = useSelector(selectTheme);
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
@@ -39,7 +40,7 @@ function App() {
   return isRefreshing ? (
     <SharedLayout />
   ) : (
-    <AppWrapper>
+    <AppWrapper theme={theme}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
             <Route index element={<WelcomePage />} />

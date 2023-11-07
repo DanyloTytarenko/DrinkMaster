@@ -7,14 +7,14 @@ import {
   DrinkTitle,
   DrinkDesc,
   TitleWrapper,
-  DrinkAlc,
+  DrinkAlc
 } from './DrinksList.styled';
 import { useDispatch } from 'react-redux';
 import {
   deleteOwnDrink,
   deleteFavoriteDrink,
 } from '../../redux/drinks/operations';
-
+import DummyDrinkThumb from 'src/images/dummyDrinkThumb.png';
 import sprite from './svg/sprite.svg';
 export const DrinksListItem = ({ drink }) => {
   const dispatch = useDispatch();
@@ -27,12 +27,15 @@ export const DrinksListItem = ({ drink }) => {
   };
   return (
     <DrinksItem>
-      <DrinkPhoto src={drink.drinkThumb} alt="Photo of cocktail" />
+      <DrinkPhoto src={drink.drinkThumb} alt={` Photo of cocktail ${drink.drink} `}
+      onError={(event) => {
+                      event.currentTarget.src = DummyDrinkThumb;
+                    }}/> 
       <TitleWrapper>
         <DrinkTitle>{drink.drink}</DrinkTitle>
         <DrinkAlc>{drink.alcoholic}</DrinkAlc>
       </TitleWrapper>
-      <DrinkDesc>{drink.desc}</DrinkDesc>
+      <DrinkDesc>{drink.description}</DrinkDesc>
       <BtnWrapper>
         <SeeMoreButton to={`/drink/${drink._id}`}>See more</SeeMoreButton>
         <DeleteButton type="button" onClick={handleDelete}>

@@ -11,8 +11,9 @@ export const LogoSvg = styled.svg`
   width: 22px;
   height: 22px;
   margin-right: 8px;
-  fill: ${colors.light};
-
+${({ theme }) =>
+    theme === 'dark' ?
+    ` fill: ${colors.light};` : ` fill: ${colors.secondaryDark};`}
   @media screen and (min-width: 768px) {
     width: 28px;
     height: 28px;
@@ -21,7 +22,10 @@ export const LogoSvg = styled.svg`
 `;
 
 export const LogoText = styled.h3`
-  color: ${colors.light};
+${({ theme }) =>
+    theme === 'dark' ?
+    ` color: ${colors.light};` : `color: ${colors.secondaryDark};`}
+
   font-size: 16px;
   font-weight: 600;
   line-height: 18px; 

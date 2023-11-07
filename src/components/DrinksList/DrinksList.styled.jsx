@@ -35,6 +35,7 @@ height: auto;
 border-radius: 8px;
 background: linear-gradient(180deg, rgba(10, 10, 17, 0.02) 51.18%, rgba(10, 10, 17, 0.77) 97.66%), url(<path-to-image>), lightgray 50% / cover no-repeat;
 `;
+
 export const DrinkTitle = styled.h2`
 font-size: 18px;
 font-weight: 500;
