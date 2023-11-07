@@ -4,6 +4,7 @@ import { colors } from 'src/colors';
 
 export const ButtonBox = styled.div`
   display: flex;
+  z-index: 2;
 `;
 
 export const AuthLink = styled(Link)`
@@ -29,7 +30,6 @@ export const AuthLink = styled(Link)`
     font-size: 16px;
     line-height: calc(18 / 16);
   }
-  
 `;
 
 export const Signin = styled(AuthLink)`
