@@ -9,7 +9,7 @@ import {
   MeasureIngredien,
 } from './DrinkIngredientsList.styled';
 import defaultImage from '../../../assets/images/emptyImage/defolt-8.png';
-import { selectTheme } from '../../redux/theme/themeSlice';
+import { selectTheme } from 'src/redux/theme/themeSlice';
 
 const DrinkIngredientsList = ({ drinkDetails }) => {
   const { ingredients } = drinkDetails;
@@ -30,8 +30,8 @@ const DrinkIngredientsList = ({ drinkDetails }) => {
                 }}
               />
               <DescriptionIngredient>
-                <TitleIngredient>{title}</TitleIngredient>
-                <MeasureIngredien>{measure}</MeasureIngredien>
+                <TitleIngredient theme={theme}>{title}</TitleIngredient>
+                <MeasureIngredien theme={theme}>{measure}</MeasureIngredien>
               </DescriptionIngredient>
             </ItemIngredient>
           ),

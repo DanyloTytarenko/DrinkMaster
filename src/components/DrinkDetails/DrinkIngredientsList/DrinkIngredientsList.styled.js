@@ -4,10 +4,8 @@ import { colors } from '../../../colors';
 export const AllTitleIngredients = styled.h2`
   ${({ theme }) =>
     theme === 'dark'
-      ? ` color: ${colors.light};`
-      : `color: ${colors.secondaryDark};`}
-  color: ${colors.light};
-  color: rgba(243, 243, 243, 0.5);
+      ? ` color: ${colors.halfLight};`
+      : `color: ${colors.halfPrimaryDark};`}
   font-family: Manrope;
   font-size: 16px;
   font-weight: 500;
@@ -58,7 +56,10 @@ export const DescriptionIngredient = styled.div`
 
 export const TitleIngredient = styled.p`
   margin: 0;
-  color: ${colors.light};
+  ${({ theme }) =>
+    theme === 'dark'
+      ? ` color: ${colors.light};`
+      : `color: ${colors.primaryDark};`}
   font-family: Manrope;
   font-size: 14px;
   font-weight: 500;
@@ -71,7 +72,10 @@ export const TitleIngredient = styled.p`
 `;
 
 export const MeasureIngredien = styled.p`
-  color: rgba(243, 243, 243, 0.5);
+  ${({ theme }) =>
+    theme === 'dark'
+      ? ` color: ${colors.halfLight};`
+      : `color: ${colors.halfPrimaryDark};`}
   font-family: Manrope;
   font-size: 14px;
   font-weight: 500;

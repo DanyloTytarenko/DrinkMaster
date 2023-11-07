@@ -1,18 +1,11 @@
 import styled from '@emotion/styled';
 import { colors } from '../../../colors';
 
-export const Title = styled.h1`
-  color: ${colors.light};
-  text-shadow:
-    0 0 5px #00baff,
-    0 0 10px #00baff,
-    0 0 20px #00baff,
-    0 0 40px #00baff,
-    0 0 80px #00baff;
-`;
-
 export const Glass = styled.p`
-  color: rgba(243, 243, 243, 0.5);
+  ${({ theme }) =>
+    theme === 'dark'
+      ? `color: ${colors.halfLight};`
+      : `color: ${colors.halfSecondaryDark};`}
   margin-top: 8px;
   margin-bottom: 20px;
   font-size: 12px;
@@ -25,7 +18,10 @@ export const Glass = styled.p`
 `;
 
 export const Description = styled.p`
-  color: ${colors.light};
+  ${({ theme }) =>
+    theme === 'dark'
+      ? `color: ${colors.light};`
+      : `color: ${colors.primaryDark};`}
   margin-bottom: 40px;
   font-family: Manrope;
   font-size: 14px;
