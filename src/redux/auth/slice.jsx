@@ -39,7 +39,6 @@ const handleRefreshFulfilled = (state, action) => {
   state.id = action.payload.sid;
   state.accessToken = action.payload.user.accessToken;
   state.refreshToken = action.payload.user.refreshToken;
-
   state.user.name = action.payload.user.name;
   state.user.email = action.payload.user.email;
   state.user.birthday = action.payload.user.birthday;

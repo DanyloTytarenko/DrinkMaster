@@ -6,6 +6,7 @@ import UserLogo from '../UserLogo/UserLogo';
 import { Modal, TextDropDown, LogOutBtn, Text, LogOutWrapper, CancelButton, CloseBtn, NameInput, SaveBtn, PhotoWrapper, AddBtn, Photo, Form, ImgInput } from './Modal.styled';
 import { UserLogoWrap, UserSvg } from '../UserLogo/UserLogo.styled';
 import sprite from './sprite.svg'
+import userLogoImg from '../../images/user.jpg';
 export const DropDown = () => {
   const [isOpen, setIsOpen] = useState(false);
     const [LogOut, setLogOut] = useState(false);
@@ -71,8 +72,8 @@ export const DropDown = () => {
                           {/* <svg width="100px" height="100px" stroke="#F3F3F3">
                             <use href={`${sprite}#icon-user`} />
                             </svg> */}
-                      <img width="100" height="100" src={photo || '/src/images/user.jpg'} alt="User avatar" onError={(event) => {
-                      event.currentTarget.src = '/src/images/user.jpg';
+                      <img width="100" height="100" src={photo || userLogoImg} alt="User avatar" onError={(event) => {
+                      event.currentTarget.src = userLogoImg;
                     }}/>
                     </PhotoWrapper>
                     <AddBtn htmlFor="avatar">
