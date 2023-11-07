@@ -15,10 +15,12 @@ const UserLogo = () => {
         <img
           width="44"
           height="44"
+
           src={user.avatar || userLogoImg}
           alt="User avatar"
           onError={(event) => {
             event.currentTarget.src = userLogoImg;
+
           }}
         />
       </UserLogoWrap>
