@@ -1,27 +1,34 @@
 import styled from '@emotion/styled';
+import { colors } from '../../colors';
 
-export const Container = styled.div`
+export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 80px 20px;
+  /* padding: 80px 20px; */
+  padding-top: 80px;
+  padding-bottom: 80px;
+  /* background-color: ${colors.primaryDark}; */
   @media only screen and (min-width: 768px) {
-  padding: 120px 32px;
-  };
-  @media only screen and (min-width: 1440px) {
-    padding: 128px 100px;
+    /* padding: 120px 32px; */
+    padding-top: 120px;
+    padding-bottom: 120px;
   }
+  /* @media only screen and (min-width: 1440px) {
+    padding: 0px 100px;
+  } */
 `;
 
-// export const Title = styled.h1`
-//   margin: 0;
-//   margin-right: 10px;
-//   color: #ffffff;
-//   text-shadow:
-//     0 0 5px #00baff,
-//     0 0 10px #00baff,
-//     0 0 20px #00baff,
-//     0 0 40px #00baff,
-//     0 0 80px #00baff;
-// `;
+export const StyledBGElement5 = styled.div`
+  @media screen and (min-width: 1440px) {
+    position: absolute;
+    background-color: rgba(188, 230, 210, 0.3);
+    filter: blur(105px);
+    z-index: -10;
+    width: 387px;
+    height: 381px;
+    top: 343px;
+    right: 193px;
+  }
+`;

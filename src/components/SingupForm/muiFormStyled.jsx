@@ -1,9 +1,21 @@
+import { createTheme } from '@mui/material';
+
+export const theme = createTheme({
+  breakpoints: {
+    values: {
+      mobile: 0,
+      tablet: 768,
+      desktop: 1440,
+    },
+  },
+});
+
 export const inputProps = {
   sx: {
     opacity: 1,
     color: 'rgba(243, 243, 243, 0.50)',
     fontFamily: 'Manrope',
-    fontSize: {xs:'14px', sm: '17px', lg: '17px'},
+    fontSize: { mobile: '14px', tablet: '17px', desktop: '17px' },
     '&:hover, focus': {
       color: '#F3F3F3',
     },
@@ -36,6 +48,11 @@ export const datePickerStyled = {
       },
     },
   },
+  'MuiPickersPopper-root': {
+    sx: {
+      inset: '10px',
+    },
+  },
   layout: {
     sx: {
       '.MuiDateCalendar-root': {
@@ -60,6 +77,7 @@ export const datePickerStyled = {
         fontFamily: 'Manrope',
         fontSize: '14px',
         fontWeight: 500,
+        letterSpacing: '-0.28px',
         color: 'rgba(243, 243, 243, 0.50)',
       },
       '.MuiPickersYear-root, .MuiPickersMonth-root': {
@@ -72,7 +90,7 @@ export const datePickerStyled = {
       '.MuiPickersDay-root': {
         fontFamily: 'Manrope',
         fontSize: '14px',
-        fontWeight: 500,
+        fontWeight: 400,
         lineHeight: '18px',
         letterSpacing: '-0.28px',
         color: '#F3F3F3',
@@ -134,16 +152,16 @@ export const iconStyled = {
   color: '#F3F3F3',
 };
 
-
 export const buttonStyled = {
   mt: '28px',
   pt: '18px',
   pb: '18px',
   fontFamily: 'Manrope',
-  fontSize: {xs:'14px', sm: '16px', lg: '16px'},
+  fontSize: { mobile: '14px', tablet: '16px', desktop: '16px' },
   fontWeight: 600,
   lineHeight: '18px',
   textTransform: 'capitalize',
+  border: '1px solid rgba(243, 243, 243, 0.2)',
   borderRadius: '42px',
   background: '#F3F3F3',
   color: '#161F37',
@@ -158,8 +176,8 @@ export const linkStyled = {
   mt: '14px',
   color: '#F3F3F3',
   fontFamily: 'Manrope',
-  fontSize: {xs:'12px', sm: '14px', lg: '14px'},
+  fontSize: { mobile: '12px', tablet: '14px', desktop: '14px' },
   fontWeight: 600,
-  lineHeight: {xs:'16px', sm: '18px', lg: '18px'},
+  lineHeight: { mobile: '16px', tablet: '18px', desktop: '18px' },
   textDecoration: 'underline',
 };

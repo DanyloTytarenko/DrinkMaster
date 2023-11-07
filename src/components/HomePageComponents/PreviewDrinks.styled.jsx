@@ -7,10 +7,7 @@ export const List = styled.ul`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 40px;
-  @media only screen and (min-width: 768px) {
-    gap: 80px;
-  }
+  gap: 20px;
 `;
 
 export const CategoryName = styled.h2`
@@ -30,30 +27,36 @@ export const ListCard = styled.li`
   flex-direction: column;
   gap: 24px;
   color: ${colors.light};
+  width: 100%;
+  margin-bottom: 40px;
   @media only screen and (min-width: 768px) {
-    gap: 40px;
+    flex-direction: column;
+    margin-bottom: 80px;
   }
 `;
+
 export const DrinkList = styled.ul`
-display: inline-flex;
-// flex-wrap: wrap;
-gap: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
 `;
 
-export const DrinksItem = styled.li`
+export const DrinksItem = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 14px;
   max-width: 335px;
+
   @media only screen and (min-width: 768px) {
-    max-width: 704px;
-    gap: 20px;
+    max-width: 342px;
+  }
+  @media only screen and (min-width: 1440px) {
+    max-width: 400px;
   }
 `;
 
 export const DrinkPhoto = styled.img`
-  max-width: 335px;
-  height: auto;
+  height: 360px;
   border-radius: 8px;
   background:
     linear-gradient(
@@ -64,10 +67,10 @@ export const DrinkPhoto = styled.img`
     url(<path-to-image>),
     lightgray 50% / cover no-repeat;
   @media only screen and (min-width: 768px) {
-    max-width: 342px;
+    height: 360px;
   }
   @media only screen and (min-width: 1440px) {
-    max-width: 400px;
+    height: 400px;
   }
 `;
 
@@ -92,8 +95,14 @@ export const StyledLinkToDrinkPage = styled(Link)`
   text-align: right;
   font-weight: 500;
   line-height: 18px;
+  transition: 250ms ease;
+
   @media only screen and (min-width: 768px) {
     font-size: 16px;
+  }
+
+  &:hover {
+    color: ${colors.light};
   }
 `;
 
@@ -107,14 +116,22 @@ export const StyledLinkToDrinksPage = styled(Link)`
   background: ${colors.light};
   border-radius: 42px;
   font-weight: 600;
+  transition: 250ms ease;
 
   @media only screen and (min-width: 768px) {
     width: 183px;
     height: 54px;
     font-size: 16px;
   }
-
+  @media only screen and (min-width: 1440px) {
+    margin-bottom: 140px;
+  }
   &:active {
     border: 2px solid rgba(64, 112, 205, 0.5);
+  }
+
+  &:hover {
+    color: ${colors.light};
+    background-color: ${colors.secondaryDark};
   }
 `;

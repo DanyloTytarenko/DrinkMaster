@@ -23,7 +23,7 @@ export const DrinksContainer = styled.div`
   @media (min-width: 768px) {
     /* padding-left: 32px;
     padding-right: 32px; */
-    padding-top: 60px;
+    padding-top: 140px;
     padding-bottom: 140px;
   }
   @media (min-width: 1440px) {
