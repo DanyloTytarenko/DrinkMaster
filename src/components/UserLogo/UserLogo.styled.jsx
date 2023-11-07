@@ -4,7 +4,8 @@ export const UserInfoWrap = styled.div`
 display:flex;
 align-items: center;
 justify-content: center;
-gap: 7px
+gap: 7px;
+cursor: pointer;
   @media screen and (min-width: 768px) {
     gap: 10px;
   }
