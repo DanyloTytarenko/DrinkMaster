@@ -8,6 +8,7 @@ import {
   DrinkDesc,
   TitleWrapper,
   DrinkAlc,
+  DrinkImgPlug
 } from './DrinksList.styled';
 import { useDispatch } from 'react-redux';
 import {
@@ -27,7 +28,7 @@ export const DrinksListItem = ({ drink }) => {
   };
   return (
     <DrinksItem>
-      <DrinkPhoto src={drink.drinkThumb} alt="Photo of cocktail" />
+      {drink.drinkThumb ? <DrinkPhoto src={drink.drinkThumb} alt="Photo of cocktail" /> : <DrinkImgPlug></DrinkImgPlug>}
       <TitleWrapper>
         <DrinkTitle>{drink.drink}</DrinkTitle>
         <DrinkAlc>{drink.alcoholic}</DrinkAlc>
