@@ -23,7 +23,7 @@ export const ListIngredient = styled.ul`
   // flex-direction: column;
   flex-direction: row;
   flex-wrap: wrap;
-  column-gap: 20px;
+  column-gap: 21px;
   // justify-content: center;
   align-items: center;
 
@@ -43,12 +43,10 @@ export const ItemIngredient = styled.li`
 
 export const ImageIngredient = styled.img`
   width: 157px;
-  // height: 360px;
   border-radius: 8px;
 
   @media (min-width: 768px) {
     width: 220px;
-    // height: 360px;
   }
   @media (min-width: 1440px) {
     // width: 400px;

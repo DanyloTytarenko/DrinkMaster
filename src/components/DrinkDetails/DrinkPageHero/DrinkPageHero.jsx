@@ -5,9 +5,10 @@ import {
   StyledImage,
   StyledImageContainer,
 } from './DrinkPageHero.styled';
-import defaultImage from '../../../assets/images/drink-image.jpg';
+import defaultImage from '../../../assets/images/emptyImage/drink-image.jpg';
 import { StyledSearchWrapper } from '../../DrinksSearch/DrinksSearch.styled';
 import Button from '../Button/Button';
+import PageTitle from 'src/components/PageTitle/PageTitle';
 
 const DrinkPageHero = ({ drinkDetails }) => {
   const { _id, drink, glass, alcoholic, description, drinkThumb, favorite } =
@@ -15,7 +16,7 @@ const DrinkPageHero = ({ drinkDetails }) => {
 
   return (
     <StyledSearchWrapper>
-      <Title>{drink}</Title>
+      <PageTitle>{drink}</PageTitle>
       <Glass>
         {glass} / {alcoholic}
       </Glass>
@@ -25,7 +26,7 @@ const DrinkPageHero = ({ drinkDetails }) => {
         <StyledImage
           src={drinkThumb}
           alt="picture Cocktail"
-          height={400}
+          // height={400}
           onError={(event) => {
             event.currentTarget.src = defaultImage;
           }}

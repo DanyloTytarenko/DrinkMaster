@@ -23,6 +23,7 @@ const DrinkDetailsPage = () => {
   const { drinkId } = useParams();
   const dispatch = useDispatch();
   const drinkDetails = useSelector(selectDrinkById);
+  const { drink } = drinkDetails;
 
   useEffect(() => {
     dispatch(fetchDrinkById(drinkId));
@@ -37,7 +38,7 @@ const DrinkDetailsPage = () => {
             <Loader />
           ) : (
             <>
-              <PageTitle title="DrinksId" />
+              <PageTitle title={drink} />
               <DrinkPageHero drinkDetails={drinkDetails} />
               <DrinkIngredientsList drinkDetails={drinkDetails} />
               <RecipePreparation drinkDetails={drinkDetails} />

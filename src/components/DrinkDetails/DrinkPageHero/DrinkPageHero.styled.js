@@ -13,6 +13,7 @@ export const Title = styled.h1`
 
 export const Glass = styled.p`
   color: rgba(243, 243, 243, 0.5);
+  margin-top: -32px;
   margin-bottom: 20px;
   // text-shadow:
   //   0 0 5px #00baff,
@@ -44,7 +45,7 @@ export const Button = styled.button`
 
 export const StyledImage = styled.img`
   width: 335px;
-  height: 360px;
+  height: 400px;
   border-radius: 8px;
 
   @media (min-width: 768px) {

@@ -23,6 +23,7 @@ export const AnyCocktail = styled.img`
   width: 335px;
   height: 430px;
   border-radius: 8px;
+  object-fit: none;
 
   @media (min-width: 768px) {
     width: 342px;

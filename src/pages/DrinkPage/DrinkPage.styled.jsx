@@ -7,11 +7,9 @@ export const ContainerDrink = styled.div`
   justify-content: center;
   /* background-color: #0a0a11; */
   box-sizing: border-box;
-  padding-left: 20px;
-  padding-right: 20px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 40px;
+  padding-top: 80px;
   padding-bottom: 80px;
 
   @media (min-width: 768px) {
