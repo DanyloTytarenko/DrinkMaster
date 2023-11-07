@@ -8,8 +8,8 @@ export const Container = styled.div`
   box-sizing: border-box;
   overflow-x: hidden;
 
-  @media screen and (min-width: 375px) {
-    max-width: 375px;
+  @media screen and (max-width: 375px) {
+    min-width: 375px;
   }
 
   @media screen and (min-width: 768px) {
