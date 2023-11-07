@@ -9,6 +9,7 @@ import {
   IconButton,
   FormHelperText,
   FormControl,
+  ThemeProvider,
 } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -26,8 +27,8 @@ import {
   buttonStyled,
   linkStyled,
   iconStyled,
+  theme,
 } from '../SingupForm/muiFormStyled';
-import { GoogleButton } from '../GoogleButton/GoogleButton';
 
 export const SinginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -53,32 +54,36 @@ export const SinginForm = () => {
   return (
     <div>
       <Form onSubmit={formik.handleSubmit}>
-        <FormControl sx={{ width: '100%' }}>
-          <OutlinedInput
-            fullWidth
-            name="email"
-            placeholder="Email"
-            autoComplete="off"
-            sx={
-              { ...outlineStyled ,
-              ...formik.touched.email &&
-                Boolean(formik.errors.email) && { ...outlineError },
-              ...formik.values.email &&
-                Boolean(!formik.errors.email) && { ...outlineSucces },
-            }}
-            inputProps={{ ...inputProps }}
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={formik.touched.email && Boolean(formik.errors.email)}
-            required
-            endAdornment={[
-              formik.values.email && Boolean(!formik.errors.email) && <CheckCircleOutlineIcon key={1} sx={{ color: 'green' }} />,
-              formik.touched.email && Boolean(formik.errors.email) && <ErrorOutlineIcon key={2} sx={{ color: 'red' }}/>
-            ]}
-          />
-          {formik.values.email &&
-            Boolean(formik.errors.email) && (
+        <ThemeProvider theme={theme}>
+          <FormControl sx={{ width: '100%' }}>
+            <OutlinedInput
+              fullWidth
+              name="email"
+              placeholder="Email"
+              autoComplete="off"
+              sx={{
+                ...outlineStyled,
+                ...(formik.touched.email &&
+                  Boolean(formik.errors.email) && { ...outlineError }),
+                ...(formik.values.email &&
+                  Boolean(!formik.errors.email) && { ...outlineSucces }),
+              }}
+              inputProps={{ ...inputProps }}
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              required
+              endAdornment={[
+                formik.values.email && Boolean(!formik.errors.email) && (
+                  <CheckCircleOutlineIcon key={1} sx={{ color: 'green' }} />
+                ),
+                formik.touched.email && Boolean(formik.errors.email) && (
+                  <ErrorOutlineIcon key={2} sx={{ color: 'red' }} />
+                ),
+              ]}
+            />
+            {formik.touched.email && Boolean(formik.errors.email) && (
               <FormHelperText error id="email">
                 {formik.errors.email}
               </FormHelperText>
@@ -88,65 +93,65 @@ export const SinginForm = () => {
                 This is a CORRECT email
               </FormHelperText>
             )}
-        </FormControl>
-        <FormControl sx={{ width: '100%' }}>
-          <OutlinedInput
-            fullWidth
-            id="password"
-            name="password"
-            type={showPassword ? 'text' : 'password'}
-            placeholder="Password"
-            sx={
-              {
-                ...outlineStyled, mt: '14px',
-                ...formik.touched.password &&
-                  Boolean(formik.errors.password) && { ...outlineError },
-                ...formik.values.password &&
-                  Boolean(!formik.errors.password) && { ...outlineSucces },
+          </FormControl>
+          <FormControl sx={{ width: '100%' }}>
+            <OutlinedInput
+              fullWidth
+              id="password"
+              name="password"
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+              sx={{
+                ...outlineStyled,
+                mt: '14px',
+                ...(formik.touched.password &&
+                  Boolean(formik.errors.password) && { ...outlineError }),
+                ...(formik.values.password &&
+                  Boolean(!formik.errors.password) && { ...outlineSucces }),
               }}
-            inputProps={{ ...inputProps }}
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={formik.touched.password && Boolean(formik.errors.password)}
-            required
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                  sx={{ ...iconStyled }}
-                >
-                  {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-          {formik.values.password &&
-            Boolean(formik.errors.password) && (
+              inputProps={{ ...inputProps }}
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              required
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                    sx={{ ...iconStyled }}
+                  >
+                    {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+            {formik.touched.password && Boolean(formik.errors.password) && (
               <FormHelperText error id="password">
                 {formik.errors.password}
               </FormHelperText>
             )}
-          {formik.values.password && Boolean(!formik.errors.password) && (
+            {formik.values.password && Boolean(!formik.errors.password) && (
               <FormHelperText sx={{ color: 'green' }} id="password">
                 This is a CORRECT password
               </FormHelperText>
             )}
-        </FormControl>
-        <Button
-          sx={{ ...buttonStyled }}
-          variant="contained"
-          fullWidth
-          type="submit"
-        >
-          Sing In
-        </Button>
-        <Link component={NavLink} sx={{ ...linkStyled }} to="/signup">
-          Sing Up
-        </Link>
+          </FormControl>
+          <Button
+            sx={{ ...buttonStyled }}
+            variant="contained"
+            fullWidth
+            type="submit"
+          >
+            Sign In
+          </Button>
+          <Link component={NavLink} sx={{ ...linkStyled }} to="/signup">
+            Sign Up
+          </Link>
+        </ThemeProvider>
       </Form>
     </div>
   );
