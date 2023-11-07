@@ -66,6 +66,10 @@ export const DrinkPhoto = styled.img`
     ),
     url(<path-to-image>),
     lightgray 50% / cover no-repeat;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.05);
+  }
   @media only screen and (min-width: 768px) {
     height: 360px;
   }
@@ -123,9 +127,7 @@ export const StyledLinkToDrinksPage = styled(Link)`
     height: 54px;
     font-size: 16px;
   }
-  @media only screen and (min-width: 1440px) {
-    margin-bottom: 140px;
-  }
+
   &:active {
     border: 2px solid rgba(64, 112, 205, 0.5);
   }
