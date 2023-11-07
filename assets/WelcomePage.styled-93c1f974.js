@@ -1,12 +1,16 @@
-import{s as e,c as a}from"./index-57419fe0.js";const i="/DrinkMaster/assets/cocktail-desk@1x-12951112.jpg",n="/DrinkMaster/assets/cocktail-desk@2x-03075d5b.jpg",r="/DrinkMaster/assets/cocktail-tab@1x-f0e4543b.jpg",t="/DrinkMaster/assets/cocktail-tab@2x-3b015c9b.jpg",g="/DrinkMaster/assets/cocktail-mob@1x-ed4821dd.jpg",d="/DrinkMaster/assets/cocktail-mob@2x-ab5031e5.jpg",l=e.div`
+import{s as e,c as i}from"./index-396fa773.js";const a="/DrinkMaster/assets/cocktail-desk@1x-12951112.jpg",t="/DrinkMaster/assets/cocktail-desk@2x-03075d5b.jpg",n="/DrinkMaster/assets/cocktail-tab@1x-f0e4543b.jpg",r="/DrinkMaster/assets/cocktail-tab@2x-3b015c9b.jpg",d="/DrinkMaster/assets/cocktail-mob@1x-ed4821dd.jpg",g="/DrinkMaster/assets/cocktail-mob@2x-ab5031e5.jpg",p=e.div`
   height: 100vh;
   display: flex;
+  position: relative;
+  overflow-y: hidden;
+  margin-left: auto;
+  margin-right: auto;
   flex-direction: column;
   justify-content: center;
   padding-right: 20px;
   padding-left: 20px;
 
-  background-color: black;
+  /* background-color: black; */
   background-repeat: no-repeat;
   background-position: right top;
 
@@ -18,7 +22,7 @@ import{s as e,c as a}from"./index-57419fe0.js";const i="/DrinkMaster/assets/cock
     ),
     linear-gradient(1deg, #0a0a11 -0.56%, rgba(10, 10, 17, 0) 21.93%),
     linear-gradient(85deg, #060609 5.92%, rgba(10, 10, 17, 0) 51.07%),
-    url(${g});
+    url(${d});
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -30,7 +34,7 @@ import{s as e,c as a}from"./index-57419fe0.js";const i="/DrinkMaster/assets/cock
       ),
       linear-gradient(1deg, #0a0a11 -0.56%, rgba(10, 10, 17, 0) 21.93%),
       linear-gradient(85deg, #060609 5.92%, rgba(10, 10, 17, 0) 51.07%),
-      url(${d});
+      url(${g});
   }
 
   @media screen and (max-width: 767px) {
@@ -49,7 +53,7 @@ import{s as e,c as a}from"./index-57419fe0.js";const i="/DrinkMaster/assets/cock
       ),
       linear-gradient(1deg, #0a0a11 -0.56%, rgba(10, 10, 17, 0) 21.93%),
       linear-gradient(85deg, #060609 5.92%, rgba(10, 10, 17, 0) 51.07%),
-      url(${r});
+      url(${n});
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -61,12 +65,13 @@ import{s as e,c as a}from"./index-57419fe0.js";const i="/DrinkMaster/assets/cock
         ),
         linear-gradient(1deg, #0a0a11 -0.56%, rgba(10, 10, 17, 0) 21.93%),
         linear-gradient(85deg, #060609 5.92%, rgba(10, 10, 17, 0) 51.07%),
-        url(${t});
+        url(${r});
     }
   }
 
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
+    max-height: 770px;
     padding-right: 100px;
     padding-left: 100px;
 
@@ -78,24 +83,24 @@ import{s as e,c as a}from"./index-57419fe0.js";const i="/DrinkMaster/assets/cock
       ),
       linear-gradient(1deg, #0a0a11 -0.56%, rgba(10, 10, 17, 0) 21.93%),
       linear-gradient(85deg, #060609 5.92%, rgba(10, 10, 17, 0) 51.07%),
-      url(${i});
+      url(${a});
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: linear-gradient(
+      background-image: 
+      /* linear-gradient(
           0deg,
           rgba(10, 10, 17, 0.2) 0%,
           rgba(10, 10, 17, 0.2) 100%
         ),
         linear-gradient(1deg, #0a0a11 -0.56%, rgba(10, 10, 17, 0) 21.93%),
-        linear-gradient(85deg, #060609 5.92%, rgba(10, 10, 17, 0) 51.07%),
-        url(${n});
+        linear-gradient(85deg, #060609 5.92%, rgba(10, 10, 17, 0) 51.07%), */ url(${t});
     }
   }
-`,c=e.h1`
+`,l=e.h1`
   margin-bottom: 14px;
-  color: ${a.light};
+  color: ${i.light};
   font-family: Manrope;
   font-size: 28px;
   font-weight: 600;
@@ -107,13 +112,13 @@ import{s as e,c as a}from"./index-57419fe0.js";const i="/DrinkMaster/assets/cock
     line-height: calc(44 / 40);
     letter-spacing: -0.8px;
   }
-`,s=e.p`
+`,c=e.p`
   margin-bottom: 40px;
 
   font-size: 14px;
   line-height: calc(18 / 14);
 
-  color: ${a.light};
+  color: ${i.light};
 
   @media screen and (max-width: 767px) {
     width: 319px;
@@ -125,4 +130,50 @@ import{s as e,c as a}from"./index-57419fe0.js";const i="/DrinkMaster/assets/cock
     font-size: 18px;
     line-height: calc(24 / 18);
   }
-`;export{c as T,l as W,s as a};
+`,x=e.div`
+  position: absolute;
+  background-color: rgba(188, 230, 210, 0.4);
+  filter: blur(105px);
+  z-index: 1;
+  width: 257px;
+  height: 247px;
+  top: -52px;
+  right: 254px;
+
+  @media screen and (min-width: 768px) {
+    width: 387px;
+    height: 373px;
+    top: 46px;
+    left: 0px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 387px;
+    height: 381px;
+    top: -132px;
+    left: 171px;
+  }
+`,s=e.div`
+  position: absolute;
+  background-color: rgba(64, 112, 205, 0.5);
+  filter: blur(105px);
+  z-index: 1;
+  width: 520px;
+  height: 550px;
+  top: 20px;
+  left: -399px;
+
+  @media screen and (min-width: 768px) {
+    width: 784px;
+    height: 830px;
+    bottom: 245px;
+    right: 649px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 784px;
+    height: 849px;
+    bottom: 152px;
+    right: 1150px;
+  }
+`;export{x as S,l as T,p as W,c as a,s as b};
