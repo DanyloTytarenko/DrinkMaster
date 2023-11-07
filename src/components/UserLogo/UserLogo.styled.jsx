@@ -14,7 +14,7 @@ cursor: pointer;
     height: 44px;
     gap: 14px;
     // margin-right: 24px;
-    margin-left: 260px;
+    // margin-left: 260px;
   }
   //  @media screen and (min-width: 768px) {
   //   gap: 14px;

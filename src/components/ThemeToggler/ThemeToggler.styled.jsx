@@ -3,6 +3,11 @@ import { colors } from '../../colors';
 
 export const ThemeToggle = styled.div`
   position: relative;
+  // margin-left: 122px;
+
+  @media screen and (min-width: 768px) {
+    // margin-left: 451px;
+  }
 `;
 
 export const TogglerInput = styled.input`
