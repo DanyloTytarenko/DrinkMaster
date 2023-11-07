@@ -14,10 +14,10 @@ const UserLogo = () => {
         <img
           width="44"
           height="44"
-          src={user.avatar || '../../images/user.jpg'}
+          src={user.avatar || 'src/images/user.jpg'}
           alt="User avatar"
           onError={(event) => {
-            event.currentTarget.src = '../../images/user.jpg';
+            event.currentTarget.src = 'src/images/user.jpg';
           }}
         />
       </UserLogoWrap>
