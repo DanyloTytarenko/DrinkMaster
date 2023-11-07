@@ -14,7 +14,7 @@ const clearAuthHeader = () => {
 };
 
 /*
- * POST @ /signup
+ * POST @ /auth/signup
  * body: { name, birthday, email, password }
  */
 export const register = createAsyncThunk(
@@ -22,6 +22,7 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const result = await axios.post('/auth/signup', credentials);
+
       // After successful registration, add the token to the HTTP header
       setAuthHeader(result.data.accessToken);
 
@@ -33,7 +34,7 @@ export const register = createAsyncThunk(
 );
 
 /*
- * POST @ /singin
+ * POST @ /auth/signin
  * body: { email, password }
  */
 export const logIn = createAsyncThunk(
@@ -41,12 +42,39 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const result = await axios.post('/auth/signin', credentials);
-       
+
       // After successful login, add the token to the HTTP header
       setAuthHeader(result.data.accessToken);
       return result.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.status);
+    }
+  },
+);
+
+/*
+ * POST @ /auth/refresh
+ * body: { id }
+ */
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const id = state.auth.id;
+    const refreshToken = state.auth.refreshToken;
+
+    if (refreshToken === null && id === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
+    try {
+      setAuthHeader(refreshToken);
+
+      const auth = await axios.post('/auth/refresh', { sid: id });
+      setAuthHeader(auth.data.user.accessToken);
+
+      return auth.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );
@@ -67,21 +95,28 @@ export const logOut = createAsyncThunk('/auth/logout', async (_, thunkAPI) => {
 /* PATCH @ /users/update
  * headers: Authorization: Bearer token
  */
-export const updateUser = createAsyncThunk('/auth/users/update', async (userData, thunkAPI) => {
-  try {
-    const result = await axios.patch('/users/update', userData);
-    console.log(result)
-    return result.data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});
+export const updateUser = createAsyncThunk(
+  '/auth/users/update',
+  async (userData, thunkAPI) => {
+    try {
+      const formData = new FormData();
+      formData.append('name', userData.name);
+      formData.append('avatar', userData.avatar);
+      const result = await axios.patch('/users/update', formData);
+      return result.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
 
 /*
  * POST @ /users/subscribe
  * body: { email }
  */
-export const subscribeEmail = createAsyncThunk('/users/subscribe',async (userData, thunkAPI) => {
+export const subscribeEmail = createAsyncThunk(
+  '/users/subscribe',
+  async (userData, thunkAPI) => {
     try {
       await axios.post('/users/subscribe', userData);
     } catch (error) {

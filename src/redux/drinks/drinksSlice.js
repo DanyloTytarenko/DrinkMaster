@@ -9,7 +9,7 @@ import {
   fetchCategories,
   fetchGlass,
   fetchIngredient,
-  fetchPopularDrinks
+  fetchPopularDrinks,
 } from './operations';
 const handlePending = (state) => {
   state.isLoading = true;
@@ -38,7 +38,6 @@ export const popularDrinksSlice = createSlice({
   },
 });
 
-
 export const ownDrinksSlice = createSlice({
   name: 'ownDrinks',
   initialState,
@@ -54,14 +53,14 @@ export const ownDrinksSlice = createSlice({
     [addOwnDrink.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items.push(action.payload);
+      // state.items.push(action.payload);
     },
     [addOwnDrink.rejected]: handleRejected,
     [deleteOwnDrink.pending]: handlePending,
     [deleteOwnDrink.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items = state.items.filter((item) => item.id !== action.payload.id);
+      state.items = state.items.filter((item) => item._id !== action.payload);
     },
     [deleteOwnDrink.rejected]: handleRejected,
   },
@@ -88,7 +87,7 @@ export const favoriteDrinksSlice = createSlice({
     [deleteFavoriteDrink.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items = state.items.filter((item) => item.id !== action.payload.id);
+      state.items = state.items.filter((item) => item._id !== action.payload);
     },
     [deleteFavoriteDrink.rejected]: handleRejected,
   },

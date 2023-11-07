@@ -9,9 +9,11 @@ justify-content:center;
 align-items: center;
 gap: 40px;
 color: ${colors.light};
-@media only screen and (min-width: 704px) {
+margin-top: 40px;
+@media only screen and (min-width: 768px) {
 row-gap: 80px;
 column-gap: 20px;   
+margin-top: 60px;
 }
 `;
 export const DrinksItem = styled.li`
@@ -19,7 +21,7 @@ width: 335px;
 display: flex;
 flex-direction: column;
 gap: 18px;
-@media only screen and (min-width: 704px) {
+@media only screen and (min-width: 768px) {
 width: 342px;
 gap: 24px;   
 };
@@ -33,25 +35,26 @@ height: auto;
 border-radius: 8px;
 background: linear-gradient(180deg, rgba(10, 10, 17, 0.02) 51.18%, rgba(10, 10, 17, 0.77) 97.66%), url(<path-to-image>), lightgray 50% / cover no-repeat;
 `;
+
 export const DrinkTitle = styled.h2`
 font-size: 18px;
 font-weight: 500;
 line-height: 1.33;
 margin-bottom: 0;
-@media only screen and (min-width: 704px) {
+@media only screen and (min-width: 768px) {
 font-size: 24px;
 }
 `
 export const DrinkDesc = styled.p`
 font-size: 14px;
-@media only screen and (min-width: 704px) {
+@media only screen and (min-width: 768px) {
 font-size: 16px;
 }
 `
 export const DrinkAlc = styled.span`
 font-size: 14px;
 color: ${colors.disabled};
-@media only screen and (min-width: 704px) {
+@media only screen and (min-width: 768px) {
 font-size: 16px;
 }
 `
@@ -73,7 +76,7 @@ align-items: center;
 border:none;
 border-radius: 40px;
 background: #161F37;
-@media only screen and (min-width: 704px) {
+@media only screen and (min-width: 768px) {
 width: 56px;
 height:56px;
 }

@@ -11,6 +11,7 @@ import {
   DivRow,
   Input,
   ErrorText,
+  ErrorIconCategory,
   DivSelect,
   DivFlexSelect,
   SpanSelect,
@@ -30,6 +31,7 @@ import { selectUser } from 'src/redux/auth/selectors';
 import { isUserAdult } from 'src/utils/isUserAdult';
 import Select from '../../ReactSelect/ReactSelect';
 import DummyDrinkThumb from 'src/images/dummyDrinkThumb.png';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const DrinkDescriptionFields = ({
   setFile,
@@ -61,8 +63,9 @@ const DrinkDescriptionFields = ({
   // функція превью зображення обраного файлу
   const addImagePreview = (e) => {
     if (!e.target.files[0].type.startsWith('image/')) {
-      console.log("Please, upload image-type file, e.g. '.jpeg', '.png'");
-      return;
+      return Notify.failure(
+        `Please, upload image-type file, e.g. '.jpeg', '.png'`,
+      );
     }
     setFile(e.target.files[0]);
     setUri(URL.createObjectURL(e.target.files[0]));
@@ -122,9 +125,9 @@ const DrinkDescriptionFields = ({
                 onChangeHandler(e.target.value, e.target.name, setFieldValue);
               }}
             />
-            <ErrorText>
-              {errors.drink}
-              {errors.drink && <ErrorIcon>!</ErrorIcon>}
+            <ErrorText errors={errors.drink} value={form.drink}>
+              {!form.drink && errors.drink}
+              {!form.drink && errors.drink && <ErrorIcon>!</ErrorIcon>}
             </ErrorText>
           </DivRow>
           <DivRow>
@@ -138,9 +141,11 @@ const DrinkDescriptionFields = ({
                 onChangeHandler(e.target.value, e.target.name, setFieldValue);
               }}
             />
-            <ErrorText>
-              {errors.description}
-              {errors.description && <ErrorIcon>!</ErrorIcon>}
+            <ErrorText errors={errors.description} value={form.description}>
+              {!form.description && errors.description}
+              {!form.description && errors.description && (
+                <ErrorIcon>!</ErrorIcon>
+              )}
             </ErrorText>
           </DivRow>
 
@@ -159,9 +164,11 @@ const DrinkDescriptionFields = ({
                 setFieldValue={setFieldValue}
               />
             </DivFlexSelect>
-            <ErrorText>
-              {errors.category}
-              {errors.category && <ErrorIcon>!</ErrorIcon>}
+            <ErrorText errors={errors.category} value={form.category}>
+              {!form.category && errors.category}
+              {!form.category && errors.category && (
+                <ErrorIconCategory>{errors.category && '!'}</ErrorIconCategory>
+              )}
             </ErrorText>
           </DivSelect>
 
@@ -180,9 +187,11 @@ const DrinkDescriptionFields = ({
                 setFieldValue={setFieldValue}
               />
             </DivFlexSelect>
-            <ErrorText>
-              {errors.glass}
-              {errors.glass && <ErrorIcon>!</ErrorIcon>}
+            <ErrorText errors={errors.glass} value={form.glass}>
+              {!form.glass && errors.glass}
+              {!form.glass && errors.glass && (
+                <ErrorIconCategory>!</ErrorIconCategory>
+              )}
             </ErrorText>
           </DivSelect>
         </DivDesription>

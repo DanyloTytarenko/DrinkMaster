@@ -1,27 +1,22 @@
-export const inputStyled = {
-  mb: '14px',
-  background: 'transparent',
-  '& .MuiOutlinedInput-root': {
-    '&>fieldset': {
-      borderRadius: '200px',
-      border: '1px solid rgba(243, 243, 243, 0.20)',
-      opacity: 0.8,
-    },
-    '&:hover > fieldset': {
-      borderColor: 'rgba(243, 243, 243, 0.50)',
-    },
-    '&:focus > fieldset': {
-      borderColor: 'rgba(243, 243, 243, 0.50)',
+import { createTheme } from '@mui/material';
+
+export const theme = createTheme({
+  breakpoints: {
+    values: {
+      mobile: 0,
+      tablet: 768,
+      desktop: 1440,
     },
   },
-};
+});
 
 export const inputProps = {
   sx: {
+    
     opacity: 1,
     color: 'rgba(243, 243, 243, 0.50)',
     fontFamily: 'Manrope',
-    fontSize: '14px',
+    fontSize: { mobile: '14px', tablet: '17px', desktop: '17px' },
     '&:hover, focus': {
       color: '#F3F3F3',
     },
@@ -29,30 +24,102 @@ export const inputProps = {
 };
 
 export const datePickerStyled = {
-  width: '100%',
-  '& .MuiOutlinedInput-notchedOutline': {
-    border: '1px solid rgba(243, 243, 243, 0.20)',
-    opacity: 0.8,
+  textField: {
+    zIndex: 5,
+    error: false,
+    sx: {
+      width: '100%',
+      mt: '14px',
+      '& .MuiOutlinedInput-notchedOutline': {
+        border: '1px solid rgba(243, 243, 243, 0.20)',
+        opacity: 0.8,
+      },
+      '& .MuiOutlinedInput-root': {
+        borderRadius: '200px',
+        '&:hover > fieldset': {
+          borderColor: 'rgba(243, 243, 243, 0.50)',
+        },
+        '&.Mui-focused > fieldset': {
+          borderColor: 'rgba(243, 243, 243, 0.50)',
+        },
+      },
+      svg: { color: '#F3F3F3' },
+      input: {
+        ...inputProps.sx,
+        textTransform: 'lowercase',
+      },
+    },
   },
-  '& .MuiOutlinedInput-root': {
-    borderRadius: '200px',
-    '&:hover > fieldset': { borderColor: 'rgba(243, 243, 243, 0.50)' },
-    '&:focus > fieldset': { borderColor: 'rgba(243, 243, 243, 0.50)' },
+  'MuiPickersPopper-root': {
+    sx: {
+      inset: '10px',
+    },
   },
-  svg: { color: '#F3F3F3' },
-  input: {
-    color: 'rgba(243, 243, 243, 0.50)',
-    fontFamily: 'Manrope',
-    fontSize: '14px',
-    textTransform: 'lowercase',
-    '&:hover, focus': {
-      color: '#F3F3F3',
+  layout: {
+    sx: {
+      '.MuiDateCalendar-root': {
+        backgroundColor: '#161F37',
+      },
+      '.MuiPickersCalendarHeader-label': {
+        fontFamily: 'Manrope',
+        fontSize: '16px',
+        fontWeight: 500,
+        letterSpacing: '-0.32px',
+        color: '#F3F3F3',
+      },
+      '.MuiSvgIcon-root': {
+        color: '#F3F3F3',
+      },
+      '.MuiPickersYear-root .MuiPickersYear-yearButton.Mui-selected, .MuiPickersMonth-root .MuiPickersMonth-monthButton.Mui-selected, .MuiButtonBase-root.MuiPickersDay-root.Mui-selected':
+        {
+          color: '#161F37',
+          backgroundColor: '#F3F3F3',
+        },
+      '.MuiDayCalendar-weekDayLabel': {
+        fontFamily: 'Manrope',
+        fontSize: '14px',
+        fontWeight: 500,
+        letterSpacing: '-0.28px',
+        color: 'rgba(243, 243, 243, 0.50)',
+      },
+      '.MuiPickersYear-root, .MuiPickersMonth-root': {
+        fontFamily: 'Manrope',
+        fontSize: '16px',
+        fontWeight: 500,
+        letterSpacing: '-0.32px',
+        color: '#F3F3F3',
+      },
+      '.MuiPickersDay-root': {
+        fontFamily: 'Manrope',
+        fontSize: '14px',
+        fontWeight: 400,
+        lineHeight: '18px',
+        letterSpacing: '-0.28px',
+        color: '#F3F3F3',
+        '&:hover': {
+          color: '#161F37',
+          backgroundColor: '#F3F3F3',
+        },
+      },
+      '.MuiPickersYear-yearButton, .MuiPickersMonth-monthButton': {
+        width: '72px',
+        fontFamily: 'Manrope',
+        fontSize: '16px',
+        fontWeight: 500,
+        letterSpacing: '-0.32px',
+        borderRadius: '18px',
+        '&:hover': {
+          color: '#161F37',
+          backgroundColor: '#F3F3F3',
+        },
+      },
     },
   },
 };
 
 export const outlineStyled = {
   '&.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+    
     borderColor: 'rgba(243, 243, 243, 0.20)',
   },
   backgroundColor: 'transparent',
@@ -67,19 +134,37 @@ export const outlineStyled = {
   },
 };
 
+export const outlineError = {
+  '&.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'red',
+  },
+  '&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'red',
+  },
+};
+export const outlineSucces = {
+  '&.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'green',
+  },
+  '&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+    borderColor: 'green',
+  },
+};
+
 export const iconStyled = {
   color: '#F3F3F3',
 };
 
 export const buttonStyled = {
-  mt: '14px',
+  mt: '28px',
   pt: '18px',
   pb: '18px',
   fontFamily: 'Manrope',
-  fontSize: '14px',
+  fontSize: { mobile: '14px', tablet: '16px', desktop: '16px' },
   fontWeight: 600,
   lineHeight: '18px',
   textTransform: 'capitalize',
+  border: '1px solid rgba(243, 243, 243, 0.2)',
   borderRadius: '42px',
   background: '#F3F3F3',
   color: '#161F37',
@@ -94,8 +179,8 @@ export const linkStyled = {
   mt: '14px',
   color: '#F3F3F3',
   fontFamily: 'Manrope',
-  fontSize: '12px',
+  fontSize: { mobile: '12px', tablet: '14px', desktop: '14px' },
   fontWeight: 600,
-  lineHeight: '16px',
+  lineHeight: { mobile: '16px', tablet: '18px', desktop: '18px' },
   textDecoration: 'underline',
 };

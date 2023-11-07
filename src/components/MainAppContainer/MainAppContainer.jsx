@@ -1,8 +1,16 @@
-import { Container } from './MainAppContainer.styled';
+import {
+  Container,
+  StyledBGElement1,
+  StyledBGElement2,
+} from './MainAppContainer.styled';
 
-const MainAppContainer = () => {
+const MainAppContainer = ({ children }) => {
   return (
-    <Container />
+    <Container>
+      {children}
+      <StyledBGElement1 />
+      <StyledBGElement2 />
+    </Container>
   );
 };
 

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Form = styled.form`
   width: 335px;
@@ -8,4 +8,9 @@ export const Form = styled.form`
   justify-content: center;
 
   font-family: inherit;
-`
+  z-index: 5;
+
+  @media screen and (min-width: 768px) {
+    width: 400px;
+  }
+`;

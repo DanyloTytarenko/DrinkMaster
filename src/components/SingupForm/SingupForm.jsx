@@ -7,25 +7,32 @@ import {
   OutlinedInput,
   InputAdornment,
   IconButton,
-  TextField,
   FormHelperText,
+  FormControl,
+  ThemeProvider,
 } from '@mui/material';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import dayjs from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import { useFormik } from 'formik';
 import { signupSchema } from './SingupSchema';
 import { register } from '../../redux/auth/operations';
 import { Form } from './SingupForm.styled';
 import {
-  inputStyled,
   inputProps,
   datePickerStyled,
   outlineStyled,
+  outlineError,
+  outlineSucces,
   buttonStyled,
   linkStyled,
+  iconStyled,
+  theme,
 } from './muiFormStyled';
 
 export const SingupForm = () => {
@@ -55,107 +62,179 @@ export const SingupForm = () => {
   return (
     <div>
       <Form onSubmit={formik.handleSubmit}>
-        <TextField
-          fullWidth
-          id="name"
-          name="name"
-          type="text"
-          placeholder="Name"
-          autoComplete="off"
-          sx={{ ...inputStyled }}
-          inputProps={{ ...inputProps }}
-          value={formik.values.name}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.name && Boolean(formik.errors.name)}
-          helperText={formik.touched.name && formik.errors.name}
-          required
-        />
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker
-            id="birthday"
-            name="birthday"
-            disableFuture
-            format={'DD/MM/YYYY'}
-            slotProps={{
-              textField: {
-                error: false,
-                sx: {
+        <ThemeProvider theme={theme}>
+          <FormControl sx={{ zIndex: 5, width: '100%' }}>
+            <OutlinedInput
+              fullWidth
+              name="name"
+              placeholder="Name"
+              autoComplete="off"
+              sx={{
+                ...outlineStyled,
+                ...(formik.touched.name &&
+                  Boolean(formik.errors.name) && { ...outlineError }),
+                ...(formik.values.name &&
+                  Boolean(!formik.errors.name) && { ...outlineSucces }),
+              }}
+              inputProps={{ ...inputProps }}
+              value={formik.values.name}
+              onChange={(e) => {
+                e.target.value = e.target.value.trim();
+                formik.handleChange(e);
+              }}
+              onBlur={formik.handleBlur}
+              error={formik.touched.name && Boolean(formik.errors.name)}
+              required
+              endAdornment={[
+                formik.values.name && Boolean(!formik.errors.name) && (
+                  <CheckCircleOutlineIcon key={1} sx={{ color: 'green' }} />
+                ),
+                formik.touched.name && Boolean(formik.errors.name) && (
+                  <ErrorOutlineIcon key={2} sx={{ color: 'red' }} />
+                ),
+              ]}
+            />
+            {formik.touched.name && Boolean(formik.errors.name) && (
+              <FormHelperText error id="name">
+                {formik.errors.name}
+              </FormHelperText>
+            )}
+            {formik.values.name && Boolean(!formik.errors.name) && (
+              <FormHelperText sx={{ color: 'green' }} id="name">
+                This is a CORRECT name
+              </FormHelperText>
+            )}
+          </FormControl>
+          <FormControl sx={{ zIndex: 5, width: '100%' }}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DesktopDatePicker
+                views={['year', 'month', 'day']}
+                id="birthday"
+                name="birthday"
+                disableFuture
+                format={'DD/MM/YYYY'}
+                popperPlacement="bottom-start"
+                dayOfWeekFormatter={(_day, weekday) =>
+                  `${weekday.format('dd')}`
+                }
+                slotProps={{
                   ...datePickerStyled,
-                },
-              },
-            }}
-            value={formik.values.birthday}
-            onChange={(newDate) => {
-              formik.setFieldValue('birthday', newDate);
-            }}
-            error={formik.touched.birthday && Boolean(formik.errors.birthday)}
-            required
-          />
-        </LocalizationProvider>
-        {formik.touched.birthday && (
-          <FormHelperText error id="birthday">
-            {formik.errors.birthday}
-          </FormHelperText>
-        )}
-        <TextField
-          fullWidth
-          name="email"
-          type="email"
-          placeholder="Email"
-          autoComplete="off"
-          sx={{ ...inputStyled, mt: '14px' }}
-          inputProps={{ ...inputProps }}
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email && formik.errors.email}
-          required
-        />
-        <OutlinedInput
-          fullWidth
-          id="password"
-          name="password"
-          type={showPassword ? 'text' : 'password'}
-          placeholder="Password"
-          sx={{ ...outlineStyled }}
-          inputProps={{ ...inputProps }}
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.password && Boolean(formik.errors.password)}
-          required
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-                sx={{ color: '#F3F3F3' }}
-              >
-                {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-              </IconButton>
-            </InputAdornment>
-          }
-        />
-        {formik.touched.password && (
-          <FormHelperText error id="password">
-            {formik.errors.password}
-          </FormHelperText>
-        )}
-        <Button
-          sx={{ ...buttonStyled }}
-          variant="contained"
-          fullWidth
-          type="submit"
-        >
-          Sing Up
-        </Button>
-        <Link sx={{ ...linkStyled }} component={NavLink} to="/signin">
-          Sing In
-        </Link>
+                }}
+                value={formik.values.birthday}
+                onChange={(newDate) => {
+                  formik.setFieldValue('birthday', newDate);
+                }}
+                onBlur={formik.handleBlur}
+                error={
+                  formik.values.birthday && Boolean(formik.errors.birthday)
+                }
+                required
+              />
+            </LocalizationProvider>
+            {formik.touched.birthday && (
+              <FormHelperText error id="birthday">
+                {formik.errors.birthday}
+              </FormHelperText>
+            )}
+          </FormControl>
+          <FormControl sx={{ zIndex: 5, width: '100%' }}>
+            <OutlinedInput
+              fullWidth
+              name="email"
+              placeholder="Email"
+              autoComplete="off"
+              sx={{
+                ...outlineStyled,
+                mt: '14px',
+                ...(formik.touched.email &&
+                  Boolean(formik.errors.email) && { ...outlineError }),
+                ...(formik.values.email &&
+                  Boolean(!formik.errors.email) && { ...outlineSucces }),
+              }}
+              inputProps={{ ...inputProps }}
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              required
+              endAdornment={[
+                formik.values.email && Boolean(!formik.errors.email) && (
+                  <CheckCircleOutlineIcon key={1} sx={{ color: 'green' }} />
+                ),
+                formik.touched.email && Boolean(formik.errors.email) && (
+                  <ErrorOutlineIcon key={2} sx={{ color: 'red' }} />
+                ),
+              ]}
+            />
+            {formik.touched.email && Boolean(formik.errors.email) && (
+              <FormHelperText error id="email">
+                {formik.errors.email}
+              </FormHelperText>
+            )}
+            {formik.values.email && Boolean(!formik.errors.email) && (
+              <FormHelperText sx={{ color: 'green' }} id="email">
+                This is a CORRECT email
+              </FormHelperText>
+            )}
+          </FormControl>
+          <FormControl sx={{ zIndex: 5, width: '100%' }}>
+            <OutlinedInput
+              fullWidth
+              id="password"
+              name="password"
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+              sx={{
+                ...outlineStyled,
+                mt: '14px',
+                ...(formik.touched.password &&
+                  Boolean(formik.errors.password) && { ...outlineError }),
+                ...(formik.values.password &&
+                  Boolean(!formik.errors.password) && { ...outlineSucces }),
+              }}
+              inputProps={{ ...inputProps }}
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              required
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                    sx={{ ...iconStyled }}
+                  >
+                    {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+            {formik.touched.password && Boolean(formik.errors.password) && (
+              <FormHelperText error id="password">
+                {formik.errors.password}
+              </FormHelperText>
+            )}
+            {formik.values.password && Boolean(!formik.errors.password) && (
+              <FormHelperText sx={{ color: 'green' }} id="password">
+                This is a CORRECT password
+              </FormHelperText>
+            )}
+          </FormControl>
+          <Button
+            sx={{zIndex: 5, ...buttonStyled }}
+            variant="contained"
+            fullWidth
+            type="submit"
+          >
+            Sign Up
+          </Button>
+          <Link sx={{zIndex: 5, ...linkStyled }} component={NavLink} to="/signin">
+            Sign In
+          </Link>
+        </ThemeProvider>
       </Form>
     </div>
   );
