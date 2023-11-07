@@ -15,7 +15,6 @@ import {
 } from 'src/redux/drinks/selectors';
 import { fetchDrinkById } from 'src/redux/drinks/operations';
 import MainAppContainer from 'src/components/MainAppContainer/MainAppContainer';
-import PageTitle from 'src/components/PageTitle/PageTitle';
 
 const DrinkDetailsPage = () => {
   const isLoading = useSelector(selectDrinkDetailsIsLoading);
@@ -23,7 +22,6 @@ const DrinkDetailsPage = () => {
   const { drinkId } = useParams();
   const dispatch = useDispatch();
   const drinkDetails = useSelector(selectDrinkById);
-  const { drink } = drinkDetails;
 
   useEffect(() => {
     dispatch(fetchDrinkById(drinkId));
@@ -34,11 +32,10 @@ const DrinkDetailsPage = () => {
       <Header />
       <MainAppContainer>
         <ContainerDrink>
-          {isLoading ? (
+          {isLoading && !error ? (
             <Loader />
           ) : (
             <>
-              <PageTitle title={drink} />
               <DrinkPageHero drinkDetails={drinkDetails} />
               <DrinkIngredientsList drinkDetails={drinkDetails} />
               <RecipePreparation drinkDetails={drinkDetails} />

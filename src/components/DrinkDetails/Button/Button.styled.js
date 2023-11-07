@@ -10,6 +10,14 @@ export const StyledButton = styled.button`
   padding: 14px 40px;
   margin-bottom: 80px;
   color: ${colors.secondaryDark};
+  transition:
+    color 250ms ease,
+    background-color 250ms ease;
+
+  &:hover {
+    background-color: ${colors.secondaryDark};
+    color: ${colors.light};
+  }
 
   @media (min-width: 768px) {
     font-size: 16px;
@@ -18,10 +26,5 @@ export const StyledButton = styled.button`
     border-radius: 42px;
     padding: 18px 44px;
     margin-bottom: 80px;
-  }
-
-  @media (min-width: 1440px) {
-    // width: 400px;
-    // height: 400px;
   }
 `;
