@@ -6,12 +6,16 @@ export const Container = styled.div`
   padding-left: 20px;
   position: relative;
   box-sizing: border-box;
-  /* overflow-x: hidden; */
-  min-width: 375px;
+  overflow-x: hidden;
+  /* min-width: 375px; */
 
   /* @media screen and (max-width: 375px) {
-    min-width: 375px;
+    width: 375px;
   } */
+
+  @media screen and (max-width: 767px) {
+    width: 375px;
+  }
 
   @media screen and (min-width: 768px) {
     /* max-width: 768px; */
