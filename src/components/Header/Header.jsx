@@ -34,14 +34,14 @@ const Header = () => {
       <Logo />
       {windowWidth >= 1440 && <>
        <Navigation />
-       <ThemeToggler />
+        <ThemeToggler />
         <DropDown />
       </>
       }
       {windowWidth < 1440 && <>
         {isMenuOpen ? <ThemeToggler /> : <DropDown />}
         <BurgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
-      </>}
+        </>}
     </HeaderContainer>
   );
 };

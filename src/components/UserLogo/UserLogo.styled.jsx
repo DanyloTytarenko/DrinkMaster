@@ -34,7 +34,10 @@ color: #F3F3F3;
 font-size: 14px;
 font-weight: 500;
 // margin-left: 8px; 
-
+max-width: 104px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 @media screen and (min-width: 768px) {
   font-size: 16px;
   line-height: 24px;
