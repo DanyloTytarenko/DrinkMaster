@@ -50,6 +50,7 @@ const handleRefreshFulfilled = (state, action) => {
 
 const handleUpdatedFulfilled = (state, action) => {
   state.user.name = action.payload.name;
+  state.user.avatar = action.payload.avatar;
 };
 
 const handleLogOutFulfilled = (state) => {

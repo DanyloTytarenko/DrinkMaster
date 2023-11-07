@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { colors } from 'src/colors';
 
 export const Title = styled.h1`
-width: 335px;
+  width: 335px;
   margin-bottom: 28px;
   text-align: start;
   color: ${colors.light};
@@ -11,6 +11,7 @@ width: 335px;
   font-weight: 600;
   line-height: calc(32 / 28);
   letter-spacing: -0.56px;
+  z-index: 5;
 
   @media screen and (min-width: 768px) {
     font-size: 40px;

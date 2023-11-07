@@ -5,6 +5,7 @@ import {
   WelcomeText,
   StyledBGElement6,
   StyledBGElement7,
+  StyledBGElement8,
 } from './WelcomePage.styled';
 
 export default function WelcomePage() {
@@ -18,6 +19,7 @@ export default function WelcomePage() {
       </WelcomeText>
       <StyledBGElement6 />
       <StyledBGElement7 />
+      <StyledBGElement8 />
       <AuthNav />
     </WelcomeBox>
   );

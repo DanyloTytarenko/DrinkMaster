@@ -16,8 +16,6 @@ export const ContainerDrink = styled.div`
   }
 
   @media (min-width: 1440px) {
-    // padding-left: 100px;
-    // padding-right: 100px;
     padding-top: 158px;
     padding-bottom: 140px;
     max-width: 1440px;

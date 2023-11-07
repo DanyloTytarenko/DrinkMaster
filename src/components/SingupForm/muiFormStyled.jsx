@@ -12,6 +12,7 @@ export const theme = createTheme({
 
 export const inputProps = {
   sx: {
+    
     opacity: 1,
     color: 'rgba(243, 243, 243, 0.50)',
     fontFamily: 'Manrope',
@@ -24,6 +25,7 @@ export const inputProps = {
 
 export const datePickerStyled = {
   textField: {
+    zIndex: 5,
     error: false,
     sx: {
       width: '100%',
@@ -117,6 +119,7 @@ export const datePickerStyled = {
 
 export const outlineStyled = {
   '&.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+    
     borderColor: 'rgba(243, 243, 243, 0.20)',
   },
   backgroundColor: 'transparent',

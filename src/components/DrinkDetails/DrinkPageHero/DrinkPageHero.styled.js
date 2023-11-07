@@ -13,21 +13,14 @@ export const Title = styled.h1`
 
 export const Glass = styled.p`
   color: rgba(243, 243, 243, 0.5);
-  margin-top: -32px;
+  margin-top: 8px;
   margin-bottom: 20px;
   font-size: 12px;
   line-height: 1.29;
 
   @media (min-width: 768px) {
-    margin-top: -42px;
     font-size: 16px;
     line-height: 1.25;
-  }
-
-  @media (min-width: 1440px) {
-    margin-top: -62px;
-    // width: 400px;
-    // height: 400px;
   }
 `;
 
@@ -50,7 +43,6 @@ export const Description = styled.p`
 `;
 
 export const Button = styled.button`
-  // color: #000000;
   border-radius: 42px;
   padding: 14px 40px;
   margin-bottom: 80px;
@@ -72,20 +64,14 @@ export const StyledImage = styled.img`
     height: 400px;
     object-fit: contain;
     object-position: 50% 50%;
-    margin-top: -160px;
     margin-right: 0px;
-    margin-left: 300px;
   }
-`;
-
-export const StyledImageContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
 `;
 
 export const Hero = styled.div`
   @media (min-width: 1440px) {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 `;

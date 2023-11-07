@@ -6,12 +6,18 @@ export const Title = styled.h2`
   margin-bottom: 40px;
   font-size: 28px;
   line-height: calc(32 / 28);
+  letter-spacing: 0;
+  color: ${colors.light};
+
   @media only screen and (min-width: 768px) {
     font-size: 40px;
     line-height: calc(44 / 40);
   }
-  letter-spacing: 0;
-  color: #f3f3f3;
+
+  @media (min-width: 1440px) {
+    margin-top: 100px;
+    margin-bottom: 60px;
+  }
 `;
 
 export const Description = styled.p`
@@ -28,7 +34,6 @@ export const Description = styled.p`
 
   @media (min-width: 1440px) {
     width: 549px;
-    // height: 400px;
   }
 `;
 
@@ -44,19 +49,18 @@ export const AnyCocktail = styled.img`
     margin-top: 20px;
   }
   @media (min-width: 1440px) {
-    width: 704px;
-    height: 430px;
-    margin-top: 20px;
+    width: 631px;
+    height: 480px;
+    margin-top: 0px;
   }
 `;
 
 export const Recipe = styled.div`
   @media (min-width: 1440px) {
     display: flex;
-
-    // flex-direction: column;
+    gap: 60px;
     flex-direction: row-reverse;
     justify-content: flex-end;
-    align-items: center;
+    align-items: flex-start;
   }
 `;

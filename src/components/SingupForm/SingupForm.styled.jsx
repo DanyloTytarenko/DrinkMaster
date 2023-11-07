@@ -8,6 +8,7 @@ export const Form = styled.form`
   justify-content: center;
 
   font-family: inherit;
+  z-index: 5;
 
   @media screen and (min-width: 768px) {
     width: 400px;

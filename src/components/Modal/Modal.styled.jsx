@@ -96,13 +96,16 @@ export const PhotoWrapper = styled.div`
   border-radius: 50%;
   overflow: hidden;
 `;
-export const AddBtn = styled.div`
+export const AddBtn = styled.label`
   width: 32px;
   height: 32px;
+  margin: 0;
   border-radius: 50%;
   position: relative;
   left: 50%;
+  display:block;
   transform: translate(-50%, -50%);
+  cursor: pointer;
 `;
 export const Photo = styled.div`
   // position: relative;
