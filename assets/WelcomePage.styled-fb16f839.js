@@ -1,4 +1,4 @@
-import{s as e,c as a}from"./index-99e39b88.js";const i="/DrinkMaster/assets/cocktail-desk@1x-12951112.jpg",n="/DrinkMaster/assets/cocktail-desk@2x-03075d5b.jpg",r="/DrinkMaster/assets/cocktail-tab@1x-f0e4543b.jpg",t="/DrinkMaster/assets/cocktail-tab@2x-3b015c9b.jpg",g="/DrinkMaster/assets/cocktail-mob@1x-ed4821dd.jpg",d="/DrinkMaster/assets/cocktail-mob@2x-ab5031e5.jpg",l=e.div`
+import{s as e,c as a}from"./index-aad95e71.js";const i="/DrinkMaster/assets/cocktail-desk@1x-12951112.jpg",n="/DrinkMaster/assets/cocktail-desk@2x-03075d5b.jpg",r="/DrinkMaster/assets/cocktail-tab@1x-f0e4543b.jpg",t="/DrinkMaster/assets/cocktail-tab@2x-3b015c9b.jpg",g="/DrinkMaster/assets/cocktail-mob@1x-ed4821dd.jpg",d="/DrinkMaster/assets/cocktail-mob@2x-ab5031e5.jpg",l=e.div`
   height: 100vh;
   display: flex;
   flex-direction: column;

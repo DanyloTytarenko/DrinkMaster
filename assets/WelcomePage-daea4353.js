@@ -1,4 +1,4 @@
-import{s as i,c as o,L as n,j as e}from"./index-99e39b88.js";import{W as t,T as s,a}from"./WelcomePage.styled-2daf795e.js";const c=i.div`
+import{s as i,c as o,L as n,j as e}from"./index-aad95e71.js";import{W as t,T as s,a}from"./WelcomePage.styled-fb16f839.js";const c=i.div`
   display: flex;
 `,r=i(n)`
   margin-right: 14px;
