@@ -76,12 +76,12 @@ export const SubscribeButton = styled.button`
   font-weight: 600;
   line-height: 18px;
 
-  // transition: transform 250ms ease;
+  transition: border-color 250ms ease;
 
-  // &:hover,
-  // &:focus {
-  //   transform: scale(1.05);
-  // }
+  &:hover,
+  &:focus {
+    border-color: rgba(243, 243, 243, 0.5);
+  }
 
   &:disabled {
     color: ${colors.disabled};
