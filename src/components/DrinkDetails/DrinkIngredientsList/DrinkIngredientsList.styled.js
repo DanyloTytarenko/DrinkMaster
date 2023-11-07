@@ -2,6 +2,10 @@ import styled from '@emotion/styled';
 import { colors } from '../../../colors';
 
 export const AllTitleIngredients = styled.h2`
+  ${({ theme }) =>
+    theme === 'dark'
+      ? ` color: ${colors.light};`
+      : `color: ${colors.secondaryDark};`}
   color: ${colors.light};
   color: rgba(243, 243, 243, 0.5);
   font-family: Manrope;

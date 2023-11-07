@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import {
   ImageIngredient,
   ItemIngredient,
@@ -11,10 +12,11 @@ import defaultImage from '../../../assets/images/emptyImage/defolt-8.png';
 
 const DrinkIngredientsList = ({ drinkDetails }) => {
   const { ingredients } = drinkDetails;
+  const theme = useSelector(selectTheme);
 
   return (
     <>
-      <AllTitleIngredients>Ingredient</AllTitleIngredients>
+      <AllTitleIngredients theme={theme}>Ingredient</AllTitleIngredients>
       <ListIngredient>
         {ingredients?.map(
           ({ ingredientId, title, measure, ingredientThumb }) => (
