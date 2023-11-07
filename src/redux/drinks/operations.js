@@ -81,9 +81,9 @@ export const addOwnDrink = createAsyncThunk(
 );
 export const addFavoriteDrink = createAsyncThunk(
   'drinks/addFavoriteDrink',
-  async (drink, thunkAPI) => {
+  async (drinkId, thunkAPI) => {
     try {
-      const response = await axios.post('/drinks/favorite/add', drink);
+      const response = await axios.post(`/drinks/favorite/add/${drinkId}`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -156,7 +156,6 @@ export const fetchDrinkById = createAsyncThunk(
   async (drinkId, thunkAPI) => {
     try {
       const { data } = await axios.get(`/drinks/${drinkId}`);
-      console.log(data);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

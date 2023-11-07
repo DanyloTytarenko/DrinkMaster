@@ -27,4 +27,3 @@ export const drinkByIdSlice = createSlice({
 });
 
 export const drinkByIdReducer = drinkByIdSlice.reducer;
-export const selectDrinkById = (state) => state.drinkDetails.drinkById;

@@ -20,6 +20,6 @@ export const selectGlass = (state) => state.glass.items;
 export const selectIngredient = (state) => state.ingredient.items;
 
 export const selectDrinkById = (state) => state.drinkDetails.drinkById;
-export const selectDrinkDetailsIsLoadin = (state) =>
-  state.drinkDetails.IsLoadin;
+export const selectDrinkDetailsIsLoading = (state) =>
+  state.drinkDetails.IsLoading;
 export const selectDrinkDetailsError = (state) => state.drinkDetails.error;
