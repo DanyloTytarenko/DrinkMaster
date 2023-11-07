@@ -9,13 +9,17 @@ import {
   FooterContainer,
   MainWrap,
   LogoFollowWrap,
-  LogoFollowNavWrap
+  LogoFollowNavWrap,
+  Container,
+  StyledBGElement3,
+  StyledBGElement4,
 } from './Footer.styled';
 
 const Footer = () => {
   return (
     <FooterContainer>
-      <MainAppContainer>
+      {/* <MainAppContainer> */}
+      <Container>
         <MainWrap>
           <LogoFollowNavWrap>
             <LogoFollowWrap>
@@ -27,7 +31,10 @@ const Footer = () => {
           <SubscribeForm />
         </MainWrap>
         <FooterRightsAndPolicy />
-      </MainAppContainer>
+        <StyledBGElement3 />
+        <StyledBGElement4 />
+        {/* </MainAppContainer> */}
+      </Container>
     </FooterContainer>
   );
 };
