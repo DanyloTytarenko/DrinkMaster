@@ -1,11 +1,12 @@
-import { TogglerInput, TogglerLabel, TogglerBg, ThemeToggle } from './ThemeToggler.styled';
-
+import { TogglerBtn, ThemeToggle } from './ThemeToggler.styled';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTheme, selectTheme } from '../../redux/theme/themeSlice'
 const ThemeToggler = () => {
+  const theme = useSelector(selectTheme);
+  const dispatch = useDispatch();
   return (
-    <ThemeToggle>
-      <TogglerInput type="checkbox" id="toggler" />
-      <TogglerLabel htmlFor="toggler"></TogglerLabel>
-      <TogglerBg></TogglerBg>
+    <ThemeToggle theme={theme}>
+      <TogglerBtn onClick={() => dispatch(toggleTheme())} theme={theme}></TogglerBtn>
     </ThemeToggle>
   )
 }

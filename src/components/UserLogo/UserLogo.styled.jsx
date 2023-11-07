@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { colors } from '../../colors';
 export const UserInfoWrap = styled.div`
 display:flex;
 align-items: center;
@@ -30,7 +30,6 @@ export const UserSvg = styled.svg`
 `;
 
 export const UserName = styled.p`
-color: #F3F3F3;
 font-size: 14px;
 font-weight: 500;
 // margin-left: 8px; 
@@ -38,6 +37,9 @@ max-width: 104px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  ${({ theme }) =>
+    theme === 'dark' ?
+    ` color: ${colors.light};` : `color: ${colors.secondaryDark};`}
 @media screen and (min-width: 768px) {
   font-size: 16px;
   line-height: 24px;
