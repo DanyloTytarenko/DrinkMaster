@@ -9,6 +9,7 @@ import {
   MeasureIngredien,
 } from './DrinkIngredientsList.styled';
 import defaultImage from '../../../assets/images/emptyImage/defolt-8.png';
+import { selectTheme } from '../../redux/theme/themeSlice';
 
 const DrinkIngredientsList = ({ drinkDetails }) => {
   const { ingredients } = drinkDetails;
