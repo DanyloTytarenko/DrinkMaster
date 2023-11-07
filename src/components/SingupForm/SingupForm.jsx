@@ -63,7 +63,7 @@ export const SingupForm = () => {
     <div>
       <Form onSubmit={formik.handleSubmit}>
         <ThemeProvider theme={theme}>
-          <FormControl sx={{ width: '100%' }}>
+          <FormControl sx={{ zIndex: 5, width: '100%' }}>
             <OutlinedInput
               fullWidth
               name="name"
@@ -105,7 +105,7 @@ export const SingupForm = () => {
               </FormHelperText>
             )}
           </FormControl>
-          <FormControl sx={{ width: '100%' }}>
+          <FormControl sx={{ zIndex: 5, width: '100%' }}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DesktopDatePicker
                 views={['year', 'month', 'day']}
@@ -113,8 +113,6 @@ export const SingupForm = () => {
                 name="birthday"
                 disableFuture
                 format={'DD/MM/YYYY'}
-                // minDate='01/01/1900'
-                // maxDate={dayjs().format('DD/MM/YYYY')}
                 popperPlacement="bottom-start"
                 dayOfWeekFormatter={(_day, weekday) =>
                   `${weekday.format('dd')}`
@@ -139,7 +137,7 @@ export const SingupForm = () => {
               </FormHelperText>
             )}
           </FormControl>
-          <FormControl sx={{ width: '100%' }}>
+          <FormControl sx={{ zIndex: 5, width: '100%' }}>
             <OutlinedInput
               fullWidth
               name="email"
@@ -179,7 +177,7 @@ export const SingupForm = () => {
               </FormHelperText>
             )}
           </FormControl>
-          <FormControl sx={{ width: '100%' }}>
+          <FormControl sx={{ zIndex: 5, width: '100%' }}>
             <OutlinedInput
               fullWidth
               id="password"
@@ -226,14 +224,14 @@ export const SingupForm = () => {
             )}
           </FormControl>
           <Button
-            sx={{ ...buttonStyled }}
+            sx={{zIndex: 5, ...buttonStyled }}
             variant="contained"
             fullWidth
             type="submit"
           >
             Sign Up
           </Button>
-          <Link sx={{ ...linkStyled }} component={NavLink} to="/signin">
+          <Link sx={{zIndex: 5, ...linkStyled }} component={NavLink} to="/signin">
             Sign In
           </Link>
         </ThemeProvider>
