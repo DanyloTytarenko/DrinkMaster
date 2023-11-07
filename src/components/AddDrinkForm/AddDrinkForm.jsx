@@ -205,7 +205,6 @@ const AddDrinkForm = () => {
     console.log(persistedForm, 'persistedForm');
 
     dispatch(addOwnDrink(formWithImgUrl, values)).then((resp) => {
-      console.log(resp, 'response');
       if (resp.type === 'drinks/addOwnDrink/fulfilled') {
         Notify.success('You added new cocktail!');
         navigate('/my');
