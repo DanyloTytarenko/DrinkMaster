@@ -5,7 +5,6 @@ import welcomeCocktailTab from '../../assets/images/welcomePage/cocktail-tab@1x.
 import welcomeCocktailTab2 from '../../assets/images/welcomePage/cocktail-tab@2x.jpg';
 import welcomeCocktailMob from '../../assets/images/welcomePage/cocktail-mob@1x.jpg';
 import welcomeCocktailMob2 from '../../assets/images/welcomePage/cocktail-mob@2x.jpg';
-import desk from '../../assets/images/welcomePage/desk-2x.png'
 import { colors } from 'src/colors';
 
 export const WelcomeBox = styled.div`
