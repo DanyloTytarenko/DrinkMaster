@@ -1,6 +1,6 @@
 import Footer from 'src/components/Footer/Footer';
 import Header from 'src/components/Header/Header';
-import { HomeContainer } from './HomePage.styled';
+import { HomeContainer, StyledBGElement5 } from './HomePage.styled';
 import { AddDrink } from '../../components/HomePageComponents/AddDrink';
 import { PreviewDrinks } from '../../components/HomePageComponents/PreviewDrinks';
 
@@ -38,6 +38,7 @@ const HomePage = () => {
           <AddDrink />
           <PreviewDrinks />
         </HomeContainer>
+        <StyledBGElement5 />
       </MainAppContainer>
       <Footer />
     </>
