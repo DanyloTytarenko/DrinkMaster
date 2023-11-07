@@ -1,6 +1,6 @@
 import Footer from 'src/components/Footer/Footer';
 import Header from 'src/components/Header/Header';
-import { Container } from './HomePage.styled';
+
 import { AddDrink } from '../../components/HomePageComponents/AddDrink';
 import { PreviewDrinks } from '../../components/HomePageComponents/PreviewDrinks';
 
@@ -32,10 +32,10 @@ const HomePage = () => {
   return (
     <>
       <Header></Header>
-      <Container>
+      
         <AddDrink />
         <PreviewDrinks />
-      </Container>
+      
       <Footer></Footer>
     </>
   );
