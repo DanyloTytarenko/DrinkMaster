@@ -106,7 +106,12 @@ const AddDrinkForm = () => {
     return false;
   };
 
+  // функція обробки форми-----------------
   const submitHandler = (values, actions) => {
+    if (!isAllIngredientsUniq()) {
+      return Notify.failure('Duplicate ingredients are not allowed');
+    }
+
     if (
       !isNonAlcoholicDrinkFreeAlcohol(true) ||
       !isAlcoholicDrinkContainAlcohol(true)
@@ -144,38 +149,40 @@ const AddDrinkForm = () => {
     // відправки обраного файлу на сервер
     const formData = new FormData();
     formData.append('cocktail', file);
-    dispatch(addOwnDrinkImg(formData)).then((resp) => {
-      if (
-        typeof resp.payload === 'string' &&
-        resp.payload.startsWith('https://res.cloudinary.com')
-      ) {
-        const formWithImgUrl = {
-          ...formValues,
-        };
-        if (formWithImgUrl?.form) {
-          delete formWithImgUrl.form;
+    dispatch(addOwnDrinkImg(formData))
+      .then((resp) => {
+        if (
+          typeof resp.payload === 'string' &&
+          resp.payload.startsWith('https://res.cloudinary.com')
+        ) {
+          const formWithImgUrl = {
+            ...formValues,
+          };
+          if (formWithImgUrl?.form) {
+            delete formWithImgUrl.form;
+          }
+          let tempArray = [];
+          formWithImgUrl.ingredients.filter((el) =>
+            tempArray.push({
+              title: el.title,
+              measure: el.measure,
+            }),
+          );
+          delete formWithImgUrl.ingredients;
+          formWithImgUrl.ingredients = tempArray;
+
+          const freshData = { drinkThumb: resp.payload };
+          Object.assign(formWithImgUrl, freshData);
+
+          sendForm(formWithImgUrl, values, actions);
+        } else {
+          Notify.failure(`Format "webp" not allowed. Try upload .jpeg or .png`);
         }
-        let tempArray = [];
-        formWithImgUrl.ingredients.filter((el) =>
-          tempArray.push({
-            title: el.title,
-            measure: el.measure,
-          }),
-        );
-        delete formWithImgUrl.ingredients;
-        formWithImgUrl.ingredients = tempArray;
-
-        const freshData = { drinkThumb: resp.payload };
-        Object.assign(formWithImgUrl, freshData);
-
-        sendForm(formWithImgUrl, values, actions);
-      } else {
-        console.log(
-          "Something get wront. Please, try upload image-type file, e.g. '.jpeg', '.png'",
-        );
-      }
-      console.log(resp.payload.message);
-    });
+        console.log(resp.payload.message);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   function onChangeHandler(payload, field, setFieldValue) {
@@ -198,7 +205,8 @@ const AddDrinkForm = () => {
     console.log(persistedForm, 'persistedForm');
 
     dispatch(addOwnDrink(formWithImgUrl, values)).then((resp) => {
-      if (resp.payload.message === 'drink added') {
+      console.log(resp, 'response');
+      if (resp.type === 'drinks/addOwnDrink/fulfilled') {
         Notify.success('You added new cocktail!');
         navigate('/my');
         dispatch(setForm(initialValues));
@@ -211,11 +219,27 @@ const AddDrinkForm = () => {
   };
 
   const errorsHandler = (message) => {
-    if (message === 'Image file format webp not allowed') {
-      Notify.failure(`Format "webp" not allowed. Try upload .jpeg or .png`);
+    if (!message) {
+      return;
+    }
+    if (message.includes('length must be at least')) {
+      Notify.failure(`All field must be at least 2 symbols long`);
+    }
+    if (message.includes('duplicate')) {
+      Notify.failure('Drink with that title already exist');
     }
   };
 
+  const isAllIngredientsUniq = () => {
+    const ingredients = formValues.ingredients;
+    const flatUniq = ingredients.flatMap((el) => el.title);
+
+    const duplicateElement = flatUniq.filter(
+      (item, index) => flatUniq.indexOf(item) !== index,
+    );
+
+    return duplicateElement.length > 0 ? false : true;
+  };
   // dispatch(setForm(initialValues));
 
   return (
