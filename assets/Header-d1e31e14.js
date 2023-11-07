@@ -1,4 +1,4 @@
-import{s as i,c as t,N as u,j as e,u as M,r as l,a4 as O,i as E,y as D,a5 as R,a6 as P}from"./index-396fa773.js";import{c as A,a as Z,u as U}from"./index.esm-2cc06d78.js";const _=i(u)`
+import{s as i,c as t,N as u,j as e,u as M,r as l,a4 as O,i as E,y as D,a5 as R,a6 as P}from"./index-94193734.js";import{c as A,a as Z,u as U}from"./index.esm-178b8927.js";const _=i(u)`
   display: inline-flex;
   align-items: center;
 `,G=i.svg`
@@ -166,7 +166,7 @@ import{s as i,c as t,N as u,j as e,u as M,r as l,a4 as O,i as E,y as D,a5 as R,a
   @media screen and (min-width: 768px) {
     width: 209px;
   }
-`,F=A().shape({email:Z().required("Email is required").email("This is an ERROR email")}),ne=({message:n})=>e.jsx("div",{style:{color:"#DA1414",fontSize:"12px",lineHeight:"14px",marginTop:"2px",marginBottom:"2px",marginLeft:"24px"},children:n}),oe=()=>e.jsx("div",{style:{color:"#3CBC81",fontSize:"12px",lineHeight:"14px",marginTop:"2px",marginBottom:"2px",marginLeft:"24px"},children:"This is an CORRECT email"}),re=()=>{const n=M(),[o,a]=l.useState(!1),r=U({initialValues:{email:""},validationSchema:F,onSubmit:(d,c)=>{n(O(d)),a(!1),c.resetForm()}}),p=r.touched.email&&r.errors.email;return e.jsxs(Y,{onSubmit:r.handleSubmit,children:[e.jsx(te,{children:"Subscribe up to our newsletter. Be in touch with the latest news and special offers, etc."}),e.jsx(ee,{id:"email",name:"email",type:"email",placeholder:"Enter the email",onChange:d=>{r.handleChange(d),F.isValidSync({email:d.target.value})?a(!0):a(!1)},value:r.values.email,onBlur:r.handleBlur,className:p?"error":o?"valid":""}),p?e.jsx(ne,{message:r.errors.email}):o?e.jsx(oe,{}):null,e.jsx(ie,{type:"submit",disabled:p,children:"Subscribe"})]})},se=i.div`
+`,F=A().shape({email:Z().required("Email is required").email("This is an ERROR email")}),ne=({message:n})=>e.jsx("div",{style:{color:"#DA1414",fontSize:"12px",lineHeight:"14px",marginTop:"2px",marginBottom:"2px",marginLeft:"24px"},children:n}),oe=()=>e.jsx("div",{style:{color:"#3CBC81",fontSize:"12px",lineHeight:"14px",marginTop:"2px",marginBottom:"2px",marginLeft:"24px"},children:"This is an CORRECT email"}),re=()=>{const n=M(),[o,d]=l.useState(!1),r=U({initialValues:{email:""},validationSchema:F,onSubmit:(a,c)=>{n(O(a)),d(!1),c.resetForm()}}),p=r.touched.email&&r.errors.email;return e.jsxs(Y,{onSubmit:r.handleSubmit,children:[e.jsx(te,{children:"Subscribe up to our newsletter. Be in touch with the latest news and special offers, etc."}),e.jsx(ee,{id:"email",name:"email",type:"email",placeholder:"Enter the email",onChange:a=>{r.handleChange(a),F.isValidSync({email:a.target.value})?d(!0):d(!1)},value:r.values.email,onBlur:r.handleBlur,className:p?"error":o?"valid":""}),p?e.jsx(ne,{message:r.errors.email}):o?e.jsx(oe,{}):null,e.jsx(ie,{type:"submit",disabled:p,children:"Subscribe"})]})},se=i.div`
   @media screen and (min-width: 768px) {
     display: flex;
     gap: 153px;
@@ -176,7 +176,7 @@ import{s as i,c as t,N as u,j as e,u as M,r as l,a4 as O,i as E,y as D,a5 as R,a
   @media screen and (min-width: 1440px) {
     gap: 689px;
   }
-`,ae=i.p`
+`,de=i.p`
 color: rgba(243, 243, 243, 0.50);
 font-size: 12px;
 font-weight: 400;
@@ -191,7 +191,7 @@ margin-bottom: 8px;
     letter-spacing: -0.28px;
     margin-bottom: 0px;
   }
-`,de=i.div`
+`,ae=i.div`
   display: flex;
   gap: 14px;
 
@@ -223,26 +223,29 @@ margin-bottom: 8px;
     line-height: 18px;
     letter-spacing: -0.28px;
   }
-`,pe=()=>e.jsxs(se,{children:[e.jsx(ae,{children:"©2023 Drink Master. All rights reserved."}),e.jsxs(de,{children:[e.jsx($,{to:"/privacy",children:"Privacy Policy"}),e.jsx($,{to:"/service",children:"Terms of Service"})]})]}),qe=i.div`
+`,pe=()=>e.jsxs(se,{children:[e.jsx(de,{children:"©2023 Drink Master. All rights reserved."}),e.jsxs(ae,{children:[e.jsx($,{to:"/privacy",children:"Privacy Policy"}),e.jsx($,{to:"/service",children:"Terms of Service"})]})]}),qe=i.div`
   margin: 0 auto;
   padding-right: 20px;
   padding-left: 20px;
   position: relative;
   box-sizing: border-box;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
+  min-width: 375px;
 
-  @media screen and (max-width: 375px) {
+  /* @media screen and (max-width: 375px) {
     min-width: 375px;
-  }
+  } */
 
   @media screen and (min-width: 768px) {
-    max-width: 768px;
+    /* max-width: 768px; */
+    width: 768px;
     padding-right: 32px;
     padding-left: 32px;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 1440px;
+    /* max-width: 1440px; */
+    width: 1440px;
     padding-right: 100px;
     padding-left: 100px;
     overflow: visible;
@@ -298,10 +301,11 @@ margin-bottom: 8px;
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
+  min-width: 375px;
 
-  @media screen and (min-width: 375px) {
+  /* @media screen and (min-width: 375px) {
     max-width: 375px;
-  }
+  } */
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
@@ -675,4 +679,4 @@ font-family: Manrope;
   flex-direction: column;
 `,Ue=i.input`
   display: none;
-`,x="/DrinkMaster/assets/sprite-062e31f9.svg",B=()=>{const[n,o]=l.useState(!1),[a,r]=l.useState(!1),[p,d]=l.useState(!1),c=M(),v=E(D),[I,H]=l.useState(v.name),W=()=>{o(!n)},V=()=>{d(!p)},C=()=>{r(!a)},k=()=>{r(!1),d(!1),o(!1)},N=h=>{h.preventDefault();const y=h.target.elements.name.value;y!==v.name&&c(P({name:y}))};return e.jsxs(e.Fragment,{children:[e.jsx("div",{onClick:W,children:e.jsx(Se,{})}),e.jsx(Te,{open:n,children:a?e.jsxs(e.Fragment,{children:[e.jsx(z,{onClick:k,children:e.jsx("svg",{width:"18px",height:"18px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${x}#icon-close`})})}),e.jsx(Ve,{children:"Are you sure you want to log out?"}),e.jsxs(He,{children:[e.jsx(L,{type:"button",onClick:()=>c(R()),children:"Log out"}),e.jsx(We,{type:"button",onClick:C,children:"Cancel"})]})]}):p?e.jsxs(e.Fragment,{children:[e.jsx(z,{onClick:k,children:e.jsx("svg",{width:"18px",height:"18px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${x}#icon-close`})})}),e.jsxs(Ze,{onSubmit:N,children:[e.jsxs(Ae,{children:[e.jsx(Re,{children:e.jsx("svg",{width:"100px",height:"100px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${x}#icon-user`})})}),e.jsx(Pe,{children:e.jsx("svg",{width:"34px",height:"34px",children:e.jsx("use",{href:`${x}#icon-add`})})})]}),e.jsx(Ue,{type:"text"}),e.jsx(Oe,{type:"text",name:"name",value:I,onChange:h=>H(h.target.value)}),e.jsx(Ne,{type:"submit",children:"Save changes"})]})]}):e.jsxs(e.Fragment,{children:[e.jsxs(Ie,{onClick:V,children:[e.jsx("span",{children:"Edit profile"}),e.jsx("svg",{width:"14px",height:"14px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${x}#icon-edit`})})]}),e.jsx(L,{type:"button",onClick:C,children:"Log out"})]})})]})},Qe=()=>{const[n,o]=l.useState(window.innerWidth),a=()=>{o(window.innerWidth)};l.useEffect(()=>(window.addEventListener("resize",a),()=>{window.removeEventListener("resize",a)}),[]);const[r,p]=l.useState(!1),d=()=>{p(!r)};return e.jsxs(De,{children:[e.jsx(T,{}),n>=1440&&e.jsxs(e.Fragment,{children:[e.jsx(be,{}),e.jsx(S,{}),e.jsx(B,{})]}),n<1440&&e.jsxs(e.Fragment,{children:[r?e.jsx(S,{}):e.jsx(B,{}),e.jsx(Ee,{isOpen:r,toggleMenu:d})]})]})};export{qe as C,Ke as F,Qe as H,Xe as S,Q as a,Je as b};
+`,x="/DrinkMaster/assets/sprite-062e31f9.svg",B=()=>{const[n,o]=l.useState(!1),[d,r]=l.useState(!1),[p,a]=l.useState(!1),c=M(),v=E(D),[I,H]=l.useState(v.name),W=()=>{o(!n)},V=()=>{a(!p)},C=()=>{r(!d)},k=()=>{r(!1),a(!1),o(!1)},N=h=>{h.preventDefault();const y=h.target.elements.name.value;y!==v.name&&c(P({name:y}))};return e.jsxs(e.Fragment,{children:[e.jsx("div",{onClick:W,children:e.jsx(Se,{})}),e.jsx(Te,{open:n,children:d?e.jsxs(e.Fragment,{children:[e.jsx(z,{onClick:k,children:e.jsx("svg",{width:"18px",height:"18px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${x}#icon-close`})})}),e.jsx(Ve,{children:"Are you sure you want to log out?"}),e.jsxs(He,{children:[e.jsx(L,{type:"button",onClick:()=>c(R()),children:"Log out"}),e.jsx(We,{type:"button",onClick:C,children:"Cancel"})]})]}):p?e.jsxs(e.Fragment,{children:[e.jsx(z,{onClick:k,children:e.jsx("svg",{width:"18px",height:"18px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${x}#icon-close`})})}),e.jsxs(Ze,{onSubmit:N,children:[e.jsxs(Ae,{children:[e.jsx(Re,{children:e.jsx("svg",{width:"100px",height:"100px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${x}#icon-user`})})}),e.jsx(Pe,{children:e.jsx("svg",{width:"34px",height:"34px",children:e.jsx("use",{href:`${x}#icon-add`})})})]}),e.jsx(Ue,{type:"text"}),e.jsx(Oe,{type:"text",name:"name",value:I,onChange:h=>H(h.target.value)}),e.jsx(Ne,{type:"submit",children:"Save changes"})]})]}):e.jsxs(e.Fragment,{children:[e.jsxs(Ie,{onClick:V,children:[e.jsx("span",{children:"Edit profile"}),e.jsx("svg",{width:"14px",height:"14px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${x}#icon-edit`})})]}),e.jsx(L,{type:"button",onClick:C,children:"Log out"})]})})]})},Qe=()=>{const[n,o]=l.useState(window.innerWidth),d=()=>{o(window.innerWidth)};l.useEffect(()=>(window.addEventListener("resize",d),()=>{window.removeEventListener("resize",d)}),[]);const[r,p]=l.useState(!1),a=()=>{p(!r)};return e.jsxs(De,{children:[e.jsx(T,{}),n>=1440&&e.jsxs(e.Fragment,{children:[e.jsx(be,{}),e.jsx(S,{}),e.jsx(B,{})]}),n<1440&&e.jsxs(e.Fragment,{children:[r?e.jsx(S,{}):e.jsx(B,{}),e.jsx(Ee,{isOpen:r,toggleMenu:a})]})]})};export{qe as C,Ke as F,Qe as H,Xe as S,Q as a,Je as b};
