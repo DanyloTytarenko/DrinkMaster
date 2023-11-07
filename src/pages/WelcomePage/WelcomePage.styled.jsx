@@ -11,7 +11,7 @@ export const WelcomeBox = styled.div`
   height: 100vh;
   display: flex;
   position: relative;
-  overflow-y: hidden;
+  overflow: hidden;
   margin-left: auto;
   margin-right: auto;
   flex-direction: column;
@@ -29,7 +29,7 @@ export const WelcomeBox = styled.div`
       rgba(10, 10, 17, 0.2) 100%
     ),
     linear-gradient(91deg, #0a0a11 -0.56%, rgba(10, 10, 17, 0) 51.93%),
-        linear-gradient(0deg, #0a0a11 11.92%, rgba(10, 10, 17, 0) 91.07%),
+    linear-gradient(0deg, #0a0a11 11.92%, rgba(10, 10, 17, 0) 91.07%),
     url(${welcomeCocktailMob});
 
   @media (min-device-pixel-ratio: 2),
@@ -41,7 +41,7 @@ export const WelcomeBox = styled.div`
         rgba(10, 10, 17, 0.2) 100%
       ),
       linear-gradient(91deg, #0a0a11 -0.56%, rgba(10, 10, 17, 0) 51.93%),
-        linear-gradient(0deg, #060609 5.92%, rgba(10, 10, 17, 0) 91.07%),
+      linear-gradient(0deg, #060609 5.92%, rgba(10, 10, 17, 0) 91.07%),
       url(${welcomeCocktailMob2});
   }
 
@@ -60,7 +60,7 @@ export const WelcomeBox = styled.div`
         rgba(10, 10, 17, 0.2) 100%
       ),
       linear-gradient(91deg, #0a0a11 -0.56%, rgba(10, 10, 17, 0) 51.93%),
-        linear-gradient(85deg, #060609 5.92%, rgba(10, 10, 17, 0) 91.07%),
+      linear-gradient(85deg, #060609 5.92%, rgba(10, 10, 17, 0) 91.07%),
       url(${welcomeCocktailTab});
 
     @media (min-device-pixel-ratio: 2),
@@ -75,7 +75,6 @@ export const WelcomeBox = styled.div`
         linear-gradient(85deg, #060609 5.92%, rgba(10, 10, 17, 0) 91.07%),
         url(${welcomeCocktailTab2});
     }
-
   }
 
   @media screen and (min-width: 1440px) {
@@ -91,7 +90,7 @@ export const WelcomeBox = styled.div`
         rgba(10, 10, 17, 0.2) 100%
       ),
       linear-gradient(91deg, #0a0a11 -0.56%, rgba(10, 10, 17, 0) 51.93%),
-        linear-gradient(85deg, #060609 5.92%, rgba(10, 10, 17, 0) 91.07%),
+      linear-gradient(85deg, #060609 5.92%, rgba(10, 10, 17, 0) 91.07%),
       url(${welcomeCocktailDesk});
 
     @media (min-device-pixel-ratio: 2),
@@ -162,7 +161,6 @@ export const StyledBGElement6 = styled.div`
     height: 373px;
     top: 46px;
     left: 0px;
-
   }
 
   @media screen and (min-width: 1440px) {
@@ -213,15 +211,15 @@ export const StyledBGElement8 = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 620px;
-  height: 350px;
-  bottom: 20px;
-  right: -399px;
+    height: 350px;
+    bottom: 20px;
+    right: -399px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 520px;
-  height: 550px;
-  bottom: 20px;
-  right: -399px;
+    height: 550px;
+    bottom: 20px;
+    right: -399px;
   }
 `;
