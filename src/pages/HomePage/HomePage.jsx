@@ -1,6 +1,6 @@
 import Footer from 'src/components/Footer/Footer';
 import Header from 'src/components/Header/Header';
-
+import { HomeContainer, StyledBGElement5 } from './HomePage.styled';
 import { AddDrink } from '../../components/HomePageComponents/AddDrink';
 import { PreviewDrinks } from '../../components/HomePageComponents/PreviewDrinks';
 
@@ -12,6 +12,7 @@ import {
 } from '../../redux/homepage/selectors.js';
 
 import { fetchNewDrinks } from '../../redux/homepage/operations.js';
+import MainAppContainer from 'src/components/MainAppContainer/MainAppContainer';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -31,12 +32,15 @@ const HomePage = () => {
   }
   return (
     <>
-      <Header></Header>
-      
-        <AddDrink />
-        <PreviewDrinks />
-      
-      <Footer></Footer>
+      <Header />
+      <MainAppContainer>
+        <HomeContainer>
+          <AddDrink />
+          <PreviewDrinks />
+        </HomeContainer>
+        <StyledBGElement5 />
+      </MainAppContainer>
+      <Footer />
     </>
   );
 };

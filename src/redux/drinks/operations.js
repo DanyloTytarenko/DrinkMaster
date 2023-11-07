@@ -23,7 +23,7 @@ export const fetchFavoriteDrinks = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/drinks/favorite');
-      return response.data.drinks;
+      return response.data.favoriteDrinks;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -67,7 +67,6 @@ export const addOwnDrinkImg = createAsyncThunk(
 export const addOwnDrink = createAsyncThunk(
   'drinks/addOwnDrink',
   async (drink, { rejectWithValue }) => {
-    console.log(drink, 'drink');
     try {
       const response = await axios.post('/drinks/own/add', drink);
       return response.status === 200 ? response.config.data : e.response.data;
@@ -81,9 +80,9 @@ export const addOwnDrink = createAsyncThunk(
 );
 export const addFavoriteDrink = createAsyncThunk(
   'drinks/addFavoriteDrink',
-  async (drink, thunkAPI) => {
+  async (drinkId, thunkAPI) => {
     try {
-      const response = await axios.post('/drinks/favorite/add', drink);
+      const response = await axios.post(`/drinks/favorite/add/${drinkId}`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -95,7 +94,7 @@ export const deleteOwnDrink = createAsyncThunk(
   async (drinkId, thunkAPI) => {
     try {
       const response = await axios.delete(`/drinks/own/remove/${drinkId}`);
-      return response.data;
+      return drinkId;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -106,7 +105,7 @@ export const deleteFavoriteDrink = createAsyncThunk(
   async (drinkId, thunkAPI) => {
     try {
       const response = await axios.delete(`/drinks/favorite/remove/${drinkId}`);
-      return response.data;
+      return drinkId;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -156,7 +155,6 @@ export const fetchDrinkById = createAsyncThunk(
   async (drinkId, thunkAPI) => {
     try {
       const { data } = await axios.get(`/drinks/${drinkId}`);
-      console.log(data);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

@@ -1,5 +1,11 @@
 import { AuthNav } from '../../components/AuthNav/AuthNav';
-import { WelcomeBox, Title, WelcomeText } from './WelcomePage.styled';
+import {
+  WelcomeBox,
+  Title,
+  WelcomeText,
+  StyledBGElement6,
+  StyledBGElement7,
+} from './WelcomePage.styled';
 
 export default function WelcomePage() {
   return (
@@ -10,6 +16,8 @@ export default function WelcomePage() {
         to be your very own digital cookbook. You can easily save and retrieve
         your own recipes at any time.
       </WelcomeText>
+      <StyledBGElement6 />
+      <StyledBGElement7 />
       <AuthNav />
     </WelcomeBox>
   );

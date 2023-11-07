@@ -31,6 +31,7 @@ import { selectUser } from 'src/redux/auth/selectors';
 import { isUserAdult } from 'src/utils/isUserAdult';
 import Select from '../../ReactSelect/ReactSelect';
 import DummyDrinkThumb from 'src/images/dummyDrinkThumb.png';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const DrinkDescriptionFields = ({
   setFile,
@@ -62,8 +63,9 @@ const DrinkDescriptionFields = ({
   // функція превью зображення обраного файлу
   const addImagePreview = (e) => {
     if (!e.target.files[0].type.startsWith('image/')) {
-      console.log("Please, upload image-type file, e.g. '.jpeg', '.png'");
-      return;
+      return Notify.failure(
+        `Please, upload image-type file, e.g. '.jpeg', '.png'`,
+      );
     }
     setFile(e.target.files[0]);
     setUri(URL.createObjectURL(e.target.files[0]));

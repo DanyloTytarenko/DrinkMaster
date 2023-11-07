@@ -23,7 +23,15 @@ const IngredientItem = ({
   const onChangeIngredientHandler = (payload, field) => {
     let tempArray = [...chosenIngredients];
 
-    const freshData = { [field]: payload, alcohol: ingredients[index].alcohol };
+    const freshData =
+      field === 'title'
+        ? {
+            [field]: payload,
+            alcohol: ingredients[index].alcohol,
+          }
+        : {
+            [field]: payload,
+          };
 
     tempArray[index] = tempArray[index]
       ? Object.assign({}, tempArray[index], freshData)
