@@ -24,7 +24,7 @@ export const StyledNavigationLink = styled(NavLink)`
   border-radius: 40px;
   border: 1px solid rgba(243, 243, 243, 0.20);
   background: ${colors.primaryDark}; 
-  transition: background 0.2s;
+  // transition: background 0.2s;
   overflow: hidden;
 
   transition: border-color 250ms ease;
