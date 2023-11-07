@@ -6,12 +6,6 @@ export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
   padding: 80px 20px;
-  background-image: linear-gradient(
-    to top left,
-    #000 45%,
-    rgb(22, 31, 55),
-    rgba(64, 112, 205, 0.5)
-  );
   @media only screen and (min-width: 768px) {
     padding: 140px 32px;
     max-width: 704px;
