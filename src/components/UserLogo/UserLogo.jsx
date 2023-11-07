@@ -17,7 +17,7 @@ const UserLogo = () => {
           src={user.avatar || '../../images/user.jpg'}
           alt="User avatar"
           onError={(event) => {
-            event.currentTarget.src = '/src/images/user.jpg';
+            event.currentTarget.src = '../../images/user.jpg';
           }}
         />
       </UserLogoWrap>
