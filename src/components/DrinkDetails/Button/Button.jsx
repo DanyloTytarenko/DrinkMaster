@@ -24,9 +24,9 @@ const Button = ({ drinkId, favoriteStatus }) => {
     setfavorite(favoriteStatus);
   }, [favoriteStatus]);
 
-  console.log('favorite:', favorite);
-  console.log('favoriteStatus:', favoriteStatus);
-  console.log('drinkId:', drinkId);
+  // console.log('favorite:', favorite);
+  // console.log('favoriteStatus:', favoriteStatus);
+  // console.log('drinkId:', drinkId);
 
   return (
     <>

@@ -1,7 +1,7 @@
 // import styled from '@emotion/styled';
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const ContainerDrink = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

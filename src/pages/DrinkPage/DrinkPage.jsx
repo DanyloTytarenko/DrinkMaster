@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Container } from './DrinkPage.styled';
+import { ContainerDrink } from './DrinkPage.styled';
 import DrinkPageHero from '../../components/DrinkDetails/DrinkPageHero/DrinkPageHero';
 import DrinkIngredientsList from '../../components/DrinkDetails/DrinkIngredientsList/DrinkIngredientsList';
 import RecipePreparation from '../../components/DrinkDetails/RecipePreparation/RecipePreparation';
@@ -14,6 +14,8 @@ import {
   selectDrinkDetailsIsLoading,
 } from 'src/redux/drinks/selectors';
 import { fetchDrinkById } from 'src/redux/drinks/operations';
+import MainAppContainer from 'src/components/MainAppContainer/MainAppContainer';
+import PageTitle from 'src/components/PageTitle/PageTitle';
 
 const DrinkDetailsPage = () => {
   const isLoading = useSelector(selectDrinkDetailsIsLoading);
@@ -29,15 +31,20 @@ const DrinkDetailsPage = () => {
   return (
     <>
       <Header />
-      {isLoading && !error ? (
-        <Loader />
-      ) : (
-        <Container>
-          <DrinkPageHero drinkDetails={drinkDetails} />
-          <DrinkIngredientsList drinkDetails={drinkDetails} />
-          <RecipePreparation drinkDetails={drinkDetails} />
-        </Container>
-      )}
+      <MainAppContainer>
+        <ContainerDrink>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              <PageTitle title="DrinksId" />
+              <DrinkPageHero drinkDetails={drinkDetails} />
+              <DrinkIngredientsList drinkDetails={drinkDetails} />
+              <RecipePreparation drinkDetails={drinkDetails} />
+            </>
+          )}
+        </ContainerDrink>
+      </MainAppContainer>
       <Footer />
     </>
   );
