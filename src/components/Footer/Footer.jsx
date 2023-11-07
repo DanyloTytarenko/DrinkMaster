@@ -3,19 +3,23 @@ import FooterNav from '../FooterNav/FooterNav';
 import FollowUs from '../FollowUs/FollowUs';
 import SubscribeForm from '../SubscribeForm/SubscribeForm';
 import FooterRightsAndPolicy from '../FooterRightsAndPolicy/FooterRightsAndPolicy';
+import MainAppContainer from '../MainAppContainer/MainAppContainer';
 
 import {
   FooterContainer,
-  FooterWrap,
   MainWrap,
   LogoFollowWrap,
-  LogoFollowNavWrap
+  LogoFollowNavWrap,
+  Container,
+  StyledBGElement3,
+  StyledBGElement4,
 } from './Footer.styled';
 
 const Footer = () => {
   return (
     <FooterContainer>
-      <FooterWrap>
+      {/* <MainAppContainer> */}
+      <Container>
         <MainWrap>
           <LogoFollowNavWrap>
             <LogoFollowWrap>
@@ -27,7 +31,10 @@ const Footer = () => {
           <SubscribeForm />
         </MainWrap>
         <FooterRightsAndPolicy />
-      </FooterWrap>
+        <StyledBGElement3 />
+        <StyledBGElement4 />
+        {/* </MainAppContainer> */}
+      </Container>
     </FooterContainer>
   );
 };

@@ -1,8 +1,11 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './components/SharedLayout/SharedLayout';
 import { PublicRoute } from './components/PublicRoute/PublicRoute';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
+import { selectIsRefreshing } from './redux/auth/selectors';
+import { refreshUser } from './redux/auth/operations';
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const SingupPage = lazy(() => import('./pages/SingupPage/SingupPage'));
 const SinginPage = lazy(() => import('./pages/SinginPage/SinginPage'));
@@ -26,12 +29,21 @@ import { AppWrapper } from './App.styled';
 // const test = import.meta.env.VITE_API_TEST;
 
 function App() {
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
   // console.log(test);
-  return (
+  return isRefreshing ? (
+    <SharedLayout />
+  ) : (
     <AppWrapper>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route
+            <Route index element={<WelcomePage />} />
+            <Route
             path="/"
             element={
               <PublicRoute redirectcto="/welcome" component={<WelcomePage />} />
@@ -51,24 +63,24 @@ function App() {
             }
           />
           <Route
-            path="home"
-            element={<PrivateRoute component={<HomePage />}></PrivateRoute>}
+            path="/home"
+            element={<PrivateRoute redirectTo='/signin' component={<HomePage />}/>}
           />
           <Route
-            path="drinks"
-            element={<PrivateRoute component={<DrinksPage />} />}
+            path="/drinks"
+            element={<PrivateRoute redirectTo="/signin" component={<DrinksPage />} />}
           />
           <Route
-            path="add"
-            element={<PrivateRoute component={<AddDrinkPage />} />}
+            path="/add"
+            element={<PrivateRoute redirectTo="/signin" component={<AddDrinkPage />} />}
           />
           <Route
-            path="my"
-            element={<PrivateRoute component={<MyDrinksPage />} />}
+            path="/my"
+            element={<PrivateRoute redirectTo="/signin" component={<MyDrinksPage />} />}
           />
           <Route
-            path="favorites"
-            element={<PrivateRoute component={<FavoriteDrinkPage />} />}
+            path="/favorites"
+            element={<PrivateRoute redirectTo="/signin" component={<FavoriteDrinkPage />} />}
           />
 
           <Route

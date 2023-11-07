@@ -21,8 +21,10 @@ import Paginator from 'src/components/Paginator/Paginator';
 import Footer from 'src/components/Footer/Footer';
 import Header from 'src/components/Header/Header';
 
-import { DrinksContainer, Title } from './DrinksPage.styled';
+import { DrinksContainer } from './DrinksPage.styled';
 import Loader from 'src/components/Loader/Loader';
+import PageTitle from 'src/components/PageTitle/PageTitle';
+import MainAppContainer from 'src/components/MainAppContainer/MainAppContainer';
 // import { Container, Title } from './DrinksPage.styled';
 
 const DrinksPage = () => {
@@ -55,18 +57,20 @@ const DrinksPage = () => {
   return (
     <>
       <Header />
-      <DrinksContainer>
-        <Title>DrinksPage</Title>
-        <DrinksSearch />
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <>
-            <DrinksList />
-            <Paginator totalItems={searchResults.max_page} limit={limit} />
-          </>
-        )}
-      </DrinksContainer>
+      <MainAppContainer>
+        <DrinksContainer>
+          <PageTitle title="Drinks" />
+          <DrinksSearch />
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              <DrinksList />
+              <Paginator totalItems={searchResults.max_page} limit={limit} />
+            </>
+          )}
+        </DrinksContainer>
+      </MainAppContainer>
       <Footer />
     </>
   );

@@ -14,7 +14,12 @@ import { selectForm } from 'src/redux/drinks/selectors';
 import { selectIngredient } from 'src/redux/drinks/selectors';
 import IngredientItem from './IngredientItem/IngredientItem';
 
-const DrinkIngredientsFields = ({ onChangeHandler, setFieldValue, errors }) => {
+const DrinkIngredientsFields = ({
+  onChangeHandler,
+  setFieldValue,
+  errors,
+  wrongIngredients,
+}) => {
   const persistedForm = useSelector(selectForm);
   const form = persistedForm.form;
 
@@ -30,7 +35,7 @@ const DrinkIngredientsFields = ({ onChangeHandler, setFieldValue, errors }) => {
 
   // у зміну записується масив об'єктів інгрідієнтів, у формі необхідній для роботи селекту.
   const ingredientsForSelect = ingredientTitleArray.map((item) => {
-    return { value: item.title, label: item.title };
+    return { value: item.title, label: item.title, alcohol: item.alcohol };
   });
 
   const increment = () => {
@@ -39,9 +44,8 @@ const DrinkIngredientsFields = ({ onChangeHandler, setFieldValue, errors }) => {
     }
 
     const newArray = [...form.ingredients];
-    newArray.push({ title: '', measure: '' });
-    onChangeHandler(newArray, 'ingredients');
-    setFieldValue('ingredients', newArray);
+    newArray.push({ title: '', measure: '', alcohol: '' });
+    onChangeHandler(newArray, 'ingredients', setFieldValue);
   };
 
   const decrement = (index) => {
@@ -52,12 +56,11 @@ const DrinkIngredientsFields = ({ onChangeHandler, setFieldValue, errors }) => {
     if (index || index === 0) {
       const newArray = [...form.ingredients];
       newArray.splice(index, 1);
-      onChangeHandler(newArray, 'ingredients');
+      onChangeHandler(newArray, 'ingredients', setFieldValue);
     } else {
       const newArray = [...form.ingredients];
       newArray.pop();
-      setFieldValue('ingredients', newArray);
-      onChangeHandler(newArray, 'ingredients');
+      onChangeHandler(newArray, 'ingredients', setFieldValue);
     }
   };
 
@@ -81,6 +84,7 @@ const DrinkIngredientsFields = ({ onChangeHandler, setFieldValue, errors }) => {
             <IngredientItem
               chosenIngredients={form.ingredients}
               onChangeHandler={onChangeHandler}
+              setFieldValue={setFieldValue}
               ingredients={ingredientsForSelect}
               deleteIngredient={decrement}
               index={index}
@@ -89,7 +93,7 @@ const DrinkIngredientsFields = ({ onChangeHandler, setFieldValue, errors }) => {
                 label: form.ingredients[index].title,
               }}
               errors={errors}
-              setFieldValue={setFieldValue}
+              wrongIngredients={wrongIngredients}
             />
           </li>
         ))}

@@ -5,14 +5,11 @@ import Loader from '../Loader/Loader';
 const SharedLayout = () => {
   return (
     <>
-      <Suspense Suspense fallback={< Loader />}>
+      <Suspense Suspense fallback={<Loader />}>
         <Outlet />
-      </Suspense >
+      </Suspense>
     </>
   );
 };
 
 export default SharedLayout;
-
-
-

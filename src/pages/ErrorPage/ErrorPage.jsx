@@ -8,14 +8,17 @@ import errorImgMobile2 from '../../assets/images/errorPage/img-blue-iced-tea-err
 import {
   ErrorContainer,
   ErrorWrapper,
+  StyledBGElement2,
   StyledFirstSymbol,
   StyledSecondSymbol,
 } from './ErrorPage.styled';
+import MainAppContainer from 'src/components/MainAppContainer/MainAppContainer';
 
 const ErrorPage = () => {
   return (
     <>
       <Header />
+      {/* <MainAppContainer> */}
       <ErrorContainer>
         <ErrorWrapper>
           <StyledFirstSymbol>4</StyledFirstSymbol>
@@ -36,7 +39,9 @@ const ErrorPage = () => {
           </picture>
           <StyledSecondSymbol>4</StyledSecondSymbol>
         </ErrorWrapper>
+        <StyledBGElement2 />
       </ErrorContainer>
+      {/* </MainAppContainer> */}
       <Footer />
     </>
   );

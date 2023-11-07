@@ -1,5 +1,11 @@
-import { Wrapper, Input, Button, ErrorText } from './IngredientItem.styled';
-import { ErrorIcon } from '../../RecipePreparation/RecipePreparation.styled';
+import {
+  Wrapper,
+  Input,
+  Button,
+  ErrorText,
+  ErrorIcon,
+} from './IngredientItem.styled';
+// import { ErrorIcon } from '../../RecipePreparation/RecipePreparation.styled';
 import Select from '../../../ReactSelect/ReactSelect';
 
 const IngredientItem = ({
@@ -7,121 +13,57 @@ const IngredientItem = ({
   ingredients,
   index,
   onChangeHandler,
+  setFieldValue,
   deleteIngredient,
   chosenIngredientSelect,
   errors,
-  setFieldValue,
+  wrongIngredients,
 }) => {
   // композитна функція контрольованої обробки двох інпутів (інгрідієнта і його кількості)
   const onChangeIngredientHandler = (payload, field) => {
     let tempArray = [...chosenIngredients];
 
-    const freshData = { [field]: payload };
+    const freshData = { [field]: payload, alcohol: ingredients[index].alcohol };
 
     tempArray[index] = tempArray[index]
       ? Object.assign({}, tempArray[index], freshData)
       : freshData;
 
-    onChangeHandler(tempArray, 'ingredients');
-    setFieldValue('ingredients', tempArray);
-  };
-
-  const CUSTOM_INGREDIENT_SELECT = {
-    dropdownIndicator: (provided, state) => ({
-      ...provided,
-      transform: state.selectProps.menuIsOpen && 'rotate(180deg)',
-    }),
-    control: (base, styles) => ({
-      ...base,
-      width: '200px',
-      height: '50px',
-      background: 'inherit',
-      border: '1px solid rgba(243, 243, 243, 0.5)',
-      borderRadius: '200px',
-      fontSize: '14px',
-      fontWeight: '400',
-      lineHeight: 'calc(18 / 14)',
-      cursor: 'pointer',
-      '@media only screen and (min-width: 768px)': {
-        ...styles['@media only screen and (min-width: 768px)'],
-        width: '332px',
-        height: '56px',
-        fontSize: '17px',
-        lineHeight: '1.56',
-      },
-    }),
-    menu: (base) => ({
-      ...base,
-      padding: '0px 12px',
-      right: '0px',
-      backgroundColor: '#161f37',
-      border: '0px solid transparent',
-      borderColor: 'red',
-      borderRadius: '12px',
-      '@media only screen and (min-width: 768px)': {
-        ...base['@media only screen and (min-width: 768px)'],
-        padding: '0px 18px',
-      },
-    }),
-    indicatorSeparator: (base) => ({
-      ...base,
-      display: 'none',
-    }),
-    valueContainer: (base) => ({
-      ...base,
-      padding: '0px 18px',
-      '@media only screen and (min-width: 768px)': {
-        ...base['@media only screen and (min-width: 768px)'],
-        padding: '0px 24px',
-      },
-    }),
-    singleValue: (base) => ({ ...base, color: '#f3f3f3' }),
-    placeholder: (base) => ({
-      ...base,
-      fontSize: errors ? '12px' : '14px',
-      '@media only screen and (min-width: 768px)': {
-        ...base['@media only screen and (min-width: 768px)'],
-        fontSize: '17px',
-        lineHeight: '1.56',
-      },
-    }),
-    option: (styles, { isFocused, isSelected }) => ({
-      ...styles,
-      fontSize: '14px',
-      '@media only screen and (min-width: 768px)': {
-        ...styles['@media only screen and (min-width: 768px)'],
-        fontSize: '17px',
-      },
-      lineHeight: '1.33',
-      background: 'transparent',
-      color: isFocused
-        ? 'rgba(243, 243, 243, 0.75)'
-        : isSelected
-        ? '#f3f3f3'
-        : 'rgba(243, 243, 243, 0.4)',
-    }),
+    onChangeHandler(tempArray, 'ingredients', setFieldValue);
   };
 
   return (
     <Wrapper>
       <Select
-        styles={CUSTOM_INGREDIENT_SELECT}
         name={'title'}
         options={ingredients}
         value={
           chosenIngredients[index].title === '' ? null : chosenIngredientSelect
         }
-        index={index}
-        errors={errors}
         onChangeIngredientHandler={onChangeIngredientHandler}
+        setFieldValue={setFieldValue}
+        errors={errors?.ingredients}
+        wrongIngredient={
+          wrongIngredients ? wrongIngredients[index]?.title : null
+        }
       />
       <ErrorText>
-        {errors?.ingredients?.length > 0 && errors.ingredients[index]?.title}
+        {!chosenIngredients[index]?.title &&
+          errors?.ingredients?.length > 0 &&
+          errors.ingredients[index]?.title}
+        {wrongIngredients &&
+          chosenIngredients[index]?.alcohol === 'Yes' &&
+          `That ingredient is not fit the chosen type Alcoholic/Non alcoholic drink`}
         {errors?.ingredients?.length > 0 &&
-          errors.ingredients[index]?.title && <ErrorIcon>!</ErrorIcon>}
+          errors.ingredients[index]?.title && (
+            <ErrorIcon value={chosenIngredients[index].title}>
+              {chosenIngredients[index]?.title ? '✔' : '!'}
+            </ErrorIcon>
+          )}
       </ErrorText>
       <div>
         <Input
+          errors={errors.ingredients}
           type="text"
           name="measure"
           placeholder="1 cl"
@@ -136,10 +78,16 @@ const IngredientItem = ({
           }}
         />
         <ErrorText>
-          {errors?.ingredients?.length > 0 &&
+          {!chosenIngredients[index]?.measure &&
+            errors?.ingredients?.length > 0 &&
             errors.ingredients[index]?.measure}
-          {errors?.ingredients?.length > 0 &&
-            errors.ingredients[index]?.measure && <ErrorIcon>!</ErrorIcon>}
+          {!chosenIngredients[index]?.measure &&
+            errors?.ingredients?.length > 0 &&
+            errors.ingredients[index]?.measure && (
+              <ErrorIcon measure={'measure'}>
+                {errors.ingredients ? '!' : '✔'}
+              </ErrorIcon>
+            )}
         </ErrorText>
       </div>
 

@@ -13,7 +13,6 @@ import { selectForm } from 'src/redux/drinks/selectors';
 
 const RecipePreparation = ({ onChangeHandler, setFieldValue, errors }) => {
   const persistedForm = useSelector(selectForm);
-  // console.log(persistedForm, 'form');
   const form = persistedForm.form;
 
   return (
@@ -24,18 +23,20 @@ const RecipePreparation = ({ onChangeHandler, setFieldValue, errors }) => {
         <MockPlaceholder>Enter the recipe</MockPlaceholder>
       ) : (
         <ErrorText>
-          {errors.instructions}
-          {errors.instructions && <ErrorIcon>!</ErrorIcon>}
+          {!form.instructions && errors.instructions}
+          {!form.instructions && errors.instructions && (
+            <ErrorIcon>!</ErrorIcon>
+          )}
         </ErrorText>
       )}
       <Textarea
+        errors={errors.instructions}
         name="instructions"
         placeholder="Enter the recipe"
         rows={6}
         value={form.instructions}
         onChange={(e) => {
-          setFieldValue('instructions', e.target.value);
-          onChangeHandler(e.target.value, e.target.name);
+          onChangeHandler(e.target.value, e.target.name, setFieldValue);
         }}
       />
     </Div>

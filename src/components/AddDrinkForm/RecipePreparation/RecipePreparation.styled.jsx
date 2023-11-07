@@ -21,6 +21,7 @@ export const TextareaDiv = styled.div`
 `;
 
 export const Textarea = styled.textarea`
+  font-family: 'Manrope', sans-serif;
   position: relative;
   padding: 16px 18px;
   width: 100%;
@@ -30,7 +31,12 @@ export const Textarea = styled.textarea`
   letter-spacing: 0;
   background-color: inherit;
   color: rgba(243, 243, 243, 1);
-  border: 1px solid rgba(243, 243, 243, 0.5);
+  border: ${({ errors, value }) =>
+    value && errors
+      ? '1px solid #3cbc8150'
+      : errors
+      ? '1px solid #da141450'
+      : '1px solid rgba(243, 243, 243, 0.5)'};
   border-radius: 14px;
   box-sizing: border-box;
   @media only screen and (min-width: 768px) {
@@ -38,6 +44,12 @@ export const Textarea = styled.textarea`
     width: 480px;
     font-size: 17px;
     line-height: 1.56;
+  }
+  :focus {
+    outline: none;
+  }
+  :hover {
+    border: 1px solid rgba(243, 243, 243, 1);
   }
 `;
 

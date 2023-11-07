@@ -37,9 +37,9 @@ export const FlexBox = styled.div`
 `;
 
 export const DivFollowUs = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   @media only screen and (min-width: 768px) {
-    margin-bottom: 24px;
+    margin-bottom: 80px;
   }
 `;
 
