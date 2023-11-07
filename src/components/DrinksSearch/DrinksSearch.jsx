@@ -29,6 +29,14 @@ const DrinksSearch = () => {
   const categories = useSelector(selectCategories);
   const ingredients = useSelector(selectIngredients);
 
+  const allCategories =
+    categories.length !== 0 ? ['All categories', ...categories] : [];
+  const allIngredients =
+    ingredients.length !== 0
+      ? [{ title: 'All ingredients' }, ...ingredients]
+      : [];
+  console.log('allIngredients :>> ', allIngredients);
+
   const dispatch = useDispatch();
 
   const screenSize = useMediaQuery('(max-width:767px)');
@@ -45,11 +53,19 @@ const DrinksSearch = () => {
         break;
       case 'category':
         // setCategory(value);
+        if (value === 'All categories') {
+          dispatch(setSelectedCategory(''));
+          return;
+        }
         dispatch(setSelectedCategory(value));
         dispatch(setCurrentPage(1));
         break;
       case 'ingredient':
         // setIngredient(value);
+        if (value === 'All ingredients') {
+          dispatch(setSelectedIngredient(''));
+          return;
+        }
         dispatch(setSelectedIngredient(value));
         dispatch(setCurrentPage(1));
         break;
@@ -98,7 +114,8 @@ const DrinksSearch = () => {
           placeholder="All categories"
           classNamePrefix="react-select"
           styles={customStyles}
-          options={categories.map((item) => ({
+          noOptionsMessage={() => 'No categories'}
+          options={allCategories.map((item) => ({
             label: item,
             value: item,
           }))}
@@ -109,7 +126,8 @@ const DrinksSearch = () => {
           styles={customStyles}
           placeholder="Ingredients"
           classNamePrefix="react-select"
-          options={ingredients.map((item) => ({
+          noOptionsMessage={() => 'No ingredients'}
+          options={allIngredients.map((item) => ({
             label: item.title,
             value: item.title,
           }))}

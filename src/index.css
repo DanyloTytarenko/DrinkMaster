@@ -10,6 +10,7 @@ body {
     rgba(64, 112, 205, 1) 9%,
     rgba(10, 10, 17, 1) 58%
   ); */
+  overflow-x: hidden;
   background-color: #0A0A11;
   box-sizing: border-box;
 
