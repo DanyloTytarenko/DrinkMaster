@@ -61,7 +61,7 @@ export const ownDrinksSlice = createSlice({
     [deleteOwnDrink.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items = state.items.filter((item) => item._id !== action.payload.id);
+      state.items = state.items.filter((item) => item._id !== action.payload);
     },
     [deleteOwnDrink.rejected]: handleRejected,
   },
@@ -88,7 +88,7 @@ export const favoriteDrinksSlice = createSlice({
     [deleteFavoriteDrink.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items = state.items.filter((item) => item.id !== action.payload.id);
+      state.items = state.items.filter((item) => item._id !== action.payload);
     },
     [deleteFavoriteDrink.rejected]: handleRejected,
   },

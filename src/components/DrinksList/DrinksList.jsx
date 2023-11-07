@@ -9,13 +9,10 @@ import {
 import { Alert } from '@mui/material';
 export const DrinksList = () => {
   let listOfDrinks;
-  console.log(location.pathname);
   if (location.pathname === '/DrinkMaster/my') {
     listOfDrinks = useSelector(selectOwnDrinks);
-    console.log(listOfDrinks);
   } else if (location.pathname === '/DrinkMaster/favorites') {
     listOfDrinks = useSelector(selectFavoriteDrinks);
-    console.log(listOfDrinks);
   }
   return (
     (listOfDrinks.length > 0 ?
