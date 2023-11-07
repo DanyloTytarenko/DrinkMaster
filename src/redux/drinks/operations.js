@@ -11,7 +11,7 @@ export const fetchOwnDrinks = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/drinks/own');
-      return response.data;
+      return response.data.drinks;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -23,7 +23,7 @@ export const fetchFavoriteDrinks = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/drinks/favorite');
-      return response.data;
+      return response.data.drinks;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -70,7 +70,7 @@ export const addOwnDrink = createAsyncThunk(
     console.log(drink, 'drink');
     try {
       const response = await axios.post('/drinks/own/add', drink);
-      return response.status === 200 ? response.data : e.response.data;
+      return response.status === 200 ? response.config.data : e.response.data;
     } catch (e) {
       if (!e.response) {
         throw e;
