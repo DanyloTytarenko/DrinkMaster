@@ -1,4 +1,4 @@
-import{s as i,c as t,N as u,j as e,u as M,r as l,a5 as A,k as D,z as T,a6 as Z,a7 as G}from"./index-b99903bb.js";import{c as _,a as q,u as X}from"./index.esm-26e33829.js";const J=i(u)`
+import{s as i,c as t,N as u,j as e,u as M,r as l,a5 as A,k as D,z as T,a6 as Z,a7 as G}from"./index-d8f47bf1.js";import{c as _,a as q,u as X}from"./index.esm-ff311fad.js";const J=i(u)`
   display: inline-flex;
   align-items: center;
 `,K=i.svg`
@@ -516,7 +516,7 @@ max-width: 104px;
   line-height: 24px;
   // margin-left: 14px; 
   }
-`,Be=()=>{const n=D(T);return e.jsxs(Le,{children:[e.jsx(Se,{children:e.jsx("img",{width:"44",height:"44",src:n.avatar||"../../images/user.jpg",alt:"User avatar",onError:o=>{o.currentTarget.src="/src/images/user.jpg"}})}),e.jsx(ze,{children:n.name})]})},Ee=i.div`
+`,Be=()=>{const n=D(T);return e.jsxs(Le,{children:[e.jsx(Se,{children:e.jsx("img",{width:"44",height:"44",src:n.avatar||"../../images/user.jpg",alt:"User avatar",onError:o=>{o.currentTarget.src="../../images/user.jpg"}})}),e.jsx(ze,{children:n.name})]})},Ee=i.div`
   position: relative;
   z-index: 100;
 `,Me=i.div`
