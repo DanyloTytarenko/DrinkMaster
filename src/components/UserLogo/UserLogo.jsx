@@ -6,6 +6,7 @@ import {
 } from './UserLogo.styled';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
+import userLogoImg from '../../images/user.jpg';
 const UserLogo = () => {
   const user = useSelector(selectUser);
   return (
@@ -14,10 +15,10 @@ const UserLogo = () => {
         <img
           width="44"
           height="44"
-          src={user.avatar || '../../images/user.jpg'}
+          src={user.avatar || userLogoImg}
           alt="User avatar"
           onError={(event) => {
-            event.currentTarget.src = '/src/images/user.jpg';
+            event.currentTarget.src = userLogoImg;
           }}
         />
       </UserLogoWrap>
