@@ -14,16 +14,16 @@ import { useDispatch } from 'react-redux';
 import {
   deleteOwnDrink,
   deleteFavoriteDrink,
-} from '../../../redux/drinks/operations';
+} from '../../redux/drinks/operations';
 
 import sprite from './svg/sprite.svg';
 export const DrinksListItem = ({ drink }) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
-    if (location.pathname === '/my') {
-      dispatch(deleteOwnDrink(drink.id));
-    } else if (location.pathname === '/favorites') {
-      dispatch(deleteFavoriteDrink(drink.id));
+  if (location.pathname === '/DrinkMaster/my') {
+      dispatch(deleteOwnDrink(drink._id));
+    } else if (location.pathname === '/DrinkMaster/favorites') {
+      dispatch(deleteFavoriteDrink(drink._id));
     }
   };
   return (
@@ -35,8 +35,8 @@ export const DrinksListItem = ({ drink }) => {
       </TitleWrapper>
       <DrinkDesc>{drink.desc}</DrinkDesc>
       <BtnWrapper>
-        <SeeMoreButton to={`/drink/${drink.id}`}>See more</SeeMoreButton>
-        <DeleteButton onClick={handleDelete}>
+        <SeeMoreButton to={`/drink/${drink._id}`}>See more</SeeMoreButton>
+        <DeleteButton type="button" onClick={handleDelete}>
           <svg width="24px" height="24px" stroke="#F3F3F3">
             <use href={`${sprite}#icon-trash`} />
           </svg>
