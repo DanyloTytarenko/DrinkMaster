@@ -9,10 +9,11 @@ export const Container = styled.div`
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
+  min-width: 375px;
 
-  @media screen and (min-width: 375px) {
+  /* @media screen and (min-width: 375px) {
     max-width: 375px;
-  }
+  } */
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
