@@ -11,7 +11,7 @@ export const BurgerMenu = ({isOpen, toggleMenu}) => {
 const theme = useSelector(selectTheme);
   return (
     <BurgerContainer >
-      {isOpen === false ?<BurgerIcon onClick={toggleMenu}>
+      {isOpen === false ? <BurgerIcon onClick={toggleMenu}>
         <Bar theme={theme} />
         <Bar  theme={theme}/>
         <Bar  theme={theme}/>
