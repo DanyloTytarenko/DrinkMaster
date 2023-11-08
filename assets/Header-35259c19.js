@@ -1,4 +1,4 @@
-import{s as t,c as n,N as w,j as e,u as L,r as x,a6 as _,k as c,m,a7 as q,A as R,a8 as J,a9 as K}from"./index-b7a3bda4.js";import{c as Q,a as X,u as Y}from"./index.esm-20783f1a.js";const ee=t(w)`
+import{s as t,c as n,N as w,j as e,u as L,r as x,a6 as _,k as c,m,a7 as q,A as R,a8 as J,a9 as K}from"./index-fe54c6f5.js";import{c as Q,a as X,u as Y}from"./index.esm-1c8c3902.js";const ee=t(w)`
   display: inline-flex;
   align-items: center;
 `,ie=t.svg`
@@ -227,6 +227,7 @@ margin-bottom: 8px;
     letter-spacing: -0.28px;
   }
 `,be=()=>e.jsxs(ge,{children:[e.jsx(me,{children:"©2023 Drink Master. All rights reserved."}),e.jsxs(ue,{children:[e.jsx(M,{to:"/privacy",children:"Privacy Policy"}),e.jsx(M,{to:"/service",children:"Terms of Service"})]})]}),ii=t.div`
+  min-height: 100hv;
   margin: 0 auto;
   padding-right: 20px;
   padding-left: 20px;
