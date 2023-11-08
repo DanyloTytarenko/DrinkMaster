@@ -1,4 +1,5 @@
-import{s as r,j as a}from"./index-cd111e7f.js";const h=r.h1`
+import{s as h,j as m}from"./index-4c387b39.js";const o=h.h1`
+  max-width: 335px;
   margin-right: auto;
   margin-bottom: ${({$marginM:i})=>i};
   font-size: 32px;
@@ -7,12 +8,14 @@ import{s as r,j as a}from"./index-cd111e7f.js";const h=r.h1`
   color: ${({theme:i})=>i==="light"?"#0A0A11":"#F3F3F3"};
 
   @media (min-width: 768px) {
+    max-width: 641px;
     font-size: 56px;
     line-height: 1.07;
   }
 
   @media (min-width: 1440px) {
+    max-width: 715px;
     font-size: 64px;
     line-height: 1.06;
   }
-`,s=({title:i,theme:t,marginMobile:e,marginTablet:n,marginDesktop:o})=>a.jsx(h,{theme:t,$marginM:e,$marginT:n,$marginD:o,children:i});export{s as P};
+`,r=({title:i,theme:t,marginMobile:e,marginTablet:n,marginDesktop:a})=>m.jsx(o,{theme:t,$marginM:e,$marginT:n,$marginD:a,children:i});export{r as P};

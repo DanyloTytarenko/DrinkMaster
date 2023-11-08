@@ -1,4 +1,4 @@
-import{s as i,c as n,N as b,k as c,a2 as w,j as e,u as F,r as l,a6 as G,a7 as _,z as H,a8 as q,a9 as J}from"./index-cd111e7f.js";import{c as K,a as Q,u as X}from"./index.esm-508a2217.js";const Y=i(b)`
+import{s as i,c as n,N as b,k as c,m as w,j as e,u as F,r as l,a6 as G,a7 as _,A as H,a8 as q,a9 as J}from"./index-4c387b39.js";import{c as K,a as Q,u as X}from"./index.esm-7fbe01ad.js";const Y=i(b)`
   display: inline-flex;
   align-items: center;
 `,ee=i.svg`
@@ -621,7 +621,7 @@ font-family: Manrope;
   ${j}
   background-color: ${n.disabled};
   color: ${n.light};
-`,Pe=i.span`
+`,Ae=i.span`
   text-align: center;
   font-family: Manrope;
   font-size: 14px;
@@ -636,7 +636,7 @@ font-family: Manrope;
   background: none;
   border: none;
   top: -6px;
-`,Ae=i.button`
+`,Pe=i.button`
   ${j}
   background-color: ${n.light};
   color: ${n.secondaryDark};
@@ -677,4 +677,4 @@ font-family: Manrope;
   flex-direction: column;
 `,Ke=i.input`
   display: none;
-`,I=()=>{const[t,o]=l.useState(!1),[r,s]=l.useState(!1),[x,d]=l.useState(!1),g=F(),L=c(H),[R,V]=l.useState(L.name),[N,O]=l.useState(L.avatar),U=()=>{o(!t)},P=()=>{d(!x)},S=()=>{s(!r)},z=()=>{s(!1),d(!1),o(!1)},A=p=>{p.preventDefault();const v=p.target.elements.name.value,k=p.target.elements.avatar.files[0];g(J({name:v,avatar:k}))},Z=p=>{const v=p.target.files[0],k=URL.createObjectURL(v);O(k)};return e.jsxs(e.Fragment,{children:[e.jsx("div",{onClick:U,children:e.jsx(Be,{})}),e.jsx(Ve,{open:t,children:r?e.jsxs(e.Fragment,{children:[e.jsx(T,{onClick:z,children:e.jsx("svg",{width:"18px",height:"18px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${h}#icon-close`})})}),e.jsx(Pe,{children:"Are you sure you want to log out?"}),e.jsxs(Oe,{children:[e.jsx(M,{type:"button",onClick:()=>g(q()),children:"Log out"}),e.jsx(Ue,{type:"button",onClick:S,children:"Cancel"})]})]}):x?e.jsxs(e.Fragment,{children:[e.jsx(T,{onClick:z,children:e.jsx("svg",{width:"18px",height:"18px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${h}#icon-close`})})}),e.jsxs(Je,{onSubmit:A,children:[e.jsxs(qe,{children:[e.jsx(Ge,{children:e.jsx("img",{width:"100",height:"100",src:N||f,alt:"User avatar",onError:p=>{p.currentTarget.src=f}})}),e.jsxs(_e,{htmlFor:"avatar",children:[e.jsx("svg",{width:"34px",height:"34px",children:e.jsx("use",{href:`${h}#icon-add`})}),e.jsx(Ke,{type:"file",name:"avatar",id:"avatar",accept:".jpg, .jpeg, .png",onChange:Z})]})]}),e.jsx(Ze,{type:"text",name:"name",value:R,onChange:p=>V(p.target.value)}),e.jsx(Ae,{type:"submit",children:"Save changes"})]})]}):e.jsxs(e.Fragment,{children:[e.jsxs(Ne,{onClick:P,children:[e.jsx("span",{children:"Edit profile"}),e.jsx("svg",{width:"14px",height:"14px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${h}#icon-edit`})})]}),e.jsx(M,{type:"button",onClick:S,children:"Log out"})]})})]})},ni=()=>{const[t,o]=l.useState(window.innerWidth),r=()=>{o(window.innerWidth)};l.useEffect(()=>(window.addEventListener("resize",r),()=>{window.removeEventListener("resize",r)}),[]);const[s,x]=l.useState(!1),d=()=>{x(!s)};return e.jsxs(Re,{children:[e.jsx(W,{}),t>=1440&&e.jsxs(e.Fragment,{children:[e.jsx($e,{}),e.jsx(E,{}),e.jsx(I,{})]}),t<1440&&e.jsxs(e.Fragment,{children:[s?e.jsx(E,{}):e.jsx(I,{}),e.jsx(We,{isOpen:s,toggleMenu:d})]})]})};export{Ye as C,ti as F,ni as H,ei as S,re as a,ii as b};
+`,I=()=>{const[t,o]=l.useState(!1),[r,s]=l.useState(!1),[x,d]=l.useState(!1),g=F(),L=c(H),[R,V]=l.useState(L.name),[N,O]=l.useState(L.avatar),U=()=>{o(!t)},A=()=>{d(!x)},S=()=>{s(!r)},z=()=>{s(!1),d(!1),o(!1)},P=p=>{p.preventDefault();const v=p.target.elements.name.value,k=p.target.elements.avatar.files[0];g(J({name:v,avatar:k}))},Z=p=>{const v=p.target.files[0],k=URL.createObjectURL(v);O(k)};return e.jsxs(e.Fragment,{children:[e.jsx("div",{onClick:U,children:e.jsx(Be,{})}),e.jsx(Ve,{open:t,children:r?e.jsxs(e.Fragment,{children:[e.jsx(T,{onClick:z,children:e.jsx("svg",{width:"18px",height:"18px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${h}#icon-close`})})}),e.jsx(Ae,{children:"Are you sure you want to log out?"}),e.jsxs(Oe,{children:[e.jsx(M,{type:"button",onClick:()=>g(q()),children:"Log out"}),e.jsx(Ue,{type:"button",onClick:S,children:"Cancel"})]})]}):x?e.jsxs(e.Fragment,{children:[e.jsx(T,{onClick:z,children:e.jsx("svg",{width:"18px",height:"18px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${h}#icon-close`})})}),e.jsxs(Je,{onSubmit:P,children:[e.jsxs(qe,{children:[e.jsx(Ge,{children:e.jsx("img",{width:"100",height:"100",src:N||f,alt:"User avatar",onError:p=>{p.currentTarget.src=f}})}),e.jsxs(_e,{htmlFor:"avatar",children:[e.jsx("svg",{width:"34px",height:"34px",children:e.jsx("use",{href:`${h}#icon-add`})}),e.jsx(Ke,{type:"file",name:"avatar",id:"avatar",accept:".jpg, .jpeg, .png",onChange:Z})]})]}),e.jsx(Ze,{type:"text",name:"name",value:R,onChange:p=>V(p.target.value)}),e.jsx(Pe,{type:"submit",children:"Save changes"})]})]}):e.jsxs(e.Fragment,{children:[e.jsxs(Ne,{onClick:A,children:[e.jsx("span",{children:"Edit profile"}),e.jsx("svg",{width:"14px",height:"14px",stroke:"#F3F3F3",children:e.jsx("use",{href:`${h}#icon-edit`})})]}),e.jsx(M,{type:"button",onClick:S,children:"Log out"})]})})]})},ni=()=>{const[t,o]=l.useState(window.innerWidth),r=()=>{o(window.innerWidth)};l.useEffect(()=>(window.addEventListener("resize",r),()=>{window.removeEventListener("resize",r)}),[]);const[s,x]=l.useState(!1),d=()=>{x(!s)};return e.jsxs(Re,{children:[e.jsx(W,{}),t>=1440&&e.jsxs(e.Fragment,{children:[e.jsx($e,{}),e.jsx(E,{}),e.jsx(I,{})]}),t<1440&&e.jsxs(e.Fragment,{children:[s?e.jsx(E,{}):e.jsx(I,{}),e.jsx(We,{isOpen:s,toggleMenu:d})]})]})};export{Ye as C,ti as F,ni as H,ei as S,re as a,ii as b};

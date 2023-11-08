@@ -1,10 +1,11 @@
-import{n as h,i as g,s as i,c as n,L as l,j as e,k as p,r as c,u as y,m as b}from"./index-cd111e7f.js";import{H as k,F as j}from"./Header-eb70c8b0.js";import{P as D}from"./PageTitle-4a169bee.js";import{D as $}from"./dummyDrinkThumb-d0bd605f.js";import{u as x}from"./useMediaQuery-6623cb62.js";import{M as v}from"./MainAppContainer-7c914c3f.js";import"./index.esm-508a2217.js";import"./getThemeProps-625fac8d.js";const z=h.div`
+import{n as f,i as k,s as n,c as t,L as x,k as o,m,j as i,r as p,u as b,o as $,p as j}from"./index-4c387b39.js";import{H as D,F as v}from"./Header-c29d26f4.js";import{P as T}from"./PageTitle-ea1ce379.js";import{D as z}from"./dummyDrinkThumb-d0bd605f.js";import{u as h}from"./useMediaQuery-400b7bd2.js";import{M as L}from"./MainAppContainer-8358d247.js";import"./index.esm-7fbe01ad.js";import"./getThemeProps-559beff0.js";const P=f.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top: 80px;
   padding-bottom: 80px;
+  
   @media only screen and (min-width: 768px) {
   padding-top: 120px;
   padding-bottom: 140px;
@@ -12,7 +13,7 @@ import{n as h,i as g,s as i,c as n,L as l,j as e,k as p,r as c,u as y,m as b}fro
   @media only screen and (min-width: 1440px) {
   padding-top: 0px;
   } 
-`,L=h.div`
+`,S=f.div`
   @media screen and (min-width: 1440px) {
     position: absolute;
     background-color: rgba(188, 230, 210, 0.3);
@@ -23,21 +24,21 @@ import{n as h,i as g,s as i,c as n,L as l,j as e,k as p,r as c,u as y,m as b}fro
     top: 343px;
     right: 193px;
   }
-`,T=g`
+`,M=k`
   from {
     transform: translateY(-100%);
   }
   to {
     transform: translateY(0);
   }
-`,P=g`
+`,_=k`
   from {
     transform: translateX(-100%);
   }
   to {
     transform: translateX(0);
   }
-`,S=i.div`
+`,E=n.div`
   margin-bottom: 112px;
   @media only screen and (min-width: 768px) {
     margin-bottom: 123px;
@@ -47,7 +48,7 @@ import{n as h,i as g,s as i,c as n,L as l,j as e,k as p,r as c,u as y,m as b}fro
     gap: 130px;
     margin-bottom: 160px;
   }
-`,M=i.div`
+`,C=n.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -62,20 +63,20 @@ import{n as h,i as g,s as i,c as n,L as l,j as e,k as p,r as c,u as y,m as b}fro
     max-width: 500px;
     margin-bottom: 0px;
   }
-`,_=i.div`
+`,H=n.div`
   display: flex;
   flex-direction: column;
   @media only screen and (min-width: 1440px) {
     margin-top: 185px;
   }
-  animation: ${T} 1s forwards;
-`,E=i.p`
+  animation: ${M} 1s forwards;
+`,A=n.p`
 height: 60px;
 font-size: 14px;
 font-weight: 400px;
 line-height: 20px;
-color: ${n.light};
 margin-bottom: 32px;
+${({theme:e})=>e==="dark"?`color: ${t.light};`:`color: ${t.secondaryDark};`}
 @media only screen and (min-width: 768px) {
 font-size: 18px;
 line-height: 24px;
@@ -84,18 +85,18 @@ margin-bottom: 48px;
 @media only screen and (min-width: 1440px) {
 width: 500px;
 margin-bottom: 40px;
-`,C=i(l)`
+`,N=n(x)`
   display: flex;
   width: 151px;
   height: 46px;
   justify-content: center;
   align-items: center;
-  color: ${n.secondaryDark};
-  background-color: ${n.light};
   border-radius: 42px;
   font-size: 14px;
   font-weight: 600;
   transition: 250ms ease;
+  ${({theme:e})=>e==="dark"?`color: ${t.secondaryDark};`:`color: ${t.light};`};
+  ${({theme:e})=>e==="dark"?`background-color: ${t.light};`:`background-color: ${t.secondaryDark};`}
 
   @media only screen and (min-width: 768px) {
     width: 169px;
@@ -112,49 +113,48 @@ margin-bottom: 40px;
   }
 
   &:hover {
-    color: ${n.light};
-    background-color: ${n.secondaryDark};
+    ${({theme:e})=>e==="dark"?`color: ${t.light};`:`color: ${t.secondaryDark};`}
+    ${({theme:e})=>e==="dark"?`background-color: ${t.secondaryDark};`:`background-color: ${t.light};`}
   }
-`,H=i.div`
-display: flex;
-justify-content: center;
-flex-shrink: 0; 
-animation: ${P} 1s forwards;
-@media only screen and (min-width: 1440px) {
-margin-top: 128px;
-}
-`,m="/DrinkMaster/assets/asr_blue_iced_tea_mobile-363d6adb.png",A="/DrinkMaster/assets/asr_blue_iced_tea_tablet-6f81fa1d.png",N=()=>e.jsxs(S,{children:[e.jsxs(_,{children:[e.jsx(D,{title:"Craft Your Perfect Drink with Drink Master",theme:"dark",marginMobile:"16px",marginTablet:"28px",marginDesktop:"28px"}),e.jsxs(M,{children:[e.jsx(E,{children:"Unlock your inner mixologist with Drink Master, your one-stop destination for exploring, crafting, and mastering the worlds finest beverages."}),e.jsx(C,{to:"/add",children:"Add drinks"})]})]}),e.jsx(H,{children:e.jsxs("picture",{children:[e.jsx("source",{media:"(min-width: 768px)",srcSet:`${A}`,width:"359",height:"445"}),e.jsx("source",{media:"(min-width: 375px)",srcSet:`${m}`,width:"252",height:"313"}),e.jsx("img",{src:m,alt:"Coctail image",width:"252",height:"313"})]})})]}),F=t=>t.newDrinks.items,I=t=>t.newDrinks.isLoading,W=t=>t.newDrinks.error,Y=i.ul`
+`,F=n.div`
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  animation: ${_} 1s forwards;
+  @media only screen and (min-width: 1440px) {
+    margin-top: 128px;
+  }
+`,g="/DrinkMaster/assets/asr_blue_iced_tea_mobile-363d6adb.png",I="/DrinkMaster/assets/asr_blue_iced_tea_tablet-6f81fa1d.png",W=()=>{const e=o(m);return i.jsxs(E,{children:[i.jsxs(H,{children:[i.jsx(T,{title:"Craft Your Perfect Drink with Drink Master",theme:"dark",marginMobile:"16px",marginTablet:"28px",marginDesktop:"28px"}),i.jsxs(C,{children:[i.jsx(A,{theme:e,children:"Unlock your inner mixologist with Drink Master, your one-stop destination for exploring, crafting, and mastering the worlds finest beverages."}),i.jsx(N,{to:"/add",theme:e,children:"Add drinks"})]})]}),i.jsx(F,{children:i.jsxs("picture",{children:[i.jsx("source",{media:"(min-width: 768px)",srcSet:`${I}`,width:"359",height:"445"}),i.jsx("source",{media:"(min-width: 375px)",srcSet:`${g}`,width:"252",height:"313"}),i.jsx("img",{src:g,alt:"Coctail image",width:"252",height:"313"})]})})]})},Y=e=>e.newDrinks.items,X=e=>e.newDrinks.isLoading,B=e=>e.newDrinks.error,G=n.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
-`,X=i.h2`
+`,O=n.h2`
   font-size: 28px;
   font-weight: 600;
   line-height: 32px;
   margin-bottom: 0;
-  color: ${n.light};
+  ${({theme:e})=>e==="dark"?`color: ${t.light};`:`color: ${t.secondaryDark};`}
   @media only screen and (min-width: 768px) {
     font-size: 40px;
     line-height: 44px;
   }
-`,B=i.li`
+`,Q=n.li`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  color: ${n.light};
   width: 100%;
   margin-bottom: 40px;
   @media only screen and (min-width: 768px) {
     flex-direction: column;
     margin-bottom: 80px;
   }
-`,G=i.ul`
+`,R=n.ul`
   display: flex;
   flex-wrap: nowrap;
   gap: 20px;
-`,O=i.div`
+`,U=n.div`
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -166,7 +166,7 @@ margin-top: 128px;
   @media only screen and (min-width: 1440px) {
     max-width: 400px;
   }
-`,Q=i.img`
+`,q=n.img`
   height: 360px;
   border-radius: 8px;
   background:
@@ -187,19 +187,20 @@ margin-top: 128px;
   @media only screen and (min-width: 1440px) {
     height: 400px;
   }
-`,R=i.div`
+`,J=n.div`
   display: flex;
   justify-content: space-between;
-`,U=i.h3`
+`,K=n.h3`
   font-size: 16px;
   font-weight: 500;
   line-height: 18px;
   margin-bottom: 0;
+  ${({theme:e})=>e==="dark"?`color: ${t.light};`:`color: ${t.secondaryDark};`}
   @media only screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 24px;
   }
-`,q=i(l)`
+`,V=n(x)`
   color: rgba(243, 243, 243, 0.5);
   text-align: right;
   font-weight: 500;
@@ -211,19 +212,19 @@ margin-top: 128px;
   }
 
   &:hover {
-    color: ${n.light};
+    ${({theme:e})=>e==="dark"?`color: ${t.light};`:`color: ${t.secondaryDark};`};
   }
-`,J=i(l)`
+`,Z=n(x)`
   display: flex;
   width: 163px;
   height: 46px;
   justify-content: center;
   align-items: center;
-  color: ${n.secondaryDark};
-  background: ${n.light};
   border-radius: 42px;
   font-weight: 600;
   transition: 250ms ease;
+  ${({theme:e})=>e==="dark"?`color: ${t.secondaryDark};`:`color: ${t.light};`};
+${({theme:e})=>e==="dark"?`background-color: ${t.light};`:`background-color: ${t.secondaryDark};`}
 
   @media only screen and (min-width: 768px) {
     width: 183px;
@@ -236,7 +237,7 @@ margin-top: 128px;
   }
 
   &:hover {
-    color: ${n.light};
-    background-color: ${n.secondaryDark};
+    ${({theme:e})=>e==="dark"?`color: ${t.light};`:`color: ${t.secondaryDark};`}
+    ${({theme:e})=>e==="dark"?`background-color: ${t.secondaryDark};`:`background-color: ${t.light};`}
   }
-`,K=()=>{const t=p(F),a=x("(max-width: 767px)"),o=x("(min-width: 768px) and (max-width: 1439px)"),[f,w]=c.useState(t);return c.useEffect(()=>{const s=a?1:o?2:3,r=t.map(d=>({...d,drinks:d.drinks.slice(0,s)}));w(r)},[a,o,t]),e.jsxs(e.Fragment,{children:[e.jsx(Y,{children:f.map(s=>e.jsxs(B,{children:[e.jsx(X,{children:s.category}),e.jsx(G,{children:s.drinks.map((r,d)=>e.jsxs(O,{children:[e.jsx(Q,{src:r.drinkThumb,alt:`Photo of ${r.drink}`,onError:u=>{u.currentTarget.src=$}}),e.jsxs(R,{children:[e.jsx(U,{children:r.drink}),e.jsx(q,{to:`/drink/${r._id}`,children:"See more"})]})]},d))})]},s.category))}),e.jsx(J,{to:"/drinks",children:"Other drinks"})]})},se=()=>{const t=y(),a=p(I),o=p(W);return c.useEffect(()=>{t(b())},[t]),a?e.jsx("p",{children:"Loading..."}):o?e.jsxs("p",{children:["Error: ",o.message]}):e.jsxs(e.Fragment,{children:[e.jsx(k,{}),e.jsxs(v,{children:[e.jsxs(z,{children:[e.jsx(N,{}),e.jsx(K,{})]}),e.jsx(L,{})]}),e.jsx(j,{})]})};export{se as default};
+`,ee=()=>{const e=o(Y),c=h("(max-width: 767px)"),a=h("(min-width: 768px) and (max-width: 1439px)"),s=o(m),[w,u]=p.useState(e);return p.useEffect(()=>{const d=c?1:a?2:3,r=e.map(l=>({...l,drinks:l.drinks.slice(0,d)}));u(r)},[c,a,e]),i.jsxs(i.Fragment,{children:[i.jsx(G,{children:w.map(d=>i.jsxs(Q,{children:[i.jsx(O,{theme:s,children:d.category}),i.jsx(R,{children:d.drinks.map((r,l)=>i.jsxs(U,{children:[i.jsx(q,{src:r.drinkThumb,alt:`Photo of ${r.drink}`,onError:y=>{y.currentTarget.src=z}}),i.jsxs(J,{children:[i.jsx(K,{theme:s,children:r.drink}),i.jsx(V,{to:`/drink/${r._id}`,theme:s,children:"See more"})]})]},l))})]},d.category))}),i.jsx(Z,{to:"/drinks",children:"Other drinks"})]})},ce=()=>{const e=b(),c=o(X),a=o(B),s=o(m);return p.useEffect(()=>{e($())},[e]),c?i.jsx(j,{}):a?i.jsxs("p",{children:["Error: ",a.message]}):i.jsxs(i.Fragment,{children:[i.jsx(D,{}),i.jsxs(L,{children:[i.jsxs(P,{theme:s,children:[i.jsx(W,{}),i.jsx(ee,{})]}),i.jsx(S,{})]}),i.jsx(v,{})]})};export{ce as default};
