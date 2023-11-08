@@ -7,9 +7,7 @@ import {
   UserName,
 } from './UserLogo.styled';
 
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors'
-import {selectTheme } from '../../redux/theme/themeSlice'
+import { selectTheme } from '../../redux/theme/themeSlice';
 import userLogoImg from '../../images/user.jpg';
 
 const UserLogo = () => {
@@ -22,12 +20,10 @@ const UserLogo = () => {
         <UserSvg
           width="44"
           height="44"
-
           src={user.avatar || userLogoImg}
           alt="User avatar"
           onError={(event) => {
             event.currentTarget.src = userLogoImg;
-
           }}
         />
       </UserLogoWrap>
