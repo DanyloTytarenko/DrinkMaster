@@ -1,18 +1,13 @@
 import styled from '@emotion/styled';
 import { colors } from 'src/colors';
 
-export const Container = styled.div`
+export const SubContainer = styled.div`
   width: 100%;
-  max-width: 335px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 80px 20px;
+  margin: 80px 0;
   @media only screen and (min-width: 768px) {
-    padding: 140px 32px;
-    max-width: 704px;
+    margin: 140px 0;
     @media only screen and (min-width: 1440px) {
-      padding: 160px 100px;
-      max-width: 1240px;
+      margin: 160px 0;
     }
   }
 `;
