@@ -1,4 +1,4 @@
-import{n as f,a as k,s as t,c as n,L as x,k as a,m,j as i,r as p,u as b,o as $,p as j}from"./index-b95de052.js";import{H as D,F as v}from"./Header-7700d461.js";import{P as T}from"./PageTitle-7ae4cfb5.js";import{D as z}from"./dummyDrinkThumb-d0bd605f.js";import{u as h}from"./useMediaQuery-d0c30f00.js";import{M as L}from"./MainAppContainer-1d1daae0.js";import"./index.esm-68303dfb.js";import"./getThemeProps-2a914071.js";const P=f.div`
+import{n as f,a as k,s as t,c as n,L as x,k as a,m,j as i,r as p,u as b,o as $,p as j}from"./index-12e0d522.js";import{H as D,F as v}from"./Header-3023b052.js";import{P as T}from"./PageTitle-bc82c659.js";import{D as z}from"./dummyDrinkThumb-d0bd605f.js";import{u as h}from"./useMediaQuery-b6514f4e.js";import{M as L}from"./MainAppContainer-4cc90b67.js";import"./index.esm-aa62406f.js";import"./getThemeProps-19cdf186.js";const P=f.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -125,7 +125,7 @@ margin-bottom: 40px;
   @media only screen and (min-width: 1440px) {
     margin-top: 128px;
   }
-`,g="/DrinkMaster/assets/asr_blue_iced_tea_mobile-363d6adb.png",I="/DrinkMaster/assets/asr_blue_iced_tea_tablet-6f81fa1d.png",W=()=>{const e=a(m);return i.jsxs(E,{children:[i.jsxs(H,{children:[i.jsx(T,{title:"Craft Your Perfect Drink with Drink Master",theme:"dark",marginMobile:"16px",marginTablet:"28px",marginDesktop:"28px"}),i.jsxs(C,{children:[i.jsx(A,{theme:e,children:"Unlock your inner mixologist with Drink Master, your one-stop destination for exploring, crafting, and mastering the worlds finest beverages."}),i.jsx(N,{to:"/add",theme:e,children:"Add drinks"})]})]}),i.jsx(F,{children:i.jsxs("picture",{children:[i.jsx("source",{media:"(min-width: 768px)",srcSet:`${I}`,width:"359",height:"445"}),i.jsx("source",{media:"(min-width: 375px)",srcSet:`${g}`,width:"252",height:"313"}),i.jsx("img",{src:g,alt:"Coctail image",width:"252",height:"313"})]})})]})},Y=e=>e.newDrinks.items,X=e=>e.newDrinks.isLoading,B=e=>e.newDrinks.error,G=t.ul`
+`,g="/DrinkMaster/assets/asr_blue_iced_tea_mobile-363d6adb.png",I="/DrinkMaster/assets/asr_blue_iced_tea_tablet-6f81fa1d.png",W=()=>{const e=a(m);return i.jsxs(E,{children:[i.jsxs(H,{children:[i.jsx(T,{title:"Craft Your Perfect Drink with Drink Master",theme:e,marginMobile:"16px",marginTablet:"28px",marginDesktop:"28px"}),i.jsxs(C,{children:[i.jsx(A,{theme:e,children:"Unlock your inner mixologist with Drink Master, your one-stop destination for exploring, crafting, and mastering the worlds finest beverages."}),i.jsx(N,{to:"/add",theme:e,children:"Add drinks"})]})]}),i.jsx(F,{children:i.jsxs("picture",{children:[i.jsx("source",{media:"(min-width: 768px)",srcSet:`${I}`,width:"359",height:"445"}),i.jsx("source",{media:"(min-width: 375px)",srcSet:`${g}`,width:"252",height:"313"}),i.jsx("img",{src:g,alt:"Coctail image",width:"252",height:"313"})]})})]})},Y=e=>e.newDrinks.items,X=e=>e.newDrinks.isLoading,B=e=>e.newDrinks.error,G=t.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -202,18 +202,17 @@ margin-bottom: 40px;
     line-height: 24px;
   }
 `,V=t(x)`
-  color: rgba(243, 243, 243, 0.5);
+  
   text-align: right;
   font-weight: 500;
   line-height: 18px;
   transition: 250ms ease;
-
+  ${({theme:e})=>e==="dark"?"color: rgba(243, 243, 243, 0.5);":"color: rgba(10, 10, 17, 0.50);"}
   @media only screen and (min-width: 768px) {
     font-size: 16px;
   }
-
   &:hover {
-    ${({theme:e})=>e==="dark"?`color: ${n.light};`:`color: ${n.secondaryDark};`};
+    ${({theme:e})=>e==="dark"?`color: ${n.light};`:`color: ${n.secondaryDark};`}
   }
 `,Z=t(x)`
   display: flex;
@@ -225,7 +224,7 @@ margin-bottom: 40px;
   font-weight: 600;
   transition: 250ms ease;
   ${({theme:e})=>e==="dark"?`color: ${n.secondaryDark};`:`color: ${n.light};`};
-${({theme:e})=>e==="dark"?`background-color: ${n.light};`:`background-color: ${n.secondaryDark};`}
+  ${({theme:e})=>e==="dark"?`background-color: ${n.light};`:`background-color: ${n.secondaryDark};`}
 
   @media only screen and (min-width: 768px) {
     width: 183px;
