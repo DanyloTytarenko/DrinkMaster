@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import example from './assets/background.png';
 import { colors } from './colors';
 export const AppWrapper = styled.div`
-  position: absolute;
   width: 100%;
   /* height: 100vh; */
   /* background: linear-gradient(
@@ -15,5 +14,4 @@ export const AppWrapper = styled.div`
   background-repeat: no-repeat;
   background-position: left top;
   background-size: 100% 100%;
-  z-index: -2;
 `;
