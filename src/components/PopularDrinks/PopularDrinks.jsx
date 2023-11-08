@@ -14,8 +14,11 @@ import { useEffect } from 'react';
 import { fetchPopularDrinks } from '../../redux/drinks/operations';
 import { selectPopularDrinks } from '../../redux/drinks/selectors';
 import DummyDrinkThumb from 'src/images/dummyDrinkThumb.png';
-
+import {
+  selectTheme
+} from '../../redux/theme/themeSlice';
 export const PopularDrinksComponent = () => {
+  const theme = useSelector(selectTheme);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchPopularDrinks());
@@ -24,7 +27,7 @@ export const PopularDrinksComponent = () => {
   let listOfPopularDrinks = useSelector(selectPopularDrinks);
 
   return (
-    <PopularDrinks>
+    <PopularDrinks theme={theme}>
       <div>
         <PopularTitle>Popular drinks</PopularTitle>
         <List>
@@ -39,8 +42,8 @@ export const PopularDrinksComponent = () => {
                   }}
                 />
                 <DescrWrapper>
-                  <DrinkName>{drink.drink}</DrinkName>
-                  <DrinkDescr>{drink.description}</DrinkDescr>
+                  <DrinkName theme={theme}>{drink.drink}</DrinkName>
+                  <DrinkDescr theme={theme}>{drink.description}</DrinkDescr>
                 </DescrWrapper>
               </DrinkLink>
             </ListItem>
