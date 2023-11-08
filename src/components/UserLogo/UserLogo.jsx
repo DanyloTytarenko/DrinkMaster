@@ -1,17 +1,19 @@
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectors';
 import {
   UserInfoWrap,
   UserLogoWrap,
-  UserSvg,
+  UserImg,
   UserName,
 } from './UserLogo.styled';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors';
+
 const UserLogo = () => {
   const user = useSelector(selectUser);
+
   return (
     <UserInfoWrap>
       <UserLogoWrap>
-        <img
+        <UserImg
           width="44"
           height="44"
           src={user.avatar || 'src/images/user.jpg'}
