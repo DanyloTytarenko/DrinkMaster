@@ -9,6 +9,8 @@ import {
 import { DropDown } from '../Modal/DropDown';
 
 const Header = () => {
+
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const handleWindowResize = () => {

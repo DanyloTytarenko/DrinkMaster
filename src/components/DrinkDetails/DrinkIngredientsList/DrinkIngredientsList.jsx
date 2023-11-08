@@ -7,7 +7,7 @@ import {
   TitleIngredient,
   MeasureIngredien,
 } from './DrinkIngredientsList.styled';
-import defaultImage from '../../../assets/images/emptyImage/drink-image.jpg';
+import defaultImage from '../../../assets/images/emptyImage/defolt-8.png';
 
 const DrinkIngredientsList = ({ drinkDetails }) => {
   const { ingredients } = drinkDetails;

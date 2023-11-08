@@ -43,16 +43,19 @@ export const UserSvg = styled.img`
 `;
 
 export const UserName = styled.p`
-  color: ${colors.light};
-  font-size: 14px;
-  font-weight: 500;
-  max-width: 104px;
+font-size: 14px;
+font-weight: 500;
+// margin-left: 8px; 
+max-width: 104px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-    line-height: 24px;
+  ${({ theme }) =>
+    theme === 'dark' ?
+    ` color: ${colors.light};` : `color: ${colors.secondaryDark};`}
+@media screen and (min-width: 768px) {
+  font-size: 16px;
+  line-height: 24px;
+  // margin-left: 14px; 
   }
 `;

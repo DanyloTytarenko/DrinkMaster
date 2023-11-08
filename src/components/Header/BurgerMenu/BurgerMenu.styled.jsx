@@ -25,7 +25,9 @@ export const Bar = styled.div`
   width: 26px;
   height: 2px;
   border-radius: 10px;
-  background-color: ${colors.light};
+  ${({ theme }) =>
+    theme === 'dark' ?
+    ` background: ${colors.light};` : `background: ${colors.secondaryDark};`}
   margin: 0;
   transition: 0.4s;
 
@@ -56,6 +58,9 @@ export const MenuItems = styled.ul`
     background: ${colors.primaryDark};
     z-index: 100;
   `}
+  ${({ theme }) =>
+    theme === 'dark' ?
+    ` background: ${colors.primaryDark};` : `background: ${colors.light};`}
 `;
 
 export const Gradient = styled.div`
@@ -68,3 +73,6 @@ export const Gradient = styled.div`
   top: 0;
   left: 10%;
 `;
+export const SvgClose = styled.svg`${({ theme }) =>
+    theme === 'dark' ?
+    ` fill: ${colors.light};` : `fill: ${colors.primaryDark};`}`
