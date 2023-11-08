@@ -13,6 +13,10 @@ export const StyledButton = styled.button`
     theme === 'dark'
       ? ` color: ${colors.secondaryDark};`
       : `color: ${colors.light};`}
+  ${({ theme }) =>
+    theme === 'dark'
+      ? ` background-color: ${colors.light};`
+      : `background-color: ${colors.secondaryDark};`}
   transition:
     color 250ms ease,
     background-color 250ms ease;
