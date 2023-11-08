@@ -5,7 +5,6 @@ import {
   ErrorText,
   ErrorIcon,
 } from './IngredientItem.styled';
-// import { ErrorIcon } from '../../RecipePreparation/RecipePreparation.styled';
 import Select from '../../../ReactSelect/ReactSelect';
 
 const IngredientItem = ({
