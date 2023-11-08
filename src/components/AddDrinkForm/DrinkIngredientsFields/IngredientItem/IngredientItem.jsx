@@ -5,7 +5,6 @@ import {
   ErrorText,
   ErrorIcon,
 } from './IngredientItem.styled';
-// import { ErrorIcon } from '../../RecipePreparation/RecipePreparation.styled';
 import Select from '../../../ReactSelect/ReactSelect';
 
 const IngredientItem = ({
@@ -105,7 +104,7 @@ const IngredientItem = ({
       <Button
         theme={theme}
         type="button"
-        title="Remove ungridient"
+        title="Remove ingredient"
         onClick={() => deleteIngredient(index)}
       >
         +
