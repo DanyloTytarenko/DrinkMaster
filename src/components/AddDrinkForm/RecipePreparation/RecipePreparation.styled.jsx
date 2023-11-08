@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { colors } from 'src/colors';
 
 export const Div = styled.div`
   margin-bottom: 20px;
@@ -14,7 +15,8 @@ export const Title = styled.h2`
     line-height: calc(44 / 40);
   }
   letter-spacing: 0;
-  color: #f3f3f3;
+  color: ${({ theme }) =>
+    theme === 'dark' ? `${colors.light}` : `${colors.primaryDark}`};
 `;
 export const TextareaDiv = styled.div`
   position: relative;
@@ -30,13 +32,15 @@ export const Textarea = styled.textarea`
   line-height: calc(18 / 14);
   letter-spacing: 0;
   background-color: inherit;
-  color: rgba(243, 243, 243, 1);
-  border: ${({ errors, value }) =>
+  color: ${({ theme }) =>
+    theme === 'dark' ? `${colors.light}` : `${colors.primaryDark}`};
+  border: ${({ errors, value, theme }) =>
     value && errors
       ? '1px solid #3cbc8150'
       : errors
       ? '1px solid #da141450'
-      : '1px solid rgba(243, 243, 243, 0.5)'};
+      : `1px solid ${({ theme }) =>
+          theme === 'dark' ? `${colors.light}` : `${colors.primaryDark}`}`};
   border-radius: 14px;
   box-sizing: border-box;
   @media only screen and (min-width: 768px) {
@@ -49,7 +53,9 @@ export const Textarea = styled.textarea`
     outline: none;
   }
   :hover {
-    border: 1px solid rgba(243, 243, 243, 1);
+    border: 1px solid
+      ${({ theme }) =>
+        theme === 'dark' ? `${colors.light}` : `${colors.primaryDark}`};
   }
 `;
 
@@ -60,7 +66,7 @@ export const MockPlaceholder = styled.span`
   font-size: 14px;
   line-height: calc(18 / 14);
   letter-spacing: 0;
-  color: rgba(243, 243, 243, 0.5);
+  color: ${({ theme }) => (theme === 'dark' ? '#f3f3f350' : '#0A0A1150')};
   @media only screen and (min-width: 768px) {
     top: 46px;
     margin-left: 24px;
