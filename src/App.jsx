@@ -51,12 +51,7 @@ function App() {
             }
           />
           <Route path="/welcome" element={<WelcomePage />} />
-          <Route
-            path="/auth/google-redirect"
-            element={
-              <PublicRoute redirectTo="/home" component={<HomePage />} />
-            }
-          />
+          <Route path="/auth/google-redirect" element={<HomePage />} />
           <Route
             path="/signup"
             element={
