@@ -141,7 +141,7 @@ const DrinkDescriptionFields = ({
               value={form.description}
               onChange={(e) => {
                 onChangeHandler(e.target.value, e.target.name, setFieldValue);
-              }}
+              }} theme={theme}
             />
             <ErrorText errors={errors.description} value={form.description}>
               {!form.description && errors.description}

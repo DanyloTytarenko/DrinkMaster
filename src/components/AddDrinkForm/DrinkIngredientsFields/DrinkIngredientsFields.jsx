@@ -78,7 +78,7 @@ const DrinkIngredientsFields = ({
       <List>
         {form.ingredients.map((el, index) => (
           <li key={index}>
-            <IngredientItem
+            <IngredientItem theme={theme}
               chosenIngredients={form.ingredients}
               onChangeHandler={onChangeHandler}
               setFieldValue={setFieldValue}
