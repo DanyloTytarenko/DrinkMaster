@@ -11,7 +11,6 @@ export const DrinksContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* background-color: #0a0a11; */
   box-sizing: border-box;
   /* padding-left: 20px; */
   /* padding-right: 20px; */

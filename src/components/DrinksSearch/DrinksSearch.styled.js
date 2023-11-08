@@ -38,8 +38,14 @@ export const StyledInput = styled.input`
   padding: 18px 24px 18px 24px;
   background-color: transparent;
   border-radius: 200px;
-  border: 1px solid rgba(243, 243, 243, 0.2);
-  color: ${colors.light}; //#f3f3f3
+  /* border: 1px solid rgba(243, 243, 243, 0.2); */
+  border: ${({ theme }) =>
+    theme === 'dark'
+      ? '1px solid rgba(243, 243, 243, 0.2)'
+      : '1px solid rgba(10, 10, 17, 0.20)'};
+  /* color: ${colors.light}; //#f3f3f3 */
+  color: ${({ theme }) =>
+    theme === 'dark' ? colors.light : colors.primaryDark};
   font-family: Manrope;
   font-size: 14px;
   font-style: normal;
@@ -50,13 +56,17 @@ export const StyledInput = styled.input`
   transition: border-color 250ms ease;
 
   &::placeholder {
-    color: ${colors.light}; //#f3f3f3
+    /* color: ${colors.light}; //#f3f3f3 */
+    color: ${({ theme }) =>
+      theme === 'dark' ? colors.light : colors.primaryDark};
     opacity: 1;
   }
 
   &:hover,
   &:focus {
-    border-color: rgba(243, 243, 243, 0.5);
+    /* border-color: rgba(243, 243, 243, 0.5); */
+    border-color: ${({ theme }) =>
+      theme === 'dark' ? 'rgba(243, 243, 243, 0.5)' : 'rgba(10, 10, 17, 0.50)'};
   }
 
   @media (min-width: 768px) {
@@ -87,7 +97,9 @@ export const StyledSearchButton = styled.button`
 
 export const StyledSearchIcon = styled(SearchIcon)`
   display: block;
-  stroke: ${colors.light}; //#f3f3f3
+  /* stroke: ${colors.light}; //#f3f3f3 */
+  stroke: ${({ theme }) =>
+    theme === 'dark' ? colors.light : colors.primaryDark};
 `;
 
 export const StyledSelect = styled(Select)`
@@ -95,12 +107,16 @@ export const StyledSelect = styled(Select)`
     width: 335px;
     height: 54px;
     padding: 18px 24px 18px 24px;
-    background: #161f37;
+    background-color: ${colors.secondaryDark}; //#161f37
+    /* background-color: ${({ theme }) =>
+      theme === 'dark' ? colors.secondaryDark : colors.secondaryDark}; */
     border: none;
     outline: none;
     box-shadow: none;
     border-radius: 200px;
-    color: ${colors.light}; //#f3f3f3
+    /* color: ${colors.light}; //#f3f3f3 */
+    color: ${({ theme }) =>
+      theme === 'dark' ? colors.light : colors.primaryDark};
     font-size: 14px;
     font-family: Manrope;
     font-weight: 400;
@@ -141,7 +157,6 @@ export const StyledSelect = styled(Select)`
     color: ${colors.light}; //#f3f3f3
     padding: 0;
     position: absolute;
-    /* transform: rotate(180deg); */
 
     right: 17px;
     cursor: pointer;
@@ -151,14 +166,14 @@ export const StyledSelect = styled(Select)`
     }
   }
 
-  .react-select-container {
-  }
   .react-select__value-container {
     padding: 0;
   }
 
   .react-select__menu {
-    background: #161f37;
+    /* background-color:${colors.secondaryDark}; //#161f37; */
+    background-color: ${({ theme }) =>
+      theme === 'dark' ? colors.secondaryDark : colors.white};
     padding: 14px 8px 14px 8px;
     margin-top: 4px;
     width: 335px;
@@ -176,7 +191,9 @@ export const StyledSelect = styled(Select)`
   }
   .react-select__menuList {
     max-height: 60px;
-    background-color: ${colors.light}; //#f3f3f3
+    /* background-color: ${colors.light}; //#f3f3f3 */
+    background-color: ${({ theme }) =>
+      theme === 'dark' ? colors.light : colors.primaryDark};
   }
 
   .react-select__menu-list {
@@ -185,11 +202,15 @@ export const StyledSelect = styled(Select)`
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: ${colors.gray}; //#434d67;
+      /* background-color: ${colors.gray}; //#434d67; */
+      background-color: ${({ theme }) =>
+        theme === 'dark' ? colors.gray : colors.light};
       border-radius: 20px;
     }
     &::-webkit-scrollbar-thumb:horizontal {
-      background-color: ${colors.gray}; //#434d67;
+      /* background-color: ${colors.gray}; //#434d67; */
+      background-color: ${({ theme }) =>
+        theme === 'dark' ? colors.gray : colors.light};
       border-radius: 20px;
     }
   }
@@ -204,7 +225,9 @@ export const StyledSelect = styled(Select)`
     &:focus,
     &:active,
     &:hover {
-      color: ${colors.light}; //#f3f3f3
+      /* color: ${colors.light}; //#f3f3f3 */
+      color: ${({ theme }) =>
+        theme === 'dark' ? colors.light : colors.primaryDark};
       cursor: pointer;
     }
   }
@@ -219,7 +242,21 @@ export const customStyles = {
     ...baseStyles,
     color:
       state.isSelected || state.isFocused
-        ? `${colors.light}`
+        ? colors.light
         : 'rgba(243, 243, 243, 0.4)',
+  }),
+};
+
+export const customStylesLight = {
+  dropdownIndicator: (baseStyles, state) => ({
+    ...baseStyles,
+    transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+  }),
+  option: (baseStyles, state) => ({
+    ...baseStyles,
+    color:
+      state.isSelected || state.isFocused
+        ? colors.primaryDark
+        : 'rgba(10, 10, 17, 0.4)',
   }),
 };
