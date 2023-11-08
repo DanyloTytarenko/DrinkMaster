@@ -178,7 +178,7 @@ const AddDrinkForm = ({ theme }) => {
         } else {
           Notify.failure(`Format "webp" not allowed. Try upload .jpeg or .png`);
         }
-        console.log(resp.payload.message);
+        // console.log(resp.payload.message);
       })
       .catch((e) => {
         console.log(e);
@@ -202,8 +202,6 @@ const AddDrinkForm = ({ theme }) => {
   }
 
   const sendForm = (formWithImgUrl, values, actions) => {
-    console.log(persistedForm, 'persistedForm');
-
     dispatch(addOwnDrink(formWithImgUrl, values)).then((resp) => {
       if (resp.type === 'drinks/addOwnDrink/fulfilled') {
         Notify.success('You added new cocktail!');
@@ -212,7 +210,7 @@ const AddDrinkForm = ({ theme }) => {
         actions.resetForm({ values: initialValues });
         return;
       }
-      console.log(resp.payload.message);
+      // console.log(resp.payload.message);
       errorsHandler(resp.payload.message);
     });
   };
@@ -240,7 +238,7 @@ const AddDrinkForm = ({ theme }) => {
     return duplicateElement.length > 0 ? false : true;
   };
   // dispatch(setForm(initialValues));
-  console.log(theme);
+
   return (
     <Wrapper>
       <Formik
