@@ -2,18 +2,22 @@ import styled from 'styled-components';
 import { colors } from '../../colors';
 
 export const LoaderWrap = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 `;
 
 export const StyledLoader = styled.span`
-//====bottle==========
+  //====bottle==========
   width: 40px;
   height: 98px;
   display: inline-block;
-  position: relative;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
   border: 2px solid ${colors.light};
   box-sizing: border-box;
   color: ${colors.green};
@@ -56,21 +60,20 @@ export const StyledLoader = styled.span`
     }
   }
 
-
   //====glass==========
-  // width: 32px; 
-  // height: 72px; 
-  // display: inline-block; 
-  // left: 5px; 
-  // position: relative; 
-  // border: 2px solid ${colors.light};; 
-  // box-sizing: border-box; 
-  // animation: animloader 2s linear infinite alternate; 
-  // color: ${colors.green}; 
-  // border-radius: 0 0 4px 4px; 
-  // transform: perspective(140px) rotateX(-45deg); 
+  // width: 32px;
+  // height: 72px;
+  // display: inline-block;
+  // left: 5px;
+  // position: relative;
+  // border: 2px solid ${colors.light};;
+  // box-sizing: border-box;
+  // animation: animloader 2s linear infinite alternate;
+  // color: ${colors.green};
+  // border-radius: 0 0 4px 4px;
+  // transform: perspective(140px) rotateX(-45deg);
 
-  // @keyframes animloader { 
-  //   0% { box-shadow: 0 0 inset; } 
+  // @keyframes animloader {
+  //   0% { box-shadow: 0 0 inset; }
   //   100% { box-shadow: 0 -70px inset; } }
 `;
