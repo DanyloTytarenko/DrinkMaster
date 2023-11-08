@@ -6,7 +6,7 @@ import {
   selectOwnDrinks,
   selectFavoriteDrinks,
 } from '../../redux/drinks/selectors';
-import { Alert } from '@mui/material';
+import NotFound from '../NotFound/NotFound'
 export const DrinksList = () => {
   let listOfDrinks;
   if (location.pathname === '/DrinkMaster/my') {
@@ -21,7 +21,7 @@ export const DrinksList = () => {
         <DrinksListItem key={drink._id} drink={drink} />
       ))}
       </List> : 
-    <Alert severity='info' variant='outlined'>Your drink list is empty</Alert>
+    <NotFound message={'Your drinks list is empty'}/>
     )
     
   );
