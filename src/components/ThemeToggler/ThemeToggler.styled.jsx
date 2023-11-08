@@ -6,7 +6,7 @@ export const ThemeToggle = styled.div`
   margin-left: 122px;
 
   @media screen and (min-width: 768px) {
-    margin-left: 451px;
+    margin-left: 320px;
   }
 
   @media screen and (min-width: 1440px) {

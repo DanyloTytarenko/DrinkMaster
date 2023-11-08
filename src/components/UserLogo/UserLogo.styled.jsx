@@ -11,10 +11,12 @@ export const UserInfoWrap = styled.div`
 
   @media screen and (min-width: 768px) {
     gap: 10px;
+    margin-left: 320px;
   }
 
   @media screen and (min-width: 1440px) {
     gap: 14px;
+    margin-left: 0;
   }
 `;
 
