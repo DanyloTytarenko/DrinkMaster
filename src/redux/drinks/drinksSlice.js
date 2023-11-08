@@ -46,7 +46,10 @@ export const ownDrinksSlice = createSlice({
     [fetchOwnDrinks.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items = action.payload;
+      state.items = action.payload.drinks;
+      state.max_page = action.payload.max_page;
+      state.page = action.payload.page;
+      state.per_page = action.payload.per_page;
     },
     [fetchOwnDrinks.rejected]: handleRejected,
     [addOwnDrink.pending]: handlePending,
@@ -73,7 +76,10 @@ export const favoriteDrinksSlice = createSlice({
     [fetchFavoriteDrinks.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items = action.payload;
+      state.items = action.payload.favoriteDrinks;
+      state.max_page = action.payload.max_page;
+      state.page = action.payload.page;
+      state.per_page = action.payload.per_page;
     },
     [fetchFavoriteDrinks.rejected]: handleRejected,
     [addFavoriteDrink.pending]: handlePending,

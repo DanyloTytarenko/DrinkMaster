@@ -11,15 +11,16 @@ gap: 40px;
   ${({ theme }) =>
     theme === 'dark' ?
     ` color: ${colors.light};` : `color: ${colors. primaryDark};`}
-margin-top: 40px;
+margin: 40px 0 51px;
 @media only screen and (min-width: 768px) {
 row-gap: 80px;
 column-gap: 20px;   
-margin-top: 60px;
+margin: 60px 0 80px;
 }
 `;
 export const DrinksItem = styled.li`
 width: 335px;
+height: 676px;
 display: flex;
 flex-direction: column;
 gap: 18px;
@@ -49,6 +50,9 @@ font-size: 24px;
 `
 export const DrinkDesc = styled.p`
 font-size: 14px;
+height: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 @media only screen and (min-width: 768px) {
 font-size: 16px;
 }

@@ -2,23 +2,25 @@ import {
   NavigationWrap,
   StyledNavigationLink
 } from './Navigation.styled';
-
+import { selectTheme } from 'src/redux/theme/themeSlice';
+import { useSelector } from 'react-redux';
 const Navigation = () => {
+  const theme = useSelector(selectTheme);
   return (
     <NavigationWrap>
-      <StyledNavigationLink to="/home">
+      <StyledNavigationLink to="/home" theme={theme}>
         Home
       </StyledNavigationLink>
-      <StyledNavigationLink to="/drinks">
+      <StyledNavigationLink to="/drinks" theme={theme}>
         Drinks
       </StyledNavigationLink>
-      <StyledNavigationLink to="/add">
+      <StyledNavigationLink to="/add" theme={theme}>
         Add drink
       </StyledNavigationLink>
-      <StyledNavigationLink to="/my">
+      <StyledNavigationLink to="/my" theme={theme}>
         My drinks
       </StyledNavigationLink>
-      <StyledNavigationLink to="/favorites">
+      <StyledNavigationLink to="/favorites" theme={theme}>
         Favorites
       </StyledNavigationLink>
     </NavigationWrap>
