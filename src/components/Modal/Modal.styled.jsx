@@ -1,5 +1,21 @@
 import { colors } from '../../colors';
 import styled from 'styled-components';
+export const BackDrop = styled.div`
+  display: none;
+  z-index: 50;
+  ${({ open }) =>
+    open &&
+    `
+    display:block;
+    width: 100%;
+    height:100%;
+    position:fixed;
+    top: 100px;
+    right: 0;
+    background: ${colors.disabled};
+    overflow: hidden;
+  `}
+`
 export const Modal = styled.div`
   display: none;
   z-index: 100;

@@ -3,10 +3,11 @@ import { useDispatch,  useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors'
 import { logOut, updateUser } from '../../redux/auth/operations'
 import UserLogo from '../UserLogo/UserLogo';
-import { Modal, TextDropDown, LogOutBtn, Text, LogOutWrapper, CancelButton, CloseBtn, NameInput, SaveBtn, PhotoWrapper, AddBtn, Photo, Form, ImgInput } from './Modal.styled';
+import { Modal, TextDropDown, LogOutBtn, Text, LogOutWrapper, CancelButton, CloseBtn, NameInput, SaveBtn, PhotoWrapper, AddBtn, Photo, Form, ImgInput, BackDrop } from './Modal.styled';
 import { UserLogoWrap, UserSvg } from '../UserLogo/UserLogo.styled';
 import sprite from './sprite.svg'
 import userLogoImg from '../../images/user.jpg';
+import { Backdrop } from '@mui/material';
 export const DropDown = () => {
   const [isOpen, setIsOpen] = useState(false);
     const [LogOut, setLogOut] = useState(false);
@@ -44,7 +45,8 @@ export const DropDown = () => {
         <>
             <div onClick={toggleMenu}>
                 <UserLogo />
-            </div>
+        </div>
+        <BackDrop open={isOpen} onClick={toggleMenu}>
             <Modal open={isOpen}>
                 {LogOut ? (
                     <>
@@ -106,6 +108,7 @@ export const DropDown = () => {
         )}
                 
           </Modal>
+        </BackDrop>
         </>
   );
 }

@@ -36,7 +36,7 @@ const theme = useSelector(selectTheme);
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-  // console.log(test);
+  
   return isRefreshing ? (
     <SharedLayout />
   ) : (

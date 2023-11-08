@@ -8,7 +8,9 @@ flex-wrap: wrap;
 justify-content:center;
 align-items: center;
 gap: 40px;
-color: ${colors.light};
+  ${({ theme }) =>
+    theme === 'dark' ?
+    ` color: ${colors.light};` : `color: ${colors. primaryDark};`}
 margin-top: 40px;
 @media only screen and (min-width: 768px) {
 row-gap: 80px;
