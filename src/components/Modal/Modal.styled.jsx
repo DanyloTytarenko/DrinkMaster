@@ -1,20 +1,15 @@
 import { colors } from '../../colors';
 import styled from 'styled-components';
 export const BackDrop = styled.div`
-  display: none;
+   display: ${({ open }) => (open ? 'block' : 'none')};
   z-index: 50;
-  ${({ open }) =>
-    open &&
-    `
-    display:block;
-    width: 100%;
-    height:100%;
-    position:fixed;
-    top: 100px;
-    right: 0;
-    background: ${colors.disabled};
-    overflow: hidden;
-  `}
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 100px;
+  right: 0;
+  background: ${colors.disabled};
+  overflow: hidden !important;
 `
 export const Modal = styled.div`
   display: none;

@@ -18,6 +18,7 @@ export const DropDown = () => {
   const [photo, setPhoto] = useState(user.avatar);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+    handleBodyScroll(!isOpen);
     };
       const handleClickEdit= () => {
           setEditProfile(!EditProfile);
@@ -28,25 +29,34 @@ export const DropDown = () => {
      const closeModal= () => {
          setLogOut(false);
          setEditProfile(false);
-         setIsOpen(false);
+       setIsOpen(false);
+       handleBodyScroll(!isOpen);
   };
   const handleSubmit = e => {
     e.preventDefault();
     const name = e.target.elements.name.value;
     const avatar = e.target.elements.avatar.files[0];
-      dispatch(updateUser({name, avatar}))
+    dispatch(updateUser({ name, avatar }));
+    closeModal();
   }
   const handlePhoto = (e) => {
     const avatar = e.target.files[0];
     const avatarURL = URL.createObjectURL(avatar);
     setPhoto(avatarURL)
   }
+  const handleBodyScroll = (showBackdrop) => {
+  if (showBackdrop) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'auto';
+  }
+};
     return (
         <>
             <div onClick={toggleMenu}>
                 <UserLogo />
         </div>
-        <BackDrop open={isOpen} onClick={toggleMenu}>
+        <BackDrop open={isOpen} onClick={toggleMenu}/>
             <Modal open={isOpen}>
                 {LogOut ? (
                     <>
@@ -108,7 +118,7 @@ export const DropDown = () => {
         )}
                 
           </Modal>
-        </BackDrop>
+        
         </>
   );
 }
