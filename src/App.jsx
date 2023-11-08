@@ -53,6 +53,7 @@ function App() {
           />
           <Route path="/welcome" element={<WelcomePage />} />
           <Route path="/auth/google-redirect" element={<LoadingPage />} />
+          <Route path="/auth/google" element={<LoadingPage />} />
           <Route
             path="/signup"
             element={
