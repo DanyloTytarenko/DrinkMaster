@@ -20,7 +20,7 @@ export const AddDrink = () => {
       <DesktopTitle>
         <PageTitle
           title="Craft Your Perfect Drink with Drink Master"
-          theme="dark"
+          theme={theme}
           marginMobile="16px"
           marginTablet="28px"
           marginDesktop="28px"
