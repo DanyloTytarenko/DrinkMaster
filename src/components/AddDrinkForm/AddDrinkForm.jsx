@@ -42,7 +42,7 @@ const addDrinkSchema = object({
   instructions: string().required('This field is required'),
 });
 
-const AddDrinkForm = () => {
+const AddDrinkForm = ({ theme }) => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
@@ -240,7 +240,7 @@ const AddDrinkForm = () => {
     return duplicateElement.length > 0 ? false : true;
   };
   // dispatch(setForm(initialValues));
-
+  console.log(theme);
   return (
     <Wrapper>
       <Formik
@@ -257,19 +257,23 @@ const AddDrinkForm = () => {
               onChangeHandler={onChangeHandler}
               setFieldValue={setFieldValue}
               errors={errors}
+              theme={theme}
             />
             <DrinkIngredientsFields
               onChangeHandler={onChangeHandler}
               setFieldValue={setFieldValue}
               errors={errors}
               wrongIngredients={wrongIngredients}
+              theme={theme}
             />
             <RecipePreparation
               onChangeHandler={onChangeHandler}
               setFieldValue={setFieldValue}
               errors={errors}
+              theme={theme}
             />
             <Button
+              theme={theme}
               type="submit"
               disabled={isLoadingOwnDrink === true}
               title="Add"

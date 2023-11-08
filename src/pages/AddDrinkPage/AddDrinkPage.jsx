@@ -10,22 +10,27 @@ import Footer from 'src/components/Footer/Footer';
 import PageTitle from 'src/components/PageTitle/PageTitle';
 import FollowUs from 'src/components/FollowUs/FollowUs';
 import { PopularDrinksComponent } from 'src/components/PopularDrinks/PopularDrinks';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { selectTheme } from 'src/redux/theme/themeSlice';
+
 const AddDrinkPage = () => {
+  const theme = useSelector(selectTheme);
   return (
     <>
       <Header></Header>
       <Container>
         <PageTitle
+          theme={theme}
           title={'Add drink'}
           marginMobile={'40px'}
           marginTablet={'60px'}
           marginDesktop={'60px'}
         ></PageTitle>
         <FlexBox>
-          <AddDrinkForm />
+          <AddDrinkForm theme={theme} />
           <div>
             <DivFollowUs>
-              <Undertitle>Follow Us</Undertitle>
+              <Undertitle theme={theme}>Follow Us</Undertitle>
               <FollowUs></FollowUs>
             </DivFollowUs>
             <PopularDrinksComponent></PopularDrinksComponent>
