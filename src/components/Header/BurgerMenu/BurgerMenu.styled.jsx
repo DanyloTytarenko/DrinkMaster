@@ -75,4 +75,4 @@ export const Gradient = styled.div`
 `;
 export const SvgClose = styled.svg`${({ theme }) =>
     theme === 'dark' ?
-    ` fill: ${colors.light};` : `fill: ${colors.primaryDark};`}`
+    ` stroke: ${colors.light};` : `stroke: ${colors.primaryDark};`}`

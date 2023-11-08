@@ -66,6 +66,12 @@ const handleSubscribeFulfilled = (state) => {
   state.isSubscribed = true;
 };
 
+const handleSubscribeRejected = (_, action) => {
+  const status = parseInt(action.payload.replace(/[^\d]/g, ''));
+  
+  return ValidMessage(status);
+};
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -84,7 +90,7 @@ const authSlice = createSlice({
       })
       .addCase(logOut.fulfilled, handleLogOutFulfilled)
       .addCase(subscribeEmail.fulfilled, handleSubscribeFulfilled)
-      .addCase(subscribeEmail.rejected, handleRejected)
+      .addCase(subscribeEmail.rejected, handleSubscribeRejected)
       .addCase(updateUser.fulfilled, handleUpdatedFulfilled)
       .addCase(updateUser.rejected, handleRejected);
   },

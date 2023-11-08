@@ -2,6 +2,14 @@ export const selectOwnDrinks = (state) => state.ownDrinks.items;
 
 export const selectFavoriteDrinks = (state) => state.favoriteDrinks.items;
 
+export const selectFavoriteDrinksLimit = (state) => state.favoriteDrinks.per_page;
+
+export const selectFavoriteDrinksMax = (state) => state.favoriteDrinks.max_page;
+
+export const selectOwnDrinksLimit = (state) => state.ownDrinks.per_page;
+
+export const selectOwnDrinksMax = (state) => state.ownDrinks.max_page;
+
 export const selectPopularDrinks = (state) => state.popularDrinks.items;
 
 export const selectIsLoadingFavorite = (state) =>

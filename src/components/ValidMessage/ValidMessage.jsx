@@ -18,9 +18,9 @@ textColor: '#ff5549',
     case 400:
       return Notify.failure('Something went wrong. Please try again later.',)
     case 401:
-      return Notify.failure('Enter the correct username and password.',);
+      return Notify.failure('Enter the correct data.',);
     case 404:
-      return Notify.failure('Something went wrong. Please try again later.',);
+      return Notify.failure('Email not registered.',);
     case 409:
       return Notify.failure('Email already in use.',);
     case 500:

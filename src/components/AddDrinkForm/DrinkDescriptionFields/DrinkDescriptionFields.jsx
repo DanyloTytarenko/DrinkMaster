@@ -38,6 +38,7 @@ const DrinkDescriptionFields = ({
   onChangeHandler,
   setFieldValue,
   errors,
+  theme,
 }) => {
   const categories = useSelector(selectCategory);
   const glassArray = useSelector(selectGlass);
@@ -73,7 +74,7 @@ const DrinkDescriptionFields = ({
 
   return (
     <Wrapper>
-      <ImageThumb uri={uri}>
+      <ImageThumb uri={uri} theme={theme}>
         {uri ? (
           <DivTranslucent>
             <LabelTranslucent
@@ -97,7 +98,7 @@ const DrinkDescriptionFields = ({
           </DivTranslucent>
         ) : (
           <DivAddImage>
-            <Label>
+            <Label theme={theme}>
               +
               <HiddenInput
                 type="file"
@@ -124,6 +125,7 @@ const DrinkDescriptionFields = ({
               onChange={(e) => {
                 onChangeHandler(e.target.value, e.target.name, setFieldValue);
               }}
+              theme={theme}
             />
             <ErrorText errors={errors.drink} value={form.drink}>
               {!form.drink && errors.drink}
@@ -139,7 +141,7 @@ const DrinkDescriptionFields = ({
               value={form.description}
               onChange={(e) => {
                 onChangeHandler(e.target.value, e.target.name, setFieldValue);
-              }}
+              }} theme={theme}
             />
             <ErrorText errors={errors.description} value={form.description}>
               {!form.description && errors.description}
@@ -149,10 +151,11 @@ const DrinkDescriptionFields = ({
             </ErrorText>
           </DivRow>
 
-          <DivSelect>
+          <DivSelect theme={theme}>
             <DivFlexSelect>
-              <SpanSelect>Category</SpanSelect>
+              <SpanSelect theme={theme}>Category</SpanSelect>
               <Select
+                theme={theme}
                 name="category"
                 options={options(categories)}
                 value={
@@ -174,8 +177,9 @@ const DrinkDescriptionFields = ({
 
           <DivSelect>
             <DivFlexSelect>
-              <SpanSelect>Glass</SpanSelect>
+              <SpanSelect theme={theme}>Glass</SpanSelect>
               <Select
+                theme={theme}
                 name="glass"
                 options={options(glassArray)}
                 value={
@@ -196,9 +200,10 @@ const DrinkDescriptionFields = ({
           </DivSelect>
         </DivDesription>
 
-        <DivAlcoholic>
+        <DivAlcoholic theme={theme}>
           <LabelAlcoholic isAlcoholic={form.alcoholic}>
             <RadioInput
+              theme={theme}
               type="radio"
               value="Alcoholic"
               name="alcoholic"
@@ -212,6 +217,7 @@ const DrinkDescriptionFields = ({
           </LabelAlcoholic>
           <LabelNonAlcoholic isAlcoholic={form.alcoholic}>
             <RadioInput
+              theme={theme}
               type="radio"
               value="Non alcoholic"
               name="alcoholic"

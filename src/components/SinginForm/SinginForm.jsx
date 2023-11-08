@@ -19,6 +19,7 @@ import { useFormik } from 'formik';
 import { signinSchema } from './SinginSchema';
 import { logIn } from '../../redux/auth/operations';
 import { Form } from '../SingupForm/SingupForm.styled';
+import { GoogleButton } from '../GoogleButton/GoogleButton';
 import {
   inputProps,
   outlineStyled,
@@ -143,14 +144,19 @@ export const SinginForm = () => {
             )}
           </FormControl>
           <Button
-            sx={{zIndex: 5, ...buttonStyled }}
+            sx={{ zIndex: 5, ...buttonStyled }}
             variant="contained"
             fullWidth
             type="submit"
           >
             Sign In
           </Button>
-          <Link component={NavLink} sx={{zIndex: 5, ...linkStyled }} to="/signup">
+
+          <Link
+            component={NavLink}
+            sx={{ zIndex: 5, ...linkStyled }}
+            to="/signup"
+          >
             Sign Up
           </Link>
         </ThemeProvider>

@@ -45,7 +45,9 @@ export const Container = styled.div`
 
 export const StyledBGElement1 = styled.div`
   position: absolute;
-  background-color: rgba(64, 112, 205, 0.5);
+  /* background-color: rgba(64, 112, 205, 0.5); */
+  background-color: ${({ theme }) =>
+    theme === 'dark' ? 'rgba(64, 112, 205, 0.5)' : 'rgba(64, 112, 205, 0.10)'};
   filter: blur(105px);
   z-index: -10;
 
@@ -66,7 +68,9 @@ export const StyledBGElement1 = styled.div`
 
 export const StyledBGElement2 = styled.div`
   position: absolute;
-  background-color: rgba(64, 112, 205, 0.5);
+  /* background-color: rgba(64, 112, 205, 0.5); */
+  background-color: ${({ theme }) =>
+    theme === 'dark' ? 'rgba(64, 112, 205, 0.5)' : 'rgba(64, 112, 205, 0.10)'};
   filter: blur(105px);
   z-index: -10;
   width: 520px;

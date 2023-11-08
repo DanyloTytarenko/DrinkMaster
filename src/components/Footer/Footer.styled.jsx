@@ -37,7 +37,8 @@ export const FooterContainer = styled.footer`
   /* padding-top: 40px;
   padding-bottom: 18px; */
   border-top: 1px solid rgba(243, 243, 243, 0.2);
-
+width:100%;
+  background-color: #0A0A11;
   /* background: linear-gradient(
     360deg,
     rgba(0, 0, 0, 0.6) 58.58%,
@@ -89,7 +90,7 @@ export const StyledBGElement3 = styled.div`
   position: absolute;
   background-color: rgba(64, 112, 205, 0.5);
   filter: blur(105px);
-  z-index: -10;
+  z-index: 0;
   width: 784px;
   height: 849px;
   top: 457px;
@@ -114,7 +115,7 @@ export const StyledBGElement4 = styled.div`
   position: absolute;
   background-color: rgba(188, 230, 210, 0.4);
   filter: blur(105px);
-  z-index: -10;
+  z-index: 0;
   width: 774px;
   height: 762px;
   top: 450px;

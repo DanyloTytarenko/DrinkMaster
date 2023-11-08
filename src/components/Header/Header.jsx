@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react';
 import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
-import UserLogo from '../UserLogo/UserLogo';
+import { useSelector} from 'react-redux';
+import {selectTheme } from '../../redux/theme/themeSlice'
 import { BurgerMenu } from './BurgerMenu/BurgerMenu';
 import {
   HeaderContainer
 } from './Header.styled';
 import { DropDown } from '../Modal/DropDown';
 const Header = () => {
-
+const theme = useSelector(selectTheme);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -32,8 +33,8 @@ const Header = () => {
   };
 
   return (
-    <HeaderContainer>
-      <Logo />
+    <HeaderContainer theme={theme}>
+      <Logo theme={theme} />
       {windowWidth >= 1440 && <>
        <Navigation />
         <ThemeToggler />

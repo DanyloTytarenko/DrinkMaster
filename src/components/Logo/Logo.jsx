@@ -1,9 +1,6 @@
 import { StyledLogoLink, LogoSvg, LogoText } from './Logo.styled';
-import { useSelector} from 'react-redux';
-import {selectTheme } from '../../redux/theme/themeSlice'
 
-const Logo = () => {
-  const theme = useSelector(selectTheme);
+const Logo = ({theme}) => {
   return (
     <StyledLogoLink to='/home'>
       {/* <LogoSvg theme={theme}>

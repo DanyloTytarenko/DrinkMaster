@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import {
   TitleWrapper,
   AddDrinkWrapper,
@@ -10,8 +11,10 @@ import HomePageImageMobile from '../../assets/homepageimages/asr_blue_iced_tea_m
 import HomePageImageTablet from '../../assets/homepageimages/asr_blue_iced_tea_tablet.png';
 
 import PageTitle from '../../components/PageTitle/PageTitle';
+import { selectTheme } from 'src/redux/theme/themeSlice';
 
 export const AddDrink = () => {
+  const theme = useSelector(selectTheme);
   return (
     <TitleWrapper>
       <DesktopTitle>
@@ -23,12 +26,12 @@ export const AddDrink = () => {
           marginDesktop="28px"
         />
         <AddDrinkWrapper>
-          <AppDescription>
+          <AppDescription theme={theme}>
             Unlock your inner mixologist with Drink Master, your one-stop
             destination for exploring, crafting, and mastering the worlds finest
             beverages.
           </AppDescription>
-          <StyledLink to="/add">Add drinks</StyledLink>
+          <StyledLink to="/add" theme={theme}>Add drinks</StyledLink>
         </AddDrinkWrapper>
       </DesktopTitle>
       <PictureWrapper>
