@@ -1,10 +1,10 @@
-import{n as a,c as n,j as i,k as $,A as te,r as I,B as D,u as ie,C as oe,D as re,E as ae,F as le,G as F,H as R,I as se,J as de,K as ce,m as pe}from"./index-0642d773.js";import{s as he,a as xe,b as P,c as ge,d as me,e as fe}from"./selectors-3f3e92cd.js";import{S as ue}from"./react-select.esm-6de68430.js";import{D as ne}from"./dummyDrinkThumb-d0bd605f.js";import{c as M,a as v,d as ye,F as be,e as ke}from"./index.esm-760f798d.js";import{H as we,a as je,F as $e}from"./Header-28144007.js";import{M as ve}from"./MainAppContainer-ef0982dd.js";import{P as De}from"./PageTitle-7d0d0d86.js";import{P as Ae,a as ze,L as Te,b as Se,D as Ie,c as Ce,d as Ne,e as Ee,f as Oe}from"./PopularDrinks.styled-27690339.js";import"./assertThisInitialized-620a8c80.js";const Pe=a.div`
+import{n as a,c as n,j as i,k as $,A as te,r as I,B as D,u as ie,C as oe,D as re,E as ae,F as le,G as F,H as R,I as se,J as de,K as ce,m as pe}from"./index-5ea7ff9a.js";import{s as he,a as xe,b as P,c as ge,d as me,e as fe}from"./selectors-3f3e92cd.js";import{S as ue}from"./react-select.esm-e9f7c7c8.js";import{D as ne}from"./dummyDrinkThumb-d0bd605f.js";import{c as M,a as v,d as ye,F as be,e as ke}from"./index.esm-36b6d53a.js";import{H as we,a as je,F as $e}from"./Header-912e380f.js";import{M as ve}from"./MainAppContainer-fcf4c630.js";import{P as De}from"./PageTitle-2f00b44a.js";import{P as Ae,a as ze,L as Te,b as Se,D as Ie,c as Ce,d as Ne,e as Ee,f as Oe}from"./PopularDrinks.styled-63dc72b8.js";import"./assertThisInitialized-b07486d5.js";const Pe=a.div`
   width: 100%;
-  margin: 80px 0;
+  padding: 80px 0;
   @media only screen and (min-width: 768px) {
-    margin: 140px 0;
+    padding: 140px 0;
     @media only screen and (min-width: 1440px) {
-      margin: 160px 0;
+      padding: 160px 0;
     }
   }
 `,qe=a.div`
