@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Glass, Description, StyledImage, Hero } from './DrinkPageHero.styled';
-import defaultImage from '../../../assets/images/emptyImage/drink-image.jpg';
+import defaultImage from '../../../assets/images/emptyImage/defolt-8.png';
 import Button from '../Button/Button';
 import PageTitle from 'src/components/PageTitle/PageTitle';
 import { selectTheme } from 'src/redux/theme/themeSlice';
