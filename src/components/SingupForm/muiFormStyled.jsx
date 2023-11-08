@@ -25,9 +25,9 @@ export const inputProps = {
 
 export const datePickerStyled = {
   textField: {
-    zIndex: 5,
     error: false,
     sx: {
+      zIndex: 5,
       width: '100%',
       mt: '14px',
       '& .MuiOutlinedInput-notchedOutline': {
