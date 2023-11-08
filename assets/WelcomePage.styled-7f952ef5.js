@@ -1,4 +1,4 @@
-import{s as e,c as i}from"./index-48807b1d.js";const a="/DrinkMaster/assets/cocktail-desk@1x-12951112.jpg",t="/DrinkMaster/assets/cocktail-desk@2x-03075d5b.jpg",r="/DrinkMaster/assets/cocktail-tab@1x-f0e4543b.jpg",n="/DrinkMaster/assets/cocktail-tab@2x-3b015c9b.jpg",d="/DrinkMaster/assets/cocktail-mob@1x-ed4821dd.jpg",g="/DrinkMaster/assets/cocktail-mob@2x-ab5031e5.jpg",p=e.div`
+import{s as e,c as i}from"./index-11e8ff03.js";const a="/DrinkMaster/assets/cocktail-desk@1x-12951112.jpg",t="/DrinkMaster/assets/cocktail-desk@2x-03075d5b.jpg",r="/DrinkMaster/assets/cocktail-tab@1x-f0e4543b.jpg",n="/DrinkMaster/assets/cocktail-tab@2x-3b015c9b.jpg",d="/DrinkMaster/assets/cocktail-mob@1x-ed4821dd.jpg",g="/DrinkMaster/assets/cocktail-mob@2x-ab5031e5.jpg",p=e.div`
   height: 100vh;
   display: flex;
   position: relative;
@@ -97,9 +97,11 @@ import{s as e,c as i}from"./index-48807b1d.js";const a="/DrinkMaster/assets/cock
         url(${t});
     }
   }
-`,x=e.h1`
-  z-index: 5;
+`,l=e.h1`
+  display: flex;
   margin-bottom: 14px;
+ gap: 2px;
+  align-items: baseline;
   color: ${i.light};
   font-family: Manrope;
   font-size: 28px;
@@ -107,12 +109,14 @@ import{s as e,c as i}from"./index-48807b1d.js";const a="/DrinkMaster/assets/cock
   line-height: 32px;
   letter-spacing: -0.56px;
 
+  z-index: 5;
+
   @media screen and (min-width: 768px) {
     font-size: 40px;
     line-height: calc(44 / 40);
     letter-spacing: -0.8px;
   }
-`,l=e.p`
+`,x=e.p`
   margin-bottom: 40px;
 
   font-size: 14px;
@@ -204,4 +208,4 @@ import{s as e,c as i}from"./index-48807b1d.js";const a="/DrinkMaster/assets/cock
     bottom: 20px;
     right: -399px;
   }
-`;export{s as S,x as T,p as W,l as a,c as b,m as c};
+`;export{s as S,l as T,p as W,x as a,c as b,m as c};
