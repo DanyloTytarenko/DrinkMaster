@@ -26,6 +26,7 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 import { AppWrapper } from './App.styled';
 import { selectTheme } from './redux/theme/themeSlice';
+import LoadingPage from './pages/LoadingPage/LoadingPage';
 
 // const test = import.meta.env.VITE_API_TEST;
 
@@ -51,7 +52,7 @@ function App() {
             }
           />
           <Route path="/welcome" element={<WelcomePage />} />
-          <Route path="/auth/google-redirect" element={<HomePage />} />
+          <Route path="/auth/google-redirect" element={<LoadingPage />} />
           <Route
             path="/signup"
             element={
