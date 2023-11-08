@@ -25,7 +25,9 @@ export const Input = styled.input`
       ? '1px solid #3cbc8150'
       : errors
       ? '1px solid #da141450'
-      : '1px solid #f3f3f350'};
+      : theme === 'dark'
+      ? '1px solid #f3f3f350'
+      : '1px solid #0A0A1150'};
   border-radius: 200px;
   box-sizing: border-box;
   @media only screen and (min-width: 768px) {
@@ -40,6 +42,8 @@ export const Input = styled.input`
   }
   :hover {
     border: 1px solid rgba(243, 243, 243, 1);
+    border: ${({ theme }) =>
+      theme === 'dark' ? '1px solid #f3f3f3' : '1px solid #0A0A11'};
   }
 `;
 
