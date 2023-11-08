@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { colors } from '../../colors';
 export const FollowIconsList = styled.ul`
   display: flex;
   column-gap: 14px;
@@ -14,7 +14,10 @@ export const FollowIconLink = styled.a`
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  border: 1px solid rgba(243, 243, 243, 0.20);
+  ${({ theme }) =>
+    theme === 'dark' ?
+    `border: 1px solid rgba(243, 243, 243, 0.20);` : `border:1px solid  rgba(10, 10, 17, 0.50);`}
+
   transition: border-color 250ms ease;
 
   &:hover,
@@ -26,7 +29,9 @@ export const FollowIconLink = styled.a`
 export const IconSvg = styled.svg`
   width: 22px;
   height: 22px;
-
+${({ theme }) =>
+    theme === 'dark' ?
+    ` fill: ${colors.light};` : `fill: ${colors. primaryDark};`}
   @media screen and (min-width: 768px) {
     width: 28px;
     height: 28px;
