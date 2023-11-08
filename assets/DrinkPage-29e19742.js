@@ -1,4 +1,4 @@
-import{s as f,n,c as e,r as m,u as k,k as d,m as l,j as i,a3 as w,W as b,a4 as y,a5 as $,p as D}from"./index-af8e33ec.js";import{P as v}from"./PageTitle-b78da405.js";import{d as I}from"./defolt-8-6ec9d6b1.js";import{H as z,F}from"./Header-2733b7aa.js";import{o as M,p as T,q as P}from"./selectors-3a823e9a.js";import{M as C}from"./MainAppContainer-f2a6f975.js";import"./index.esm-b9c65629.js";const L=f.div`
+import{s as f,n,c as e,r as m,u as k,k as d,m as l,j as i,a3 as w,W as b,a4 as y,a5 as $,p as D}from"./index-48807b1d.js";import{P as v}from"./PageTitle-b68a0801.js";import{d as I}from"./defolt-8-6ec9d6b1.js";import{H as z,F}from"./Header-92124b59.js";import{o as M,p as T,q as P}from"./selectors-3a823e9a.js";import{M as C}from"./MainAppContainer-6cc3152f.js";import"./index.esm-a6849579.js";const L=f.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -90,6 +90,7 @@ import{s as f,n,c as e,r as m,u as k,k as d,m as l,j as i,a3 as w,W as b,a4 as y
   padding: 14px 40px;
   margin-bottom: 80px;
   ${({theme:t})=>t==="dark"?` color: ${e.secondaryDark};`:`color: ${e.light};`}
+  ${({theme:t})=>t==="dark"?` background-color: ${e.light};`:`background-color: ${e.secondaryDark};`}
   transition:
     color 250ms ease,
     background-color 250ms ease;
