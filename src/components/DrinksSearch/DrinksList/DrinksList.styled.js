@@ -27,6 +27,7 @@ export const StyledDrinkImage = styled.img`
   width: 335px;
   height: 360px;
   border-radius: 8px;
+  background-color: rgba(22, 31, 55, 0.5);
 
   @media (min-width: 768px) {
     width: 342px;
