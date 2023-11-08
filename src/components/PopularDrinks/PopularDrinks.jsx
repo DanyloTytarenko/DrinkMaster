@@ -15,7 +15,9 @@ import { fetchPopularDrinks } from '../../redux/drinks/operations';
 import { selectPopularDrinks } from '../../redux/drinks/selectors';
 import DummyDrinkThumb from 'src/images/dummyDrinkThumb.png';
 
+
 export const PopularDrinksComponent = ({ theme }) => {
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchPopularDrinks());
@@ -24,7 +26,7 @@ export const PopularDrinksComponent = ({ theme }) => {
   let listOfPopularDrinks = useSelector(selectPopularDrinks);
 
   return (
-    <PopularDrinks>
+    <PopularDrinks theme={theme}>
       <div>
         <PopularTitle theme={theme}>Popular drinks</PopularTitle>
         <List>

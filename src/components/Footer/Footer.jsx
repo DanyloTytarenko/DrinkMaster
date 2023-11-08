@@ -24,7 +24,7 @@ const Footer = () => {
           <LogoFollowNavWrap>
             <LogoFollowWrap>
               <Logo theme='dark'/>
-              <FollowUs />
+              <FollowUs theme='dark' />
             </LogoFollowWrap>
             <FooterNav />
           </LogoFollowNavWrap>
