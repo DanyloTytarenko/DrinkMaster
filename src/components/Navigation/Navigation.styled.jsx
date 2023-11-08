@@ -10,8 +10,8 @@ gap: 16px;
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
-    margin-left: 224px;
-    margin-right: 191px;
+    margin-left: 200px;
+    margin-right: 170px;
   }
 `;
 
@@ -24,12 +24,18 @@ export const StyledNavigationLink = styled(NavLink)`
   border-radius: 40px;
   border: 1px solid rgba(243, 243, 243, 0.20);
   background: ${colors.primaryDark}; 
-  transition: background 0.2s;
   overflow: hidden;
+  transition: background 250ms ease;
+  transition: border-color 250ms ease;
 
   &.active {
     background: ${colors.secondaryDark};
     border: ${colors.primaryDark};
+  }
+
+  &:hover,
+  &:focus {
+    border-color: rgba(243, 243, 243, 0.5);
   }
 
   @media screen and (min-width: 768px) {
