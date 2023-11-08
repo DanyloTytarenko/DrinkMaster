@@ -37,7 +37,11 @@ const Button = ({ drinkId, favoriteStatus }) => {
           Add to favorite drinks
         </StyledButton>
       ) : (
-        <StyledButton type="button" onClick={() => handleRemoveToFavorite()}>
+        <StyledButton
+          theme={theme}
+          type="button"
+          onClick={() => handleRemoveToFavorite()}
+        >
           Remove from favorites
         </StyledButton>
       )}
