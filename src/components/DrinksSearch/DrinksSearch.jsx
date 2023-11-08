@@ -31,7 +31,6 @@ const DrinksSearch = () => {
   const categories = useSelector(selectCategories);
   const ingredients = useSelector(selectIngredients);
   const theme = useSelector(selectTheme);
-  console.log('theme :>> ', theme);
 
   const allCategories =
     categories.length !== 0 ? ['All categories', ...categories] : [];

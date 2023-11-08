@@ -46,7 +46,9 @@ export const DescriptionWrapper = styled.div`
 
 export const DrinkTitle = styled.p`
   margin: 0;
-  color: ${colors.light}; //#f3f3f3
+  /* color: ${colors.light}; //#f3f3f3 */
+  color: ${({ theme }) =>
+    theme === 'dark' ? colors.light : colors.primaryDark};
   font-family: Manrope;
   font-size: 16px;
   font-weight: 500;
@@ -58,16 +60,20 @@ export const DrinkTitle = styled.p`
 `;
 
 export const DescriptionLink = styled(Link)`
-  /* text-decoration: none; */
-  color: rgba(243, 243, 243, 0.5);
+  /* color: rgba(243, 243, 243, 0.5); */
+  color: ${({ theme }) =>
+    theme === 'dark' ? 'rgba(243, 243, 243, 0.5)' : 'rgba(10, 10, 17, 0.5)'};
   font-family: Manrope;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.29;
   transition: color 250ms ease;
 
-  &:hover {
-    color: ${colors.light}; //#f3f3f3;
+  &:hover,
+  &:focus {
+    /* color: ${colors.light}; //#f3f3f3; */
+    color: ${({ theme }) =>
+      theme === 'dark' ? colors.light : colors.primaryDark};
   }
 
   @media (min-width: 768px) {
