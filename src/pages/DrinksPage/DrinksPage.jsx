@@ -25,6 +25,7 @@ import { DrinksContainer } from './DrinksPage.styled';
 import Loader from 'src/components/Loader/Loader';
 import PageTitle from 'src/components/PageTitle/PageTitle';
 import MainAppContainer from 'src/components/MainAppContainer/MainAppContainer';
+import { selectTheme } from 'src/redux/theme/themeSlice';
 // import { Container, Title } from './DrinksPage.styled';
 
 const DrinksPage = () => {
@@ -34,6 +35,7 @@ const DrinksPage = () => {
   const page = useSelector(selectPage);
   const searchQuery = useSelector(selectSearchQuery);
   const isLoading = useSelector(selectIsLoading);
+  const theme = useSelector(selectTheme);
 
   const dispatch = useDispatch();
 
@@ -59,7 +61,7 @@ const DrinksPage = () => {
       <Header />
       <MainAppContainer>
         <DrinksContainer>
-          <PageTitle title="Drinks" />
+          <PageTitle title="Drinks" theme={theme} />
           <DrinksSearch />
           {isLoading ? (
             <Loader />
