@@ -109,14 +109,18 @@ export const WelcomeBox = styled.div`
 `;
 
 export const Title = styled.h1`
-  z-index: 5;
+  display: flex;
   margin-bottom: 14px;
+ gap: 2px;
+  align-items: baseline;
   color: ${colors.light};
   font-family: Manrope;
   font-size: 28px;
   font-weight: 600;
   line-height: 32px;
   letter-spacing: -0.56px;
+
+  z-index: 5;
 
   @media screen and (min-width: 768px) {
     font-size: 40px;
