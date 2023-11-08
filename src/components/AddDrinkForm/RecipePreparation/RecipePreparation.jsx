@@ -25,7 +25,7 @@ const RecipePreparation = ({
       <Title theme={theme}>Recipe Preparation</Title>
       <TextareaDiv></TextareaDiv>
       {form.instructions ? (
-        <MockPlaceholder>Enter the recipe</MockPlaceholder>
+        <MockPlaceholder theme={theme}>Enter the recipe</MockPlaceholder>
       ) : (
         <ErrorText>
           {!form.instructions && errors.instructions}
