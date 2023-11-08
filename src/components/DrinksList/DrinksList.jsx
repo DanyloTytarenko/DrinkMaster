@@ -6,7 +6,10 @@ import {
   selectOwnDrinks,
   selectFavoriteDrinks,
 } from '../../redux/drinks/selectors';
-import { Alert } from '@mui/material';
+import {
+  selectTheme
+} from '../../redux/theme/themeSlice';
+import NotFound from '../NotFound/NotFound'
 export const DrinksList = () => {
   let listOfDrinks;
   if (location.pathname === '/DrinkMaster/my') {
@@ -14,14 +17,15 @@ export const DrinksList = () => {
   } else if (location.pathname === '/DrinkMaster/favorites') {
     listOfDrinks = useSelector(selectFavoriteDrinks);
   }
+  const theme = useSelector(selectTheme);
   return (
     (listOfDrinks.length > 0 ?
-      <List>
+      <List theme={theme}>
       {listOfDrinks.map((drink) => (
         <DrinksListItem key={drink._id} drink={drink} />
       ))}
       </List> : 
-    <Alert severity='info' variant='outlined'>Your drink list is empty</Alert>
+    <NotFound message={'Your drinks list is empty'}/>
     )
     
   );

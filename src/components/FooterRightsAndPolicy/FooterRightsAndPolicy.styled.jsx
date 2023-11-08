@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { colors } from '../../colors';
 
 export const RightsAndPolicyWrap = styled.div`
+  z-index:10;
+  position:relative;
   @media screen and (min-width: 768px) {
     display: flex;
     gap: 153px;

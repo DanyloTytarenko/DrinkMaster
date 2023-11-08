@@ -37,7 +37,7 @@ function App() {
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-  // console.log(test);
+  
   return isRefreshing ? (
     <SharedLayout />
   ) : (

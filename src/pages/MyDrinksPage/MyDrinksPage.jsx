@@ -12,12 +12,15 @@ import Footer from 'src/components/Footer/Footer';
 import { PopularDrinksComponent } from 'src/components/PopularDrinks/PopularDrinks';
 import PageTitle from 'src/components/PageTitle/PageTitle';
 import Loader from 'src/components/Loader/Loader';
-import { Alert } from '@mui/material';
+import NotFound from '../../components/NotFound/NotFound';
+import {
+  selectTheme
+} from '../../redux/theme/themeSlice';
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoadingOwn);
   const error = useSelector(selectErrorOwn);
-
+const theme = useSelector(selectTheme);
   useEffect(() => {
     dispatch(fetchOwnDrinks());
   }, [dispatch]);
@@ -25,9 +28,9 @@ const MyDrinksPage = () => {
     <>
       <Header></Header>
       <Container>
-        <PageTitle  title='My drinks' theme="dark"/>
+        <PageTitle  title='My drinks' theme={theme}/>
         {isLoading && !error && <Loader />}
-        {error && <Alert severity='info' variant='outlined'>Your drink list is empty</Alert>}
+        {error && <NotFound message={'Something went wrong'}/>}
         <DrinksList />
       </Container>
       <Footer></Footer>
