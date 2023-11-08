@@ -105,7 +105,7 @@ const IngredientItem = ({
       <Button
         theme={theme}
         type="button"
-        title="Remove ungridient"
+        title="Remove ingredient"
         onClick={() => deleteIngredient(index)}
       >
         +
