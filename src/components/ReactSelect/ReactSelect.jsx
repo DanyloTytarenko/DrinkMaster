@@ -73,7 +73,9 @@ const ReactSelect = ({
           ? '#f3f3f375'
           : '#0A0A1175'
         : isSelected
-        ? '#f3f3f3'
+        ? theme === 'dark'
+          ? '#f3f3f3'
+          : '#0A0A11'
         : theme === 'dark'
         ? '#f3f3f340'
         : '#0A0A1140',
@@ -167,7 +169,9 @@ const ReactSelect = ({
           ? '#f3f3f375'
           : '#0A0A1175'
         : isSelected
-        ? '#f3f3f3'
+        ? theme === 'dark'
+          ? '#f3f3f3'
+          : '#0A0A11'
         : theme === 'dark'
         ? '#f3f3f340'
         : '#0A0A1140',
