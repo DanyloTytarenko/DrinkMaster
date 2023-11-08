@@ -6,7 +6,10 @@ import { DrinksList } from '../../components/DrinksList/DrinksList';
 import {
   selectErrorOwn,
   selectIsLoadingOwn,
+  selectOwnDrinksLimit,
+  selectOwnDrinksMax
 } from '../../redux/drinks/selectors';
+import { selectPage } from 'src/redux/drinks/drinksPage/drinksPageSelectors';
 import Header from 'src/components/Header/Header';
 import Footer from 'src/components/Footer/Footer';
 import { PopularDrinksComponent } from 'src/components/PopularDrinks/PopularDrinks';
@@ -16,14 +19,18 @@ import NotFound from '../../components/NotFound/NotFound';
 import {
   selectTheme
 } from '../../redux/theme/themeSlice';
+import Paginator from 'src/components/Paginator/Paginator';
 const MyDrinksPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoadingOwn);
   const error = useSelector(selectErrorOwn);
-const theme = useSelector(selectTheme);
+  const theme = useSelector(selectTheme);
+  const max = useSelector(selectOwnDrinksMax);
+  const limit = useSelector(selectOwnDrinksLimit);
+  const page = useSelector(selectPage);
   useEffect(() => {
-    dispatch(fetchOwnDrinks());
-  }, [dispatch]);
+    dispatch(fetchOwnDrinks(page));
+  }, [page]);
   return (
     <>
       <Header></Header>
@@ -32,6 +39,7 @@ const theme = useSelector(selectTheme);
         {isLoading && !error && <Loader />}
         {error && <NotFound message={'Something went wrong'}/>}
         <DrinksList />
+         <Paginator limit={limit} totalItems={max} />
       </Container>
       <Footer></Footer>
     </>

@@ -11,11 +11,11 @@ gap: 40px;
   ${({ theme }) =>
     theme === 'dark' ?
     ` color: ${colors.light};` : `color: ${colors. primaryDark};`}
-margin-top: 40px;
+margin: 40px 0 51px;
 @media only screen and (min-width: 768px) {
 row-gap: 80px;
 column-gap: 20px;   
-margin-top: 60px;
+margin: 60px 0 80px;
 }
 `;
 export const DrinksItem = styled.li`

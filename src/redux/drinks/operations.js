@@ -8,10 +8,9 @@ export const setToken = (token) => {
 
 export const fetchOwnDrinks = createAsyncThunk(
   'drinks/fetchOwn',
-  async (_, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
-      const response = await axios.get('/drinks/own');
-      console.log(response.data)
+      const response = await axios.get(`/drinks/own?page=${page}`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -21,10 +20,9 @@ export const fetchOwnDrinks = createAsyncThunk(
 
 export const fetchFavoriteDrinks = createAsyncThunk(
   'drinks/fetchFavorite',
-  async (_, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
-      const response = await axios.get('/drinks/favorite');
-      console.log(response.data)
+      const response = await axios.get(`/drinks/favorite?page=${page}`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
