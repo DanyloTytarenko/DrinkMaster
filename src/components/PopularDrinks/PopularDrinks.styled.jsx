@@ -37,7 +37,7 @@ export const List = styled.ul`
   justify-content: center;
   align-items: center;
   gap: 24px;
-  color: ${colors.light};
+  color: '${colors.light}';
   @media only screen and (min-width: 768px) {
     gap: 32px;
   }

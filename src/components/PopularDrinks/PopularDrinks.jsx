@@ -39,8 +39,8 @@ export const PopularDrinksComponent = ({ theme }) => {
                   }}
                 />
                 <DescrWrapper>
-                  <DrinkName>{drink.drink}</DrinkName>
-                  <DrinkDescr>{drink.description}</DrinkDescr>
+                  <DrinkName theme={theme}>{drink.drink}</DrinkName>
+                  <DrinkDescr theme={theme}>{drink.description}</DrinkDescr>
                 </DescrWrapper>
               </DrinkLink>
             </ListItem>
