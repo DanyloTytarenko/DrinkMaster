@@ -41,7 +41,7 @@ const HomePage = () => {
           <AddDrink />
           <PreviewDrinks />
         </HomeContainer>
-        <StyledBGElement5 />
+        <StyledBGElement5 theme={theme} />
       </MainAppContainer>
       <Footer />
     </>
