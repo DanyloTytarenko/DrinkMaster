@@ -13,18 +13,21 @@ import {
 
 import { fetchNewDrinks } from '../../redux/homepage/operations.js';
 import MainAppContainer from 'src/components/MainAppContainer/MainAppContainer';
+import Loader from 'src/components/Loader/Loader';
+import { selectTheme } from 'src/redux/theme/themeSlice';
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoadingNew);
   const error = useSelector(selectErrorNew);
+  const theme = useSelector(selectTheme);
 
   useEffect(() => {
     dispatch(fetchNewDrinks());
   }, [dispatch]);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   if (error) {
@@ -34,7 +37,7 @@ const HomePage = () => {
     <>
       <Header />
       <MainAppContainer>
-        <HomeContainer>
+        <HomeContainer theme={theme}>
           <AddDrink />
           <PreviewDrinks />
         </HomeContainer>

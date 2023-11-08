@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { colors } from '../../colors';
+import { colors } from 'src/colors';
 
 import { keyframes } from 'styled-components';
 
@@ -65,8 +65,11 @@ height: 60px;
 font-size: 14px;
 font-weight: 400px;
 line-height: 20px;
-color: ${colors.light};
 margin-bottom: 32px;
+${({ theme }) =>
+  theme === 'dark'
+    ? `color: ${colors.light};`
+    : `color: ${colors.secondaryDark};`}
 @media only screen and (min-width: 768px) {
 font-size: 18px;
 line-height: 24px;
@@ -83,12 +86,18 @@ export const StyledLink = styled(Link)`
   height: 46px;
   justify-content: center;
   align-items: center;
-  color: ${colors.secondaryDark};
-  background-color: ${colors.light};
   border-radius: 42px;
   font-size: 14px;
   font-weight: 600;
   transition: 250ms ease;
+  ${({ theme }) =>
+    theme === 'dark'
+      ? `color: ${colors.secondaryDark};`
+      : `color: ${colors.light};`};
+  ${({ theme }) =>
+    theme === 'dark'
+      ? `background-color: ${colors.light};`
+      : `background-color: ${colors.secondaryDark};`}
 
   @media only screen and (min-width: 768px) {
     width: 169px;
@@ -105,17 +114,23 @@ export const StyledLink = styled(Link)`
   }
 
   &:hover {
-    color: ${colors.light};
-    background-color: ${colors.secondaryDark};
+    ${({ theme }) =>
+      theme === 'dark'
+        ? `color: ${colors.light};`
+        : `color: ${colors.secondaryDark};`}
+    ${({ theme }) =>
+      theme === 'dark'
+        ? `background-color: ${colors.secondaryDark};`
+        : `background-color: ${colors.light};`}
   }
 `;
 
 export const PictureWrapper = styled.div`
-display: flex;
-justify-content: center;
-flex-shrink: 0; 
-animation: ${slideLeft} 1s forwards;
-@media only screen and (min-width: 1440px) {
-margin-top: 128px;
-}
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  animation: ${slideLeft} 1s forwards;
+  @media only screen and (min-width: 1440px) {
+    margin-top: 128px;
+  }
 `;
