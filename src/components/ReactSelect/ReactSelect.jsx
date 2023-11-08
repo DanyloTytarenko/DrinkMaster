@@ -101,7 +101,9 @@ const ReactSelect = ({
           ? '1px solid #3cbc8150'
           : errors || wrongIngredient
           ? '1px solid #da141450'
-          : '1px solid #f3f3f350',
+          : theme === 'dark'
+          ? '1px solid #f3f3f350'
+          : '1px solid #0A0A1150',
       borderRadius: '200px',
       fontSize: '14px',
       lineHeight: 'calc(18 / 14)',
