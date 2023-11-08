@@ -33,9 +33,9 @@ const AddDrinkPage = () => {
             <div>
               <DivFollowUs>
                 <Undertitle theme={theme}>Follow Us</Undertitle>
-                <FollowUs></FollowUs>
+                <FollowUs theme={theme}></FollowUs>
               </DivFollowUs>
-              <PopularDrinksComponent></PopularDrinksComponent>
+              <PopularDrinksComponent theme={theme}></PopularDrinksComponent>
             </div>
           </FlexBox>
         </SubContainer>
