@@ -4,6 +4,7 @@ import { colors } from '../../colors';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPage } from 'src/redux/drinks/drinksPage/drinksPageSlice';
 import { selectPage } from 'src/redux/drinks/drinksPage/drinksPageSelectors';
+import { selectTheme } from 'src/redux/theme/themeSlice';
 
 const Paginator = ({ limit, totalItems }) => {
   /**
@@ -13,6 +14,7 @@ const Paginator = ({ limit, totalItems }) => {
    */
 
   const page = useSelector(selectPage);
+  const theme = useSelector(selectTheme);
 
   const [boundaryCount, setBoundaryCount] = useState(1);
   const [siblingCount, setSiblingCount] = useState(2);
@@ -58,15 +60,24 @@ const Paginator = ({ limit, totalItems }) => {
         height: '27px',
         fontSize: '12px',
         fontWeight: '500',
-        color: `${colors.light}`,
+        // color: `${colors.light}`,
+        color: `${theme === 'dark' ? colors.light : colors.primaryDark}`,
         transition: 'background 250ms ease',
         '&:hover': {
-          background: 'rgba(64, 112, 205, 0.4)',
+          // backgroundColor: 'rgba(64, 112, 205, 0.4)',
+          backgroundColor: `${
+            theme === 'dark'
+              ? 'rgba(64, 112, 205, 0.4)'
+              : 'rgba(64, 112, 205, 0.9)'
+          }`,
         },
       },
 
       '.MuiPaginationItem-page.Mui-selected': {
-        background: 'rgba(64, 112, 205, 0.5)',
+        // background: 'rgba(64, 112, 205, 0.5)',
+        backgroundColor: `${
+          theme === 'dark' ? 'rgba(64, 112, 205, 0.5)' : colors.blue
+        }`,
       },
 
       'ul.MuiPagination-ul': {
