@@ -3,11 +3,11 @@ import { colors } from 'src/colors';
 
 export const SubContainer = styled.div`
   width: 100%;
-  margin: 80px 0;
+  padding: 80px 0;
   @media only screen and (min-width: 768px) {
-    margin: 140px 0;
+    padding: 140px 0;
     @media only screen and (min-width: 1440px) {
-      margin: 160px 0;
+      padding: 160px 0;
     }
   }
 `;
