@@ -21,6 +21,10 @@ export const PopularTitle = styled.h2`
   @media only screen and (max-width: 767.9px) {
     font-size: 18px;
   }
+
+  color: ${({ theme }) =>
+    theme === 'dark' ? `${colors.light}` : `${colors.primaryDark}`};
+
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -38,7 +42,7 @@ export const List = styled.ul`
   justify-content: center;
   align-items: center;
   gap: 24px;
-  color: ${colors.light};
+  color: '${colors.light}';
   @media only screen and (min-width: 768px) {
     gap: 32px;
   }
@@ -65,18 +69,19 @@ export const DrinkDescr = styled.p`
   margin: 0;
   display: block;
   overflow: hidden;
-  ${({ theme }) =>
-    theme === 'dark' ?
-    ` color: rgba(243, 243, 243, 0.5);` : `color: rgba(10, 10, 17, 0.50);`}
+
+  color: ${({ theme }) => (theme === 'dark' ? '#f3f3f350' : '#0A0A1150')};
+
   text-overflow: ellipsis;
   font-size: 14px;
   line-height: calc(20 / 14);
 `;
 export const DrinkName = styled.h3`
   margin: 0;
-  ${({ theme }) =>
-    theme === 'dark' ?
-    ` color: ${colors.light};` : `color: ${colors. primaryDark};`}
+
+  color: ${({ theme }) =>
+    theme === 'dark' ? `${colors.light}` : `${colors.primaryDark}`};
+
   font-size: 16px;
   font-weight: 500;
   line-height: 1.4;
