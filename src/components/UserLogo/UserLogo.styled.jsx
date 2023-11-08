@@ -30,7 +30,7 @@ export const UserLogoWrap = styled.div`
 } 
 `;
 
-export const UserImg = styled.img`
+export const UserSvg = styled.img`
   width: 32px;
   height: 32px;
 

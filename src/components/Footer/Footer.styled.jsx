@@ -1,5 +1,23 @@
 import styled from 'styled-components';
 
+export const FooterContainer = styled.footer`
+  /* padding-top: 40px;
+  padding-bottom: 18px; */
+  border-top: 1px solid rgba(243, 243, 243, 0.2);
+
+  /* background: linear-gradient(
+    360deg,
+    rgba(0, 0, 0, 0.6) 58.58%,
+    rgba(0, 0, 0, 0.345172) 78.98%,
+    rgba(0, 0, 0, 0) 100%
+  ); */
+
+  /* @media screen and (min-width: 768px) {
+    padding-top: 80px;
+    padding-bottom: 24px;
+  } */
+`;
+
 export const Container = styled.div`
   margin: 0 auto;
   padding-right: 20px;
@@ -9,11 +27,7 @@ export const Container = styled.div`
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
-  /* min-width: 375px; */
 
-  /* @media screen and (min-width: 375px) {
-    max-width: 375px;
-  } */
   @media screen and (max-width: 767px) {
     width: 375px;
   }
@@ -31,24 +45,6 @@ export const Container = styled.div`
     padding-right: 100px;
     padding-left: 100px;
   }
-`;
-
-export const FooterContainer = styled.footer`
-  /* padding-top: 40px;
-  padding-bottom: 18px; */
-  border-top: 1px solid rgba(243, 243, 243, 0.2);
-
-  /* background: linear-gradient(
-    360deg,
-    rgba(0, 0, 0, 0.6) 58.58%,
-    rgba(0, 0, 0, 0.345172) 78.98%,
-    rgba(0, 0, 0, 0) 100%
-  ); */
-
-  /* @media screen and (min-width: 768px) {
-    padding-top: 80px;
-    padding-bottom: 24px;
-  } */
 `;
 
 export const MainWrap = styled.div`

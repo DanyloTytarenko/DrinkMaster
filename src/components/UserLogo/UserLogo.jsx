@@ -3,7 +3,7 @@ import { selectUser } from '../../redux/auth/selectors';
 import {
   UserInfoWrap,
   UserLogoWrap,
-  UserImg,
+  UserSvg,
   UserName,
 } from './UserLogo.styled';
 
@@ -13,7 +13,7 @@ const UserLogo = () => {
   return (
     <UserInfoWrap>
       <UserLogoWrap>
-        <UserImg
+        <UserSvg
           width="44"
           height="44"
           src={user.avatar || 'src/images/user.jpg'}
