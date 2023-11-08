@@ -1,9 +1,12 @@
+import { useSelector } from 'react-redux';
 import { Glass, Description, StyledImage, Hero } from './DrinkPageHero.styled';
 import defaultImage from '../../../assets/images/emptyImage/drink-image.jpg';
 import Button from '../Button/Button';
 import PageTitle from 'src/components/PageTitle/PageTitle';
+import { selectTheme } from 'src/redux/theme/themeSlice';
 
 const DrinkPageHero = ({ drinkDetails }) => {
+  const theme = useSelector(selectTheme);
   const { _id, drink, glass, alcoholic, description, drinkThumb, favorite } =
     drinkDetails;
 
@@ -11,10 +14,10 @@ const DrinkPageHero = ({ drinkDetails }) => {
     <Hero>
       <div>
         <PageTitle title={drink} />
-        <Glass>
+        <Glass theme={theme}>
           {glass} / {alcoholic}
         </Glass>
-        <Description>{description}</Description>
+        <Description theme={theme}>{description}</Description>
         <Button drinkId={_id} favoriteStatus={favorite} />
       </div>
       <StyledImage

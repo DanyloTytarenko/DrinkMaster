@@ -7,7 +7,10 @@ export const Title = styled.h2`
   font-size: 28px;
   line-height: calc(32 / 28);
   letter-spacing: 0;
-  color: ${colors.light};
+  ${({ theme }) =>
+    theme === 'dark'
+      ? ` color: ${colors.light};`
+      : `color: ${colors.primaryDark};`}
 
   @media only screen and (min-width: 768px) {
     font-size: 40px;
@@ -21,7 +24,10 @@ export const Title = styled.h2`
 `;
 
 export const Description = styled.p`
-  color: ${colors.light};
+  ${({ theme }) =>
+    theme === 'dark'
+      ? ` color: ${colors.light};`
+      : `color: ${colors.primaryDark};`}
   margin-bottom: 20px;
   font-size: 14px;
   line-height: 1.28;
