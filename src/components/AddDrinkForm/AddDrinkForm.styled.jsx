@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { colors } from 'src/colors';
 
 export const Wrapper = styled.div`
   @media only screen and (min-width: 768px) {
@@ -16,16 +15,14 @@ export const Button = styled.button`
   box-sizing: border-box;
   width: 107px;
   height: 46px;
-  color: ${({ theme }) =>
-    theme === 'dark' ? `${colors.secondaryDark}` : `${colors.light}`};
+  color: #161f37;
   font-size: 14px;
   font-weight: 600;
   line-height: calc(18 / 14);
   letter-spacing: 0;
   border: 0 solid transparent;
   border-radius: 42px;
-  background-color: ${({ theme }) =>
-    theme === 'dark' ? `${colors.light}` : `${colors.secondaryDark}`};
+  background-color: #f3f3f3;
   @media only screen and (min-width: 768px) {
     font-size: 16px;
     line-height: calc(18 / 16);
@@ -35,17 +32,12 @@ export const Button = styled.button`
 
   &:hover {
     background-color: #161f37;
-    background-color: ${({ theme }) =>
-      theme === 'dark' ? `${colors.secondaryDark}` : `${colors.light}`};
-    color: ${({ theme }) =>
-      theme === 'dark' ? `${colors.light}` : `${colors.secondaryDark}`};
+    color: #f3f3f3;
   }
   &:active {
-    color: ${({ theme }) =>
-      theme === 'dark' ? `${colors.secondaryDark}` : `${colors.light}`};
+    color: #161f37;
     border: 2px solid #4070cd50;
-    background-color: ${({ theme }) =>
-      theme === 'dark' ? `${colors.light}` : `${colors.secondaryDark}`};
+    background-color: #f3f3f3;
   }
   &:disabled {
     color: #f3f3f320;

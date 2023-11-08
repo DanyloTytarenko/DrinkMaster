@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { colors } from 'src/colors';
 
 export const Wrapper = styled.div`
   margin-bottom: 80px;
@@ -25,8 +24,7 @@ export const ImageThumb = styled.div`
   width: 335px;
   height: 320px;
   border-radius: 8px;
-  background-color: ${({ theme }) =>
-    theme === 'dark' ? '#161F3750' : `${colors.secondaryDark}`};
+  background-color: rgba(22, 31, 55, 0.5);
   background-size: cover;
   background-image: ${({ uri }) => (uri ? `url(${uri})` : 'none')};
   @media only screen and (min-width: 768px) {
@@ -80,19 +78,19 @@ export const Label = styled.label`
   height: 50px;
   font-size: 40px;
   font-weight: bold;
-  background-color: ${colors.light};
+  background-color: #f3f3f3;
   color: #161f37;
   border-radius: 6px;
   cursor: pointer;
   &:hover {
-    background-color: ${colors.secondaryDark};
-    color: ${colors.light};
+    background-color: #161f37;
+    color: #f3f3f3;
     border: 1px solid #f3f3f350;
   }
   &:active {
-    color: ${colors.secondaryDark};
+    color: #161f37;
     border: 2px solid #4070cd50;
-    background-color: ${colors.light};
+    background-color: #f3f3f3;
   }
 `;
 export const HiddenInput = styled.input`
@@ -103,7 +101,7 @@ export const SpanAddImage = styled.span`
   font-size: 16px;
   font-weight: medium;
   line-height: 1.25;
-  color: ${colors.light};
+  color: #f3f3f3;
 `;
 
 export const DivDesription = styled.div`
@@ -128,7 +126,7 @@ export const Input = styled.input`
   width: 100%;
   background-color: inherit;
   font-size: 14px;
-  color: ${({ theme }) => (theme === 'dark' ? `${colors.light}` : '#0A0A1150')};
+  color: #f3f3f3;
   letter-spacing: -0.02em;
   outline: none;
   border: none;
@@ -137,8 +135,7 @@ export const Input = styled.input`
   }
   :hover {
     ::-webkit-input-placeholder {
-      color: ${({ theme }) =>
-        theme === 'dark' ? '#f3f3f380' : `${colors.primaryDark}`};
+      color: #f3f3f380;
     }
   }
 `;
@@ -171,6 +168,7 @@ export const ErrorIconCategory = styled.span`
   flex-wrap: wrap;
   width: 18px;
   height: 18px;
+  color: '#da1414';
   border: 2px solid #da1414;
   border-radius: 50%;
   @media only screen and (min-width: 768px) {
@@ -185,7 +183,7 @@ export const ErrorIconCategory = styled.span`
 
 export const DivSelect = styled.div`
   background-color: inherit;
-  color: ${({ theme }) => (theme === 'dark' ? `${colors.light}` : '#0A0A1150')};
+  color: #f3f3f3;
 `;
 
 export const DivFlexSelect = styled.div`
@@ -199,7 +197,7 @@ export const SpanSelect = styled.span`
   font-size: 14px;
   font-weight: 400;
   letter-spacing: -0.02em;
-  color: ${({ theme }) => (theme === 'dark' ? '#f3f3f350' : '#0A0A1150')};
+  color: rgba(243, 243, 243, 0.5);
   @media only screen and (min-width: 768px) {
     font-size: 16px;
   }
@@ -208,8 +206,7 @@ export const SpanSelect = styled.span`
 export const DivAlcoholic = styled.div`
   display: flex;
   gap: 14px;
-  color: ${({ theme }) =>
-    theme === 'dark' ? `${colors.light}` : `${colors.primaryDark}`};
+  color: #f3f3f3;
   font-size: 14px;
   letter-spacing: -0.02em;
   @media only screen and (min-width: 768px) {
@@ -232,27 +229,21 @@ export const RadioInput = styled.input`
     box-sizing: content-box;
     width: 10px;
     height: 10px;
-    background-color: ${({ theme }) =>
-      theme === 'dark' ? `${colors.light}` : `${colors.primaryDark}`};
-    border: 3px solid ${({ theme }) => (theme === 'dark' ? 'black' : 'white')};
-    outline: 1.3px ridge
-      ${({ theme }) =>
-        theme === 'dark' ? `${colors.light}` : `${colors.primaryDark}`};
+    background-color: #f3f3f3;
+    border: 3px solid black;
+    outline: 1.3px ridge #f3f3f3;
     @media only screen and (min-width: 768px) {
       width: 12px;
       height: 12px;
-      border: 3px solid ${({ theme }) => (theme === 'dark' ? 'black' : 'white')};
-      outline: 2px ridge
-        ${({ theme }) =>
-          theme === 'dark' ? `${colors.light}` : `${colors.primaryDark}`};
+      border: 3px solid black;
+      outline: 2px ridge #f3f3f3;
     }
   }
   appearance: none;
   border-radius: 50%;
   width: 16px;
   height: 16px;
-  border: 1.3px solid
-    ${({ theme }) => (theme === 'dark' ? '#f3f3f350' : '#636366')};
+  border: 1.3px solid rgba(243, 243, 243, 0.5);
   margin-right: 4px;
   margin-left: 0;
   position: relative;

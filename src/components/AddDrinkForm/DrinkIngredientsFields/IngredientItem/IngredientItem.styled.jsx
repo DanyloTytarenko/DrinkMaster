@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { colors } from 'src/colors';
 
 export const Wrapper = styled.div`
   position: relative;
@@ -16,16 +15,15 @@ export const Input = styled.input`
   width: 100px;
   background-color: inherit;
   font-size: 14px;
-  color: ${({ theme }) =>
-    theme === 'dark' ? `${colors.light}` : `${colors.primaryDark}`};
+  color: #f3f3f3;
   letter-spacing: -0.02em;
   outline: none;
-  border: ${({ errors, value, theme }) =>
+  border: ${({ errors, value }) =>
     value && errors
       ? '1px solid #3cbc8150'
       : errors
       ? '1px solid #da141450'
-      : '1px solid #f3f3f350'};
+      : '1px solid rgba(243, 243, 243, 0.5)'};
   border-radius: 200px;
   box-sizing: border-box;
   @media only screen and (min-width: 768px) {
@@ -50,14 +48,13 @@ export const Button = styled.button`
   border-radius: 50%;
   border: none;
   background-color: inherit;
-  color: ${colors.light};
+  color: #f3f3f3;
   transform: rotate(45deg);
   @media only screen and (min-width: 768px) {
     font-size: 36px;
   }
   :hover {
-    color: ${({ theme }) =>
-      theme === 'dark' ? '#f3f3f380' : `${colors.primaryDark}`};
+    color: #f3f3f380;
     scale: 1.25;
   }
   &:active {

@@ -38,7 +38,6 @@ const DrinkDescriptionFields = ({
   onChangeHandler,
   setFieldValue,
   errors,
-  theme,
 }) => {
   const categories = useSelector(selectCategory);
   const glassArray = useSelector(selectGlass);
@@ -74,7 +73,7 @@ const DrinkDescriptionFields = ({
 
   return (
     <Wrapper>
-      <ImageThumb uri={uri} theme={theme}>
+      <ImageThumb uri={uri}>
         {uri ? (
           <DivTranslucent>
             <LabelTranslucent
@@ -98,7 +97,7 @@ const DrinkDescriptionFields = ({
           </DivTranslucent>
         ) : (
           <DivAddImage>
-            <Label theme={theme}>
+            <Label>
               +
               <HiddenInput
                 type="file"
@@ -125,7 +124,6 @@ const DrinkDescriptionFields = ({
               onChange={(e) => {
                 onChangeHandler(e.target.value, e.target.name, setFieldValue);
               }}
-              theme={theme}
             />
             <ErrorText errors={errors.drink} value={form.drink}>
               {!form.drink && errors.drink}
@@ -151,11 +149,10 @@ const DrinkDescriptionFields = ({
             </ErrorText>
           </DivRow>
 
-          <DivSelect theme={theme}>
+          <DivSelect>
             <DivFlexSelect>
-              <SpanSelect theme={theme}>Category</SpanSelect>
+              <SpanSelect>Category</SpanSelect>
               <Select
-                theme={theme}
                 name="category"
                 options={options(categories)}
                 value={
@@ -177,9 +174,8 @@ const DrinkDescriptionFields = ({
 
           <DivSelect>
             <DivFlexSelect>
-              <SpanSelect theme={theme}>Glass</SpanSelect>
+              <SpanSelect>Glass</SpanSelect>
               <Select
-                theme={theme}
                 name="glass"
                 options={options(glassArray)}
                 value={
@@ -200,10 +196,9 @@ const DrinkDescriptionFields = ({
           </DivSelect>
         </DivDesription>
 
-        <DivAlcoholic theme={theme}>
+        <DivAlcoholic>
           <LabelAlcoholic isAlcoholic={form.alcoholic}>
             <RadioInput
-              theme={theme}
               type="radio"
               value="Alcoholic"
               name="alcoholic"
@@ -217,7 +212,6 @@ const DrinkDescriptionFields = ({
           </LabelAlcoholic>
           <LabelNonAlcoholic isAlcoholic={form.alcoholic}>
             <RadioInput
-              theme={theme}
               type="radio"
               value="Non alcoholic"
               name="alcoholic"

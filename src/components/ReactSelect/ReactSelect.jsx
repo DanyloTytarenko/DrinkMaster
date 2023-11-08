@@ -1,8 +1,6 @@
 import Select from 'react-select';
-import { colors } from 'src/colors';
 
 const ReactSelect = ({
-  theme,
   name,
   options,
   value,
@@ -42,7 +40,7 @@ const ReactSelect = ({
           right: '-23px',
         },
       },
-      backgroundColor: theme === 'dark' ? colors.secondaryDark : 'white',
+      backgroundColor: '#161f37',
       borderRadius: '12px',
     }),
     indicatorSeparator: (base) => ({
@@ -55,7 +53,7 @@ const ReactSelect = ({
     }),
     singleValue: (base) => ({
       ...base,
-      color: theme === 'dark' ? colors.light : colors.primaryDark,
+      color: '#f3f3f3',
     }),
     option: (styles, { isFocused, isSelected }) => ({
       ...styles,
@@ -69,14 +67,10 @@ const ReactSelect = ({
         lineHeight: 'calc(18 / 14)',
       },
       color: isFocused
-        ? theme === 'dark'
-          ? '#f3f3f375'
-          : '#0A0A1175'
+        ? 'rgba(243, 243, 243, 0.75)'
         : isSelected
         ? '#f3f3f3'
-        : theme === 'dark'
-        ? '#f3f3f340'
-        : '#0A0A1140',
+        : 'rgba(243, 243, 243, 0.4)',
       cursor: 'pointer',
     }),
   };
@@ -101,7 +95,7 @@ const ReactSelect = ({
           ? '1px solid #3cbc8150'
           : errors || wrongIngredient
           ? '1px solid #da141450'
-          : '1px solid #f3f3f350',
+          : '1px solid rgba(243, 243, 243, 0.5)',
       borderRadius: '200px',
       fontSize: '14px',
       lineHeight: 'calc(18 / 14)',
@@ -118,7 +112,7 @@ const ReactSelect = ({
       ...base,
       marginTop: '2px',
       padding: '0px 12px',
-      backgroundColor: colors.secondaryDark,
+      backgroundColor: '#161f37',
       borderRadius: '12px',
       '@media only screen and (min-width: 768px)': {
         ...base['@media only screen and (min-width: 768px)'],
@@ -139,7 +133,7 @@ const ReactSelect = ({
     }),
     singleValue: (base) => ({
       ...base,
-      color: theme === 'dark' ? colors.light : colors.primaryDark,
+      color: '#f3f3f3',
     }),
     placeholder: (base) => ({
       ...base,
@@ -160,7 +154,11 @@ const ReactSelect = ({
         fontSize: '17px',
         lineHeight: '1.56',
       },
-      color: isFocused ? '#f3f3f375' : isSelected ? '#f3f3f3' : '#f3f3f340',
+      color: isFocused
+        ? 'rgba(243, 243, 243, 0.75)'
+        : isSelected
+        ? '#f3f3f3'
+        : 'rgba(243, 243, 243, 0.4)',
       cursor: 'pointer',
     }),
   };

@@ -11,18 +11,13 @@ import {
 import { useSelector } from 'react-redux';
 import { selectForm } from 'src/redux/drinks/selectors';
 
-const RecipePreparation = ({
-  onChangeHandler,
-  setFieldValue,
-  errors,
-  theme,
-}) => {
+const RecipePreparation = ({ onChangeHandler, setFieldValue, errors }) => {
   const persistedForm = useSelector(selectForm);
   const form = persistedForm.form;
 
   return (
     <Div>
-      <Title theme={theme}>Recipe Preparation</Title>
+      <Title>Recipe Preparation</Title>
       <TextareaDiv></TextareaDiv>
       {form.instructions ? (
         <MockPlaceholder>Enter the recipe</MockPlaceholder>
@@ -35,7 +30,6 @@ const RecipePreparation = ({
         </ErrorText>
       )}
       <Textarea
-        theme={theme}
         errors={errors.instructions}
         name="instructions"
         placeholder="Enter the recipe"

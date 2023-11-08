@@ -19,7 +19,6 @@ const DrinkIngredientsFields = ({
   setFieldValue,
   errors,
   wrongIngredients,
-  theme,
 }) => {
   const persistedForm = useSelector(selectForm);
   const form = persistedForm.form;
@@ -64,13 +63,13 @@ const DrinkIngredientsFields = ({
   return (
     <Wrapper>
       <DivTop>
-        <Title theme={theme}>Ingredients</Title>
-        <DivIncrement theme={theme}>
-          <Button type="button" onClick={() => decrement()} theme={theme}>
+        <Title>Ingredients</Title>
+        <DivIncrement>
+          <Button type="button" onClick={() => decrement()}>
             ---
           </Button>
-          <SpanIncrement theme={theme}>{form.ingredients.length}</SpanIncrement>
-          <ButtonIncr type="button" onClick={() => increment()} theme={theme}>
+          <SpanIncrement>{form.ingredients.length}</SpanIncrement>
+          <ButtonIncr type="button" onClick={() => increment()}>
             +
           </ButtonIncr>
         </DivIncrement>

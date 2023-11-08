@@ -42,7 +42,7 @@ const addDrinkSchema = object({
   instructions: string().required('This field is required'),
 });
 
-const AddDrinkForm = ({ theme }) => {
+const AddDrinkForm = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
@@ -178,7 +178,7 @@ const AddDrinkForm = ({ theme }) => {
         } else {
           Notify.failure(`Format "webp" not allowed. Try upload .jpeg or .png`);
         }
-        // console.log(resp.payload.message);
+        console.log(resp.payload.message);
       })
       .catch((e) => {
         console.log(e);
@@ -202,6 +202,8 @@ const AddDrinkForm = ({ theme }) => {
   }
 
   const sendForm = (formWithImgUrl, values, actions) => {
+    console.log(persistedForm, 'persistedForm');
+
     dispatch(addOwnDrink(formWithImgUrl, values)).then((resp) => {
       if (resp.type === 'drinks/addOwnDrink/fulfilled') {
         Notify.success('You added new cocktail!');
@@ -210,7 +212,7 @@ const AddDrinkForm = ({ theme }) => {
         actions.resetForm({ values: initialValues });
         return;
       }
-      // console.log(resp.payload.message);
+      console.log(resp.payload.message);
       errorsHandler(resp.payload.message);
     });
   };
@@ -255,23 +257,19 @@ const AddDrinkForm = ({ theme }) => {
               onChangeHandler={onChangeHandler}
               setFieldValue={setFieldValue}
               errors={errors}
-              theme={theme}
             />
             <DrinkIngredientsFields
               onChangeHandler={onChangeHandler}
               setFieldValue={setFieldValue}
               errors={errors}
               wrongIngredients={wrongIngredients}
-              theme={theme}
             />
             <RecipePreparation
               onChangeHandler={onChangeHandler}
               setFieldValue={setFieldValue}
               errors={errors}
-              theme={theme}
             />
             <Button
-              theme={theme}
               type="submit"
               disabled={isLoadingOwnDrink === true}
               title="Add"

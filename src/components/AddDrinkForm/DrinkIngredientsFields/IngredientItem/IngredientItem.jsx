@@ -18,7 +18,6 @@ const IngredientItem = ({
   chosenIngredientSelect,
   errors,
   wrongIngredients,
-  theme,
 }) => {
   // композитна функція контрольованої обробки двох інпутів (інгрідієнта і його кількості)
   const onChangeIngredientHandler = (payload, field) => {
@@ -44,7 +43,6 @@ const IngredientItem = ({
   return (
     <Wrapper>
       <Select
-        theme={theme}
         name={'title'}
         options={ingredients}
         value={
@@ -73,7 +71,6 @@ const IngredientItem = ({
       </ErrorText>
       <div>
         <Input
-          theme={theme}
           errors={errors.ingredients}
           type="text"
           name="measure"
@@ -103,7 +100,6 @@ const IngredientItem = ({
       </div>
 
       <Button
-        theme={theme}
         type="button"
         title="Remove ungridient"
         onClick={() => deleteIngredient(index)}
