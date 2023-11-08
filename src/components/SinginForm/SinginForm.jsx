@@ -151,7 +151,7 @@ export const SinginForm = () => {
           >
             Sign In
           </Button>
-          <GoogleButton />
+
           <Link
             component={NavLink}
             sx={{ zIndex: 5, ...linkStyled }}
