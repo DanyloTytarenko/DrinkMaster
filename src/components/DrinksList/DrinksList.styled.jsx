@@ -20,6 +20,7 @@ margin-top: 60px;
 `;
 export const DrinksItem = styled.li`
 width: 335px;
+height: 676px;
 display: flex;
 flex-direction: column;
 gap: 18px;
@@ -49,6 +50,9 @@ font-size: 24px;
 `
 export const DrinkDesc = styled.p`
 font-size: 14px;
+height: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 @media only screen and (min-width: 768px) {
 font-size: 16px;
 }
