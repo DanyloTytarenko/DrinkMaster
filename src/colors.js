@@ -7,4 +7,7 @@ export const colors = {
   light: '#F3F3F3',
   disabled: '#F3F3F320',
   white: '#FFFFFF',
+  halfLight: '#F3F3F350',
+  halfPrimaryDark: '#0A0A1150',
+  halfSecondaryDark: '#161F3750',
 };

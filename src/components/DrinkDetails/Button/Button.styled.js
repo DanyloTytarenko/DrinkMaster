@@ -9,14 +9,23 @@ export const StyledButton = styled.button`
   border-radius: 42px;
   padding: 14px 40px;
   margin-bottom: 80px;
-  color: ${colors.secondaryDark};
+  ${({ theme }) =>
+    theme === 'dark'
+      ? ` color: ${colors.secondaryDark};`
+      : `color: ${colors.light};`}
   transition:
     color 250ms ease,
     background-color 250ms ease;
 
   &:hover {
-    background-color: ${colors.secondaryDark};
-    color: ${colors.light};
+    ${({ theme }) =>
+      theme === 'dark'
+        ? ` background-color: ${colors.secondaryDark};`
+        : `background-color: ${colors.light};`}
+    ${({ theme }) =>
+      theme === 'dark'
+        ? ` color: ${colors.light};`
+        : `color: ${colors.secondaryDark};`}
   }
 
   @media (min-width: 768px) {

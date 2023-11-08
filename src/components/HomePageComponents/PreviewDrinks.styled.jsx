@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { colors } from '../../colors';
+import { colors } from 'src/colors';
 
 export const List = styled.ul`
   display: flex;
@@ -15,7 +15,10 @@ export const CategoryName = styled.h2`
   font-weight: 600;
   line-height: 32px;
   margin-bottom: 0;
-  color: ${colors.light};
+  ${({ theme }) =>
+    theme === 'dark'
+      ? `color: ${colors.light};`
+      : `color: ${colors.secondaryDark};`}
   @media only screen and (min-width: 768px) {
     font-size: 40px;
     line-height: 44px;
@@ -26,7 +29,6 @@ export const ListCard = styled.li`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  color: ${colors.light};
   width: 100%;
   margin-bottom: 40px;
   @media only screen and (min-width: 768px) {
@@ -88,6 +90,10 @@ export const DrinkTitle = styled.h3`
   font-weight: 500;
   line-height: 18px;
   margin-bottom: 0;
+  ${({ theme }) =>
+    theme === 'dark'
+      ? `color: ${colors.light};`
+      : `color: ${colors.secondaryDark};`}
   @media only screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 24px;
@@ -106,7 +112,10 @@ export const StyledLinkToDrinkPage = styled(Link)`
   }
 
   &:hover {
-    color: ${colors.light};
+    ${({ theme }) =>
+    theme === 'dark'
+      ? `color: ${colors.light};`
+      : `color: ${colors.secondaryDark};`};
   }
 `;
 
@@ -116,11 +125,17 @@ export const StyledLinkToDrinksPage = styled(Link)`
   height: 46px;
   justify-content: center;
   align-items: center;
-  color: ${colors.secondaryDark};
-  background: ${colors.light};
   border-radius: 42px;
   font-weight: 600;
   transition: 250ms ease;
+  ${({ theme }) =>
+  theme === 'dark'
+    ? `color: ${colors.secondaryDark};`
+    : `color: ${colors.light};`};
+${({ theme }) =>
+  theme === 'dark'
+    ? `background-color: ${colors.light};`
+    : `background-color: ${colors.secondaryDark};`}
 
   @media only screen and (min-width: 768px) {
     width: 183px;
@@ -133,7 +148,13 @@ export const StyledLinkToDrinksPage = styled(Link)`
   }
 
   &:hover {
-    color: ${colors.light};
-    background-color: ${colors.secondaryDark};
+    ${({ theme }) =>
+      theme === 'dark'
+        ? `color: ${colors.light};`
+        : `color: ${colors.secondaryDark};`}
+    ${({ theme }) =>
+      theme === 'dark'
+        ? `background-color: ${colors.secondaryDark};`
+        : `background-color: ${colors.light};`}
   }
 `;

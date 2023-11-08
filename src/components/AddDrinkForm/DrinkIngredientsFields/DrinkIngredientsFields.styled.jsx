@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { colors } from 'src/colors';
 
 export const Wrapper = styled.div`
   margin-bottom: 80px;
@@ -13,8 +14,13 @@ export const DivTop = styled.div`
 export const Title = styled.h2`
   font-size: 28px;
   line-height: calc(32 / 28);
+  @media only screen and (min-width: 768px) {
+    font-size: 40px;
+    line-height: calc(44 / 40);
+  }
   letter-spacing: 0;
-  color: #f3f3f3;
+  color: ${({ theme }) =>
+    theme === 'dark' ? `${colors.light}` : `${colors.primaryDark}`};
 `;
 
 export const DivIncrement = styled.div`
@@ -26,7 +32,8 @@ export const DivIncrement = styled.div`
   justify-content: space-between;
   line-height: calc(18 / 14);
   align-items: center;
-  border: 1px solid rgba(243, 243, 243, 0.5);
+  border: ${({ theme }) =>
+    theme === 'dark' ? '1px solid #f3f3f350' : '1px solid #0A0A1150'};
   border-radius: 200px;
   @media only screen and (min-width: 768px) {
     width: 114px;
@@ -40,9 +47,11 @@ export const Button = styled.button`
   line-height: calc(18 / 14);
   border: none;
   background-color: inherit;
-  color: rgba(243, 243, 243, 0.3);
+  color: #f3f3f330;
+  color: ${({ theme }) => (theme === 'dark' ? '#f3f3f330' : '#0A0A1130')};
   :hover {
-    color: #f3f3f380;
+    color: ${({ theme }) =>
+      theme === 'dark' ? '#f3f3f380' : `${colors.primaryDark}`};
     scale: 1.25;
   }
 `;
@@ -52,15 +61,18 @@ export const ButtonIncr = styled.button`
   line-height: calc(18 / 14);
   border: none;
   background-color: inherit;
-  color: rgba(243, 243, 243, 1);
+  color: ${({ theme }) =>
+    theme === 'dark' ? `${colors.light}` : `${colors.primaryDark}`};
   :hover {
-    color: #f3f3f380;
+    color: ${({ theme }) =>
+      theme === 'dark' ? '#f3f3f380' : `${colors.primaryDark}`};
     scale: 1.45;
   }
 `;
 
 export const SpanIncrement = styled.span`
-  color: #f3f3f3;
+  color: ${({ theme }) =>
+    theme === 'dark' ? `${colors.light}` : `${colors.primaryDark}`};
   font-size: 14px;
   line-height: calc(18 / 14);
   @media only screen and (min-width: 768px) {

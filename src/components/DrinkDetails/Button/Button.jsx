@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { StyledButton } from './Button.styled';
 import {
   addFavoriteDrink,
   deleteFavoriteDrink,
 } from 'src/redux/drinks/operations';
+import { selectTheme } from 'src/redux/theme/themeSlice';
 
 const Button = ({ drinkId, favoriteStatus }) => {
   const [favorite, setfavorite] = useState(true);
   const dispatch = useDispatch();
+  const theme = useSelector(selectTheme);
 
   const handleAddToFavorite = () => {
     dispatch(addFavoriteDrink(drinkId));
@@ -27,7 +29,11 @@ const Button = ({ drinkId, favoriteStatus }) => {
   return (
     <>
       {!favorite ? (
-        <StyledButton type="button" onClick={() => handleAddToFavorite()}>
+        <StyledButton
+          theme={theme}
+          type="button"
+          onClick={() => handleAddToFavorite()}
+        >
           Add to favorite drinks
         </StyledButton>
       ) : (
